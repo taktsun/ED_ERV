@@ -1,5 +1,8 @@
 # Readme <a href='https://osf.io/zcvbs/'><img src='worcs_icon.png' align="right" height="139" /></a>
 
+This is the github of my project["Naming before Taming? Emotion Differentiation and Emotion Regulation Variability Hinder Each Other within Adolescents."](https://osf.io/cq6n4/). You can reproduce the analysis results in the manuscript following this readme. 
+
+
 <!-- Please add a brief introduction to explain what the project is about    -->
 
 ## Where do I start?
@@ -8,17 +11,43 @@ You can load this project in RStudio by opening the file called 'EDpredictsERV.R
 
 ## Project structure
 
-<!--  You can add rows to this table, using "|" to separate columns.         -->
-File                      | Description                      | Usage         
-------------------------- | -------------------------------- | --------------
-README.md                 | Description of project           | Human editable
-EDpredictsERV.Rproj       | Project file                     | Loads project 
-LICENSE                   | User permissions                 | Read only     
-.worcs                    | WORCS metadata YAML              | Read only     
-prepare_data.R            | Script to process raw data       | Human editable
-manuscript/manuscript.rmd | Source code for paper            | Human editable
-manuscript/references.bib | BibTex references for manuscript | Human editable
-renv.lock                 | Reproducible R environment       | Read only     
+Tables of R scripts, other files, and folders.
+
+### R scripts
+
+File                      | Description                | Usage         
+------------------------- | -------------------------- | --------------
+prepare_data.R            | Curate primary data from raw data; pre-process primary data into ready-to-analyze data | Optional because ready-to-analyze data are already in .csv
+desstat&MCFA.R                 | Demographic info, descriptive statistics, and psychometrics (e.g., reliability of measures) | Run to reproduce results
+megaanalysis.R                 | Multilevel models (confirmatory & exploratory)  | Run to reproduce results
+poweranalysis.R                | Power analysis in pre-registration| Run to reproduce results
+list_of_ESM_measures.R                | List of ESM measures variable names| Required; read only
+func_preprocessing.R                 | Functions for pre-processing data (in prepare_data.R) | Required; read only
+
+
+
+
+### Project Files
+
+File                      | Description                | Usage         
+------------------------- | -------------------------- | --------------
+EDpredictsERV.Rproj      | Project file               | Loads project 
+sim1_input.RData      | Simulation 1 parameter input with seed               | README.md                 | Description of project     | Read only
+LICENSE                   | User permissions           | Read only     
+.worcs                    | WORCS metadata YAML        | Read only     
+renv.lock                 | Reproducible R environment | Read only     
+
+
+### Folders
+Folder| Description                | Usage         
+------------------------- | -------------------------- | --------------
+manuscript | Folder that holds manuscript markdown files and pdfs (empty at the moment)      | Read only
+dataRaw| Raw data files. An empty folder because raw data with potential personal identifiers are not uploaded.| Read only     
+dataPrimary| Primary data files.| Read only     
+dataProcessed| Ready-to-analyze data files. | Read only     
+
+
+
 
 <!--  You can consider adding the following to this file:                    -->
 <!--  * A citation reference for your project                                -->
@@ -27,22 +56,36 @@ renv.lock                 | Reproducible R environment       | Read only
 <!--  * A contributor code of conduct, https://www.contributor-covenant.org/ -->
 
 # Reproducibility
+Reproduce the results by these 5 steps.
 
-This project uses the Workflow for Open Reproducible Code in Science (WORCS) to
-ensure transparency and reproducibility. The workflow is designed to meet the
-principles of Open Science throughout a research project. 
+ 1. Install RStudio and R
+ 2. Install WORCS dependencies
+		
+		install.packages("worcs", dependencies = TRUE)
+		tinytex::install_tinytex()
+		renv::consent(provided = TRUE)
+		
+ 3. [Clone](https://resources.github.com/github-and-rstudio/#:~:text=Clone%20the%20repository%20with%20RStudio&text=On%20GitHub%2C%20navigate%20to%20the,RStudio%20on%20your%20local%20environment.) this repo (https://github.com/taktsun/ED_ERV) to your RStudio
+ 4. Restore the package dependencies
+	
 
-To learn how WORCS helps researchers meet the TOP-guidelines and FAIR principles,
-read the preprint at https://osf.io/zcvbs/
+	    renv::restore()
 
-## WORCS: Advice for authors
+ 5. Run 4 R scripts to reproduce the results. Start new R session (Ctrl+Shift+F10 in Windows) and clear all environment variables before you run each R script.
+ 
+	- prepare_data.R
+	- desstat&MCFA.R
+	- megaanalysis.R
+	- poweranalysis.R
 
-* To get started with `worcs`, see the [setup vignette](https://cjvanlissa.github.io/worcs/articles/setup.html)
-* For detailed information about the steps of the WORCS workflow, see the [workflow vignette](https://cjvanlissa.github.io/worcs/articles/workflow.html)
 
-## WORCS: Advice for readers
+Step 1 to 4 are detailed in the vignette on [reproducing a WORCS project](https://cjvanlissa.github.io/worcs/articles/reproduce.html).
 
-Please refer to the vignette on [reproducing a WORCS project]() for step by step advice.
-<!-- If your project deviates from the steps outlined in the vignette on     -->
-<!-- reproducing a WORCS project, please provide your own advice for         -->
-<!-- readers here.                                                           -->
+
+### Adherence to WORCS
+
+This project uses the Workflow for Open Reproducible Code in Science (WORCS) to ensure transparency and reproducibility. The workflow is designed to meet the principles of Open Science throughout a research project.
+
+### More about WORCS
+
+To learn how WORCS helps researchers meet the TOP-guidelines and FAIR principles, read the preprint at https://osf.io/zcvbs/
