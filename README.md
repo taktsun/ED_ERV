@@ -15,13 +15,15 @@ Tables of R scripts, other files, and folders.
 
 ### R scripts
 
+Read "list_of_variables.R" to familiarize yourself with how we named variables.
+
 File                      | Description                | Usage         
 ------------------------- | -------------------------- | --------------
 prepare_data.R            | Curate primary data from raw data; pre-process primary data into ready-to-analyze data | Optional because ready-to-analyze data are already in .csv
 desstat&MCFA.R                 | Demographic info, descriptive statistics, and psychometrics (e.g., reliability of measures) | Run to reproduce results
 megaanalysis.R                 | Multilevel models (confirmatory & exploratory)  | Run to reproduce results
 poweranalysis.R                | Power analysis in pre-registration| Run to reproduce results
-list_of_ESM_measures.R                | List of ESM measures variable names| Required; read only
+list_of_variables.R                | List of variable names of ESM measures and momentary indices| Required; read only
 func_preprocessing.R                 | Functions for pre-processing data (in prepare_data.R) | Required; read only
 
 
@@ -43,8 +45,8 @@ Folder| Description                | Usage
 ------------------------- | -------------------------- | --------------
 manuscript | Folder that holds manuscript markdown files and pdfs (empty at the moment)      | Read only
 dataRaw| Raw data files. An empty folder because raw data with potential personal identifiers are not uploaded.| Read only     
-dataPrimary| Primary data files.| Read only     
-dataProcessed| Ready-to-analyze data files. | Read only     
+dataPrimary| Primary data files, which means anonymized raw data without any further pre-processing | Read only     
+dataProcessed| Ready-to-analyze data files | Read only     
 
 
 
