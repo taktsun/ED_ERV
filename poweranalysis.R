@@ -13,6 +13,8 @@ library(betapart)
 library(emodiff)
 library(nlme)
 
+source("func_preprocessing.R") # load functions for pre-processing data (including calculation of momentary indices)
+
 # Read in data
 rawdata <- read.csv('dataPrimary/primaryPower.csv') # this file contains anonymized primary data
 inputPA.power <- c("HAPPY","RELAXED","EXCITED")
