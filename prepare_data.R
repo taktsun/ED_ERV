@@ -410,6 +410,12 @@ dataGhent <- harmonize(dataGhent,c(inputPA.Ghent,inputNA.Ghent,inputER.Ghent),
   # but moment-level ED (m_ED), the variable we use for modeling, was still successfully calculated
   # so these warnings can be ignored
   dataGhent <- calcDynamics(dataGhent,inputNA = inputNA.Ghent, inputER.Ghent,inputPA.Ghent)
+  # Warning messages:
+  # 1: In log((1 + rho)/(1 - rho)) : NaNs produced
+  # 2: In log((1 + rho)/(1 - rho)) : NaNs produced
+  # a few participants returned NA on the c_ED output because there were too few observations 
+  # but moment-level ED (m_ED), the variable we use for modeling, was still successfully calculated
+  # so these warnings can be ignored
   
   
 # 2.4. Create a pooled dataset after applying exclusion criteria
