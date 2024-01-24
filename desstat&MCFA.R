@@ -322,7 +322,8 @@ RMSEAb = function(f1ab) {
 # mXcw:  2-factor structure (within) but forcing 2 factors not associated (i.e., =0) 
 # baseXw: baseline model
 
-##**MAYBE ADD WHY YOU NEED ALL THE DIFFERENT MODELS?**##
+# Different models were run and compared to see which fits ebst theoretically. 
+# Note that we only report the within-person (mxaw) and the between-person (mxab) in the supplement.
 
 ##### 1.1 Factor structure short questionnaire/ Establish reference model #####
 #### 1.1a Within level (between level saturated) ####
@@ -1487,9 +1488,9 @@ modificationindices(f5aw_mod, sort = TRUE)
 # ====================================
 rescfa <- rbind(c(model = deparse(substitute(f1aw)), summaryfit(f1aw, inputPA.GVE,inputNA.GVE)),
       c(model = deparse(substitute(f2aw)), summaryfit(f2aw, inputPA.Leuven2011,inputNA.Leuven2011)),
-      c(model = deparse(substitute(f3aw)), summaryfit(f3aw, inputPA.Leuven3W,inputNA.Leuven3W)),
-      c(model = deparse(substitute(f4aw)), summaryfit(f4aw, inputPA.Tilburg,inputNA.Tilburg)),
-      c(model = deparse(substitute(f5aw)), summaryfit(f5aw, inputPA.Ghent,inputNA.Ghent)),
+      c(model = deparse(substitute(f3aw_mod)), summaryfit(f3aw_mod, inputPA.Leuven3W,inputNA.Leuven3W)),
+      c(model = deparse(substitute(f4aw_mod)), summaryfit(f4aw_mod, inputPA.Tilburg,inputNA.Tilburg)),
+      c(model = deparse(substitute(f5aw_mod)), summaryfit(f5aw_mod, inputPA.Ghent,inputNA.Ghent)),
       c(model = deparse(substitute(f1ab)), summaryfit(f1ab, inputPA.GVE,inputNA.GVE)),
       c(model = deparse(substitute(f2ab)), summaryfit(f2ab, inputPA.Leuven2011,inputNA.Leuven2011)),
       c(model = deparse(substitute(f3ab)), summaryfit(f3ab, inputPA.Leuven3W,inputNA.Leuven3W)),
