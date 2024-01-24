@@ -161,17 +161,6 @@ calcDynamics <- function(df, inputNA, inputER, inputPA){
   
   # calculate emotion regulation variability (dBC) 
     df <- calcBrayCurtisESM(dfMerge,inputER,"PARTICIPANT_ID","BEEP", multiplyby = 10, addby = 0.001)
-  
-  # Create lag(1) state ED, state NA. Without consideration of DAY **WHY TWO DIFFERENT VERSIONS?**
-    df$m_EDL1N <- lagvar(m_ED, id=PARTICIPANT_ID, obs=BEEP, data=df)
-    df$m_EDcwL1N <- lagvar(m_EDcw, id=PARTICIPANT_ID, obs=BEEP, data=df)
-    df$m_EDPAL1N <- lagvar(m_EDPA, id=PARTICIPANT_ID, obs=BEEP, data=df)
-    df$m_EDPAcwL1N <- lagvar(m_EDPAcw, id=PARTICIPANT_ID, obs=BEEP, data=df)
-    df$m_PAcwL1N <- lagvar(m_PAcw, id=PARTICIPANT_ID, obs=BEEP, data=df)
-    df$m_NAcwL1N <- lagvar(m_NAcw, id=PARTICIPANT_ID, obs=BEEP, data=df)
-    df$BrayCurtisFull.sucL1N <- lagvar(BrayCurtisFull.suc, id=PARTICIPANT_ID, obs=BEEP, data=df)
-    df$BrayCurtisRepl.sucL1N <- lagvar(BrayCurtisRepl.suc, id=PARTICIPANT_ID, obs=BEEP, data=df)
-    df$BrayCurtisNest.sucL1N <- lagvar(BrayCurtisNest.suc, id=PARTICIPANT_ID, obs=BEEP, data=df)
     
   # Create lag(1) state ED, state NA. WITH consideration of DAY
     df$m_EDL1D <- lagvar(m_ED, id=PARTICIPANT_ID, obs=BEEP, day=DAY, data=df)
