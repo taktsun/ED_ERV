@@ -1,10 +1,10 @@
 # ===========================================================================
-# functions for data pre-processing
+# Title: functions for data pre-processing
 # Date: 24-1-2024
 # Copyright: Edmund Lo, checked by Dominique Maciejewski
 # ===========================================================================
 
-# Harmonize a list of variables according to the input "master" min and max across all datasets
+# Harmonize a list of variables according to the input "master" min and max across all datasets (needed for ESM variables)
 harmonize <- function(df,listvar,datasetmin,datasetmax,mastermin,mastermax){
   # set the minimum raw scores to 0
   df[, listvar] <- df[, listvar] - datasetmin
@@ -14,7 +14,7 @@ harmonize <- function(df,listvar,datasetmin,datasetmax,mastermin,mastermax){
   df
 }
 
-# detect whether there are zero variance across multiple variables across ESM observations
+# detect whether there are zero variance across multiple variables across ESM observations (pre-registered exclusion criterion)
 zerovariance <- function(dftemp,variables_to_check){
   # Group by PPID and check if the specified variables remain the same in all rows
   dftemp <- dftemp[complete.cases(dftemp[, variables_to_check]), ]
