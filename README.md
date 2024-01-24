@@ -75,10 +75,10 @@ Reproduce the results by these 5 steps.
 	    
  5. Run 4 R scripts to reproduce the results. Start new R session (Ctrl+Shift+F10 in Windows) and clear all environment variables before you run each R script.
  
-	- prepare_data.R -> that was quite slow, mostly due to zero_variance code
-	- desstat&MCFA.R -> Added new MCFA models, because the model fit did not look super good the the within-level for dataset 3, 4 and 5. Modification indices suggested that including correlations between residual variances of like items should help and it did. 
-	- megaanalysis.R -> works, see comments
-	- poweranalysis.R -> works, see comments
+	- prepare_data.R 
+	- desstat&MCFA.R 
+	- megaanalysis.R 
+	- poweranalysis.R 
 
 *PLUS, SHOULDNT WE ALSO ADD THAT THEY CAN THEN RUN THE MANUSCRIPT RMD FILE TO KNIT THE MANUSCRIPT?*
 *Plus, we need to add information about the data.*
