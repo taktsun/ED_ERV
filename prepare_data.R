@@ -1,7 +1,11 @@
-# In this file, write the R-code necessary to load your original data file
-# (e.g., an SPSS, Excel, or SAS-file), and convert it to a data.frame. Then,
-# use the function open_data(your_data_frame) or closed_data(your_data_frame)
-# to store the data.
+#===========================================
+# Curate primary data (Part 0)
+# Load raw data, apply inclusion criteria (age), and prepare primary data
+# Date: 24-1-2024
+# Copyright: Edmund Lo, checked by Dominique Maciejewski
+# https://www.psychologicalscience.org/publications/psychological_science/ps-submissions#data
+# "Primary data refers to the first digital (and if necessary, anonymized) version of the raw data, otherwise unaltered"
+#===========================================
 
 # INSTALL PACKAGES IF NEEDED
 # install.packages("remotes")
@@ -23,19 +27,11 @@ library(emodiff)
 source("list_of_variables.R") # load all ESM measures variable names
 source("func_preprocessing.R") # load functions for pre-processing data (including calculation of momentary indices)
 
-#===========================================
-# Curate primary data (Part 0)
-# Load raw data, apply inclusion criteria (age), and prepare primary data
-# 
-# https://www.psychologicalscience.org/publications/psychological_science/ps-submissions#data
-# "Primary data refers to the first digital (and if necessary, anonymized) version of the raw data, otherwise unaltered"
-#===========================================
-
-# The following steps are done to anonymize the data; otherwise they are closest to the raw data we are supplied with
-# These steps are taken so that data do not contain or can't combine to form personal identifiers
+# The following steps were taken to anonymize the data; otherwise they are closest to the raw data we are supplied with
+# These steps were taken so that data do not contain or can't combine to form personal identifiers
 # 0.1. recode participant IDs
 # 0.2. recode nationality/ethnicity item into binary (majority = 1, others = 0)
-# 0.3. round age to integer
+# 0.3. round age to integer (i.e., no decimals)
 # 0.4. merge ESM data file with demographic data file
 # Note that before step 3, we applied the pre-registered inclusion criterion of age<=25 so that we do not include extra data
 
@@ -67,7 +63,15 @@ primaryGhent$Ethnicity <- ifelse(grepl("Belgisch", primaryGhent$Ethnicity, fixed
 primaryGhent$Ethnicity <- ifelse(primaryGhent$Ethnicity==1,1,0)
 
 
-# pseudonymize the participant IDs
+# pseudonymize the participant IDs 
+# **Is it really pseudomization if you just add an integer? See alternative suggestion for code**
+### Make new ID variable
+# RADAR_data_long <- 
+#   RADAR_data_long %>%
+#   group_by(ID) %>%
+#   mutate(ID = cur_group_id()) %>%
+#   mutate(ID = paste("RADAR", ID, sep="_"))
+
 primaryGVE$PARTICIPANT_ID <- as.integer(factor(primaryGVE$PARTICIPANT_ID))+1000
 primaryLeuven2011$UUID <- as.integer(factor(primaryLeuven2011$UUID))+2000
 primaryLeuven3W$UUID <- as.integer(factor(primaryLeuven3W$UUID))+3000
