@@ -25,10 +25,10 @@ inputER.power <- c("SUPPRESSION","SHARING","REAPPRAISAL","RUMMINATION","ACCEPATA
 inputNeeded <- c("ppnr","triggerid","CREATED_TS.1",inputPA.power,inputNA.power,inputER.power)
 dateformat<-"mdy HM"
 
-## **I WOULD ADD MORE INFORMATION HERE ON WHAT YOU DO!!**
-
 dfPower <- rawdata
 dfPower <- dfPower[,inputNeeded]
+
+# change variable names
 dfPower$PARTICIPANT_ID <- dfPower$ppnr
 dfPower$BEEP <- dfPower$triggerid
 dfPower$day <-day(parse_date_time(dfPower$CREATED_TS.1,orders=dateformat))
@@ -41,7 +41,8 @@ dfPower[dfPower == ""] <- NA
 dfPower[dfPower == -999] <- NA
 
 dfPower[,c(inputPA.power,inputNA.power,inputER.power)] <- sapply(dfPower[,c(inputPA.power,inputNA.power,inputER.power)], function(x) as.numeric(x))
-# There were certain glitches that produced wrong values for ER strategies: #####**WHAT GLITCHES???**#####
+# There were certain glitches that produced wrong values for ER strategies (i.e., there were some instances
+# where the values for the ER strategies were above 10, sometimes e.g., 20000), so those were to recoded to NA
 dfPower$SUPPRESSION <- ifelse(dfPower$SUPPRESSION > 10, NA, dfPower$SUPPRESSION)
 dfPower$SHARING <- ifelse(dfPower$SHARING > 10, NA, dfPower$SHARING)
 dfPower$REAPPRAISAL <- ifelse(dfPower$REAPPRAISAL > 10, NA, dfPower$REAPPRAISAL)
@@ -50,8 +51,6 @@ dfPower$ACCEPATANCE <- ifelse(dfPower$ACCEPATANCE > 10, NA, dfPower$ACCEPATANCE)
 dfPower$WORRIED <- ifelse(dfPower$WORRIED > 10, NA, dfPower$WORRIED)
 
 dfPower <- calcDynamics(dfPower,inputNA = inputNA.power, inputER = inputER.power, inputPA = inputPA.power)
-
-# calculate with LME **WHAT IS LME**
 
 # Run multilevel models in data
 
@@ -82,5 +81,5 @@ mean(dfPower[(!is.na(dfPower$BrayCurtisFull.amm) & !is.na(dfPower$m_EDL1D) & !is
 sd(dfPower[(!is.na(dfPower$BrayCurtisFull.amm) & !is.na(dfPower$m_EDL1D) & !is.na(dfPower$m_ED)),"m_ED"])
 summary(model2.power)
 
-# Using these estimates, the simulation models (Model X) were run using the shiny-app from Ginette Lafit available via: https://github.com/ginettelafit/PowerAnalysisIL
-
+# Using these estimates, the simulation models (Model 3) were run using the shiny-app from Ginette Lafit available via: https://github.com/ginettelafit/PowerAnalysisIL
+# Plus assuming 13 observations per participant and 1000 repetitions (for details see pre-registration)
