@@ -75,12 +75,15 @@ Reproduce the results by these 5 steps.
 	    
  5. Run 4 R scripts to reproduce the results. Start new R session (Ctrl+Shift+F10 in Windows) and clear all environment variables before you run each R script.
  
-	- prepare_data.R
-	- desstat&MCFA.R
-	- megaanalysis.R
-	- poweranalysis.R
+	- prepare_data.R -> that was quite slow, mostly due to zero_variance code
+	- desstat&MCFA.R -> Added new MCFA models, because the model fit did not look super good the the within-level for dataset 3, 4 and 5. Modification indices suggested that including correlations between residual variances of like items should help and it did. 
+	- megaanalysis.R -> works, see comments
+	- poweranalysis.R -> works, see comments
 
 *PLUS, SHOULDNT WE ALSO ADD THAT THEY CAN THEN RUN THE MANUSCRIPT RMD FILE TO KNIT THE MANUSCRIPT?*
+*Plus, we need to add information about the data.*
+*We definitely need to add the folders, cause now I could only run the script if I myself manually added the folders.* 
+*I also had to add the results folder in the manuscript*
 
 Step 1 to 4 are detailed in the vignette on [reproducing a WORCS project](https://cjvanlissa.github.io/worcs/articles/reproduce.html).
 
