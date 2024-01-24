@@ -1,5 +1,7 @@
 # ===========================================================================
 # functions for data pre-processing
+# Date: 24-1-2024
+# Copyright: Edmund Lo, checked by Dominique Maciejewski
 # ===========================================================================
 
 # Harmonize a list of variables according to the input "master" min and max across all datasets
@@ -111,9 +113,10 @@ calcBrayCurtisESM <- function (d, vn, pid, tid, bSubnarm = TRUE, bPersonnarm = T
 }
 
 
-
+# ===============================================================
 # Function to calculate all momentary indices
-# including moment-level emotion differentiation and emotino regulation variability
+# including moment-level emotion differentiation and emotion regulation variability
+# ===============================================================
 
 calcDynamics <- function(df, inputNA, inputER, inputPA){
   
@@ -137,7 +140,7 @@ calcDynamics <- function(df, inputNA, inputER, inputPA){
     dfCalcICC <- df
     dfCalcICC <- dfCalcICC[complete.cases(dfCalcICC[, inputNA]), ]
     # by default, negative trait ICC is turned to NA but that also affect moment-level ED
-    # therefore we allow_-ve_ICC to be TRUE
+    # therefore we allow_-ve_ICC to be TRUE: **EXPLAIN COMMENT, UNCLEAR TO ME, ALSO UNCLEAR WHAT -VE IS**
     dfCalcICC <- calculate_ed(dat = dfCalcICC, emotions = inputNA, PARTICIPANT_ID, allow_neg_icc = TRUE)
     # within-adolescent component (person-mean-center) of emotion emotion differentiation
     dfCalcICC$m_EDcw <- calc.mcent(m_ED,PARTICIPANT_ID,data=dfCalcICC)
@@ -148,7 +151,7 @@ calcDynamics <- function(df, inputNA, inputER, inputPA){
     dfCalcICCPA <- df
     dfCalcICCPA <- dfCalcICCPA[complete.cases(dfCalcICCPA[, inputPA]), ]
     # by default, negative trait ICC is turned to NA but that also affect moment-level ED
-    # therefore we allow_-ve_ICC to be TRUE
+    # therefore we allow_-ve_ICC to be TRUE **EXPLAIN COMMENT, UNCLEAR TO ME, ALSO UNCLEAR WHAT -VE IS**
     dfCalcICCPA <- calculate_ed(dat = dfCalcICCPA, emotions = inputPA, PARTICIPANT_ID, allow_neg_icc = TRUE)
     dfCalcICCPA <- dfCalcICCPA %>%
       rename_with(~paste0(., "PA"), all_of(tail(names(dfCalcICCPA), 6)))
@@ -158,10 +161,10 @@ calcDynamics <- function(df, inputNA, inputER, inputPA){
     dfMerge <-merge(df,dfCalcICC,by = c("PARTICIPANT_ID","BEEP"), all=TRUE)
     dfMerge <-merge(dfMerge,dfCalcICCPA,by = c("PARTICIPANT_ID","BEEP"),all=TRUE)
   
-  # calculate emotion regulation variability (dBC)
+  # calculate emotion regulation variability (dBC) 
     df <- calcBrayCurtisESM(dfMerge,inputER,"PARTICIPANT_ID","BEEP", multiplyby = 10, addby = 0.001)
   
-  # Create lag(1) state ED, state NA. Without consideration of DAY
+  # Create lag(1) state ED, state NA. Without consideration of DAY **WHY TWO DIFFERENT VERSIONS?**
     df$m_EDL1N <- lagvar(m_ED, id=PARTICIPANT_ID, obs=BEEP, data=df)
     df$m_EDcwL1N <- lagvar(m_EDcw, id=PARTICIPANT_ID, obs=BEEP, data=df)
     df$m_EDPAL1N <- lagvar(m_EDPA, id=PARTICIPANT_ID, obs=BEEP, data=df)
@@ -195,8 +198,7 @@ calcDynamics <- function(df, inputNA, inputER, inputPA){
     df$BrayCurtisNest.succwL1D <- lagvar(BrayCurtisNest.succw, id=PARTICIPANT_ID, obs=BEEP, day=DAY, data=df)
   
   
-  # calculate grand means and the between-person components of all variables
-  
+  # calculate person and grand means and the between-person components of all variables
     df$person_PA <- calc.mean(m_PA, PARTICIPANT_ID, data=df,expand=TRUE)
     df$person_NA <- calc.mean(m_NA, PARTICIPANT_ID, data=df,expand=TRUE)
     df$person_ER <- calc.mean(m_ER, PARTICIPANT_ID, data=df,expand=TRUE)
