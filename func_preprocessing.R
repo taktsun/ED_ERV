@@ -139,8 +139,7 @@ calcDynamics <- function(df, inputNA, inputER, inputPA){
     # remove NA because emodiff package cannot handle NA
     dfCalcICC <- df
     dfCalcICC <- dfCalcICC[complete.cases(dfCalcICC[, inputNA]), ]
-    # by default, negative trait ICC is turned to NA but that also affect moment-level ED
-    # therefore we allow_-ve_ICC to be TRUE: **EXPLAIN COMMENT, UNCLEAR TO ME, ALSO UNCLEAR WHAT -VE IS**
+    # We specified allow_neg_icc = TRUE (i.e., negative values to be allowed) to have the maximum number of available assessments
     dfCalcICC <- calculate_ed(dat = dfCalcICC, emotions = inputNA, PARTICIPANT_ID, allow_neg_icc = TRUE)
     # within-adolescent component (person-mean-center) of emotion emotion differentiation
     dfCalcICC$m_EDcw <- calc.mcent(m_ED,PARTICIPANT_ID,data=dfCalcICC)
@@ -150,8 +149,7 @@ calcDynamics <- function(df, inputNA, inputER, inputPA){
     # remove NA for ICC calculation from emodiff package
     dfCalcICCPA <- df
     dfCalcICCPA <- dfCalcICCPA[complete.cases(dfCalcICCPA[, inputPA]), ]
-    # by default, negative trait ICC is turned to NA but that also affect moment-level ED
-    # therefore we allow_-ve_ICC to be TRUE **EXPLAIN COMMENT, UNCLEAR TO ME, ALSO UNCLEAR WHAT -VE IS**
+    # We specified allow_neg_icc = TRUE (i.e., negative values to be allowed) to have the maximum number of available assessments
     dfCalcICCPA <- calculate_ed(dat = dfCalcICCPA, emotions = inputPA, PARTICIPANT_ID, allow_neg_icc = TRUE)
     dfCalcICCPA <- dfCalcICCPA %>%
       rename_with(~paste0(., "PA"), all_of(tail(names(dfCalcICCPA), 6)))
