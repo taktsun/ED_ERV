@@ -1,7 +1,6 @@
 # Readme <a href='https://osf.io/zcvbs/'><img src='worcs_icon.png' align="right" height="139" /></a>
 
-This is the github of my project["Naming before Taming? Emotion Differentiation and Emotion Regulation Variability Hinder Each Other within Adolescents."](https://osf.io/cq6n4/). You can reproduce the analysis results in the manuscript following this readme. 
-
+This is the github of my project ["Naming before Taming? Emotion Differentiation and Emotion Regulation Variability Hinder Each Other within Adolescents."](https://osf.io/cq6n4/). You can reproduce the analysis results in the manuscript following this readme. 
 
 <!-- Please add a brief introduction to explain what the project is about    -->
 
@@ -72,14 +71,19 @@ Reproduce the results by these 5 steps.
 	
 
 	    renv::restore()
-
+	    
+	    
  5. Run 4 R scripts to reproduce the results. Start new R session (Ctrl+Shift+F10 in Windows) and clear all environment variables before you run each R script.
  
-	- prepare_data.R
-	- desstat&MCFA.R
-	- megaanalysis.R
-	- poweranalysis.R
+	- prepare_data.R 
+	- desstat&MCFA.R 
+	- megaanalysis.R 
+	- poweranalysis.R 
 
+*PLUS, SHOULDNT WE ALSO ADD THAT THEY CAN THEN RUN THE MANUSCRIPT RMD FILE TO KNIT THE MANUSCRIPT?*
+*Plus, we need to add information about the data.*
+*We definitely need to add the folders, cause now I could only run the script if I myself manually added the folders.* 
+*I also had to add the results folder in the manuscript*
 
 Step 1 to 4 are detailed in the vignette on [reproducing a WORCS project](https://cjvanlissa.github.io/worcs/articles/reproduce.html).
 

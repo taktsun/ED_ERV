@@ -1,6 +1,7 @@
 # =====================================================
-# List of variables
-#
+# Title: List of variables
+# Date: 24-1-2024
+# Copyright: Edmund Lo, checked by Dominique Maciejewski
 # There are 3 parts:
 # 1. variable names of each dataset
 # 2. variable names of momentary indices
@@ -68,7 +69,7 @@ poolinfo_demo <- c("PARTICIPANT_ID",    # anonymized participant ID
                    "DAY",               # day of ESM
                    "AGE",               # age (rounded to integer)
                    "FEMALE",            # 1 = female, 0 = male
-                   "COB",               # country of birth or ethnicity; 1 = majority (Dutch or Belgian), 0 = otherse
+                   "COB",               # country of birth or ethnicity; 1 = majority (Dutch or Belgian), 0 = other
                    "beepperday",        # number of beeps per day
                    "study",             # which dataset it is
                    "filledESMpc")       # % of ESM observations completed per adolescent

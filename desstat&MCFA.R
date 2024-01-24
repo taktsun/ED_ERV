@@ -1,19 +1,8 @@
-# In relation to the following error code:
-# "Error in initializePtr() : function 'cholmod_factor_ldetA' not provided by package 'Matrix'"
-# please run these codes to reinstall the packages:
-  # oo <- options(repos = "https://cran.r-project.org/")
-  # install.packages("Matrix")
-  # install.packages("lme4")
-  # options(oo)
-
-library(dplyr)
-library(lme4) #for the iccs
-library(misty) # for multilevel.cor and multilevel ICC
-library(multilevelTools) # for omega reliability
-library(psych) #needed for Statsby
-library(lavaan) # for MCFA
-
 # ======================================================================
+# Title: Descriptive and psychometric analyses
+# Date: 24-1-2024
+# Copyright: Edmund Lo, checked by Dominique Maciejewski
+#
 # Overview: After loading all ready-to-analyze data (part 0),
 # we have 6 parts in this R script
 # 1. Demographic information
@@ -23,6 +12,24 @@ library(lavaan) # for MCFA
 # 5. Supplementary descriptive statistics
 # 6. Multilevel Confirmatory Factor Analysis per Dataset (supplemental materials 3)
 # ======================================================================
+
+# In case you run into the following error code (happened with a new Matrix package release):
+# "Error in initializePtr() : function 'cholmod_factor_ldetA' not provided by package 'Matrix'"
+# please run these codes to reinstall the packages:
+  # oo <- options(repos = "https://cran.r-project.org/")
+  # install.packages("Matrix")
+  # install.packages("lme4")
+  # options(oo)
+
+# Library
+library(dplyr)
+library(lme4) #for the iccs
+library(misty) # for multilevel.cor and multilevel ICC
+library(multilevelTools) # for omega reliability
+library(psych) #needed for Statsby
+library(lavaan) # for MCFA
+
+
 
 # ======================================================================
 # Part 0: load data
@@ -194,6 +201,7 @@ write.csv(outputDesStat, "manuscript/results/Table2.csv", row.names=FALSE)
 # Supplemental materials 4
 # ===================================
 
+# Descriptive Statistics
 
 desstat1  <- as.data.frame(summarydesstat(dataGVE, "PARTICIPANT_ID", c(inputIndices)))
 desstat2  <- as.data.frame(summarydesstat(dataLeuven2011, "PARTICIPANT_ID", c(inputIndices)))
@@ -208,7 +216,8 @@ SMTable41 <- rbind(desstat1,
 rownames(SMTable41) <- NULL
 colnames(SMTable41) <- c("Dataset and indices", "n","M","SDw","SDb")
 write.csv(SMTable41, "manuscript/results/SMTable41.csv", row.names=FALSE)
-# multilevel correlation
+
+# Multilevel correlation
 
 # 3 functions for handling matrix triangles
 combineTriangles <- function(matrix1, matrix2) {
@@ -284,7 +293,7 @@ summaryfit <- function(cfamodel, inputPA,inputNA){
 
 # Within- RMSEA
 RMSEAw = function(f1aw) {
-  N <- Reduce("+", fitmeasures(f1aw)["ntotal"]) # extracts the number of meaasurement occasions. In multigroup models it adds them up
+  N <- Reduce("+", fitmeasures(f1aw)["ntotal"]) # extracts the number of measurement occasions. In multigroup models it adds them up
   K <- lavInspect(f1aw, what = "ngroups")       # extracts number of groups
   ChisqW <- fitmeasures(f1aw)["chisq"]          # extract chisquare from model
   dfW <- fitmeasures(f1aw)["df"]                # extract dfs from model
@@ -312,6 +321,9 @@ RMSEAb = function(f1ab) {
 # mXbw:  1-factor structure
 # mXcw:  2-factor structure (within) but forcing 2 factors not associated (i.e., =0) 
 # baseXw: baseline model
+
+# Different models were run and compared to see which fits ebst theoretically. 
+# Note that we only report the within-person (mxaw) and the between-person (mxab) in the supplement.
 
 ##### 1.1 Factor structure short questionnaire/ Establish reference model #####
 #### 1.1a Within level (between level saturated) ####
@@ -722,6 +734,7 @@ pa ~~ na
 pa =~ RLX_ES + HAP_ES + CHEER_ES
 na =~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
 
+
 level: 2
 RLX_ES ~~ HAP_ES + CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
 HAP_ES ~~ CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
@@ -914,6 +927,43 @@ summary(f3ad, standardized = TRUE, fit.measures = TRUE)
 
 inspect(f3ab,what="std")
 inspect(f3ad,what="std")
+
+# Low TLI for the within-person level. Looking at modification indices, should include correlation between stressed and relaxed.
+# Makes sense, since these are very overlapping items
+
+
+m3aw_mod <- '
+level: 1
+pa ~~ pa
+na ~~ na
+pa ~~ na
+
+pa =~ RLX_ES + HAP_ES + CHEER_ES
+na =~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+ 
+RLX_ES ~~ STR_ES
+
+level: 2
+RLX_ES ~~ HAP_ES + CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+HAP_ES ~~ CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+CHEER_ES ~~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+ANG_ES ~~ DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+DEP_ES ~~ LONE_ES + FEAR_ES + SAD_ES + STR_ES
+LONE_ES ~~ FEAR_ES + SAD_ES + STR_ES
+FEAR_ES ~~ SAD_ES + STR_ES
+SAD_ES ~~ STR_ES
+
+'
+
+f3aw_mod <- lavaan::sem(
+  model = m3aw_mod,
+  data = dataLeuven3W,
+  cluster = "PARTICIPANT_ID",
+  effect.coding = c("loadings", "intercepts"),
+  baseline = base3w
+)
+
+summary(f3aw_mod, standardized = TRUE, fit.measures = TRUE)
 
 # ============================
 # DATASET 4: Tilburg
@@ -1149,6 +1199,49 @@ summary(f4ad, standardized = TRUE, fit.measures = TRUE)
 inspect(f4ab,what="std")
 inspect(f4ad,what="std")
 
+# Low TLI for the within-person level. Looking at modification indices, should include correlation between angry and irritated
+# Makes sense, since these are very overlapping items
+
+m4aw_mod <- '
+level: 1
+pa ~~ pa
+na ~~ na
+pa ~~ na
+
+pa =~ PA_ener + PA_cont + PA_enth + PA_deter + PA_calm + PA_joy + PA_grat
+na =~ NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
+
+NA_irri ~~ NA_ang
+NA_sad ~~   NA_low
+
+level: 2
+PA_ener ~~ PA_cont + PA_enth + PA_deter + PA_calm + PA_joy + PA_grat +NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
+PA_cont ~~ PA_enth + PA_deter + PA_calm + PA_joy + PA_grat + NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
+PA_enth ~~ PA_deter + PA_calm + PA_joy + PA_grat + NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
+PA_deter ~~ PA_calm + PA_joy + PA_grat + NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
+PA_calm ~~ PA_joy + PA_grat + NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
+PA_joy ~~ PA_grat + NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
+PA_grat ~~ NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
+NA_irri ~~ NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
+NA_bor ~~ NA_nerv + NA_sad + NA_ang + NA_low
+NA_nerv ~~ NA_sad + NA_ang + NA_low
+NA_sad ~~ NA_ang + NA_low
+NA_ang ~~ NA_low
+
+'
+
+f4aw_mod <- lavaan::sem(
+  model = m4aw_mod,
+  data = dataTilburg,
+  cluster = "PARTICIPANT_ID",
+  effect.coding = c("loadings", "intercepts"),
+  baseline = base4w
+)
+
+summary(f4aw_mod, standardized = TRUE, fit.measures = TRUE)
+modificationindices(f4aw_mod, sort = TRUE)
+
+
 # ============================
 # DATASET 5: Ghent
 # ============================
@@ -1352,14 +1445,52 @@ summary(f5ad, standardized = TRUE, fit.measures = TRUE)
 inspect(f5ab,what="std")
 inspect(f5ad,what="std")
 
+
+# Low TLI for the within-person level. Looking at modification indices, should include correlation between sad and angry
+# Those are not super overlapping items, but they had by far the highest modification index.
+# Also, it is an adolescent sample and irritability and depressive feelings are very often overlapping in that age group
+
+m5aw_mod <- '
+level: 1
+pa ~~ pa
+na ~~ na
+pa ~~ na
+
+pa =~ Emow_happy + Emow_relaxed + Emow_energetic
+na =~ Emow_angry + Emow_annoyed + Emow_anxious + Emow_sad + Emow_stressed + Emow_uncertain
+
+Emow_angry ~~ Emow_sad
+
+level: 2
+Emow_happy ~~ Emow_relaxed + Emow_energetic + Emow_angry + Emow_annoyed + Emow_anxious + Emow_sad + Emow_stressed + Emow_uncertain
+Emow_relaxed ~~ Emow_energetic + Emow_angry + Emow_annoyed + Emow_anxious + Emow_sad + Emow_stressed + Emow_uncertain
+Emow_energetic ~~ Emow_angry + Emow_annoyed + Emow_anxious + Emow_sad + Emow_stressed + Emow_uncertain
+Emow_angry ~~ Emow_annoyed + Emow_anxious + Emow_sad + Emow_stressed + Emow_uncertain
+Emow_annoyed ~~ Emow_anxious + Emow_sad + Emow_stressed + Emow_uncertain
+Emow_anxious ~~ Emow_sad + Emow_stressed + Emow_uncertain
+Emow_sad ~~ Emow_stressed + Emow_uncertain
+Emow_stressed ~~ Emow_uncertain
+'
+
+f5aw_mod <- lavaan::sem(
+  model = m5aw_mod,
+  data = dataGhent,
+  cluster = "PARTICIPANT_ID",
+  effect.coding = c("loadings", "intercepts"),
+  baseline = base5w
+)
+
+summary(f5aw_mod, standardized = TRUE, fit.measures = TRUE)
+modificationindices(f5aw_mod, sort = TRUE)
+
 # ====================================
 # summarize all the fitting
 # ====================================
 rescfa <- rbind(c(model = deparse(substitute(f1aw)), summaryfit(f1aw, inputPA.GVE,inputNA.GVE)),
       c(model = deparse(substitute(f2aw)), summaryfit(f2aw, inputPA.Leuven2011,inputNA.Leuven2011)),
-      c(model = deparse(substitute(f3aw)), summaryfit(f3aw, inputPA.Leuven3W,inputNA.Leuven3W)),
-      c(model = deparse(substitute(f4aw)), summaryfit(f4aw, inputPA.Tilburg,inputNA.Tilburg)),
-      c(model = deparse(substitute(f5aw)), summaryfit(f5aw, inputPA.Ghent,inputNA.Ghent)),
+      c(model = deparse(substitute(f3aw_mod)), summaryfit(f3aw_mod, inputPA.Leuven3W,inputNA.Leuven3W)),
+      c(model = deparse(substitute(f4aw_mod)), summaryfit(f4aw_mod, inputPA.Tilburg,inputNA.Tilburg)),
+      c(model = deparse(substitute(f5aw_mod)), summaryfit(f5aw_mod, inputPA.Ghent,inputNA.Ghent)),
       c(model = deparse(substitute(f1ab)), summaryfit(f1ab, inputPA.GVE,inputNA.GVE)),
       c(model = deparse(substitute(f2ab)), summaryfit(f2ab, inputPA.Leuven2011,inputNA.Leuven2011)),
       c(model = deparse(substitute(f3ab)), summaryfit(f3ab, inputPA.Leuven3W,inputNA.Leuven3W)),

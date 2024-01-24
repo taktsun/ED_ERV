@@ -1,7 +1,10 @@
-# In this file, write the R-code necessary to load your original data file
-# (e.g., an SPSS, Excel, or SAS-file), and convert it to a data.frame. Then,
-# use the function open_data(your_data_frame) or closed_data(your_data_frame)
-# to store the data.
+#===========================================
+# Title: Data preparation
+# Date: 24-1-2024
+# Copyright: Edmund Lo, checked by Dominique Maciejewski
+# https://www.psychologicalscience.org/publications/psychological_science/ps-submissions#data
+# "Primary data refers to the first digital (and if necessary, anonymized) version of the raw data, otherwise unaltered"
+#===========================================
 
 # INSTALL PACKAGES IF NEEDED
 # install.packages("remotes")
@@ -26,16 +29,15 @@ source("func_preprocessing.R") # load functions for pre-processing data (includi
 #===========================================
 # Curate primary data (Part 0)
 # Load raw data, apply inclusion criteria (age), and prepare primary data
-# 
 # https://www.psychologicalscience.org/publications/psychological_science/ps-submissions#data
 # "Primary data refers to the first digital (and if necessary, anonymized) version of the raw data, otherwise unaltered"
 #===========================================
 
-# The following steps are done to anonymize the data; otherwise they are closest to the raw data we are supplied with
-# These steps are taken so that data do not contain or can't combine to form personal identifiers
+# The following steps were taken to anonymize the data; otherwise they are closest to the raw data we are supplied with
+# These steps were taken so that data do not contain or can't combine to form personal identifiers
 # 0.1. recode participant IDs
 # 0.2. recode nationality/ethnicity item into binary (majority = 1, others = 0)
-# 0.3. round age to integer
+# 0.3. round age to integer (i.e., no decimals)
 # 0.4. merge ESM data file with demographic data file
 # Note that before step 3, we applied the pre-registered inclusion criterion of age<=25 so that we do not include extra data
 
@@ -67,7 +69,7 @@ primaryGhent$Ethnicity <- ifelse(grepl("Belgisch", primaryGhent$Ethnicity, fixed
 primaryGhent$Ethnicity <- ifelse(primaryGhent$Ethnicity==1,1,0)
 
 
-# pseudonymize the participant IDs
+# pseudonymize the participant IDs 
 primaryGVE$PARTICIPANT_ID <- as.integer(factor(primaryGVE$PARTICIPANT_ID))+1000
 primaryLeuven2011$UUID <- as.integer(factor(primaryLeuven2011$UUID))+2000
 primaryLeuven3W$UUID <- as.integer(factor(primaryLeuven3W$UUID))+3000
@@ -133,7 +135,7 @@ dataGhent <- read.csv("dataPrimary/primaryGhent.csv")
   dataGVE$study <- "GVE"
   inputRT.GVE <- paste0(c(inputPA.GVE,inputNA.GVE,inputER.GVE),"_RT")
   dataGVE$timeperquestion <- rowMeans(dataGVE[,inputRT.GVE],na.rm = TRUE)
-  # divide by 1000 because it's in ms
+  # divide reaction time by 1000 to obtain seconds (because it's in ms)
   dataGVE$timeperquestion <- dataGVE$timeperquestion/1000
 
 # prepare Dataset 2: Emotions for daily life 2011 (Leuven)
@@ -144,7 +146,7 @@ dataGhent <- read.csv("dataPrimary/primaryGhent.csv")
   
   inputRT.Leuven2011 <- colnames(dataLeuven2011)[grep("_RT_", colnames(dataLeuven2011))]
   dataLeuven2011$timeperquestion <- rowMeans(dataLeuven2011[,inputRT.Leuven2011],na.rm = TRUE)
-  # these are hundredth of a second, thus divide by 100
+  # these are hundredth of a second, thus divide by 100 to obtain seconds
   dataLeuven2011$timeperquestion <- dataLeuven2011$timeperquestion/100
   
   # remove last 3 rows, because these rows have no timestamps, and the PARTICIPANT_IDs associated
@@ -194,7 +196,7 @@ dataGhent <- read.csv("dataPrimary/primaryGhent.csv")
     group_by(PARTICIPANT_ID) %>%
     mutate(BEEP = order(BEEPTIME))
   # 1 = male, 2 = female; see http://dx.doi.org/10.1037/pspa0000126 (90 male participants)
-  dataLeuven3W$FEMALE <- dataLeuven3W$GENDER_BL - 1
+  dataLeuven3W$FEMALE <- dataLeuven3W$GENDER_BL - 1 #recode sex
 
 # prepare Dataset 4: Emotions in daily life (Tilburg)
 
@@ -228,8 +230,8 @@ dataGhent <- read.csv("dataPrimary/primaryGhent.csv")
   dataGhent$DAY <- ceiling((dataGhent$BEEPTIME)/86400)
 
 
-  dataGhent$FEMALE <- as.numeric(dataGhent$Sex) - 1
-  dataGhent$timeused<- dataGhent$timeStampStop - dataGhent$timeStampStart
+  dataGhent$FEMALE <- as.numeric(dataGhent$Sex) - 1 #recode sex
+  dataGhent$timeused<- dataGhent$timeStampStop - dataGhent$timeStampStart #calculate reaction time
   dataGhent$n_question <- ifelse(dataGhent$DAY<5,54, 30)
   dataGhent$n_question <- dataGhent$n_question + ifelse(dataGhent$DAY>5 & dataGhent$BEEP%%5 ==0, 2,0) 
   dataGhent$timeperquestion<-dataGhent$timeused/dataGhent$n_question
@@ -369,18 +371,18 @@ dataGhent <- harmonize(dataGhent,c(inputPA.Ghent,inputNA.Ghent,inputER.Ghent),
   
   # Dataset 4: Tilburg
   # no reaction time information available for this dataset
-  #according to pre-registration, exclude participants with zero variance
+  # according to pre-registration, exclude participants with zero variance
   dataTilburg <- dataTilburg %>% filter(!PARTICIPANT_ID %in% zerovariance(dataTilburg,inputPA.Tilburg))
   dataTilburg <- dataTilburg %>% filter(!PARTICIPANT_ID %in% zerovariance(dataTilburg,inputNA.Tilburg))
   dataTilburg <- dataTilburg %>% filter(!PARTICIPANT_ID %in% zerovariance(dataTilburg,inputER.Tilburg))
   
   # Dataset 5: Ghent
-  #according to pre-registration, surveys with item completed below 500ms are seen to be of poor quality
+  # according to pre-registration, surveys with item completed below 500ms are seen to be of poor quality
   dataGhent <- dataGhent %>%
     mutate(across(all_of(c(inputPA.Ghent,
                            inputNA.Ghent,
                            inputER.Ghent)), ~ifelse(timeperquestion < masterRTthreshold, NA, .)))
-  #according to pre-registration, exclude participants with zero variance
+  # according to pre-registration, exclude participants with zero variance
   dataGhent <- dataGhent %>% filter(!PARTICIPANT_ID %in% zerovariance(dataGhent,inputNA.Ghent))
   dataGhent <- dataGhent %>% filter(!PARTICIPANT_ID %in% zerovariance(dataGhent,inputER.Ghent))
   dataGhent <- dataGhent %>% filter(!PARTICIPANT_ID %in% zerovariance(dataGhent,inputER.Ghent))
@@ -395,7 +397,17 @@ dataGhent <- harmonize(dataGhent,c(inputPA.Ghent,inputNA.Ghent,inputER.Ghent),
   dataLeuven2011 <- calcDynamics(dataLeuven2011, inputNA.Leuven2011,inputER.Leuven2011,inputPA.Leuven2011)
   dataLeuven3W <- calcDynamics(dataLeuven3W, inputNA.Leuven3W,inputER.Leuven3W,inputPA.Leuven3W)
   dataTilburg <- calcDynamics(dataTilburg, inputNA.Tilburg,inputER.Tilburg,inputPA.Tilburg)
+  # Warning message: In log((1 + rho)/(1 - rho)) : NaNs produced
+  # a few participants returned NA on the c_ED output because there were too few observations 
+  # but moment-level ED (m_ED), the variable we use for modeling, was still successfully calculated
+  # so these warnings can be ignored
   dataGhent <- calcDynamics(dataGhent,inputNA = inputNA.Ghent, inputER.Ghent,inputPA.Ghent)
+  # Warning messages:
+  # 1: In log((1 + rho)/(1 - rho)) : NaNs produced
+  # 2: In log((1 + rho)/(1 - rho)) : NaNs produced
+  # a few participants returned NA on the c_ED output because there were too few observations 
+  # but moment-level ED (m_ED), the variable we use for modeling, was still successfully calculated
+  # so these warnings can be ignored
   
   
 # 2.4. Create a pooled dataset after applying exclusion criteria
@@ -412,6 +424,7 @@ dataGhent <- harmonize(dataGhent,c(inputPA.Ghent,inputNA.Ghent,inputER.Ghent),
   dfPerson <- df %>% 
     group_by(PARTICIPANT_ID) %>% 
     slice(1)
+  
 # save data in .csv format
 write.csv(dataGVE,"dataProcessed/ReadyGVE.csv", row.names = FALSE)
 write.csv(dataLeuven2011,"dataProcessed/ReadyLeuven2011.csv", row.names = FALSE)
