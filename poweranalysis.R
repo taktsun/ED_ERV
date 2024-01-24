@@ -1,3 +1,10 @@
+# ======================================================================
+# Title: Power Analyses
+# Date: 24-1-2024
+# Copyright: Edmund Lo, checked by Dominique Maciejewski
+# ======================================================================
+
+# Library
 library(dplyr)
 library(tidyverse)
 library(lubridate)
@@ -5,6 +12,8 @@ library(esmpack) #if you don't have this package, run remotes::install_github("w
 library(betapart)
 library(emodiff)
 library(nlme)
+
+# Read in data
 rawdata <- read.csv('dataPrimary/primaryPower.csv') # this file contains anonymized primary data
 inputPA.power <- c("HAPPY","RELAXED","EXCITED")
 inputNA.power <- c("DISTRESSED","DOWN","IRRITATED","EMBARRASSED")
@@ -14,6 +23,7 @@ inputER.power <- c("SUPPRESSION","SHARING","REAPPRAISAL","RUMMINATION","ACCEPATA
 inputNeeded <- c("ppnr","triggerid","CREATED_TS.1",inputPA.power,inputNA.power,inputER.power)
 dateformat<-"mdy HM"
 
+## **I WOULD ADD MORE INFORMATION HERE ON WHAT YOU DO!!**
 
 dfPower <- rawdata
 dfPower <- dfPower[,inputNeeded]
@@ -29,7 +39,7 @@ dfPower[dfPower == ""] <- NA
 dfPower[dfPower == -999] <- NA
 
 dfPower[,c(inputPA.power,inputNA.power,inputER.power)] <- sapply(dfPower[,c(inputPA.power,inputNA.power,inputER.power)], function(x) as.numeric(x))
-# There were certain glitches that produced wrong values for ER strategies:
+# There were certain glitches that produced wrong values for ER strategies: #####**WHAT GLITCHES???**#####
 dfPower$SUPPRESSION <- ifelse(dfPower$SUPPRESSION > 10, NA, dfPower$SUPPRESSION)
 dfPower$SHARING <- ifelse(dfPower$SHARING > 10, NA, dfPower$SHARING)
 dfPower$REAPPRAISAL <- ifelse(dfPower$REAPPRAISAL > 10, NA, dfPower$REAPPRAISAL)
@@ -39,21 +49,25 @@ dfPower$WORRIED <- ifelse(dfPower$WORRIED > 10, NA, dfPower$WORRIED)
 
 dfPower <- calcDynamics(dfPower,inputNA = inputNA.power, inputER = inputER.power, inputPA = inputPA.power)
 
-# calculate with LME
+# calculate with LME **WHAT IS LME**
 
-# control for state mean NA as in many studies of ED
+# Run multilevel models in data
+
+## Model 1: Negative emotion differentiation predicting Emotion regulation variability
 model1.power <- lme(fixed=BrayCurtisFull.amm ~ m_EDcwL1D +timecw+m_NAcw+  m_ERcw+
                                m_NAcb + m_EDcb + m_ERcb, 
                              data=dfPower, 
                              random=~1+m_EDcwL1D+ m_NAcw+m_ERcw | ppnr, correlation = corAR1(), 
                              control =list(msMaxIter = 1000, msMaxEval = 1000, opt = "optim"),na.action = na.omit)
+
+## Model 2: Emotion regulation variability predicting Negative emotion differentiation  
 model2.power <- lme(fixed=m_ED ~ BrayCurtisFull.ammcw +timecw+m_NAcw+  m_ERcw + m_EDL1D +
                       m_NAcb + BrayCurtisFull.ammcb + m_ERcb, 
                     data=dfPower, 
                     random=~1+ BrayCurtisFull.ammcw+m_NAcw+ m_ERcw | ppnr, correlation = corAR1(), 
                     control =list(msMaxIter = 1000, msMaxEval = 1000, opt = "optim"),na.action = na.omit)
 
-# below are the power analysis input values in our pre-registration
+# Extract input values for power analysis input in our pre-registration
 #  Model 1: emotion differentiation predicts subsequent emotion regulation variability
 # (controlling for negative emotion intensity and emotion regulation strategy use)
 mean(dfPower[(!is.na(dfPower$BrayCurtisFull.amm) & !is.na(dfPower$m_EDL1D) & !is.na(dfPower$m_ED)),"BrayCurtisFull.amm"])
@@ -66,4 +80,5 @@ mean(dfPower[(!is.na(dfPower$BrayCurtisFull.amm) & !is.na(dfPower$m_EDL1D) & !is
 sd(dfPower[(!is.na(dfPower$BrayCurtisFull.amm) & !is.na(dfPower$m_EDL1D) & !is.na(dfPower$m_ED)),"m_ED"])
 summary(model2.power)
 
+# Using these estimates, the simulation models (Model X) were run using the shiny-app from Ginette Lafit available via: https://github.com/ginettelafit/PowerAnalysisIL
 
