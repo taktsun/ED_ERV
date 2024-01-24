@@ -4,7 +4,7 @@
 # Copyright: Edmund Lo, checked by Dominique Maciejewski
 # ===========================================================================
 
-# Harmonize a list of variables according to the input "master" min and max across all datasets (needed for ESM variables)
+# Harmonize a list of variables according to the input "master" min and max across all datasets (needed for ESM measures)
 harmonize <- function(df,listvar,datasetmin,datasetmax,mastermin,mastermax){
   # set the minimum raw scores to 0
   df[, listvar] <- df[, listvar] - datasetmin
