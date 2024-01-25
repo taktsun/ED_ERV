@@ -68,7 +68,6 @@ primaryTilburg$origin <- ifelse(primaryTilburg$origin==1,1,0)
 primaryGhent$Ethnicity <- ifelse(grepl("Belgisch", primaryGhent$Ethnicity, fixed = TRUE),1,0) # Belgian origin = 1
 primaryGhent$Ethnicity <- ifelse(primaryGhent$Ethnicity==1,1,0)
 
-
 # pseudonymize the participant IDs 
 primaryGVE$PARTICIPANT_ID <- as.integer(factor(primaryGVE$PARTICIPANT_ID))+1000
 primaryLeuven2011$UUID <- as.integer(factor(primaryLeuven2011$UUID))+2000
@@ -97,10 +96,21 @@ primaryLeuven3W$AGE <- round(primaryLeuven3W$AGE_BL,0)
 primaryTilburg$AGE <- round(primaryTilburg$age_yr,0)
 primaryGhent$AGE <- round(primaryGhent$AGE,0)
 
-# # remove the original age variables
+# remove the original age variables
 primaryLeuven2011$AGE_BL <- NULL
 primaryLeuven3W$AGE_BL <- NULL
 primaryTilburg$age_yr <- NULL
+
+# remove unrelated (un-analyzed) variables
+  # potential personal identifiers to be removed
+  primaryGhent$Birth_month <- NULL
+  primaryGhent$Birth_year <- NULL
+  primaryGhent$X <- NULL # remove the original pseudonymized participant ID
+  # 2 items below are, in the original study, related to careless responding control
+  # They do not match with our pre-registered exclusion criteria (not based on reaction time)
+  # so they are not used in our current analysis 
+  primaryGhent$check_correct <- NULL 
+  primaryGhent$n_correct <- NULL 
 
 # save primary data
 
@@ -236,7 +246,8 @@ dataGhent <- read.csv("dataPrimary/primaryGhent.csv")
   dataGhent$n_question <- dataGhent$n_question + ifelse(dataGhent$DAY>5 & dataGhent$BEEP%%5 ==0, 2,0) 
   dataGhent$timeperquestion<-dataGhent$timeused/dataGhent$n_question
   dataGhent$timeperquestion<- abs(dataGhent$timeperquestion)
-  dataGhent <- dataGhent[order(dataGhent$X),]
+  dataGhent <- dataGhent[order(dataGhent$PARTICIPANT_ID),]
+  
 
 
 
@@ -425,12 +436,7 @@ dataGhent <- harmonize(dataGhent,c(inputPA.Ghent,inputNA.Ghent,inputER.Ghent),
     group_by(PARTICIPANT_ID) %>% 
     slice(1)
   
-# save data in .csv format
-write.csv(dataGVE,"dataProcessed/ReadyGVE.csv", row.names = FALSE)
-write.csv(dataLeuven2011,"dataProcessed/ReadyLeuven2011.csv", row.names = FALSE)
-write.csv(dataLeuven3W,"dataProcessed/ReadyLeuven3W.csv", row.names = FALSE)
-write.csv(dataTilburg,"dataProcessed/ReadyTilburg.csv", row.names = FALSE)
-write.csv(dataGhent,"dataProcessed/ReadyGhent.csv", row.names = FALSE)
+# save ready-to-analyze data in .csv format
 write.csv(df,"dataProcessed/ReadyPooledESM.csv", row.names = FALSE)
 write.csv(dfPerson,"dataProcessed/ReadyPooledPerson.csv", row.names = FALSE)
 write.csv(dfPersonB4Ex,"dataProcessed/ReadyPooledPersonB4Ex.csv", row.names = FALSE)
