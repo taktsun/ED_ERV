@@ -74,6 +74,10 @@ poolinfo_demo <- c("PARTICIPANT_ID",    # anonymized participant ID
                    "study",             # which dataset it is
                    "filledESMpc")       # % of ESM observations completed per adolescent
 
+# momentary indices suffix
+# cw & cb: Within-adolescent component (cw) and between-adolescent component (cb)
+# L1D is a lagged variable that assigns NA to overnight beeps
+
 poolinfo_BC <- c(
   # Bray-curtis dissimilarity: full index, switching, endorsement change. All-moment comparison
    "BrayCurtisFull.amm","BrayCurtisRepl.amm","BrayCurtisNest.amm",
@@ -88,10 +92,8 @@ poolinfo_BC <- c(
 # Emotion differentiation indices
 # m_ED:   Negative emotion differentiation
 # m_EDPA: Positive emotion differentiation
-# cw & cb: Within-adolescent component (cw) and between-adolescent component (cb)
-# L1D & L1N: lagged variable. L1D took into consideration of day change and L1N didn't
-poolinfo_ED <- c("m_ED","m_EDL1D","m_EDcw","m_EDcb","m_EDcwL1D","m_EDcwL1N","m_EDL1N", "c_ED",
-                 "m_EDPA","m_EDPAL1D","m_EDPAcw","m_EDPAcb","m_EDPAcwL1D","m_EDPAcwL1N","m_EDPAL1N", "c_EDPA")
+poolinfo_ED <- c("m_ED","m_EDL1D","m_EDcw","m_EDcb","m_EDcwL1D","c_ED",
+                 "m_EDPA","m_EDPAL1D","m_EDPAcw","m_EDPAcb","m_EDPAcwL1D","c_EDPA")
 
 # adolescent-level (not mean-centered) indices
 poolinfo_person <- c("person_PA","person_NA","person_ER","person_ED","person_EDPA",
@@ -102,10 +104,8 @@ poolinfo_person <- c("person_PA","person_NA","person_ER","person_ED","person_EDP
 # m_NA: momentary NEGATIVE emotion differentiation
 # m_PA: momentary POSITIVE emotion differentiation
 # timecw: time mean-centered
-# cw & cb: Within-adolescent component (cw) and between-adolescent component (cb)
-# L1D & L1N: lagged variable. L1D took into consideration of day change and L1N didn't
-poolinfo_ctrl <- c("m_NA","m_NAcw","m_NAcb","m_NAcwL1N","m_NAcwL1D",
-                   "m_PA","m_PAcw","m_PAcb","m_PAcwL1N","m_PAcwL1D",
+poolinfo_ctrl <- c("m_NA","m_NAcw","m_NAcb","m_NAcwL1D",
+                   "m_PA","m_PAcw","m_PAcb","m_PAcwL1D",
                    "m_ER","m_ERcw","m_ERcb",
                    "timecw"
 )
