@@ -224,4 +224,4 @@ outputSMTable6 <- rbind(
   preparemmresult(mms2A_PA),
   preparemmresult(mms2B_PA)
 )
-write.csv(outputSMTable6, "manuscript/results/SMTable5.csv")
+write.csv(outputSMTable6, "manuscript/results/SMTable6.csv")
