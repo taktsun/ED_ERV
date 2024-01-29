@@ -436,7 +436,13 @@ dataGhent <- harmonize(dataGhent,c(inputPA.Ghent,inputNA.Ghent,inputER.Ghent),
     group_by(PARTICIPANT_ID) %>% 
     slice(1)
   
-# save ready-to-analyze data in .csv format
+# save ready-to-analyze pooled data in .csv format (required for main analysis and descriptive statistics)
 write.csv(df,"dataProcessed/ReadyPooledESM.csv", row.names = FALSE)
 write.csv(dfPerson,"dataProcessed/ReadyPooledPerson.csv", row.names = FALSE)
 write.csv(dfPersonB4Ex,"dataProcessed/ReadyPooledPersonB4Ex.csv", row.names = FALSE)
+# save 5 ready-to-analyze datasets in .csv format (required for descriptive statistics and psychometrics)
+write.csv(dataGVE, "dataProcessed/ReadyGVE.csv", row.names = FALSE)
+write.csv(dataLeuven2011, "dataProcessed/ReadyLeuven2011.csv", row.names = FALSE)
+write.csv(dataLeuven3W, "dataProcessed/ReadyLeuven3W.csv", row.names = FALSE)
+write.csv(dataTilburg, "dataProcessed/ReadyTilburg.csv", row.names = FALSE)
+write.csv(dataGhent, "dataProcessed/ReadyGhent.csv", row.names = FALSE)

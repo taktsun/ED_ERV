@@ -45,7 +45,6 @@ dataLeuven3W <- read.csv("dataProcessed/ReadyLeuven3W.csv")
 dataTilburg <- read.csv("dataProcessed/ReadyTilburg.csv")
 dataGhent <- read.csv("dataProcessed/ReadyGhent.csv")
 
-
 # ======================================================================
 # Part 1: Demographic information
 # Method => Participants and Procedures
@@ -372,66 +371,7 @@ pa =~ PA_1 + PA_2 + PA_3 + PA_4
 na =~ NA_1 + NA_2 + NA_3 + NA_4 + LONELINESS
 
 '
-m1ad <- '
-level: 1
-pa ~~ pa
-na ~~ na
-pa ~~ na
 
-pa =~ PA_1 + PA_2 + PA_3 + PA_4
-na =~ NA_1 + NA_2 + NA_3 + NA_4 + LONELINESS
-
-level: 2
-pa ~~ pa
-na ~~ na
-pa ~~ na
-
-pa =~ PA_1 + PA_2 + PA_3 + PA_4
-na =~ NA_1 + NA_2 + NA_3 + NA_4 + LONELINESS
-
-'
-
-
-#specify the one-factor structure at the within level
-
-m1bw <- '
-level: 1
-valence ~~ valence
-valence =~ PA_1 + PA_2 + PA_3 + PA_4 + NA_1 + NA_2 + NA_3 + NA_4 + LONELINESS
-
-level: 2
-PA_1 ~~ PA_2 + PA_3 + PA_4 + NA_1 + NA_2 + NA_3 + NA_4 + LONELINESS
-PA_2 ~~ PA_3 + PA_4 + NA_1 + NA_2 + NA_3 + NA_4 + LONELINESS
-PA_3 ~~ PA_4 + NA_1 + NA_2 + NA_3 + NA_4 + LONELINESS
-PA_4 ~~ NA_1 + NA_2 + NA_3 + NA_4 + LONELINESS
-NA_1 ~~ NA_2 + NA_3 + NA_4 + LONELINESS
-NA_2 ~~ NA_3 + NA_4 + LONELINESS
-NA_3 ~~ NA_4 + LONELINESS
-NA_4 ~~ LONELINESS
-'
-
-#specify the two-factor structure at the within level without correlation between pa and na
-
-m1cw <- '
-level: 1
-pa ~~ pa
-na ~~ na
-na ~~ 0*pa
-
-pa =~ PA_1 + PA_2 + PA_3 + PA_4
-na =~ NA_1 + NA_2 + NA_3 + NA_4 + LONELINESS
-
-
-level: 2
-PA_1 ~~ PA_2 + PA_3 + PA_4 + NA_1 + NA_2 + NA_3 + NA_4 + LONELINESS
-PA_2 ~~ PA_3 + PA_4 + NA_1 + NA_2 + NA_3 + NA_4 + LONELINESS
-PA_3 ~~ PA_4 + NA_1 + NA_2 + NA_3 + NA_4 + LONELINESS
-PA_4 ~~ NA_1 + NA_2 + NA_3 + NA_4 + LONELINESS
-NA_1 ~~ NA_2 + NA_3 + NA_4 + LONELINESS
-NA_2 ~~ NA_3 + NA_4 + LONELINESS
-NA_3 ~~ NA_4 + LONELINESS
-NA_4 ~~ LONELINESS
-'
 
 #to calculate level specific CFI, fit a model that is saturated between and worst fitting solution within
 
@@ -469,20 +409,7 @@ f1aw <- lavaan::sem(
   effect.coding = c("loadings", "intercepts"),
   baseline = base1w
 )
-f1bw <- lavaan::sem(
-  model = m1bw,
-  data = dataGVE,
-  cluster = "PARTICIPANT_ID",
-  effect.coding = c("loadings", "intercepts"),
-  baseline = base1w
-)
-f1cw <- lavaan::sem(
-  model = m1cw,
-  data = dataGVE,
-  cluster = "PARTICIPANT_ID",
-  effect.coding = c("loadings", "intercepts"),
-  baseline = base1w
-)
+
 f1ab <- lavaan::sem(
   model = m1ab,
   data = dataGVE,
@@ -490,48 +417,14 @@ f1ab <- lavaan::sem(
   effect.coding = c("loadings", "intercepts"),
   baseline = base1w
 )
-f1ad <- lavaan::sem(
-  model = m1ad,
-  data = dataGVE,
-  cluster = "PARTICIPANT_ID",
-  effect.coding = c("loadings", "intercepts"),
-  baseline = base1w
-)
 
-#comparing model fit
-#this gives chisquare test
-lavaan::anova(f1aw, f1bw) # model a has lowest AIC&BIC, and significantly better fit than b and c
-lavaan::anova(f1aw, f1cw)
-
-#calculate differences in level specific RMSEA & CFI
-RMSEA_f1aw <- RMSEAw(f1aw)
-RMSEA_f1bw <- RMSEAw(f1bw)
-RMSEA_f1cw <- RMSEAw(f1cw)
-
-
-dRMSEA_f1aw_f1bw <- RMSEA_f1aw - RMSEA_f1bw
-
-dCFI_f1aw_f1bw <-
-  fitmeasures(f1aw)["cfi"] - fitmeasures(f1bw)["cfi"] 
-
-dRMSEA_f1aw_f1cw <- RMSEA_f1aw - RMSEA_f1cw 
-dCFI_f1aw_f1cw <-
-  fitmeasures(f1aw)["cfi"] - fitmeasures(f1cw)["cfi"]
-abs(dRMSEA_f1aw_f1bw) > 0.01
-abs(dRMSEA_f1aw_f1cw) > 0.01
-abs(dCFI_f1aw_f1bw) > 0.005
-abs(dCFI_f1aw_f1cw) > 0.005
-
+summary(f1aw, standardized = TRUE, fit.measures = TRUE)
 modificationindices(f1aw, sort = TRUE)
 inspect(f1aw,what="std")
 inspect(f1aw)$lambda
 
-summary(f1cw, standardized = TRUE, fit.measures = TRUE)
 summary(f1ab, standardized = TRUE, fit.measures = TRUE)
-summary(f1ad, standardized = TRUE, fit.measures = TRUE)
-
 inspect(f1ab,what="std")
-inspect(f1ad,what="std")
 
 # ============================
 # ======= DATASET 2: Leuven2011
@@ -573,61 +466,7 @@ pa =~ RLX_ES + HAP_ES
 na =~ ANG_ES + ANX_ES + DEP_ES + SAD_ES
 
 '
-m2ad <- '
-level: 1
-pa ~~ pa
-na ~~ na
-pa ~~ na
 
-pa =~ RLX_ES + HAP_ES
-na =~ ANG_ES + ANX_ES + DEP_ES + SAD_ES
-
-level: 2
-pa ~~ pa
-na ~~ na
-pa ~~ na
-
-pa =~ RLX_ES + HAP_ES
-na =~ ANG_ES + ANX_ES + DEP_ES + SAD_ES
-
-'
-
-
-#specify the one-factor structure at the within level
-
-m2bw <- '
-level: 1
-valence ~~ valence
-valence =~ RLX_ES + HAP_ES + ANG_ES + ANX_ES + DEP_ES + SAD_ES
-
-
-level: 2
-RLX_ES ~~ HAP_ES + ANG_ES + ANX_ES + DEP_ES + SAD_ES
-HAP_ES ~~ ANG_ES + ANX_ES + DEP_ES + SAD_ES
-ANG_ES ~~ ANX_ES + DEP_ES + SAD_ES
-ANX_ES ~~ DEP_ES + SAD_ES
-DEP_ES ~~ SAD_ES
-'
-
-#specify the two-factor structure at the within level without correlation between pa and na
-
-m2cw <- '
-level: 1
-pa ~~ pa
-na ~~ na
-na ~~ 0*pa
-
-pa =~ RLX_ES + HAP_ES
-na =~ ANG_ES + ANX_ES + DEP_ES + SAD_ES
-
-
-level: 2
-RLX_ES ~~ HAP_ES + ANG_ES + ANX_ES + DEP_ES + SAD_ES
-HAP_ES ~~ ANG_ES + ANX_ES + DEP_ES + SAD_ES
-ANG_ES ~~ ANX_ES + DEP_ES + SAD_ES
-ANX_ES ~~ DEP_ES + SAD_ES
-DEP_ES ~~ SAD_ES
-'
 
 #to calculate level specific CFI, fit a model that is saturated between and worst fitting solution within
 
@@ -659,20 +498,6 @@ f2aw <- lavaan::sem(
   effect.coding = c("loadings", "intercepts"),
   baseline = base2w
 )
-f2bw <- lavaan::sem(
-  model = m2bw,
-  data = dataLeuven2011,
-  cluster = "PARTICIPANT_ID",
-  effect.coding = c("loadings", "intercepts"),
-  baseline = base2w
-)
-f2cw <- lavaan::sem(
-  model = m2cw,
-  data = dataLeuven2011,
-  cluster = "PARTICIPANT_ID",
-  effect.coding = c("loadings", "intercepts"),
-  baseline = base2w
-)
 f2ab <- lavaan::sem(
   model = m2ab,
   data = dataLeuven2011,
@@ -680,45 +505,15 @@ f2ab <- lavaan::sem(
   effect.coding = c("loadings", "intercepts"),
   baseline = base2w
 )
-f2ad <- lavaan::sem(
-  model = m2ad,
-  data = dataLeuven2011,
-  cluster = "PARTICIPANT_ID",
-  effect.coding = c("loadings", "intercepts"),
-  baseline = base2w
-)
 
-#comparing model fit
-#this gives chisquare test
-anova(f2aw, f2bw) # model a has lowest AIC&BIC, and significantly better fit than b and c
-anova(f2aw, f2cw)
-
-#calculate differences in level specific RMSEA & CFI
-RMSEA_f2aw <- RMSEAw(f2aw)
-RMSEA_f2bw <- RMSEAw(f2bw)
-RMSEA_f2cw <- RMSEAw(f2cw)
-
-
-dRMSEA_f2aw_f2bw <- RMSEA_f2aw - RMSEA_f2bw
-dCFI_f2aw_f2bw <- fitmeasures(f2aw)["cfi"] - fitmeasures(f2bw)["cfi"] 
-dRMSEA_f2aw_f2cw <- RMSEA_f2aw - RMSEA_f2cw 
-dCFI_f2aw_f2cw <- fitmeasures(f2aw)["cfi"] - fitmeasures(f2cw)["cfi"]
-abs(dRMSEA_f2aw_f2bw) > 0.01
-abs(dRMSEA_f2aw_f2cw) > 0.01
-abs(dCFI_f2aw_f2bw) > 0.005
-abs(dCFI_f2aw_f2cw) > 0.005
 
 summary(f2aw, standardized = TRUE, fit.measures = TRUE)
 modificationindices(f2aw, sort = TRUE)
 inspect(f2aw,what="std")
 inspect(f2aw)$lambda
 
-summary(f2cw, standardized = TRUE, fit.measures = TRUE)
 summary(f2ab, standardized = TRUE, fit.measures = TRUE)
-summary(f2ad, standardized = TRUE, fit.measures = TRUE)
-
 inspect(f2ab,what="std")
-inspect(f2ad,what="std")
 
 # ============================
 # DATASET 3: Leuven 3-WAVE
@@ -767,67 +562,6 @@ pa =~ RLX_ES + HAP_ES + CHEER_ES
 na =~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
 
 '
-m3ad <- '
-level: 1
-pa ~~ pa
-na ~~ na
-pa ~~ na
-
-pa =~ RLX_ES + HAP_ES + CHEER_ES
-na =~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-
-level: 2
-pa ~~ pa
-na ~~ na
-pa ~~ na
-
-pa =~ RLX_ES + HAP_ES + CHEER_ES
-na =~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-
-'
-
-
-#specify the one-factor structure at the within level
-
-m3bw <- '
-level: 1
-valence ~~ valence
-valence =~ RLX_ES + HAP_ES + CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-
-
-level: 2
-RLX_ES ~~ HAP_ES + CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-HAP_ES ~~ CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-CHEER_ES ~~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-ANG_ES ~~ DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-DEP_ES ~~ LONE_ES + FEAR_ES + SAD_ES + STR_ES
-LONE_ES ~~ FEAR_ES + SAD_ES + STR_ES
-FEAR_ES ~~ SAD_ES + STR_ES
-SAD_ES ~~ STR_ES
-'
-
-#specify the two-factor structure at the within level without correlation between pa and na
-
-m3cw <- '
-level: 1
-pa ~~ pa
-na ~~ na
-na ~~ 0*pa
-
-pa =~ RLX_ES + HAP_ES + CHEER_ES
-na =~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-
-
-level: 2
-RLX_ES ~~ HAP_ES + CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-HAP_ES ~~ CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-CHEER_ES ~~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-ANG_ES ~~ DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-DEP_ES ~~ LONE_ES + FEAR_ES + SAD_ES + STR_ES
-LONE_ES ~~ FEAR_ES + SAD_ES + STR_ES
-FEAR_ES ~~ SAD_ES + STR_ES
-SAD_ES ~~ STR_ES
-'
 
 #to calculate level specific CFI, fit a model that is saturated between and worst fitting solution within
 
@@ -865,20 +599,6 @@ f3aw <- lavaan::sem(
   effect.coding = c("loadings", "intercepts"),
   baseline = base3w
 )
-f3bw <- lavaan::sem(
-  model = m3bw,
-  data = dataLeuven3W,
-  cluster = "PARTICIPANT_ID",
-  effect.coding = c("loadings", "intercepts"),
-  baseline = base3w
-)
-f3cw <- lavaan::sem(
-  model = m3cw,
-  data = dataLeuven3W,
-  cluster = "PARTICIPANT_ID",
-  effect.coding = c("loadings", "intercepts"),
-  baseline = base3w
-)
 f3ab <- lavaan::sem(
   model = m3ab,
   data = dataLeuven3W,
@@ -886,47 +606,14 @@ f3ab <- lavaan::sem(
   effect.coding = c("loadings", "intercepts"),
   baseline = base3w
 )
-f3ad <- lavaan::sem(
-  model = m3ad,
-  data = dataLeuven3W,
-  cluster = "PARTICIPANT_ID",
-  effect.coding = c("loadings", "intercepts"),
-  baseline = base3w
-)
-
-#comparing model fit
-#this gives chisquare test
-anova(f3aw, f3bw) # model a has lowest AIC&BIC, and significantly better fit than b and c
-anova(f3aw, f3cw)
-
-
-#calculate differences in level specific RMSEA & CFI
-RMSEA_f3aw <- RMSEAw(f3aw)
-RMSEA_f3bw <- RMSEAw(f3bw)
-RMSEA_f3cw <- RMSEAw(f3cw)
-
-
-dRMSEA_f3aw_f3bw <- RMSEA_f3aw - RMSEA_f3bw
-dCFI_f3aw_f3bw <- fitmeasures(f3aw)["cfi"] - fitmeasures(f3bw)["cfi"] 
-dRMSEA_f3aw_f3cw <- RMSEA_f3aw - RMSEA_f3cw 
-dCFI_f3aw_f3cw <- fitmeasures(f3aw)["cfi"] - fitmeasures(f3cw)["cfi"]
-abs(dRMSEA_f3aw_f3bw) > 0.01
-abs(dRMSEA_f3aw_f3cw) > 0.01
-abs(dCFI_f3aw_f3bw) > 0.005
-abs(dCFI_f3aw_f3cw) > 0.005
-
 
 summary(f3aw, standardized = TRUE, fit.measures = TRUE)
 modificationindices(f3aw, sort = TRUE)
 inspect(f3aw,what="std")
 inspect(f3aw)$lambda
 
-summary(f3cw, standardized = TRUE, fit.measures = TRUE)
 summary(f3ab, standardized = TRUE, fit.measures = TRUE)
-summary(f3ad, standardized = TRUE, fit.measures = TRUE)
-
 inspect(f3ab,what="std")
-inspect(f3ad,what="std")
 
 # Low TLI for the within-person level. Looking at modification indices, should include correlation between stressed and relaxed.
 # Makes sense, since these are very overlapping items
@@ -1021,76 +708,6 @@ na =~ NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
 
 
 '
-m4ad <- '
-level: 1
-pa ~~ pa
-na ~~ na
-pa ~~ na
-
-pa =~ PA_ener + PA_cont + PA_enth + PA_deter + PA_calm + PA_joy + PA_grat
-na =~ NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
-
-level: 2
-pa ~~ pa
-na ~~ na
-pa ~~ na
-
-pa =~ PA_ener + PA_cont + PA_enth + PA_deter + PA_calm + PA_joy + PA_grat
-na =~ NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
-
-'
-
-
-#specify the one-factor structure at the within level
-
-m4bw <- '
-level: 1
-valence ~~ valence
-valence =~ PA_ener + PA_cont + PA_enth + PA_deter + PA_calm + PA_joy + PA_grat + NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
-
-
-level: 2
-PA_ener ~~ PA_cont + PA_enth + PA_deter + PA_calm + PA_joy + PA_grat +NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
-PA_cont ~~ PA_enth + PA_deter + PA_calm + PA_joy + PA_grat + NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
-PA_enth ~~ PA_deter + PA_calm + PA_joy + PA_grat + NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
-PA_deter ~~ PA_calm + PA_joy + PA_grat + NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
-PA_calm ~~ PA_joy + PA_grat + NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
-PA_joy ~~ PA_grat + NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
-PA_grat ~~ NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
-NA_irri ~~ NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
-NA_bor ~~ NA_nerv + NA_sad + NA_ang + NA_low
-NA_nerv ~~ NA_sad + NA_ang + NA_low
-NA_sad ~~ NA_ang + NA_low
-NA_ang ~~ NA_low
-
-'
-
-#specify the two-factor structure at the within level without correlation between pa and na
-
-m4cw <- '
-level: 1
-pa ~~ pa
-na ~~ na
-na ~~ 0*pa
-
-pa =~ PA_ener + PA_cont + PA_enth + PA_deter + PA_calm + PA_joy + PA_grat
-na =~ NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
-
-
-level: 2
-PA_ener ~~ PA_cont + PA_enth + PA_deter + PA_calm + PA_joy + PA_grat +NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
-PA_cont ~~ PA_enth + PA_deter + PA_calm + PA_joy + PA_grat + NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
-PA_enth ~~ PA_deter + PA_calm + PA_joy + PA_grat + NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
-PA_deter ~~ PA_calm + PA_joy + PA_grat + NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
-PA_calm ~~ PA_joy + PA_grat + NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
-PA_joy ~~ PA_grat + NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
-PA_grat ~~ NA_irri + NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
-NA_irri ~~ NA_bor + NA_nerv + NA_sad + NA_ang + NA_low
-NA_bor ~~ NA_nerv + NA_sad + NA_ang + NA_low
-NA_nerv ~~ NA_sad + NA_ang + NA_low
-NA_sad ~~ NA_ang + NA_low
-NA_ang ~~ NA_low
-'
 
 #to calculate level specific CFI, fit a model that is saturated between and worst fitting solution within
 
@@ -1137,20 +754,6 @@ f4aw <- lavaan::sem(
   effect.coding = c("loadings", "intercepts"),
   baseline = base4w
 )
-f4bw <- lavaan::sem(
-  model = m4bw,
-  data = dataTilburg,
-  cluster = "PARTICIPANT_ID",
-  effect.coding = c("loadings", "intercepts"),
-  baseline = base4w
-)
-f4cw <- lavaan::sem(
-  model = m4cw,
-  data = dataTilburg,
-  cluster = "PARTICIPANT_ID",
-  effect.coding = c("loadings", "intercepts"),
-  baseline = base4w
-)
 f4ab <- lavaan::sem(
   model = m4ab,
   data = dataTilburg,
@@ -1158,33 +761,6 @@ f4ab <- lavaan::sem(
   effect.coding = c("loadings", "intercepts"),
   baseline = base4w
 )
-f4ad <- lavaan::sem(
-  model = m4ad,
-  data = dataTilburg,
-  cluster = "PARTICIPANT_ID",
-  effect.coding = c("loadings", "intercepts"),
-  baseline = base4w
-)
-
-#comparing model fit
-#this gives chisquare test
-anova(f4aw, f4bw) # model a has lowest AIC&BIC, and significantly better fit than b and c
-anova(f4aw, f4cw)
-
-#calculate differences in level specific RMSEA & CFI
-RMSEA_f4aw <- RMSEAw(f4aw)
-RMSEA_f4bw <- RMSEAw(f4bw)
-RMSEA_f4cw <- RMSEAw(f4cw)
-
-
-dRMSEA_f4aw_f4bw <- RMSEA_f4aw - RMSEA_f4bw
-dCFI_f4aw_f4bw <- fitmeasures(f4aw)["cfi"] - fitmeasures(f4bw)["cfi"] 
-dRMSEA_f4aw_f4cw <- RMSEA_f4aw - RMSEA_f4cw 
-dCFI_f4aw_f4cw <- fitmeasures(f4aw)["cfi"] - fitmeasures(f4cw)["cfi"]
-abs(dRMSEA_f4aw_f4bw) > 0.01
-abs(dRMSEA_f4aw_f4cw) > 0.01
-abs(dCFI_f3aw_f3bw) > 0.005
-abs(dCFI_f4aw_f4cw) > 0.005
 
 
 summary(f4aw, standardized = TRUE, fit.measures = TRUE)
@@ -1192,12 +768,8 @@ modificationindices(f4aw, sort = TRUE)
 inspect(f4aw,what="std")
 inspect(f4aw)$lambda
 
-summary(f4cw, standardized = TRUE, fit.measures = TRUE)
 summary(f4ab, standardized = TRUE, fit.measures = TRUE)
-summary(f4ad, standardized = TRUE, fit.measures = TRUE)
-
 inspect(f4ab,what="std")
-inspect(f4ad,what="std")
 
 # Low TLI for the within-person level. Looking at modification indices, should include correlation between angry and irritated
 # Makes sense, since these are very overlapping items
@@ -1287,67 +859,8 @@ pa =~ Emow_happy + Emow_relaxed + Emow_energetic
 na =~ Emow_angry + Emow_annoyed + Emow_anxious + Emow_sad + Emow_stressed + Emow_uncertain
 
 '
-m5ad <- '
-level: 1
-pa ~~ pa
-na ~~ na
-pa ~~ na
-
-pa =~ Emow_happy + Emow_relaxed + Emow_energetic
-na =~ Emow_angry + Emow_annoyed + Emow_anxious + Emow_sad + Emow_stressed + Emow_uncertain
-
-level: 2
-pa ~~ pa
-na ~~ na
-pa ~~ na
-
-pa =~ Emow_happy + Emow_relaxed + Emow_energetic
-na =~ Emow_angry + Emow_annoyed + Emow_anxious + Emow_sad + Emow_stressed + Emow_uncertain
-
-'
 
 
-#specify the one-factor structure at the within level
-
-m5bw <- '
-level: 1
-valence ~~ valence
-valence =~ Emow_happy + Emow_relaxed + Emow_energetic + Emow_angry + Emow_annoyed + Emow_anxious + Emow_sad + Emow_stressed + Emow_uncertain
-
-
-level: 2
-Emow_happy ~~ Emow_relaxed + Emow_energetic + Emow_angry + Emow_annoyed + Emow_anxious + Emow_sad + Emow_stressed + Emow_uncertain
-Emow_relaxed ~~ Emow_energetic + Emow_angry + Emow_annoyed + Emow_anxious + Emow_sad + Emow_stressed + Emow_uncertain
-Emow_energetic ~~ Emow_angry + Emow_annoyed + Emow_anxious + Emow_sad + Emow_stressed + Emow_uncertain
-Emow_angry ~~ Emow_annoyed + Emow_anxious + Emow_sad + Emow_stressed + Emow_uncertain
-Emow_annoyed ~~ Emow_anxious + Emow_sad + Emow_stressed + Emow_uncertain
-Emow_anxious ~~ Emow_sad + Emow_stressed + Emow_uncertain
-Emow_sad ~~ Emow_stressed + Emow_uncertain
-Emow_stressed ~~ Emow_uncertain
-'
-
-#specify the two-factor structure at the within level without correlation between pa and na
-
-m5cw <- '
-level: 1
-pa ~~ pa
-na ~~ na
-na ~~ 0*pa
-
-pa =~ Emow_happy + Emow_relaxed + Emow_energetic
-na =~ Emow_angry + Emow_annoyed + Emow_anxious + Emow_sad + Emow_stressed + Emow_uncertain
-
-
-level: 2
-Emow_happy ~~ Emow_relaxed + Emow_energetic + Emow_angry + Emow_annoyed + Emow_anxious + Emow_sad + Emow_stressed + Emow_uncertain
-Emow_relaxed ~~ Emow_energetic + Emow_angry + Emow_annoyed + Emow_anxious + Emow_sad + Emow_stressed + Emow_uncertain
-Emow_energetic ~~ Emow_angry + Emow_annoyed + Emow_anxious + Emow_sad + Emow_stressed + Emow_uncertain
-Emow_angry ~~ Emow_annoyed + Emow_anxious + Emow_sad + Emow_stressed + Emow_uncertain
-Emow_annoyed ~~ Emow_anxious + Emow_sad + Emow_stressed + Emow_uncertain
-Emow_anxious ~~ Emow_sad + Emow_stressed + Emow_uncertain
-Emow_sad ~~ Emow_stressed + Emow_uncertain
-Emow_stressed ~~ Emow_uncertain
-'
 
 #to calculate level specific CFI, fit a model that is saturated between and worst fitting solution within
 
@@ -1385,20 +898,6 @@ f5aw <- lavaan::sem(
   effect.coding = c("loadings", "intercepts"),
   baseline = base5w
 )
-f5bw <- lavaan::sem(
-  model = m5bw,
-  data = dataGhent,
-  cluster = "PARTICIPANT_ID",
-  effect.coding = c("loadings", "intercepts"),
-  baseline = base5w
-)
-f5cw <- lavaan::sem(
-  model = m5cw,
-  data = dataGhent,
-  cluster = "PARTICIPANT_ID",
-  effect.coding = c("loadings", "intercepts"),
-  baseline = base5w
-)
 f5ab <- lavaan::sem(
   model = m5ab,
   data = dataGhent,
@@ -1406,45 +905,13 @@ f5ab <- lavaan::sem(
   effect.coding = c("loadings", "intercepts"),
   baseline = base5w
 )
-f5ad <- lavaan::sem(
-  model = m5ad,
-  data = dataGhent,
-  cluster = "PARTICIPANT_ID",
-  effect.coding = c("loadings", "intercepts"),
-  baseline = base5w
-)
-
-#comparing model fit
-#this gives chisquare test
-anova(f5aw, f5bw) # model a has lowest AIC&BIC, and significantly better fit than b and c
-anova(f5aw, f5cw)
-
-#calculate differences in level specific RMSEA & CFI
-RMSEA_f5aw <- RMSEAw(f5aw)
-RMSEA_f5bw <- RMSEAw(f5bw)
-RMSEA_f5cw <- RMSEAw(f5cw)
-
-dRMSEA_f5aw_f5bw <- RMSEA_f5aw - RMSEA_f5bw
-dRMSEA_f5aw_f5cw <- RMSEA_f5aw - RMSEA_f5cw 
-dCFI_f5aw_f5bw <- fitmeasures(f5aw)["cfi"] - fitmeasures(f5bw)["cfi"] 
-dCFI_f5aw_f5cw <- fitmeasures(f5aw)["cfi"] - fitmeasures(f5cw)["cfi"]
-abs(dRMSEA_f5aw_f5bw) > 0.01
-abs(dRMSEA_f5aw_f5cw) > 0.01
-abs(dCFI_f5aw_f5bw) > 0.005
-abs(dCFI_f5aw_f5cw) > 0.005
 
 summary(f5aw, standardized = TRUE, fit.measures = TRUE)
 modificationindices(f5aw, sort = TRUE)
 inspect(f5aw,what="std")
 inspect(f5aw)$lambda
-
-summary(f5cw, standardized = TRUE, fit.measures = TRUE)
 summary(f5ab, standardized = TRUE, fit.measures = TRUE)
-summary(f5ad, standardized = TRUE, fit.measures = TRUE)
-
 inspect(f5ab,what="std")
-inspect(f5ad,what="std")
-
 
 # Low TLI for the within-person level. Looking at modification indices, should include correlation between sad and angry
 # Those are not super overlapping items, but they had by far the highest modification index.
@@ -1496,5 +963,5 @@ rescfa <- rbind(c(model = deparse(substitute(f1aw)), summaryfit(f1aw, inputPA.GV
       c(model = deparse(substitute(f3ab)), summaryfit(f3ab, inputPA.Leuven3W,inputNA.Leuven3W)),
       c(model = deparse(substitute(f4ab)), summaryfit(f4ab, inputPA.Tilburg,inputNA.Tilburg)),
       c(model = deparse(substitute(f5ab)), summaryfit(f5ab, inputPA.Ghent,inputNA.Ghent)))
-write.csv(rescfa,"manuscript/results/SMTable3.csv")
-      
+write.csv(rescfa,"manuscript/results/SMTable3extra.csv")
+
