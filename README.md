@@ -26,6 +26,19 @@ poweranalysis.R                | Power analysis in pre-registration| Run to repr
 list_of_variables.R                | List of variable names of ESM measures and momentary indices| Required; read only
 func_preprocessing.R                 | Functions for pre-processing data (in prepare_data.R) | Required; read only
 
+### Manuscript
+
+All these files are under the [manuscript folder](manuscript).
+
+File                      | Description                | Usage         
+------------------------- | -------------------------- | --------------
+apa7.csl            | Citation Style Language (APA 7th edition) | Required; read only                 | Demographic info, descriptive statistics, and psychometrics (e.g., reliability of measures) | Run to reproduce results
+EDERV_manuscript.Rmd                 | R Markdown file for dynamically producing our manuscript  | Run to reproduce our manuscript
+mainreferences.bib                | BibTeX reference for our manuscript| Required; read only
+datasets_and_OSF.bib                | BibTeX reference related to our datasets and supplemental materials| Required; read only
+r-references.bib                 | BibTeX reference related to the R Markdown files | Required; read only
+
+
 
 
 
