@@ -1,0 +1,663 @@
+---
+title             : "Supplemental Materials: Hold to Behold: Less Changes in Emotion Regulation Strategies Predicts Better Differentiated Negative Emotions within Adolescents"
+shorttitle        : "EMOTION DIFFERENTIATION & REGULATION VARIABILITY"
+  
+author: 
+  - name          : "Tak Tsun Lo"
+    corresponding : yes    # Define only one corresponding author
+  - name          : "J. Loes Pouwels"
+  - name          : "Jacqueline M. Vink"
+  - name          : "Eeske van Roekel"
+  - name          : "Sarah O’Brien"
+  - name          : "Gillian Debra"
+  - name          : "Jolien Braet"
+  - name          : "Maaike Verhagen"
+  - name          : "Dominique F. Maciejewski"
+
+
+bibliography      : ["r-references.bib", "mainreferences.bib", "datasets_and_OSF.bib"]
+
+floatsintext      : TRUE
+linenumbers       : yes
+draft             : no
+mask              : no
+
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+numbersections    : false
+header-includes:
+  - \usepackage{rotating}
+  - \DeclareDelayedFloatFlavor{sidewaysfigure}{figure}
+  - \usepackage{lscape}
+  - \newcommand{\blandscape}{\begin{landscape}}
+  - \newcommand{\elandscape}{\end{landscape}}
+  - \xpatchcmd{\authorsnames}{\newcounter{NumberOfAuthors}}{\setcounter{NumberOfAuthors}{0}}{}{}
+  - \xpatchcmd{\authorsnames}{\newcounter{NumberOfSuperscripts}}{\setcounter{NumberOfSuperscripts}{0}}{}{}
+  - \authorsnames[1, 1, 1, 2, 3, 4, 4, 1, 2]{Tak Tsun Lo, J. Loes Pouwels, Jacqueline M. Vink, Eeske van Roekel,Sarah O’Brien, Gillian Debra, Jolien Braet, Maaike Verhagen, Dominique F. Maciejewski}
+  - \authorsaffiliations{{Behavioural Science Institute, Radboud University}, {School of Social and Behavioral Sciences, Tilburg University}, {Melbourne School of Psychological Sciences, the University of Melbourne}, {Faculty of Psychology and Educational Sciences, Ghent University}}
+  - \renewcommand{\affiliation}[1]{}
+  - |
+    \makeatletter
+    \renewcommand{\paragraph}{\@startsection{paragraph}{4}{\parindent}%
+      {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+      {-1em}%
+      {\normalfont\normalsize\bfseries\typesectitle}}
+    \renewcommand{\subparagraph}[1]{\@startsection{subparagraph}{5}{1em}%
+      {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+      {-\z@\relax}%
+      {\normalfont\normalsize\bfseries\itshape\hspace{\parindent}{#1}\textit{\addperi}}{\relax}}
+csl               : "`r system.file('rmd', 'apa7.csl', package = 'papaja')`"
+documentclass     : "apa7"
+classoption       : "man, donotrepeattitle"
+# output            : papaja::apa6_docx
+output            :
+  papaja::apa6_pdf:
+    latex_engine: xelatex
+# output            :
+#   word_document:
+#     reference_docx: APA7.docx
+knit              : worcs::cite_all
+editor_options: 
+  markdown: 
+    wrap: sentence
+nocite: |
+  @verhagenFlitsStudyDyadic2022, @vanroekelESMOSF, @koval2013affect, @erbas2018don, @braetVeGotFriend2023
+---
+
+```{r setup, include = FALSE}
+library("dplyr")
+library("papaja")
+library("kableExtra")
+library("worcs")
+r_refs("r-references.bib")
+```
+<!-- add prefix before tables -->
+\renewcommand{\thetable}{S1.\arabic{table}} \setcounter{table}{0}
+
+# Supplemental Materials 1: Pre-registration, _a priori_ Power Analysis, and Deviations
+
+## Pre-registration: the Original and Updated Version
+
+On 04 May 2022, we submitted our original version of pre-registration [https://osf.io/9vx7t?revisionId=62723c863252440156414dd8]. While we initially expected to have sufficient power to test our hypothesis in the first version of the pre-registration with the G(F)ood together dataset from Radboud University, we are now using Bray-Curtis dissimilarity, a newly proposed emotion regulation variability (Lo et al., 2023), for testing our hypotheses. Therefore, we updated the power analysis. The new power analysis revealed that we are underpowered at 30% to test our hypotheses with multilevel modeling with only the Radboud dataset. To ensure sufficient power, we decided to include more experience sampling method (ESM) datasets to test the same hypotheses. We reached out to researchers who used ESM in Dutch-speaking regions with the same specified inclusion criteria in terms of frame of reference of ESM items and age group. We received favourable replies from researchers in accessing four ESM datasets, which provide us with a large enough sample size to reach 80% power. The pre-registered questions remained the same. We updated our pre-registration on 19 Oct 2023 prior to accessing the new datasets [https://osf.io/9vx7t].
+
+## Updated Power Analysis
+
+The pooled sample size across five datasets was 811. We used the PowerAnalysisIL Shiny app [@lafitSelectionNumberParticipants2021] to calculate power for hypothesis 1 (greater emotion differentiation at a given moment will result in heightened variability in emotion regulation at the subsequent moment) and hypothesis 2 (variability in emotion regulation at one moment will not be associated with emotion differentiation in the following moment). We obtained parameters needed analyzing an unrelated ESM dataset collected by another researcher in Radboud University.
+
+### Hypothesis 1
+
+Power analysis results for Hypothesis 1 is shown in Table S1.1. We concluded that power is likely to be over 80% when the final sample size approaches 800.
+
+
+```{r , echo = FALSE}
+SMtable11 <- as.data.frame(read.csv("results/manual_SMTable11.csv"))
+SMtable11[is.na(SMtable11)] <- ""
+kbl(SMtable11,
+    booktabs = T, align = "l", linesep = '',
+    col.names = linebreak(c("Parameters","Value","Number of Participants","Simulated Power")),
+    escape = FALSE,
+    caption = "Hypothesis 1 Power Analysis Results")%>%
+kable_styling(font_size = 9)%>%
+add_header_above(c("Power Analysis Setup" = 2, "Power Analysis Result" = 2))
+
+```
+
+\newpage
+
+### Hypothesis 2
+
+Hypothesis table 2 here. For hypothesis two, there was already enough power by just using the Radboud dataset (N after exclusion criteria applied = 83).
+
+
+```{r , echo = FALSE}
+SMtable12 <- as.data.frame(read.csv("results/manual_SMTable11.csv"))
+SMtable12[is.na(SMtable12)] <- ""
+# apa_table(SMtable11)
+kbl(SMtable12,
+    booktabs = T, align = "l", linesep = '',
+    col.names = linebreak(c("Parameters","Value","Number of Participants","Simulated Power")),
+    escape = FALSE,
+    caption = "Hypothesis 1 Power Analysis Results")%>%
+kable_styling(font_size = 9)%>%
+add_header_above(c("Power Analysis Setup" = 2, "Power Analysis Result" = 2))
+
+```
+
+\newpage
+
+## Deviations from pre-registration
+
+Our study had three minor deviations from its pre-registration.
+
+First, in section 19 and 28 (indices), we initially planned to use intraclass correlation coefficient (ICC) for between-person emotion differentiation. In our actual analyses, we did not use ICC, but the between-person component of the momentary emotion differentiation index [@erbasMomentaryEmotionDifferentiation2021a]. We considered this deviation appropriate because the momentary emotion differentiation index was derived from ICC and was shown to be statistically perfectly related to ICC [@erbasMomentaryEmotionDifferentiation2021a].
+
+Second, it concerned our approach to testing between-person Hypothesis 3 (originally Hypothesis 1 in the pre-registration) as outlined in section 22 (analysis plan). While we initially planned to use hierarchical regressions, we instead tested this hypothesis by examining the fixed effect estimates of the time-invariant between-person components in multilevel models. Although a minor procedural deviation, this approach is statistically highly similar as the pre-registered approach.
+
+Third, in section 27 (data exclusion), we specified the exclusion of data with zero variance across all observations. However, we did not clarify if this zero variance criterion was to be applied at the item level (e.g., for a specific emotion like sadness) or at the factor level (e.g., for a group of related emotions such as sad, angry, depressed, and anxious, useful in calculating negative emotion intensity and differentiation). In our actual analysis, we opted for the factor-level application. This decision was based on the understanding that some items might not be relevant to participants (see Discussion), leading to zero ratings, but this would not necessarily indicate poor data quality if there was variance in other items within the same factor. Additionally, our dynamic indices evaluate multiple items, not just single ones. Applying the exclusion criterion at the factor level aligns more closely with our research objectives and ensures a more accurate assessment of data quality than excluding data based on single-item zero variance.
+
+\newpage
+# Supplemental Materials 2: Participants, Procedures and ESM Measures per Dataset
+
+Note that though descriptions of ESM measures are in English here, questionnaires are presented in Dutch to participants across five studies.
+
+## Dataset 1: G(F)ood together, Radboud University [main reference: @verhagenFlitsStudyDyadic2022]
+
+### Participants
+
+This study was part of a larger project (G(F)ood together; see @vandenbroekAdolescentsFoodIntake2020 for other details) that studied adolescents’ eating behaviours and health with six longitudinal waves of data collection and one ESM phase among Dutch adolescents and their parents across 2017 to 2021. The study procedures were approved by the Ethics Committee Social Sciences of Radboud University, Nijmegen, the Netherlands (ECSW20170805-516). The ESM phase was administered between the fifth and sixth wave in June and July 2021. An active parental consent procedure was used for the participation of the ESM phase.
+
+The goal for the larger project was to recruit a subsample of 100 participants. 257 families whose parents or adolescents remained active at wave 5 of the G(V)voed voor elkaar study were invited to participate the ESM phase, resulting in the inclusion of 89 adolescent participants (age M = 16.42, SD = 0.61). After excluding observations in which each ESM item was completed in less than 500ms and excluding participants who showed zero variance across all ESM items, the final sample size consisted of 83 participants (age M = 16.43, SD = 0.60, female = 57%). Most of the participants were born in the Netherlands (98%). 
+
+### Procedure
+
+All participants completed ESM using the SEMA-app [version 3; @o2023sema3]   which they installed on their mobile phones a few days before starting the study. A semi-random sampling scheme was employed, with participants receiving 10 notifications per day at random moments within a fixed time interval spanning from 07.30 a.m. to 09.00 p.m. over seven consecutive days. Upon receiving a notification, participants had a 30-minute window to complete the ESM assessment. For the end-of-the-day assessment, a longer period of 149 minutes was allowed. In cases where participants did not open the momentary assessments, the app sent two reminders at 15 minutes and 25 minutes after the initial notification (75 minutes and 145 minutes for the end-of-the-day assessment). Participants responded to 3674 out of 6020 (61%) ESM notifications sent. The median number of assessment completed per participant was 47 out of 70 (67%; M = 41.83, SD = 17.06). All participants entered into a raffle for two €250 vouchers. Participants were paid at least €5 and up to €25 if they and their parents both had high compliance in the study.
+
+### ESM Measures
+
+#### Emotions
+
+At each momentary assessment, participants rated four positive emotions (content, relaxed, joyful, and energetic) and five negative emotions (irritated, worried, depressed, insecure, and lonely) presented in a randomized order on a 10-point slider scale (0 = not at all, 10 = a lot). The stem for these items was “Right now I feel [emotion]”. These items were used in [@barrantes-vidalPsychometricSchizotypyPredicts2013]. With 10 daily assessments over 7 days, the maximum possible number of measurements for negative emotions was 70.
+
+#### Emotion regulation strategies
+
+At each even beep throughout the day (i.e., assessed five times daily), following the rating of negative emotions, participants responded to one additional question on a slider scale regarding the intensity of the most unpleasant event since the previous beep (“Think about the most unpleasant thing that you have experienced, since the last beep. How unpleasant was it?” 0= not at all unpleasant, 10 = very much unpleasant). If the unpleasantness was 5 or higher, participants had the opportunity to rate their use of emotion regulation strategies related to the event. This branching was introduced with a hope of collecting reports with more intensive use of emotion regulation strategies. At the final beep of each day, regardless of event intensity, questions about emotion regulation strategies were always asked.  For each of the five emotion regulation strategies listed below, participants rated their use on a 11-point scale (0 = not applicable at all, 10 = very applicable): acceptance (“I have accepted my feelings about it”; adapted from @bransRegulationNegativePositive2013a), reappraisal (“to feel better, I have changed the way I think about it”; adapted from @bransRegulationNegativePositive2013a), expression suppression (“I have avoided expressing my feelings about it”; adapted from @bransRegulationNegativePositive2013a), rumination (“I couldn’t stop thinking my feelings about it”; adapted from @bransRegulationNegativePositive2013a), and sharing (“I talked about it to someone”; adapted from @bransRegulationNegativePositive2013a). With 5 even-beep assessments over 7 days, the maximum possible number of measurements for emotion regulation strategies was 35. Adolescents had a total of 752 beeps which they had the opportunity to report emotion regulation strategy use from 609 end-of-day beeps and 143 non-end-of-day even beeps which they rated having experienced a negative event with unpleasantness at 5 or above. Adolescents reported their use of emotion regulation strategies in 598 out of the 752 possible beeps (79.5%).
+
+## Dataset 2: Emotions in daily life 2011, KU Leuven [main reference: @koval2013affect]
+
+### Participants
+
+Participants were recruited from a pool of 439 undergraduates at the University of Leuven, Belgium, in a study which the ethics committee of the University of Leuven approved of. All undergraduates completed a Dutch translation of the Center for Epidemiologic Studies Depression Scale [CES-D, @radloffCESDScaleSelfreport1977] and were further selected to maximize variation in depression scores. The target sample of 100 participants were contacted in 2011. Three participants were excluded because the devices they used had malfunction. No participants reported in which each ESM item was completed in less than 500ms, nor any participants showed zero variance across all ESM items. The final sample consisted of 97 participants. Mean age of the sample was 19.05 years (_SD_ = 1.27), and 63% were women. Majority of the sample had Belgian nationality (97%).
+
+### Procedure
+
+Participants took part in an introductory session in the laboratory, in which they gave informed consent to participate, filled out questionnaires unrelated to the current study, and received standardized devices (Tungsten E2 PalmOne, Mankato, MN), which were programmed with a program that assess ESM items. The ESM phase started the following day and lasted 7 days, during which 10 beeps occurred semi-randomly each day in a 12-hr time frame. Participants were informed that completing one measurement would take an average of 1 minute. Participants had to start the questionnaire within 2 minutes after the notification . Participants had 90 seconds to answer each question once they opened the questionnaire before it timed out. There were no reminders for participants in case they did not open the momentary assessments  Participants answered 91.5% of the beeps (_SD_ = 6.2%, range: 67–100% of all beeps). The participants were reimbursed with 70 Euros for the entire study. 
+
+### ESM measures
+
+#### Emotions
+
+At each momentary assessment, participants rated two positive emotions (relaxed, happy) and four negative emotions (angry, sad, anxious, and depressed) presented on a 100-point slider scale (1 = not at all, 100 = very much). The stem for these items was “How [emotion] do you feel at the moment?”. With 10 daily assessments over 7 days, the maximum possible number of measurements for negative emotions was 70.
+
+#### Emotion regulation strategies
+
+At each momentary assessment, participants rated the extent they used six emotion regulation strategies presented on a 100-point slider scale (1 = not at all, 100 = very much so). The stem for these items was “Since the last beep, did you…” and ended with “ruminate about your feelings” (rumination), “calmly reflect on your feelings?” (reflection), “see the event that caused your feelings from a different perspective?” (reappraisal), “try to distract yourself from your feelings?” (distraction), “suppress the expression of your feelings?” (expressive suppression), and “talk with others about your feelings” (social sharing). With 10 daily assessments over 7 days, the maximum possible number of measurements for emotion regulation strategies was 70.
+
+## Dataset 3: 3-wave longitudinal study, KU Leuven [main reference: @erbas2018don]
+
+### Participants
+
+Participants were undergraduates from the University of Leuven, Belgium. This three-wave study was approved by the ethics committee of the University of Leuven. Here, we only used the data from the first wave collected in 2012. 686 first-year undergraduates completed the Center for Epidemiologic Studies Depression Scale [CES-D, @radloffCESDScaleSelfreport1977] as a prescreening questionnaire. 180 participants, formed by equal number of participants from four quartiles of the CES-D distribution, were selected following a stratified sampling approach. An additional 22 participants took part without completing the CES-D, resulting in a total of 202 participants. There were no participants excluded based on reaction time because reaction time was not available for ESM assessments in this dataset. No participants had zero variance across all ESM items, so the final sample was 202 participants. Mean age of the sample was 18.32 years (SD = 0.96), and 55% were women. Majority of the sample had Belgian nationality (93%).
+
+### Procedure
+
+The participants took part in an introductory session in the laboratory and filled out questionnaires unrelated to the current study. Then, they received standardized devices (Motorola Defy Plus) with custom-built ESM software installed and were trained to use the phone to complete the ESM questionnaires. Participants practiced filling the ESM questionnaire and could clarify with an experimenter before leaving the lab. The ESM phase lasted for 7 consecutive days, during which 10 beeps occurred semi-randomly each day in a 12-hr time frame. Participants were informed that completing one measurement would take an average of 1-2 minutes. Participants had 90 seconds to answer each question once they opened the questionnaire before it timed out. There were no reminders for participants in case they did not open the momentary assessments.  Participants answered 87.27% of the beeps (SD = 9.05%, range: 67–100% of all beeps). The participants were reimbursed with 60 Euros  for this wave of study. They were eligible for an extra 60 EUR reimbursement for completing all three waves of study.
+
+### ESM measures
+
+#### Emotions
+
+At each momentary assessment, participants rated three positive emotions (happy, relaxed, cheerful) and six negative emotions (lonely, angry, anxious, sad, depressed, and stressed) presented on a slider scale from 0 (not at all) to 100 (very much). The stem for these items was “How [emotion] do you feel at the moment?”. With 10 daily assessments over 7 days, the maximum possible number of measurements for negative emotions was 70.
+
+#### Emotion regulation strategies
+
+At each momentary assessment, participants rated the extent they used six emotion regulation strategies presented on a slider scale from 0 (not at all) to 100 (almost all the time). The stem for these items was “Since the last beep, have you…” and ended with “viewed the cause of your feelings from a different perspective?” (cognitive reappraisal), “suppressed the expression of your feelings” (expressive suppression), “distracted your attention away from your feelings” (distraction), “talked about your feelings with others” (social sharing), “brooded about something in the past” (rumination) and “brooded about something in the future” (worry). With 10 daily assessments over 7 days, the maximum possible number of measurements for emotion regulation strategies was 70.
+
+## Dataset 4: Emotion regulation in daily life, Tilburg University [main reference: @vanroekelESMOSF]
+
+### Participants
+
+Participants were undergraduates from Tilburg University, the Netherlands. This study was approved by the ethics committee of the Tilburg School of Social and Behavioral Sciences (protocol number: EC-2017.95). Data were collected in 2018. 242 first-year undergraduates who needed to earn course credit were recruited. For this study, only data from participants who were younger than 25 years old were used. Therefore, the initial sample consisted of 179 participants (age M = 20.84 , _SD_ = 1.67). After excluding participants who had zero variance across all ESM items, there was a final sample of 178 participants. There were no participants excluded based on reaction time because reaction time was not available for ESM assessments in this dataset. Mean age of the sample was 20.85 years (_SD_ = 1.67), and 78% were women. Majority of the sample was born in the Netherlands (93%).
+
+### Procedure
+
+Participants were recruited through the University course credit system, where they were able to read information about the research and could register via the same system. To participate, students had to click a link in an information letter sent to them by email. There, they signed informed consent and completed a questionnaire with baseline data that were not relevant for this study. The email also instructed participants to download the app "Ethica" (www.ethicadata.com) on their smartphone for the ESM assessments. The ESM period started within a few days after completing the baseline questionnaires. The ESM phase lasted for 14 consecutive days, during which the Ethica app gave 5 beeps quasi-randomly each day in a 12-hr time frame. The participants had to complete the questionnaire within 30 minutes after the notification. Participants were informed that completing one measurement would take an average of 3 minutes. In cases where participants did not open the momentary assessments, the app sent after the initial notification  , but the details of the notification setting were lost due to interface change of Ethica. The median number of completed assessments  per participant was 52 out of 70 (73.97%, M = 66.36% , SD = 23.50%, range: 5.35–98.63% of all beeps). When the 14 days were over, the study was completed and the participants were rewarded with 4 test credits for participants recruited via the Tilburg course credit system or a chance of winning 30-Euro shopping vouchers for participants recruited via other channels. 
+
+### ESM measures
+
+#### Emotions
+
+At each momentary assessment, participants rated seven positive emotions (enthusiastic, content, energetic, calm, powerful, cheerful, and grateful) and six negative emotions (irritated, bored, nervous, sad, angry, and depressed) presented on a slider scale from 0 (not at all) to 100 (very much). The stem for these items was “I now feel (right before the beep went off) [emotion]”. With 10 daily assessments over 7 days, the maximum possible number of measurements for negative emotions was 70.
+
+#### Emotion regulation strategies
+
+At each momentary assessment, participants rated the extent they used seven emotion regulation strategies presented on a slider scale from 0 (not at all) to 100 (very much). The stem for these items was “Indicate to what extent you have used each of the following strategies since the last beep, regardless of whether they helped. To change my negative emotions, I have…” and ended with “addressed the situation that caused my emotions or have made plans for addressing it” (problem solving), “brooded my emotions with others” (co-brooding), “sought distraction” (distraction), “suppressed, ignored or avoided (the thoughts about) my emotions or the situation that caused them.” (avoidance), “talked about my feelings with others for advice or support” (social sharing), “been thinking about my feelings and their causes and/or consequences” (rumination) and “experienced my emotions as they are without wanting them change: it is OK that they are there” (acceptance). With 10 daily assessments over 7 days, the maximum possible number of measurements for emotion regulation strategies was 70.
+
+## Dataset 5: Outside-in, Ghent University [main reference: @braetVeGotFriend2023]
+
+### Participants
+
+244 students were recruited from local schools in Belgium (age M = 13.46, SD = 0.42; female = 48%). This 3-wave study was approved by the Medical Ethics Committee of Ghent University Hospital (protocol number: BC-09559). For our analysis, we only utilized data from the third wave, which was collected in 2022. This choice ensures that participants from this study have a closer age range to participants in other studies. After excluding observations in which each ESM item was completed in less than 500ms and excluding participants who showed zero variance across all ESM items, the final sample consisted of 212 participants. Mean age of the sample was 13.46 years (SD = 0.42), and 44% were female. Majority of the sample were born to Belgian parents (90%).
+
+### Proceure
+
+
+Participants were recruited through nine different schools (Flanders region). Parental consent and written assent from adolescents were obtained. All participants installed the m-path app on their smartphones [www.m-path.io, @mestdagh2023m]. The ESM period started within a few days after completing different baseline questionnaires. The ESM phase lasted for 14 consecutive days during school weeks, during which the m-path app gave 5 beeps at fixed intervals each day in a 12-hr time frame. One measurement took an average of 2 minutes  . The participants had 50 to 120 minutes after the notification  to complete the questionnaire (first to third beep of the day: 50 minutes, fourth beep of the day: 90 minutes, and last beep of the day: 120 minutes). In cases where participants did not open the momentary assessments, the app sent reminders every 10 minutes after the initial notification.  Compliance rate was also monitored during the study for each participant, after two days of low compliance participants received a message via m-path. Out of all participants, one discontinued the study after seven days, thus only receiving 35 beeps. Two participants encountered technical issues that prevented them from receiving some beeps on weekends, resulting in only 52 and 56 beeps received [ID 4011, 10076]. Another 27 participants experienced occasional technical issues, receiving 65 to 69 beeps over the course of 14 days. The median number of assessments completed per participant was 49 out of 70 (70%, M = 64.51% , SD = 24.97%, range: 1.4%–100% of all possible beeps). When the 14 days were over, the study was completed and the participants were rewarded with a gift voucher worth €20 when they completed at least 70% of surveys, while a voucher of €10 was given to those who completed between 50% and 70% of surveys. 
+
+### ESM measures
+
+#### Emotions
+
+At each momentary assessment, participants rated three positive emotions (happy, energetic, and relaxed) and six negative emotions (sad, angry, anxious, uncertain, annoyed, and stressed) presented on a 7-point scale from 1 (totally not) to 7 (totally). The stem for these items was “I now feel: [emotion]”. With 5 daily assessments over 14 days, the maximum possible number of measurements for negative emotions was 70.
+
+#### Emotion regulation strategies
+
+First, participants reported the intensity of their experienced negative emotions since the last survey (or after waking up). In case no negative emotion was experienced, participants were instructed to respond with a score of 1. Then, Participants rated the extent they used eight emotion regulation strategies presented on a 7-point scale from 1 (totally not) to 7 (totally). The stem for these items was “When I felt those negative emotions…”. With reference to [@medlandRegulatingEmotionSystems2020a], five items ended with “I tried to see the situation in other ways” (cognitive reappraisal), “I tried to hide my emotions” (expressive suppression), “I did things to distract myself” (distraction), “I could not stop thinking about them” (rumination), and “I tried to express my emotions” (expression). Next, one item was added to assess social sharing, “I talked with someone else about the situation” (social sharing). Finally, based on @berking2011sek, two more self-compassion  items were included: “I have supported myself” (self-compassion) and “I tried to cheer up myself” (self-compassion). With 5 daily assessments over 14 days, the maximum possible number of measurements for emotion regulation strategies was 70.
+
+\newpage
+\renewcommand{\thetable}{S\arabic{table}} \setcounter{table}{2}
+
+# Supplemental Materials 3 – Multilevel Confirmatory Factor Analysis per Dataset
+
+We ran Multilevel Confirmatory Factor Analyses [MCFA; see procedures in @eiseleAffectiveStructureMeasurement2021] to confirm the factor structure for positive emotions and negative emotions at both within-adolescent and between-adolescent levels. In the MCFA, positive emotion items were loaded on an overall positive emotion factor, negative emotion items were loaded on an overall negative emotion factor. The positive and negative emotion latent factors were allowed to correlate. We inspected model fit with conventional cutoff values [RMSEA < .08, CFI > .90 and TLI > .90; see @schermelleh2003evaluating]. When model fits were unsatisfactory, as in datasets 3, 4, and 5, we allowed residual variance of overlapping items to correlate to improve model fit. Overall, positive and negative emotions loaded separately on two factors as indicated with satisfactory fit indices, as shown in Table S3. In other words, it was suitable to take the mean of the positive emotions as a single-factor index, and likewise for negative emotions.
+
+```{r, echo = FALSE}
+SMtable3 <- as.data.frame(read.csv("results/SMTable3.csv"))
+SMtable3$loadings <- paste0(papaja::apa_num(SMtable3$min, gt1 = FALSE),"–",
+                            papaja::apa_num(SMtable3$max, gt1 = FALSE))
+SMtable3$chisq <- papaja::apa_num(SMtable3$chisq)
+SMtable3[,c("rmsea","cfi","tli")]<-
+  SMtable3[,c("rmsea","cfi","tli")]%>% papaja::apa_num(gt1 = FALSE)
+SMtable3 <- SMtable3[,c("loadings","chisq","rmsea","cfi","tli")]
+colnames(SMtable3) <- c("SFL","X2","RMSEA","CFI","TLI") #λ*χ2 can't be knitted somehow
+SMtable3 <- cbind(SMtable3[1:5,],SMtable3[6:10,])
+row.names(SMtable3) <- c("G(F)ood together (Radboud)",
+                             "Emotions in daily life 2011 (Leuven)",
+                             "3-wave longitudinal study (Leuven)*",
+                             "Emotions in daily life (Tilburg)*",
+                             "Outside-in (Ghent)*"
+                             )
+
+kbl(SMtable3,
+    booktabs = T, align = "l", linesep = '',
+    escape = FALSE,
+    caption = "Multilevel Confirmatory Factor Analysis per Datasets")  %>%
+    row_spec(0, bold = TRUE) %>%
+    kable_styling(font_size = 7)%>%
+add_header_above(c("Dataset", "Within-person" = 5, "Between-person" = 5))%>%
+footnote(threeparttable = T, general = "SFL = standardized factor loadings (all p < .001). X2 = Chi-square. RMSEA = Root Mean Square Error of Approximation. CFI = Comparative Fit Index. TLI = Tucker Lewis Index. When evaluating the fit of the within-person model, a saturated between-person model was specified. When evaluating the between-person model, a saturated within-person was specified. In general, model fit at the within-person level was usually worse than at the between-person level. While the TLI is not acceptable in some models, both the RMSEA and CFI are.",
+symbol = c("For datasets 3, 4 and 5, we included correlations between residual variances of overlapping items (e.g., relaxed with stressed) to improve model fit. For the within-person model for dataset 3, we included the correlation between the items \"relaxed\" and \"stressed\" at the within-person level. For the within-person model for dataset 4, we included the correlation between the items \"angry\" and \"irritated\" and \"sad\" and \"low\" at the within-person level. For the within-person model for dataset 5, we included the correlation between the items \"angry\" and \"sad\" at the within-person level.")
+)
+
+```
+
+
+\newpage
+\blandscape
+\renewcommand{\thetable}{S4.\arabic{table}} \setcounter{table}{0}
+
+# Supplemental Materials 4: Descriptive statistics and correlations per dataset
+
+```{r, echo = FALSE, warning=FALSE}
+
+printDesCorTable <- function(filesource, strcaption){
+temptbl <- as.data.frame(read.csv(filesource))
+temptbl<- as.data.frame(sapply(temptbl, function(x) sub("\\[", "\\\n\\[", x)))
+temptbl<- temptbl %>% mutate_all(linebreak)
+colnames(temptbl) <- c("Index", "n"	,"M"	,"SDw"	,"SDb",	1,2,3,4,5,6,7,8)
+temptbl$Index <- c("1. Positive emotion intensity",
+                          "2. Positive emotion differentiation",
+                          "3. Negative emotion intensity",
+                          "4. Negative emotion differentiation",
+                          "5. Emotion regulation intensity",
+                          "6. Emotion regulation variability",
+                          "7. Endorsement change",
+                          "8. Strategy switching"
+                          )
+kbl(temptbl,
+    booktabs = T, align = "l", linesep = '',
+    escape = FALSE,
+    caption = strcaption)  %>%
+    row_spec(0, bold = TRUE) %>%
+    column_spec(6:13, width = "1.3cm") %>%
+    kable_styling(font_size = 7)%>%
+        footnote(threeparttable = T, general = "Within-person correlations at lower triangle and between-person correlations at upper triangle. Confidence interval of correlations in squared brackets. All these indices were calculated only in observations with no missingness in relevant ESM items, so the lower n for emotion regulation indices reflected more missing items in constituent ESM items.")
+  
+}
+
+printDesCorTable("results/SMTable41.csv",
+                 "Within- and Between-person Correlations of Momentary Indices in the Pooled Dataset (N=778)")
+
+```
+
+\renewcommand{\thetable}{S4.2.\arabic{table}} \setcounter{table}{0}
+\newpage
+
+```{r, echo = FALSE, warning=FALSE}
+printDesCorTable("results/SMTable421.csv",
+                 "Within- and Between-person Correlations of Momentary Indices Dataset 1: G(F)ood together (Radboud)")
+
+```
+\newpage
+
+```{r, echo = FALSE, warning=FALSE}
+printDesCorTable("results/SMTable422.csv",
+                 "Within- and Between-person Correlations of Momentary Indices Dataset 2: Emotions in daily life (Leuven)")
+
+```
+\newpage
+
+```{r, echo = FALSE, warning=FALSE}
+printDesCorTable("results/SMTable423.csv",
+                 "Within- and Between-person Correlations of Momentary Indices Dataset 3: 3-wave longitudinal study (Leuven)")
+
+```
+\newpage
+
+```{r, echo = FALSE, warning=FALSE}
+printDesCorTable("results/SMTable424.csv",
+                 "Within- and Between-person Correlations of Momentary Indices Dataset 4: Emotion regulation in daily life (Tilburg)")
+
+```
+\newpage
+
+```{r, echo = FALSE, warning=FALSE}
+printDesCorTable("results/SMTable425.csv",
+                 "Within- and Between-person Correlations of Momentary Indices Dataset 5: Outside-in (Ghent)")
+
+```
+
+
+\elandscape
+
+
+\renewcommand{\thetable}{S\arabic{table}} \setcounter{table}{4}
+
+\newpage
+# Supplemental Materials 5: Full multilevel model results
+
+```{r, echo = FALSE}
+# useful functions for supplemental materials 5 and 6
+
+prepareHeading <- function(df,strheading, strmodel){
+  data.frame("varname" = strheading,
+             "output" = paste0("N = ", 
+                               df %>% filter(model == paste0(strmodel,"_NA")) %>% select(N) %>% min,
+                               ", n = ",
+                               df %>% filter(model == paste0(strmodel,"_NA")) %>% select(nobs) %>% min),
+             "output.1" =paste0("N = ", 
+                                df %>% filter(model == paste0(strmodel,"_PA")) %>% select(N) %>% min,
+                                ", n = ",
+                                df %>% filter(model == paste0(strmodel,"_PA")) %>% select(nobs) %>% min),
+             "sig" = FALSE,
+             "sig.1" = FALSE,
+             "indent" = FALSE)
+}
+prepareSubHeading <- function(strheading){
+  data.frame("varname" = strheading,
+             "output" = "",
+             "output.1" ="",
+             "sig" = FALSE,
+             "sig.1" = FALSE,
+            "indent" = FALSE)
+}
+
+extractMMresult <- function(df,strmodel,strtype){
+  data.frame(df %>% filter(model==paste0(strmodel,"_NA"), type==strtype) %>% select(varname),
+             df %>% filter(model==paste0(strmodel,"_NA"), type==strtype) %>% select(output),
+             df %>% filter(model==paste0(strmodel,"_PA"), type==strtype) %>% select(output),
+             df %>% filter(model==paste0(strmodel,"_NA"), type==strtype) %>% select(sig),
+             df %>% filter(model==paste0(strmodel,"_PA"), type==strtype) %>% select(sig),
+             "indent" = TRUE
+  )
+}     
+
+givevarname <- function(df){
+  df %>% stringr::str_replace_all(c("BrayCurtisFull.ammcw" = "Emotion regulation variability", 
+                             "BrayCurtisRepl.ammcw"="Strategy switching",
+                             "BrayCurtisNest.ammcw"="Endorsement change",
+                             "BrayCurtisFull.succw" = "Emotion regulation variability", 
+                             "BrayCurtisRepl.succw"="Strategy switching",
+                             "BrayCurtisNest.succw"="Endorsement change",
+                             "m_EDcwL1D"="Lagged emotion differentiation",
+                             "m_EDPAcwL1D"="Lagged emotion differentiation",
+                             "m_NAcwL1D"="Lagged emotion intensity",
+                             "m_PAcwL1D"="Lagged emotion intensity",
+                             "m_NAcw"="Emotion intensity",
+                             "m_PAcw"="Emotion intensity",
+                             "m_ERcw"="Emotion regulation intensity",
+                             "timecw"="Time trend",
+                             "\\(Intercept\\)"="Intercept",
+                             "BrayCurtisFull.ammcb"="Emotion regulation variability",
+                             "BrayCurtisRepl.ammcb"="Strategy switching",
+                             "BrayCurtisNest.ammcb"="Endorsement change",
+                             "BrayCurtisFull.succb"="Emotion regulation variability",
+                             "BrayCurtisRepl.succb"="Strategy switching",
+                             "BrayCurtisNest.succb"="Endorsement change",
+                             "m_EDcb"="Emotion differentiation",
+                             "m_EDPAcb"="Emotion differentiation",
+                             "m_NAcb"="Emotion intensity",
+                             "m_PAcb"="Emotion intensity",
+                             "m_ERcb"="Emotion regulation intensity",
+                             "AGE"="Age",
+                             "FEMALE"="Female"))
+}
+givevartype <- function(df){
+  df %>%
+  stringr::str_replace_all(c("BrayCurtisFull.ammcw" = "within", 
+                             "BrayCurtisRepl.ammcw"="within",
+                             "BrayCurtisNest.ammcw"="within",
+                             "BrayCurtisFull.succw" = "within", 
+                             "BrayCurtisRepl.succw"="within",
+                             "BrayCurtisNest.succw"="within",
+                             "m_EDcwL1D"="within",
+                             "m_EDPAcwL1D"="within",
+                             "m_NAcwL1D"="within",
+                             "m_PAcwL1D"="within",
+                             "m_NAcw"="within",
+                             "m_PAcw"="within",
+                             "m_ERcw"="within",
+                             "timecw"="within",
+                             "\\(Intercept\\)"="between",
+                             "BrayCurtisFull.ammcb"="between",
+                             "BrayCurtisRepl.ammcb"="between",
+                             "BrayCurtisNest.ammcb"="between",
+                             "BrayCurtisFull.succb"="between",
+                             "BrayCurtisRepl.succb"="between",
+                             "BrayCurtisNest.succb"="between",
+                             "m_EDcb"="between",
+                             "m_EDPAcb"="between",
+                             "m_NAcb"="between",
+                             "m_PAcb"="between",
+                             "m_ERcb"="between",
+                             "AGE"="between",
+                             "FEMALE"="between"))
+}
+# sequence of ordering variables
+varorder <- c("BrayCurtisFull.ammcw",
+              "BrayCurtisRepl.ammcw",
+              "BrayCurtisNest.ammcw",
+              "BrayCurtisFull.succw",
+              "BrayCurtisRepl.succw",
+              "BrayCurtisNest.succw",
+              "m_EDcwL1D",
+              "m_EDPAcwL1D",
+              "m_NAcwL1D",
+              "m_PAcwL1D",
+              "m_NAcw",
+              "m_PAcw",
+              "m_ERcw",
+              "timecw",
+              "(Intercept)",
+              "BrayCurtisFull.ammcb",
+              "BrayCurtisRepl.ammcb",
+              "BrayCurtisNest.ammcb",
+              "BrayCurtisFull.succb",
+              "BrayCurtisRepl.succb",
+              "BrayCurtisNest.succb",
+              "m_EDcb",
+              "m_EDPAcb",
+              "m_NAcb",
+              "m_PAcb",
+              "m_ERcb",
+              "AGE",
+              "FEMALE"
+)
+
+
+```
+
+```{r, echo = FALSE}
+
+SMtable5 <- as.data.frame(read.csv("results/SMTable5.csv"))
+SMtable5$output <- paste0(papaja::apa_num(SMtable5$FEest, digits = 3)," [",
+                          papaja::apa_num(SMtable5$l95CI, digits = 3),", ",
+                          papaja::apa_num(SMtable5$u95CI, digits = 3),"]")
+SMtable5$sig <- SMtable5$pvalue < 0.05
+SMtable5 <- SMtable5 %>%arrange(model,match(X, varorder))
+SMtable5$varname <- givevarname(SMtable5$X)
+SMtable5$type <- givevartype(SMtable5$X)
+
+
+outSMT5 <- bind_rows(prepareHeading(SMtable5,"Outcome: Emotion regulation variability (Model 1A)","mm1A"),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable5,"mm1A","within"),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable5,"mm1A","between"),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMtable5,"Outcome: Strategy switching (Model 1B)","mm1B"),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable5,"mm1B","within"),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable5,"mm1B","between"),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMtable5,"Outcome: Endorsement change (Model 1C)","mm1C"),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable5,"mm1C","within"),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable5,"mm1C","between"),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMtable5,"Outcome: Emotion differentiation (Model 2A)","mm2A"),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable5,"mm2A","within"),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable5,"mm2A","between"),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMtable5,"Outcome: Emotion differentiation (Model 2B)","mm2B"),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable5,"mm2B","within"),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable5,"mm2B","between"),
+                     prepareSubHeading(" "),
+)
+# apa_table(outSMT5[,1:3])
+txtsplitNA <- strsplit(paste0(
+  "Negative Emotions b [95% CI]"), " ")[[1]]
+txtsplitPA <- strsplit(paste0(
+  "Positive Emotions b [95% CI]"), " ")[[1]]
+txtNA <- paste(
+  text_spec(txtsplitNA, italic = c(FALSE,FALSE,TRUE,TRUE,TRUE)),
+  collapse = " ")
+txtPA <- paste(
+  text_spec(txtsplitPA, italic = c(FALSE,FALSE,TRUE,TRUE,TRUE)),
+  collapse = " ")
+
+boldNA <- outSMT5$sig
+boldPA <- outSMT5$sig.1
+bIndent <- which(outSMT5$indent %in% TRUE)
+colnames(outSMT5)[1:3] <- c("",
+                      txtNA,
+                      txtPA)
+kbl(outSMT5[,1:3],
+    booktabs = T, align = "l", linesep = '',longtable = T,
+    escape = FALSE,
+    caption = "Fixed Effect Estimates of Within-Person Temporal Associations and Between-Person Differences Between Emotion Differentiation and Emotion Regulation Variability")  %>%
+      column_spec(2, width = "3.5cm", bold = boldNA) %>%
+      column_spec(3, width = "3.5cm", bold = boldPA) %>%
+    # column_spec(6:13, width = "1.3cm") %>%
+    kable_styling(font_size = 8)%>%
+  add_indent(bIndent)%>%
+    kable_styling(latex_options = c("repeat_header"))%>%
+        footnote(threeparttable = T, general = "Significant effects are displayed in bold. n: number of ESM assessments; N: number of adolescents; b: unstandardized effect; CI: confidence interval.")
+
+```
+
+
+\newpage
+# Supplemental Materials 6: Sensitivity analyses using the successive approach to calculate Bray-Curtis dissimilarity
+
+In the main text, we calculated emotion regulation variability as Bray-Curtis dissimilarity by comparing the moment of interest with all other moments the same individual reported, which is known as the all-moment comparison approach. An alternative approach to calculating Bray-Curtis dissimilarity is by the successive temporal comparison which compares the moment of interest with the previous moment. This approach of calculation is not available if such previous moments have missingness, but the all-moment comparison approach can still compute the dissimilarity as long as there are at least two observations. As sensitivity analyses, we ran the same analyses with the successive temporal comparison approach. As shown in Table S6, the momentary reciprocal hinderance between negative emotion differentiation and emotion regulation variability was also seen when emotion regulation variability was calculated in the successive temporal comparison approach. In terms of individual differences, similar to our main findings, there were no significant associations between negative emotion differentiation and emotion regulation variability (model 2A). Interestingly, upon partitioning variability into two subprocesses (model 2B), in addition to the negative association between negative emotion differentiation and endorsement change, there was a positive association between negative emotion differentiation and strategy switching. In other words, the degree to which participants switched from one strategy to another on average was positively related to their baseline negative emotion differentiation.  These results suggest robustness in our main findings in testing our pre-registered hypotheses.
+
+
+```{r, echo = FALSE}
+
+SMtable6 <- as.data.frame(read.csv("results/SMTable6.csv"))
+SMtable6$output <- paste0(papaja::apa_num(SMtable6$FEest, digits = 3)," [",
+                          papaja::apa_num(SMtable6$l95CI, digits = 3),", ",
+                          papaja::apa_num(SMtable6$u95CI, digits = 3),"]")
+SMtable6$sig <- SMtable6$pvalue < 0.05
+SMtable6 <- SMtable6 %>%arrange(model,match(X, varorder))
+SMtable6$varname <- givevarname(SMtable6$X)
+SMtable6$type <- givevartype(SMtable6$X)
+
+
+outSMT6 <- bind_rows(prepareHeading(SMtable6,"Outcome: Emotion regulation variability (Model 1A)","mms1A"),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable6,"mms1A","within"),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable6,"mms1A","between"),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMtable6,"Outcome: Strategy switching (Model 1B)","mms1B"),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable6,"mms1B","within"),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable6,"mms1B","between"),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMtable6,"Outcome: Endorsement change (Model 1C)","mms1C"),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable6,"mms1C","within"),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable6,"mms1C","between"),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMtable6,"Outcome: Emotion differentiation (Model 2A)","mms2A"),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable6,"mms2A","within"),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable6,"mms2A","between"),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMtable6,"Outcome: Emotion differentiation (Model 2B)","mms2B"),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable6,"mms2B","within"),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable6,"mms2B","between"),
+                     prepareSubHeading(" "),
+)
+# apa_table(outSMT5[,1:3])
+txtsplitNA <- strsplit(paste0(
+  "Negative Emotions b [95% CI]"), " ")[[1]]
+txtsplitPA <- strsplit(paste0(
+  "Positive Emotions b [95% CI]"), " ")[[1]]
+txtNA <- paste(
+  text_spec(txtsplitNA, italic = c(FALSE,FALSE,TRUE,TRUE,TRUE)),
+  collapse = " ")
+txtPA <- paste(
+  text_spec(txtsplitPA, italic = c(FALSE,FALSE,TRUE,TRUE,TRUE)),
+  collapse = " ")
+
+boldNA <- outSMT6$sig
+boldPA <- outSMT6$sig.1
+bIndent <- which(outSMT6$indent %in% TRUE)
+colnames(outSMT6)[1:3] <- c("",
+                      txtNA,
+                      txtPA)
+kbl(outSMT6[,1:3],
+    booktabs = T, align = "l", linesep = '',longtable = T,
+    escape = FALSE,
+    caption = "Fixed Effect Estimates of Within-Person Temporal Associations and Between-Person Differences Between Emotion Differentiation and Emotion Regulation Variability Calculated as the Successive Comparison Approach")  %>%
+      column_spec(2, width = "3.5cm", bold = boldNA) %>%
+      column_spec(3, width = "3.5cm", bold = boldPA) %>%
+    # column_spec(6:13, width = "1.3cm") %>%
+    kable_styling(font_size = 8)%>%
+  add_indent(bIndent)%>%
+    kable_styling(latex_options = c("repeat_header"))%>%
+        footnote(threeparttable = T, general = "Significant effects are displayed in bold. n: number of ESM assessments; N: number of adolescents; b: unstandardized effect; CI: confidence interval.")
+
+```
+
+
+\newpage
+
+# References
+
+::: {#refs custom-style="Bibliography"}
+:::
