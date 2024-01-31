@@ -201,20 +201,20 @@ write.csv(outputDesStat, "manuscript/results/Table2.csv", row.names=FALSE)
 # ===================================
 
 # Descriptive Statistics
-
-desstat1  <- as.data.frame(summarydesstat(dataGVE, "PARTICIPANT_ID", c(inputIndices)))
-desstat2  <- as.data.frame(summarydesstat(dataLeuven2011, "PARTICIPANT_ID", c(inputIndices)))
-desstat3  <- as.data.frame(summarydesstat(dataLeuven3W, "PARTICIPANT_ID", c(inputIndices)))
-desstat4  <- as.data.frame(summarydesstat(dataTilburg, "PARTICIPANT_ID", c(inputIndices)))
-desstat5  <- as.data.frame(summarydesstat(dataGhent, "PARTICIPANT_ID", c(inputIndices)))
-SMTable41 <- rbind(desstat1,
-                   desstat2,
-                   desstat3,
-                   desstat4,
-                   desstat5)
-rownames(SMTable41) <- NULL
-colnames(SMTable41) <- c("Dataset and indices", "n","M","SDw","SDb")
-write.csv(SMTable41, "manuscript/results/SMTable41.csv", row.names=FALSE)
+# 
+# desstat1  <- as.data.frame(summarydesstat(dataGVE, "PARTICIPANT_ID", c(inputIndices)))
+# desstat2  <- as.data.frame(summarydesstat(dataLeuven2011, "PARTICIPANT_ID", c(inputIndices)))
+# desstat3  <- as.data.frame(summarydesstat(dataLeuven3W, "PARTICIPANT_ID", c(inputIndices)))
+# desstat4  <- as.data.frame(summarydesstat(dataTilburg, "PARTICIPANT_ID", c(inputIndices)))
+# desstat5  <- as.data.frame(summarydesstat(dataGhent, "PARTICIPANT_ID", c(inputIndices)))
+# SMTable41 <- rbind(desstat1,
+#                    desstat2,
+#                    desstat3,
+#                    desstat4,
+#                    desstat5)
+# rownames(SMTable41) <- NULL
+# colnames(SMTable41) <- c("Dataset and indices", "n","M","SDw","SDb")
+# write.csv(SMTable41, "manuscript/results/SMTable41.csv", row.names=FALSE)
 
 # Multilevel correlation
 
@@ -262,32 +262,31 @@ cortablesummary <- function(df, inputIndices = inputIndices, labelIndices = labe
 }
 
 # warnings are about participants who have too few ESM observations so that some had no within-person SD
-write.csv(cortablesummary(df,inputIndices,labelIndices),"manuscript/results/SMTable42.csv")
-write.csv(cortablesummary(dataGVE,inputIndices,labelIndices),"manuscript/results/SMTable431.csv")
-write.csv(cortablesummary(dataLeuven2011,inputIndices,labelIndices),"manuscript/results/SMTable432.csv")
-write.csv(cortablesummary(dataLeuven3W,inputIndices,labelIndices),"manuscript/results/SMTable433.csv")
-write.csv(cortablesummary(dataTilburg,inputIndices,labelIndices),"manuscript/results/SMTable434.csv")
-write.csv(cortablesummary(dataGhent,inputIndices,labelIndices),"manuscript/results/SMTable435.csv")
+write.csv(cortablesummary(df,inputIndices,labelIndices),"manuscript/results/SMTable41.csv")
+write.csv(cortablesummary(dataGVE,inputIndices,labelIndices),"manuscript/results/SMTable421.csv")
+write.csv(cortablesummary(dataLeuven2011,inputIndices,labelIndices),"manuscript/results/SMTable422.csv")
+write.csv(cortablesummary(dataLeuven3W,inputIndices,labelIndices),"manuscript/results/SMTable423.csv")
+write.csv(cortablesummary(dataTilburg,inputIndices,labelIndices),"manuscript/results/SMTable424.csv")
+write.csv(cortablesummary(dataGhent,inputIndices,labelIndices),"manuscript/results/SMTable425.csv")
 
 # ===================================
 # Part 6: Multilevel Confirmatory Factor Analysis per Dataset
 # Supplemental materials 3
 # ===================================
-
-
 # function that extract fit indices
 summaryfit <- function(cfamodel, inputPA,inputNA){
   sf <- summary(cfamodel, standardized = TRUE, fit.measures = TRUE)
   sf$fit[c("rmsea","cfi","tli")]
   sfest <- sf$pe[sf$pe$lhs %in% c("pa","na") & sf$pe$rhs %in% c(inputPA,inputNA),"std.all"]
   c(
-    round(c(min=min(sfest),
-            max=max(sfest),
+    c(min = min(sfest),
+      max = max(sfest),
             sf$fit[c("chisq",
                      "rmsea",
                      "cfi",
-                     "tli")]),
-          2)) # round to 2 decimal places
+                     "tli")] # round to 2 decimal places
+          )
+  )
 }
 
 # Within- RMSEA
@@ -963,5 +962,6 @@ rescfa <- rbind(c(model = deparse(substitute(f1aw)), summaryfit(f1aw, inputPA.GV
       c(model = deparse(substitute(f3ab)), summaryfit(f3ab, inputPA.Leuven3W,inputNA.Leuven3W)),
       c(model = deparse(substitute(f4ab)), summaryfit(f4ab, inputPA.Tilburg,inputNA.Tilburg)),
       c(model = deparse(substitute(f5ab)), summaryfit(f5ab, inputPA.Ghent,inputNA.Ghent)))
-write.csv(rescfa,"manuscript/results/SMTable3extra.csv")
+colnames(rescfa) <- c("model","min","chisq","rmsea","cfi","tli")
+write.csv(rescfa,"manuscript/results/SMTable3.csv", row.names = FALSE)
 
