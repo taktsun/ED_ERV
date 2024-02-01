@@ -1,5 +1,5 @@
 ---
-title             : "Hold to Behold: Less Changes in Emotion Regulation Strategies Predicts Better Differentiated Emotions within Adolescents"
+title             : "Naming before Taming? Emotion Differentiation and Emotion Regulation Variability Hinder Each Other within Adolescents"
 shorttitle        : "EMOTION DIFFERENTIATION & REGULATION VARIABILITY"
 
 author: 
@@ -210,7 +210,7 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
 
 # Methods
 
-This paper follows the Workflow for Open Reproducible Code in Science [@vanlissaWORCSWorkflowOpen2021]. The pre-registration (hypotheses and analysis plan), data and analysis codes of this study are available via https://doi.org/10.17605/OSF.IO/9VX7T. A priori power analysis, detailed in Supplemental Materials 1, showed that we had more than 80% power to test our hypotheses. 
+This paper follows the Workflow for Open Reproducible Code in Science [@vanlissaWORCSWorkflowOpen2021]. The pre-registration (hypotheses and analysis plan), data and analysis codes of this study are available via https://doi.org/10.17605/OSF.IO/9VX7T. In Supplemental Materials 1, we detailed our _a priori_ power analysis which showed we had more than 80% power to test our hypotheses, and reported three minor deviations we had from our pre-registration.
 
 ```{r, echo = FALSE}
 table1 <- as.data.frame(read.csv("results/Table1.csv"))
@@ -545,7 +545,7 @@ As research on emotion regulation variability in daily life is still in its infa
 
 Furthermore, emotion regulation variability and its subcomponents may exhibit complex relations with other emotion characteristics. For instance, a recent study showed that when emotions are either less intense or more intense than usual, emotion regulation variability is highest[@maciejewskiEmoCharacteristics]. This suggests that there may be an optimal level of when and how to vary emotion regulation. 
 
-Outside of the emotion regulation system, it is also theorized that (changes in) context are related to emotion regulation variability. For example, adolescents may have limited choices of emotion regulation strategies while they are commuting to school but are more likely to adjust their strategies upon changes of context (e.g., arriving home from school). Varying strategies in synchrony with changing contexts is different from context-insensitive fluctuations [flexibility and instability; @kalokerinosEmotionRegulationFlexibility2022]. Further research that shows how developmental factors, emotion characteristics, and daily life contexts influence emotion regulation variability and its subcomponents may ultimately enrich our understanding of the interplay between emotion differentiation and emotion regulation variability .
+Outside of the emotion regulation system, it is also theorized that (changes in) context are related to emotion regulation variability. For example, adolescents may have limited choices of emotion regulation strategies while they are commuting to school but are more likely to adjust their strategies upon changes of context (e.g., arriving home from school). Varying strategies in synchrony with changing contexts is different from context-insensitive fluctuations [flexibility and instability, @kalokerinosEmotionRegulationFlexibility2022]. Further research that shows how developmental factors, emotion characteristics, and daily life contexts influence emotion regulation variability and its subcomponents may ultimately enrich our understanding of the interplay between emotion differentiation and emotion regulation variability .
 
 ## Limitations
 

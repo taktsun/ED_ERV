@@ -1,5 +1,5 @@
 ---
-title             : "Supplemental Materials: Hold to Behold: Less Changes in Emotion Regulation Strategies Predicts Better Differentiated Negative Emotions within Adolescents"
+title             : "Supplemental Materials: Naming before Taming? Emotion Differentiation and Emotion Regulation Variability Hinder Each Other within Adolescents"
 shorttitle        : "EMOTION DIFFERENTIATION & REGULATION VARIABILITY"
   
 author: 
