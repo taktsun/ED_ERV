@@ -1,3 +1,3 @@
 # Readme 
 
-This is a folder for raw data of my project["Naming before Taming? Emotion Differentiation and Emotion Regulation Variability Hinder Each Other within Adolescents."](https://osf.io/cq6n4/). It is meant to be empty because raw data may contain personal identifers of participants. All analyses can be reproduced with primary data, but reviewers and other interested researchers are welcome to request raw data for verfication.
+This is an empty folder for raw data. It is meant to be empty because raw data from Radboud, Tilburg, and Ghent contain potential personal identifers of participants. Two raw datasets from Leuven can be downloaded at this link: http://emotedatabase.com/requestid/1D13C1YC2Q. These two raw datasets should be placed in this folder.
