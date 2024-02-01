@@ -87,7 +87,7 @@ The pooled sample size across five datasets was 811. We used the PowerAnalysisIL
 
 ### Hypothesis 1
 
-Power analysis results for Hypothesis 1 is shown in Table S1.1. We concluded that power is likely to be over 80% when the final sample size approaches 800.
+Power analysis results for Hypothesis 1 are shown in Table S1.1. We concluded that power is likely to be over 80% when the final sample size approaches 800.
 
 
 ```{r , echo = FALSE}
@@ -107,7 +107,7 @@ add_header_above(c("Power Analysis Setup" = 2, "Power Analysis Result" = 2))
 
 ### Hypothesis 2
 
-Hypothesis table 2 here. For hypothesis two, there was already enough power by just using the Radboud dataset (N after exclusion criteria applied = 83).
+Power analysis results for Hypothesis 2 are shown in Table S1.2. For hypothesis two, there was already enough power by just using the Radboud dataset (N after exclusion criteria applied = 83).
 
 
 ```{r , echo = FALSE}
@@ -132,7 +132,7 @@ Our study had three minor deviations from its pre-registration.
 
 First, in section 19 and 28 (indices), we initially planned to use intraclass correlation coefficient (ICC) for between-person emotion differentiation. In our actual analyses, we did not use ICC, but the between-person component of the momentary emotion differentiation index [@erbasMomentaryEmotionDifferentiation2021a]. We considered this deviation appropriate because the momentary emotion differentiation index was derived from ICC and was shown to be statistically perfectly related to ICC [@erbasMomentaryEmotionDifferentiation2021a].
 
-Second, it concerned our approach to testing between-person Hypothesis 3 (originally Hypothesis 1 in the pre-registration) as outlined in section 22 (analysis plan). While we initially planned to use hierarchical regressions, we instead tested this hypothesis by examining the fixed effect estimates of the time-invariant between-person components in multilevel models. Although a minor procedural deviation, this approach is statistically highly similar as the pre-registered approach.
+Second, in section 22 (analysis plan), we initially planned to test the between-person Hypothesis 3 (originally Hypothesis 1 in the pre-registration) with hierarchical regressions. In our actual analysis, we instead tested this hypothesis by examining the fixed effect estimates of the time-invariant between-person components in multilevel models. Although a minor procedural deviation, this approach is statistically highly similar as the pre-registered approach.
 
 Third, in section 27 (data exclusion), we specified the exclusion of data with zero variance across all observations. However, we did not clarify if this zero variance criterion was to be applied at the item level (e.g., for a specific emotion like sadness) or at the factor level (e.g., for a group of related emotions such as sad, angry, depressed, and anxious, useful in calculating negative emotion intensity and differentiation). In our actual analysis, we opted for the factor-level application. This decision was based on the understanding that some items might not be relevant to participants (see Discussion), leading to zero ratings, but this would not necessarily indicate poor data quality if there was variance in other items within the same factor. Additionally, our dynamic indices evaluate multiple items, not just single ones. Applying the exclusion criterion at the factor level aligns more closely with our research objectives and ensures a more accurate assessment of data quality than excluding data based on single-item zero variance.
 
@@ -311,7 +311,7 @@ kbl(temptbl,
     row_spec(0, bold = TRUE) %>%
     column_spec(6:13, width = "1.3cm") %>%
     kable_styling(font_size = 7)%>%
-        footnote(threeparttable = T, general = "Within-person correlations at lower triangle and between-person correlations at upper triangle. Confidence interval of correlations in squared brackets. All these indices were calculated only in observations with no missingness in relevant ESM items, so the lower n for emotion regulation indices reflected more missing items in constituent ESM items.")
+        footnote(threeparttable = T, general = "SDw: Within-person SD. SDb: Between-person SD. Within-person correlations at lower triangle and between-person correlations at upper triangle. Confidence interval of correlations in squared brackets. All these indices were calculated only in observations with no missingness in relevant ESM items, so the lower n for emotion regulation indices reflected more missing items in constituent ESM items.")
   
 }
 

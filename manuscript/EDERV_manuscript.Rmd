@@ -369,8 +369,8 @@ table2$var <- c("Positive emotion intensity",
                              )
 colnames(table2) <- c("Momentary index",
                       "Mean",
-                      "within-person SD",
-                      "within-person SD")
+                      "Within-person SD",
+                      "Between-person SD")
 outTable2 <- apa_table(table2, 
           # langscape = TRUE,
           caption = "Descriptive Statistics of Momentary Indices of the Pooled Dataset (N=778)",
