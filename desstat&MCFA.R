@@ -1,7 +1,11 @@
 # ======================================================================
 # Title: Descriptive and psychometric analyses
-# Date: 24-1-2024
-# Copyright: Edmund Lo, checked by Dominique Maciejewski
+# Date: 09-02-2024
+# Copyright: Edmund Lo, checked by Dominique Maciejewski on 24-01-2024
+#
+# Note! Run this either (1) line by line (windows: Ctrl+Enter), or
+#                       (2) as source with echo (windows: Ctrl+Shift+Enter)
+#       so that you will receive prompts on data availability.
 #
 # Overview: After loading all ready-to-analyze data (part 0),
 # we have 6 parts in this R script
@@ -36,12 +40,10 @@ library(lavaan) # for MCFA
 # ======================================================================
 
 source("list_of_variables.R") # load all ESM measures variable names
-df <- read.csv("dataProcessed/ReadyPooledESM.csv")
-dfPerson <- read.csv("dataProcessed/ReadyPooledPerson.csv")
-dfPersonB4Ex <- read.csv("dataProcessed/ReadyPooledPersonB4Ex.csv")
+source("checkdata_analysis.R")
 dataGVE<- read.csv("dataProcessed/ReadyGVE.csv")
-dataLeuven2011 <- read.csv("dataProcessed/ReadyLeuven2011.csv")
-dataLeuven3W <- read.csv("dataProcessed/ReadyLeuven3W.csv")
+if (ready.5datasets) dataLeuven2011 <- read.csv("dataProcessed/ReadyLeuven2011.csv")
+if (ready.5datasets) dataLeuven3W <- read.csv("dataProcessed/ReadyLeuven3W.csv")
 dataTilburg <- read.csv("dataProcessed/ReadyTilburg.csv")
 dataGhent <- read.csv("dataProcessed/ReadyGhent.csv")
 
@@ -61,6 +63,13 @@ outputTable1 <- dfPerson %>% group_by(study) %>%
             mean_COB = mean(COB, na.rm = TRUE),
             mean_t = mean(filledESMpc, na.rm=TRUE),
             SD_t = sd(filledESMpc, na.rm=TRUE)) %>% as.data.frame()
+if (!ready.5datasets) {
+  #add filler rows if there are only 3 datasets
+  outputTableSub1 <- as.data.frame(rbind(c("Leuven2011",rep(0,9)),
+                           c("Leuven3W",rep(0,9))))
+  colnames(outputTableSub1) <- colnames(outputTable1)
+  outputTable1 <- rbind(outputTable1, outputTableSub1)
+}
 outputOrder <- c("GVE", "Leuven2011", "Leuven3W", "Tilburg","Ghent")
 outputTable1<-outputTable1 %>% slice(match(outputOrder, study))
 outputTable1<-rbind(outputTable1, 
@@ -104,10 +113,10 @@ summaryICC <- function(df, group, strlist){
   dfICC
 }
 dfESMmeasuresICC <- rbind(summaryICC(dataGVE,"PARTICIPANT_ID",c(inputPA.GVE,inputNA.GVE,inputER.GVE)),
-summaryICC(dataLeuven2011,"PARTICIPANT_ID",c(inputPA.Leuven2011,inputNA.Leuven2011,inputER.Leuven2011)),
-summaryICC(dataLeuven3W,"PARTICIPANT_ID",c(inputPA.Leuven3W,inputNA.Leuven3W,inputER.Leuven3W)),
-summaryICC(dataTilburg,"PARTICIPANT_ID",c(inputPA.Tilburg,inputNA.Tilburg,inputER.Tilburg)),
-summaryICC(dataGhent,"PARTICIPANT_ID",c(inputPA.Ghent,inputNA.Ghent,inputER.Ghent)))
+                          if (ready.5datasets) summaryICC(dataLeuven2011,"PARTICIPANT_ID",c(inputPA.Leuven2011,inputNA.Leuven2011,inputER.Leuven2011)),
+                          if (ready.5datasets) summaryICC(dataLeuven3W,"PARTICIPANT_ID",c(inputPA.Leuven3W,inputNA.Leuven3W,inputER.Leuven3W)),
+                          summaryICC(dataTilburg,"PARTICIPANT_ID",c(inputPA.Tilburg,inputNA.Tilburg,inputER.Tilburg)),
+                          summaryICC(dataGhent,"PARTICIPANT_ID",c(inputPA.Ghent,inputNA.Ghent,inputER.Ghent)))
 
 write.csv(dfESMmeasuresICC, "manuscript/results/ESMmeasuresICC.csv", row.names=FALSE)
 
@@ -121,38 +130,38 @@ write.csv(dfESMmeasuresICC, "manuscript/results/ESMmeasuresICC.csv", row.names=F
 # which is expected, because we only excluded participants who show zero variance
 # in the same GROUP of variables (e.g., in all negative emotion items)
 omega_PA_SM_1 <- omegaSEM(items = inputPA.GVE,  data = dataGVE,  id = "PARTICIPANT_ID",  savemodel = FALSE)
-omega_PA_SM_2 <- omegaSEM(items = inputPA.Leuven2011,  data = dataLeuven2011,  id = "PARTICIPANT_ID",  savemodel = FALSE)
-omega_PA_SM_3 <- omegaSEM(items = inputPA.Leuven3W,  data = dataLeuven3W,  id = "PARTICIPANT_ID",  savemodel = FALSE)
+if (ready.5datasets) omega_PA_SM_2 <- omegaSEM(items = inputPA.Leuven2011,  data = dataLeuven2011,  id = "PARTICIPANT_ID",  savemodel = FALSE)
+if (ready.5datasets) omega_PA_SM_3 <- omegaSEM(items = inputPA.Leuven3W,  data = dataLeuven3W,  id = "PARTICIPANT_ID",  savemodel = FALSE)
 omega_PA_SM_4 <- omegaSEM(items = inputPA.Tilburg,  data = dataTilburg,  id = "PARTICIPANT_ID",  savemodel = FALSE)
 omega_PA_SM_5 <- omegaSEM(items = inputPA.Ghent,  data = dataGhent,  id = "PARTICIPANT_ID",  savemodel = FALSE)
 
 omega_NA_SM_1 <- omegaSEM(items = inputNA.GVE,  data = dataGVE,  id = "PARTICIPANT_ID",  savemodel = FALSE)
-omega_NA_SM_2 <- omegaSEM(items = inputNA.Leuven2011,  data = dataLeuven2011,  id = "PARTICIPANT_ID",  savemodel = FALSE)
-omega_NA_SM_3 <- omegaSEM(items = inputNA.Leuven3W,  data = dataLeuven3W,  id = "PARTICIPANT_ID",  savemodel = FALSE)
+if (ready.5datasets) omega_NA_SM_2 <- omegaSEM(items = inputNA.Leuven2011,  data = dataLeuven2011,  id = "PARTICIPANT_ID",  savemodel = FALSE)
+if (ready.5datasets) omega_NA_SM_3 <- omegaSEM(items = inputNA.Leuven3W,  data = dataLeuven3W,  id = "PARTICIPANT_ID",  savemodel = FALSE)
 omega_NA_SM_4 <- omegaSEM(items = inputNA.Tilburg,  data = dataTilburg,  id = "PARTICIPANT_ID",  savemodel = FALSE)
 omega_NA_SM_5 <- omegaSEM(items = inputNA.Ghent,  data = dataGhent,  id = "PARTICIPANT_ID",  savemodel = FALSE)
 
 omega_ER_SM_1 <- omegaSEM(items = inputER.GVE,  data = dataGVE,  id = "PARTICIPANT_ID",  savemodel = FALSE)
-omega_ER_SM_2 <- omegaSEM(items = inputER.Leuven2011,  data = dataLeuven2011,  id = "PARTICIPANT_ID",  savemodel = FALSE)
-omega_ER_SM_3 <- omegaSEM(items = inputER.Leuven3W,  data = dataLeuven3W,  id = "PARTICIPANT_ID",  savemodel = FALSE)
+if (ready.5datasets) omega_ER_SM_2 <- omegaSEM(items = inputER.Leuven2011,  data = dataLeuven2011,  id = "PARTICIPANT_ID",  savemodel = FALSE)
+if (ready.5datasets) omega_ER_SM_3 <- omegaSEM(items = inputER.Leuven3W,  data = dataLeuven3W,  id = "PARTICIPANT_ID",  savemodel = FALSE)
 omega_ER_SM_4 <- omegaSEM(items = inputER.Tilburg,  data = dataTilburg,  id = "PARTICIPANT_ID",  savemodel = FALSE)
 omega_ER_SM_5 <- omegaSEM(items = inputER.Ghent,  data = dataGhent,  id = "PARTICIPANT_ID",  savemodel = FALSE)
 
 outputReliability <- rbind(cbind(var = "PA",rbind(omega_PA_SM_1$Results,
-                       omega_PA_SM_2$Results,
-                       omega_PA_SM_3$Results,
-                       omega_PA_SM_4$Results,
-                       omega_PA_SM_5$Results)),
-cbind(var = "NA",rbind(omega_NA_SM_1$Results,
-                       omega_NA_SM_2$Results,
-                       omega_NA_SM_3$Results,
-                       omega_NA_SM_4$Results,
-                       omega_NA_SM_5$Results)),
-cbind(var = "ER",rbind(omega_ER_SM_1$Results,
-                       omega_ER_SM_2$Results,
-                       omega_ER_SM_3$Results,
-                       omega_ER_SM_4$Results,
-                       omega_ER_SM_5$Results)))
+                                                  if (ready.5datasets) omega_PA_SM_2$Results,
+                                                  if (ready.5datasets) omega_PA_SM_3$Results,
+                                                   omega_PA_SM_4$Results,
+                                                   omega_PA_SM_5$Results)),
+                            cbind(var = "NA",rbind(omega_NA_SM_1$Results,
+                                                   if (ready.5datasets) omega_NA_SM_2$Results,
+                                                   if (ready.5datasets) omega_NA_SM_3$Results,
+                                                   omega_NA_SM_4$Results,
+                                                   omega_NA_SM_5$Results)),
+                            cbind(var = "ER",rbind(omega_ER_SM_1$Results,
+                                                   if (ready.5datasets) omega_ER_SM_2$Results,
+                                                   if (ready.5datasets) omega_ER_SM_3$Results,
+                                                   omega_ER_SM_4$Results,
+                                                   omega_ER_SM_5$Results)))
 
 write.csv(outputReliability, "manuscript/results/outputReliability.csv", row.names=FALSE)
 
@@ -264,10 +273,18 @@ cortablesummary <- function(df, inputIndices = inputIndices, labelIndices = labe
 # warnings are about participants who have too few ESM observations so that some had no within-person SD
 write.csv(cortablesummary(df,inputIndices,labelIndices),"manuscript/results/SMTable41.csv")
 write.csv(cortablesummary(dataGVE,inputIndices,labelIndices),"manuscript/results/SMTable421.csv")
-write.csv(cortablesummary(dataLeuven2011,inputIndices,labelIndices),"manuscript/results/SMTable422.csv")
-write.csv(cortablesummary(dataLeuven3W,inputIndices,labelIndices),"manuscript/results/SMTable423.csv")
 write.csv(cortablesummary(dataTilburg,inputIndices,labelIndices),"manuscript/results/SMTable424.csv")
 write.csv(cortablesummary(dataGhent,inputIndices,labelIndices),"manuscript/results/SMTable425.csv")
+if (ready.5datasets) {
+  write.csv(cortablesummary(dataLeuven2011,inputIndices,labelIndices),"manuscript/results/SMTable422.csv")
+  write.csv(cortablesummary(dataLeuven3W,inputIndices,labelIndices),"manuscript/results/SMTable423.csv")
+}else{
+  #filler output files with 0
+  subcortable <- cortablesummary(df,inputIndices,labelIndices)
+  subcortable[] <- 0
+  write.csv(subcortable,"manuscript/results/SMTable422.csv")
+  write.csv(subcortable,"manuscript/results/SMTable423.csv")
+}
 
 # ===================================
 # Part 6: Multilevel Confirmatory Factor Analysis per Dataset
@@ -428,229 +445,229 @@ inspect(f1ab,what="std")
 # ============================
 # ======= DATASET 2: Leuven2011
 # ============================
-
-
-m2aw <- '
-level: 1
-pa ~~ pa
-na ~~ na
-pa ~~ na
-
-pa =~ RLX_ES + HAP_ES
-na =~ ANG_ES + ANX_ES + DEP_ES + SAD_ES
-
-level: 2
-RLX_ES ~~ HAP_ES + ANG_ES + ANX_ES + DEP_ES + SAD_ES
-HAP_ES ~~ ANG_ES + ANX_ES + DEP_ES + SAD_ES
-ANG_ES ~~ ANX_ES + DEP_ES + SAD_ES
-ANX_ES ~~ DEP_ES + SAD_ES
-DEP_ES ~~ SAD_ES
-
-'
-
-m2ab <- '
-level: 1
-RLX_ES ~~ HAP_ES + ANG_ES + ANX_ES + DEP_ES + SAD_ES
-HAP_ES ~~ ANG_ES + ANX_ES + DEP_ES + SAD_ES
-ANG_ES ~~ ANX_ES + DEP_ES + SAD_ES
-ANX_ES ~~ DEP_ES + SAD_ES
-DEP_ES ~~ SAD_ES
-
-level: 2
-pa ~~ pa
-na ~~ na
-pa ~~ na
-
-pa =~ RLX_ES + HAP_ES
-na =~ ANG_ES + ANX_ES + DEP_ES + SAD_ES
-
-'
-
-
-#to calculate level specific CFI, fit a model that is saturated between and worst fitting solution within
-
-base2w <- '
-level: 1
-RLX_ES ~~ RLX_ES
-HAP_ES ~~ HAP_ES
-ANG_ES ~~ ANG_ES
-ANX_ES ~~ ANX_ES
-DEP_ES ~~ DEP_ES
-SAD_ES ~~ SAD_ES
-
-level: 2
-RLX_ES ~~ HAP_ES + ANG_ES + ANX_ES + DEP_ES + SAD_ES
-HAP_ES ~~ ANG_ES + ANX_ES + DEP_ES + SAD_ES
-ANG_ES ~~ ANX_ES + DEP_ES + SAD_ES
-ANX_ES ~~ DEP_ES + SAD_ES
-DEP_ES ~~ SAD_ES
-'
-
-
-#fit the above models
-#to calculate the level specific CFI, a different baseline model needs to be specified in the formula
-
-f2aw <- lavaan::sem(
-  model = m2aw,
-  data = dataLeuven2011,
-  cluster = "PARTICIPANT_ID",
-  effect.coding = c("loadings", "intercepts"),
-  baseline = base2w
-)
-f2ab <- lavaan::sem(
-  model = m2ab,
-  data = dataLeuven2011,
-  cluster = "PARTICIPANT_ID",
-  effect.coding = c("loadings", "intercepts"),
-  baseline = base2w
-)
-
-
-summary(f2aw, standardized = TRUE, fit.measures = TRUE)
-modificationindices(f2aw, sort = TRUE)
-inspect(f2aw,what="std")
-inspect(f2aw)$lambda
-
-summary(f2ab, standardized = TRUE, fit.measures = TRUE)
-inspect(f2ab,what="std")
+if (ready.5datasets) {
+  
+  m2aw <- '
+  level: 1
+  pa ~~ pa
+  na ~~ na
+  pa ~~ na
+  
+  pa =~ RLX_ES + HAP_ES
+  na =~ ANG_ES + ANX_ES + DEP_ES + SAD_ES
+  
+  level: 2
+  RLX_ES ~~ HAP_ES + ANG_ES + ANX_ES + DEP_ES + SAD_ES
+  HAP_ES ~~ ANG_ES + ANX_ES + DEP_ES + SAD_ES
+  ANG_ES ~~ ANX_ES + DEP_ES + SAD_ES
+  ANX_ES ~~ DEP_ES + SAD_ES
+  DEP_ES ~~ SAD_ES
+  
+  '
+  
+  m2ab <- '
+  level: 1
+  RLX_ES ~~ HAP_ES + ANG_ES + ANX_ES + DEP_ES + SAD_ES
+  HAP_ES ~~ ANG_ES + ANX_ES + DEP_ES + SAD_ES
+  ANG_ES ~~ ANX_ES + DEP_ES + SAD_ES
+  ANX_ES ~~ DEP_ES + SAD_ES
+  DEP_ES ~~ SAD_ES
+  
+  level: 2
+  pa ~~ pa
+  na ~~ na
+  pa ~~ na
+  
+  pa =~ RLX_ES + HAP_ES
+  na =~ ANG_ES + ANX_ES + DEP_ES + SAD_ES
+  
+  '
+  
+  
+  #to calculate level specific CFI, fit a model that is saturated between and worst fitting solution within
+  
+  base2w <- '
+  level: 1
+  RLX_ES ~~ RLX_ES
+  HAP_ES ~~ HAP_ES
+  ANG_ES ~~ ANG_ES
+  ANX_ES ~~ ANX_ES
+  DEP_ES ~~ DEP_ES
+  SAD_ES ~~ SAD_ES
+  
+  level: 2
+  RLX_ES ~~ HAP_ES + ANG_ES + ANX_ES + DEP_ES + SAD_ES
+  HAP_ES ~~ ANG_ES + ANX_ES + DEP_ES + SAD_ES
+  ANG_ES ~~ ANX_ES + DEP_ES + SAD_ES
+  ANX_ES ~~ DEP_ES + SAD_ES
+  DEP_ES ~~ SAD_ES
+  '
+  
+  
+  #fit the above models
+  #to calculate the level specific CFI, a different baseline model needs to be specified in the formula
+  
+  f2aw <- lavaan::sem(
+    model = m2aw,
+    data = dataLeuven2011,
+    cluster = "PARTICIPANT_ID",
+    effect.coding = c("loadings", "intercepts"),
+    baseline = base2w
+  )
+  f2ab <- lavaan::sem(
+    model = m2ab,
+    data = dataLeuven2011,
+    cluster = "PARTICIPANT_ID",
+    effect.coding = c("loadings", "intercepts"),
+    baseline = base2w
+  )
+  
+  
+  summary(f2aw, standardized = TRUE, fit.measures = TRUE)
+  modificationindices(f2aw, sort = TRUE)
+  inspect(f2aw,what="std")
+  inspect(f2aw)$lambda
+  
+  summary(f2ab, standardized = TRUE, fit.measures = TRUE)
+  inspect(f2ab,what="std")
 
 # ============================
 # DATASET 3: Leuven 3-WAVE
 # ============================
 
-
-m3aw <- '
-level: 1
-pa ~~ pa
-na ~~ na
-pa ~~ na
-
-pa =~ RLX_ES + HAP_ES + CHEER_ES
-na =~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-
-
-level: 2
-RLX_ES ~~ HAP_ES + CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-HAP_ES ~~ CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-CHEER_ES ~~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-ANG_ES ~~ DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-DEP_ES ~~ LONE_ES + FEAR_ES + SAD_ES + STR_ES
-LONE_ES ~~ FEAR_ES + SAD_ES + STR_ES
-FEAR_ES ~~ SAD_ES + STR_ES
-SAD_ES ~~ STR_ES
-
-'
-
-m3ab <- '
-level: 1
-RLX_ES ~~ HAP_ES + CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-HAP_ES ~~ CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-CHEER_ES ~~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-ANG_ES ~~ DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-DEP_ES ~~ LONE_ES + FEAR_ES + SAD_ES + STR_ES
-LONE_ES ~~ FEAR_ES + SAD_ES + STR_ES
-FEAR_ES ~~ SAD_ES + STR_ES
-SAD_ES ~~ STR_ES
-
-level: 2
-pa ~~ pa
-na ~~ na
-pa ~~ na
-
-pa =~ RLX_ES + HAP_ES + CHEER_ES
-na =~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-
-'
-
-#to calculate level specific CFI, fit a model that is saturated between and worst fitting solution within
-
-base3w <- '
-level: 1
-RLX_ES ~~ RLX_ES
-HAP_ES ~~ HAP_ES
-CHEER_ES ~~ CHEER_ES
-ANG_ES ~~ ANG_ES
-DEP_ES ~~ DEP_ES
-LONE_ES ~~ LONE_ES
-FEAR_ES ~~ FEAR_ES
-SAD_ES ~~ SAD_ES
-STR_ES ~~ STR_ES
-
-level: 2
-RLX_ES ~~ HAP_ES + CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-HAP_ES ~~ CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-CHEER_ES ~~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-ANG_ES ~~ DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-DEP_ES ~~ LONE_ES + FEAR_ES + SAD_ES + STR_ES
-LONE_ES ~~ FEAR_ES + SAD_ES + STR_ES
-FEAR_ES ~~ SAD_ES + STR_ES
-SAD_ES ~~ STR_ES
-'
-
-
-#fit the above models
-#to calculate the level specific CFI, a different baseline model needs to be specified in the formula
-
-f3aw <- lavaan::sem(
-  model = m3aw,
-  data = dataLeuven3W,
-  cluster = "PARTICIPANT_ID",
-  effect.coding = c("loadings", "intercepts"),
-  baseline = base3w
-)
-f3ab <- lavaan::sem(
-  model = m3ab,
-  data = dataLeuven3W,
-  cluster = "PARTICIPANT_ID",
-  effect.coding = c("loadings", "intercepts"),
-  baseline = base3w
-)
-
-summary(f3aw, standardized = TRUE, fit.measures = TRUE)
-modificationindices(f3aw, sort = TRUE)
-inspect(f3aw,what="std")
-inspect(f3aw)$lambda
-
-summary(f3ab, standardized = TRUE, fit.measures = TRUE)
-inspect(f3ab,what="std")
-
-# Low TLI for the within-person level. Looking at modification indices, should include correlation between stressed and relaxed.
-# Makes sense, since these are very overlapping items
-
-
-m3aw_mod <- '
-level: 1
-pa ~~ pa
-na ~~ na
-pa ~~ na
-
-pa =~ RLX_ES + HAP_ES + CHEER_ES
-na =~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
- 
-RLX_ES ~~ STR_ES
-
-level: 2
-RLX_ES ~~ HAP_ES + CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-HAP_ES ~~ CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-CHEER_ES ~~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-ANG_ES ~~ DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
-DEP_ES ~~ LONE_ES + FEAR_ES + SAD_ES + STR_ES
-LONE_ES ~~ FEAR_ES + SAD_ES + STR_ES
-FEAR_ES ~~ SAD_ES + STR_ES
-SAD_ES ~~ STR_ES
-
-'
-
-f3aw_mod <- lavaan::sem(
-  model = m3aw_mod,
-  data = dataLeuven3W,
-  cluster = "PARTICIPANT_ID",
-  effect.coding = c("loadings", "intercepts"),
-  baseline = base3w
-)
-
-summary(f3aw_mod, standardized = TRUE, fit.measures = TRUE)
-
+  
+  m3aw <- '
+  level: 1
+  pa ~~ pa
+  na ~~ na
+  pa ~~ na
+  
+  pa =~ RLX_ES + HAP_ES + CHEER_ES
+  na =~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  
+  
+  level: 2
+  RLX_ES ~~ HAP_ES + CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  HAP_ES ~~ CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  CHEER_ES ~~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  ANG_ES ~~ DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  DEP_ES ~~ LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  LONE_ES ~~ FEAR_ES + SAD_ES + STR_ES
+  FEAR_ES ~~ SAD_ES + STR_ES
+  SAD_ES ~~ STR_ES
+  
+  '
+  
+  m3ab <- '
+  level: 1
+  RLX_ES ~~ HAP_ES + CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  HAP_ES ~~ CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  CHEER_ES ~~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  ANG_ES ~~ DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  DEP_ES ~~ LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  LONE_ES ~~ FEAR_ES + SAD_ES + STR_ES
+  FEAR_ES ~~ SAD_ES + STR_ES
+  SAD_ES ~~ STR_ES
+  
+  level: 2
+  pa ~~ pa
+  na ~~ na
+  pa ~~ na
+  
+  pa =~ RLX_ES + HAP_ES + CHEER_ES
+  na =~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  
+  '
+  
+  #to calculate level specific CFI, fit a model that is saturated between and worst fitting solution within
+  
+  base3w <- '
+  level: 1
+  RLX_ES ~~ RLX_ES
+  HAP_ES ~~ HAP_ES
+  CHEER_ES ~~ CHEER_ES
+  ANG_ES ~~ ANG_ES
+  DEP_ES ~~ DEP_ES
+  LONE_ES ~~ LONE_ES
+  FEAR_ES ~~ FEAR_ES
+  SAD_ES ~~ SAD_ES
+  STR_ES ~~ STR_ES
+  
+  level: 2
+  RLX_ES ~~ HAP_ES + CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  HAP_ES ~~ CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  CHEER_ES ~~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  ANG_ES ~~ DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  DEP_ES ~~ LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  LONE_ES ~~ FEAR_ES + SAD_ES + STR_ES
+  FEAR_ES ~~ SAD_ES + STR_ES
+  SAD_ES ~~ STR_ES
+  '
+  
+  
+  #fit the above models
+  #to calculate the level specific CFI, a different baseline model needs to be specified in the formula
+  
+  f3aw <- lavaan::sem(
+    model = m3aw,
+    data = dataLeuven3W,
+    cluster = "PARTICIPANT_ID",
+    effect.coding = c("loadings", "intercepts"),
+    baseline = base3w
+  )
+  f3ab <- lavaan::sem(
+    model = m3ab,
+    data = dataLeuven3W,
+    cluster = "PARTICIPANT_ID",
+    effect.coding = c("loadings", "intercepts"),
+    baseline = base3w
+  )
+  
+  summary(f3aw, standardized = TRUE, fit.measures = TRUE)
+  modificationindices(f3aw, sort = TRUE)
+  inspect(f3aw,what="std")
+  inspect(f3aw)$lambda
+  
+  summary(f3ab, standardized = TRUE, fit.measures = TRUE)
+  inspect(f3ab,what="std")
+  
+  # Low TLI for the within-person level. Looking at modification indices, should include correlation between stressed and relaxed.
+  # Makes sense, since these are very overlapping items
+  
+  
+  m3aw_mod <- '
+  level: 1
+  pa ~~ pa
+  na ~~ na
+  pa ~~ na
+  
+  pa =~ RLX_ES + HAP_ES + CHEER_ES
+  na =~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+   
+  RLX_ES ~~ STR_ES
+  
+  level: 2
+  RLX_ES ~~ HAP_ES + CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  HAP_ES ~~ CHEER_ES + ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  CHEER_ES ~~ ANG_ES + DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  ANG_ES ~~ DEP_ES + LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  DEP_ES ~~ LONE_ES + FEAR_ES + SAD_ES + STR_ES
+  LONE_ES ~~ FEAR_ES + SAD_ES + STR_ES
+  FEAR_ES ~~ SAD_ES + STR_ES
+  SAD_ES ~~ STR_ES
+  
+  '
+  
+  f3aw_mod <- lavaan::sem(
+    model = m3aw_mod,
+    data = dataLeuven3W,
+    cluster = "PARTICIPANT_ID",
+    effect.coding = c("loadings", "intercepts"),
+    baseline = base3w
+  )
+  
+  summary(f3aw_mod, standardized = TRUE, fit.measures = TRUE)
+} # end of dataset subset if-clause
 # ============================
 # DATASET 4: Tilburg
 # ============================
@@ -952,16 +969,17 @@ modificationindices(f5aw_mod, sort = TRUE)
 # ====================================
 # summarize all the fitting
 # ====================================
+cfasub <- c(model ="unavailable",rep(0,6))
 rescfa <- rbind(c(model = deparse(substitute(f1aw)), summaryfit(f1aw, inputPA.GVE,inputNA.GVE)),
-      c(model = deparse(substitute(f2aw)), summaryfit(f2aw, inputPA.Leuven2011,inputNA.Leuven2011)),
-      c(model = deparse(substitute(f3aw_mod)), summaryfit(f3aw_mod, inputPA.Leuven3W,inputNA.Leuven3W)),
+      if (ready.5datasets) c(model = deparse(substitute(f2aw)), summaryfit(f2aw, inputPA.Leuven2011,inputNA.Leuven2011)) else cfasub,
+      if (ready.5datasets) c(model = deparse(substitute(f3aw_mod)), summaryfit(f3aw_mod, inputPA.Leuven3W,inputNA.Leuven3W)) else cfasub,
       c(model = deparse(substitute(f4aw_mod)), summaryfit(f4aw_mod, inputPA.Tilburg,inputNA.Tilburg)),
       c(model = deparse(substitute(f5aw_mod)), summaryfit(f5aw_mod, inputPA.Ghent,inputNA.Ghent)),
       c(model = deparse(substitute(f1ab)), summaryfit(f1ab, inputPA.GVE,inputNA.GVE)),
-      c(model = deparse(substitute(f2ab)), summaryfit(f2ab, inputPA.Leuven2011,inputNA.Leuven2011)),
-      c(model = deparse(substitute(f3ab)), summaryfit(f3ab, inputPA.Leuven3W,inputNA.Leuven3W)),
+      if (ready.5datasets) c(model = deparse(substitute(f2ab)), summaryfit(f2ab, inputPA.Leuven2011,inputNA.Leuven2011)) else cfasub,
+      if (ready.5datasets) c(model = deparse(substitute(f3ab)), summaryfit(f3ab, inputPA.Leuven3W,inputNA.Leuven3W)) else cfasub,
       c(model = deparse(substitute(f4ab)), summaryfit(f4ab, inputPA.Tilburg,inputNA.Tilburg)),
       c(model = deparse(substitute(f5ab)), summaryfit(f5ab, inputPA.Ghent,inputNA.Ghent)))
-colnames(rescfa) <- c("model","min","chisq","rmsea","cfi","tli")
+colnames(rescfa) <- c("model","min","max","chisq","rmsea","cfi","tli")
 write.csv(rescfa,"manuscript/results/SMTable3.csv", row.names = FALSE)
 

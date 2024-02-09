@@ -1,7 +1,11 @@
 # ======================================================================
 # Title: Multi-level models, mega-analysis (Main analyses of paper)
-# Date: 24-1-2024
-# Copyright: Edmund Lo, checked by Dominique Maciejewski
+# Date: 09-02-2024
+# Copyright: Edmund Lo, checked by Dominique Maciejewski on 24-01-2024
+#
+# Note! Run this either (1) line by line (windows: Ctrl+Enter), or
+#                       (2) as source with echo (windows: Ctrl+Shift+Enter)
+#       so that you will receive prompts on data availability.
 # ======================================================================
 
 # Library
@@ -9,8 +13,8 @@ library(nlme)
 
 source("list_of_variables.R") # load all ESM measures variable names
 
-# read ready-to-analyze datasets
-df <- read.csv("dataProcessed/ReadyPooledESM.csv")
+# check and read read ready-to-analyze datasets
+source("checkdata_analysis.R")
 
 # a wrapper to extract fixed effect of an MLM (nlme)
 preparemmresult <- function (m){
@@ -29,6 +33,7 @@ preparemmresult <- function (m){
   
 }
 
+if (run.ready){
 # ===========================================================================
 # A few features of these multilevel models:
 # 1. we separate within- and between-person components (cw = component within-person, cb = component between-person)
@@ -37,42 +42,42 @@ preparemmresult <- function (m){
 # 4. we used the quasi-Newton optimizer (opt = "optim")
 # 5. we controlled for time-trends, age, gender, and mean levels of affect and emotion regulation use
 # ===========================================================================
-
+# 
 # ===========================================================================
 # Mega analysis - registered confirmatory hypothesis
 # NEGATIVE emotion differentiation and emotion regulation variability
 # ===========================================================================
 
 # Model 1A: Negative emotion differentiation predicting Emotion regulation variability (Full index)
-mm1A_NA <- lme(fixed = BrayCurtisFull.amm ~ m_EDcwL1D + m_NAcwL1D + m_ERcw + timecw  + 
+mm1A_NA <- lme(fixed = BrayCurtisFull.amm ~ m_EDcwL1D + m_NAcwL1D + m_ERcw + timecw  +
                 m_EDcb + m_NAcb + m_ERcb + AGE + FEMALE,
               data=df,
               random=~1+m_EDcwL1D + m_NAcwL1D+ m_ERcw | study/PARTICIPANT_ID, correlation = corAR1(),
               control =list(msMaxIter = 1000, msMaxEval = 1000, opt = "optim"),na.action = na.omit)
 
 # Model 1B: Negative emotion  differentiation predicting Emotion regulation variability (Strategy switching component)
-mm1B_NA <- lme(fixed = BrayCurtisRepl.amm ~ m_EDcwL1D + m_NAcwL1D + m_ERcw + BrayCurtisNest.ammcw + timecw  + 
+mm1B_NA <- lme(fixed = BrayCurtisRepl.amm ~ m_EDcwL1D + m_NAcwL1D + m_ERcw + BrayCurtisNest.ammcw + timecw  +
                      m_EDcb + m_NAcb + m_ERcb +  BrayCurtisNest.ammcb + AGE + FEMALE,
                    data=df,
                    random=~1+m_EDcwL1D + m_NAcwL1D+ m_ERcw +BrayCurtisNest.ammcw | study/PARTICIPANT_ID, correlation = corAR1(),
                    control =list(msMaxIter = 1000, msMaxEval = 1000, opt = "optim"),na.action = na.omit)
 
 # Model 1C: Negative emotion  differentiation predicting Emotion regulation variability (Endorsement change component)
-mm1C_NA <- lme(fixed = BrayCurtisNest.amm ~ m_EDcwL1D + m_NAcwL1D + m_ERcw + BrayCurtisRepl.ammcw + timecw  + 
+mm1C_NA <- lme(fixed = BrayCurtisNest.amm ~ m_EDcwL1D + m_NAcwL1D + m_ERcw + BrayCurtisRepl.ammcw + timecw  +
                      m_EDcb + m_NAcb + m_ERcb +BrayCurtisRepl.ammcb+ AGE + FEMALE,
                    data=df,
                    random=~1+m_EDcwL1D + m_NAcwL1D + m_ERcw + BrayCurtisRepl.ammcw | study/PARTICIPANT_ID, correlation = corAR1(),
                    control =list(msMaxIter = 1000, msMaxEval = 1000, opt = "optim"),na.action = na.omit)
 
-# Model 2A: Emotion regulation variability (Full index) predicting Negative emotion  differentiation  
-mm2A_NA <- lme(fixed = m_ED ~ BrayCurtisFull.ammcw + m_EDcwL1D +  m_NAcw + m_ERcw + timecw+ 
+# Model 2A: Emotion regulation variability (Full index) predicting Negative emotion  differentiation
+mm2A_NA <- lme(fixed = m_ED ~ BrayCurtisFull.ammcw + m_EDcwL1D +  m_NAcw + m_ERcw + timecw+
                  BrayCurtisFull.ammcb + m_NAcb+m_ERcb + AGE + FEMALE,
                data=df,
                random=~1+m_EDcwL1D+BrayCurtisFull.ammcw + m_NAcw+ m_ERcw | study/PARTICIPANT_ID, correlation = corAR1(),
                control =lmeControl(opt='optim'),na.action = na.omit)
 
-# Model 2B: Emotion regulation variability (Switching and endorsement change components separately) predicting Negative emotion differentiation 
-mm2B_NA <- lme(fixed = m_ED ~ BrayCurtisNest.ammcw + BrayCurtisRepl.ammcw +m_EDcwL1D +  m_NAcw+ m_ERcw+ timecw+ 
+# Model 2B: Emotion regulation variability (Switching and endorsement change components separately) predicting Negative emotion differentiation
+mm2B_NA <- lme(fixed = m_ED ~ BrayCurtisNest.ammcw + BrayCurtisRepl.ammcw +m_EDcwL1D +  m_NAcw+ m_ERcw+ timecw+
                      BrayCurtisNest.ammcb + BrayCurtisRepl.ammcb + m_NAcb+m_ERcb + AGE + FEMALE,
                    data=df,
                    random=~1+m_EDcwL1D+BrayCurtisNest.ammcw +BrayCurtisRepl.ammcw + m_NAcw+ m_ERcw | study/PARTICIPANT_ID, correlation = corAR1(),
@@ -84,35 +89,35 @@ mm2B_NA <- lme(fixed = m_ED ~ BrayCurtisNest.ammcw + BrayCurtisRepl.ammcw +m_EDc
 # ===========================================================================
 
 # Model 1A: Positive emotion differentiation predicting Emotion regulation variability (Full index)
-mm1A_PA <- lme(fixed = BrayCurtisFull.amm ~ m_EDPAcwL1D + m_PAcwL1D + m_ERcw + timecw  + 
+mm1A_PA <- lme(fixed = BrayCurtisFull.amm ~ m_EDPAcwL1D + m_PAcwL1D + m_ERcw + timecw  +
                  m_EDPAcb + m_PAcb + m_ERcb + AGE + FEMALE,
                data=df,
                random=~1+m_EDPAcwL1D + m_PAcwL1D+ m_ERcw | study/PARTICIPANT_ID, correlation = corAR1(),
                control =list(msMaxIter = 1000, msMaxEval = 1000, opt = "optim"),na.action = na.omit)
 
 # Model 1B: Positive emotion differentiation predicting Emotion regulation variability (Strategy switching component)
-mm1B_PA <- lme(fixed = BrayCurtisRepl.amm ~ m_EDPAcwL1D + m_PAcwL1D + m_ERcw + BrayCurtisNest.ammcw + timecw  + 
+mm1B_PA <- lme(fixed = BrayCurtisRepl.amm ~ m_EDPAcwL1D + m_PAcwL1D + m_ERcw + BrayCurtisNest.ammcw + timecw  +
                  m_EDPAcb + m_PAcb + m_ERcb + BrayCurtisNest.ammcb + AGE + FEMALE,
                data=df,
                random=~1+m_EDPAcwL1D + m_PAcwL1D+ m_ERcw + BrayCurtisNest.ammcw | study/PARTICIPANT_ID, correlation = corAR1(),
                control =list(msMaxIter = 1000, msMaxEval = 1000, opt = "optim"),na.action = na.omit)
 
 # Model 1C: Positive emotion  differentiation predicting Emotion regulation variability (Endorsement change component)
-mm1C_PA <- lme(fixed = BrayCurtisNest.amm ~ m_EDPAcwL1D + m_PAcwL1D + m_ERcw + BrayCurtisRepl.ammcw + timecw  + 
+mm1C_PA <- lme(fixed = BrayCurtisNest.amm ~ m_EDPAcwL1D + m_PAcwL1D + m_ERcw + BrayCurtisRepl.ammcw + timecw  +
                  m_EDPAcb + m_PAcb + m_ERcb + BrayCurtisRepl.ammcb + AGE + FEMALE,
                data=df,
                random=~1+m_EDPAcwL1D + m_PAcwL1D+ m_ERcw + BrayCurtisRepl.ammcw | study/PARTICIPANT_ID, correlation = corAR1(),
                control =list(msMaxIter = 1000, msMaxEval = 1000, opt = "optim"),na.action = na.omit)
 
-# Model 2A: Emotion regulation variability (Full index) predicting Positive emotion differentiation  
-mm2A_PA <- lme(fixed = m_EDPA ~ BrayCurtisFull.ammcw +m_EDPAcwL1D +  m_PAcw+ m_ERcw+ timecw+ 
+# Model 2A: Emotion regulation variability (Full index) predicting Positive emotion differentiation
+mm2A_PA <- lme(fixed = m_EDPA ~ BrayCurtisFull.ammcw +m_EDPAcwL1D +  m_PAcw+ m_ERcw+ timecw+
                  BrayCurtisFull.ammcb + m_PAcb+m_ERcb + AGE + FEMALE,
                data=df,
                random=~1+m_EDPAcwL1D+BrayCurtisFull.ammcw + m_PAcw+ m_ERcw | study/PARTICIPANT_ID, correlation = corAR1(),
                control =lmeControl(opt='optim'),na.action = na.omit)
 
-# Model 2B: Emotion regulation variability (Switching and endorsement change components separately) predicting Positive emotion differentiation 
-mm2B_PA <- lme(fixed = m_EDPA ~ BrayCurtisRepl.ammcw + BrayCurtisNest.ammcw +m_EDPAcwL1D +  m_PAcw+ m_ERcw+ timecw+ 
+# Model 2B: Emotion regulation variability (Switching and endorsement change components separately) predicting Positive emotion differentiation
+mm2B_PA <- lme(fixed = m_EDPA ~ BrayCurtisRepl.ammcw + BrayCurtisNest.ammcw +m_EDPAcwL1D +  m_PAcw+ m_ERcw+ timecw+
                  BrayCurtisRepl.ammcb + BrayCurtisNest.ammcb + m_PAcb+m_ERcb + AGE + FEMALE,
                data=df,
                random=~1+m_EDPAcwL1D+BrayCurtisFull.ammcw + m_PAcw+ m_ERcw | study/PARTICIPANT_ID, correlation = corAR1(),
@@ -142,35 +147,35 @@ write.csv(outputSMTable5, "manuscript/results/SMTable5.csv")
 
 ### Negative emotion differentiation
 # Model 1A: Negative emotion differentiation predicting Emotion regulation variability (Full index, Successive difference temporal approach)
-mms1A_NA <- lme(fixed = BrayCurtisFull.suc ~ m_EDcwL1D + m_NAcwL1D + m_ERcw + timecw  + 
+mms1A_NA <- lme(fixed = BrayCurtisFull.suc ~ m_EDcwL1D + m_NAcwL1D + m_ERcw + timecw  +
                 m_EDcb + m_NAcb + m_ERcb + AGE + FEMALE,
               data=df,
               random=~1+m_EDcwL1D + m_NAcwL1D+ m_ERcw | study/PARTICIPANT_ID, correlation = corAR1(),
               control =list(msMaxIter = 1000, msMaxEval = 1000, opt = "optim"),na.action = na.omit)
 
 # Model 1B: Negative emotion  differentiation predicting Emotion regulation variability (Strategy switching component, Successive difference temporal approach )
-mms1B_NA <- lme(fixed = BrayCurtisRepl.suc ~ m_EDcwL1D + m_NAcwL1D + m_ERcw + BrayCurtisNest.succw + timecw  + 
+mms1B_NA <- lme(fixed = BrayCurtisRepl.suc ~ m_EDcwL1D + m_NAcwL1D + m_ERcw + BrayCurtisNest.succw + timecw  +
                      m_EDcb + m_NAcb + m_ERcb +  BrayCurtisNest.succb + AGE + FEMALE,
                    data=df,
                    random=~1+m_EDcwL1D + m_NAcwL1D+ m_ERcw +BrayCurtisNest.succw | study/PARTICIPANT_ID, correlation = corAR1(),
                    control =list(msMaxIter = 1000, msMaxEval = 1000, opt = "optim"),na.action = na.omit)
 
 # Model 1C: Negative emotion  differentiation predicting Emotion regulation variability (Endorsement change component, Successive difference temporal approach)
-mms1C_NA <- lme(fixed = BrayCurtisNest.suc ~ m_EDcwL1D + m_NAcwL1D + m_ERcw + BrayCurtisRepl.succw + timecw  + 
+mms1C_NA <- lme(fixed = BrayCurtisNest.suc ~ m_EDcwL1D + m_NAcwL1D + m_ERcw + BrayCurtisRepl.succw + timecw  +
                      m_EDcb + m_NAcb + m_ERcb +BrayCurtisRepl.succb+ AGE + FEMALE,
                    data=df,
                    random=~1+m_EDcwL1D + m_NAcwL1D+ m_ERcw + BrayCurtisRepl.succw | study/PARTICIPANT_ID, correlation = corAR1(),
                    control =list(msMaxIter = 1000, msMaxEval = 1000, opt = "optim"),na.action = na.omit)
 
-# Model 2A: Emotion regulation variability (Full index, Successive difference temporal approach) predicting negative emotion differentiation  
-mms2A_NA <- lme(fixed = m_ED ~ BrayCurtisFull.succw +m_EDcwL1D +  m_NAcw+ m_ERcw+ timecw+ 
+# Model 2A: Emotion regulation variability (Full index, Successive difference temporal approach) predicting negative emotion differentiation
+mms2A_NA <- lme(fixed = m_ED ~ BrayCurtisFull.succw +m_EDcwL1D +  m_NAcw+ m_ERcw+ timecw+
                   BrayCurtisFull.succb + m_NAcb+m_ERcb + AGE + FEMALE,
                 data=df,
                 random=~1+m_EDcwL1D+BrayCurtisFull.succw + m_NAcw+ m_ERcw | study/PARTICIPANT_ID, correlation = corAR1(),
                 control =lmeControl(opt='optim'),na.action = na.omit)
 
-# Model 2B: Emotion regulation variability (Switching and endorsement change components separately, Successive difference temporal approach) predicting negative emotion differentiation 
-mms2B_NA <- lme(fixed = m_ED ~ BrayCurtisNest.succw+ BrayCurtisRepl.succw +m_EDcwL1D +  m_NAcw+ m_ERcw+ timecw+ 
+# Model 2B: Emotion regulation variability (Switching and endorsement change components separately, Successive difference temporal approach) predicting negative emotion differentiation
+mms2B_NA <- lme(fixed = m_ED ~ BrayCurtisNest.succw+ BrayCurtisRepl.succw +m_EDcwL1D +  m_NAcw+ m_ERcw+ timecw+
                   BrayCurtisNest.succb+ BrayCurtisRepl.succb  + m_NAcb+m_ERcb + AGE + FEMALE,
                 data=df,
                 random=~1+m_EDcwL1D+BrayCurtisNest.succw+ BrayCurtisRepl.succw + m_NAcw+ m_ERcw | study/PARTICIPANT_ID, correlation = corAR1(),
@@ -178,35 +183,35 @@ mms2B_NA <- lme(fixed = m_ED ~ BrayCurtisNest.succw+ BrayCurtisRepl.succw +m_EDc
 
 ### Positive emotion differentiation
 # Model 1A: Positive emotion differentiation predicting Emotion regulation variability (Full index, Successive difference temporal approach)
-mms1A_PA <- lme(fixed = BrayCurtisFull.suc ~ m_EDPAcwL1D + m_PAcwL1D + m_ERcw + timecw  + 
+mms1A_PA <- lme(fixed = BrayCurtisFull.suc ~ m_EDPAcwL1D + m_PAcwL1D + m_ERcw + timecw  +
                       m_EDPAcb + m_PAcb + m_ERcb + AGE + FEMALE,
                     data=df,
                     random=~1+m_EDPAcwL1D + m_PAcwL1D+ m_ERcw | study/PARTICIPANT_ID, correlation = corAR1(),
                     control =list(msMaxIter = 1000, msMaxEval = 1000, opt = "optim"),na.action = na.omit)
 
 # Model 1B: Positive emotion  differentiation predicting Emotion regulation variability (Strategy switching component, Successive difference temporal approach)
-mms1B_PA <- lme(fixed = BrayCurtisRepl.suc ~ m_EDPAcwL1D + m_PAcwL1D + m_ERcw + BrayCurtisNest.succw + timecw  + 
+mms1B_PA <- lme(fixed = BrayCurtisRepl.suc ~ m_EDPAcwL1D + m_PAcwL1D + m_ERcw + BrayCurtisNest.succw + timecw  +
                       m_EDPAcb + m_PAcb + m_ERcb + BrayCurtisNest.succb + AGE + FEMALE,
                     data=df,
                     random=~1+m_EDPAcwL1D + m_PAcwL1D+ m_ERcw + BrayCurtisNest.succw | study/PARTICIPANT_ID, correlation = corAR1(),
                     control =list(msMaxIter = 1000, msMaxEval = 1000, opt = "optim"),na.action = na.omit)
 
 # Model 1C: Positive emotion  differentiation predicting Emotion regulation variability (Endorsement change component, Successive difference temporal approach)
-mms1C_PA <- lme(fixed = BrayCurtisNest.suc ~ m_EDPAcwL1D + m_PAcwL1D + m_ERcw + BrayCurtisRepl.succw + timecw  + 
+mms1C_PA <- lme(fixed = BrayCurtisNest.suc ~ m_EDPAcwL1D + m_PAcwL1D + m_ERcw + BrayCurtisRepl.succw + timecw  +
                   m_EDPAcb + m_PAcb + m_ERcb + BrayCurtisRepl.succb + AGE + FEMALE,
                 data=df,
                 random=~1+m_EDPAcwL1D + m_PAcwL1D+ m_ERcw + BrayCurtisRepl.succw| study/PARTICIPANT_ID, correlation = corAR1(),
                 control =list(msMaxIter = 1000, msMaxEval = 1000, opt = "optim"),na.action = na.omit)
 
-# Model 2A: Emotion regulation variability (Full index, Successive difference temporal approach) predicting positive emotion differentiation  
-mms2A_PA <- lme(fixed = m_EDPA ~ BrayCurtisFull.succw +m_EDPAcwL1D +  m_PAcw+ m_ERcw+ timecw+ 
+# Model 2A: Emotion regulation variability (Full index, Successive difference temporal approach) predicting positive emotion differentiation
+mms2A_PA <- lme(fixed = m_EDPA ~ BrayCurtisFull.succw +m_EDPAcwL1D +  m_PAcw+ m_ERcw+ timecw+
                       BrayCurtisFull.succb + m_PAcb+m_ERcb + AGE + FEMALE,
                     data=df,
                     random=~1+m_EDPAcwL1D+BrayCurtisFull.ammcw + m_PAcw+ m_ERcw | study/PARTICIPANT_ID, correlation = corAR1(),
                     control =lmeControl(opt='optim'),na.action = na.omit)
 
-# Model 2B: Emotion regulation variability (Switching and endorsement change components separately, Successive difference temporal approach) predicting positive emotion differentiation 
-mms2B_PA <- lme(fixed = m_EDPA ~ BrayCurtisRepl.succw + BrayCurtisNest.succw + m_EDPAcwL1D +  m_PAcw+ m_ERcw+ timecw+ 
+# Model 2B: Emotion regulation variability (Switching and endorsement change components separately, Successive difference temporal approach) predicting positive emotion differentiation
+mms2B_PA <- lme(fixed = m_EDPA ~ BrayCurtisRepl.succw + BrayCurtisNest.succw + m_EDPAcwL1D +  m_PAcw+ m_ERcw+ timecw+
                       BrayCurtisRepl.succb + BrayCurtisNest.succb + m_PAcb+m_ERcb + AGE + FEMALE,
                     data=df,
                     random=~1+m_EDPAcwL1D+BrayCurtisFull.ammcw + m_PAcw+ m_ERcw | study/PARTICIPANT_ID, correlation = corAR1(),
@@ -225,3 +230,4 @@ outputSMTable6 <- rbind(
   preparemmresult(mms2B_PA)
 )
 write.csv(outputSMTable6, "manuscript/results/SMTable6.csv")
+}
