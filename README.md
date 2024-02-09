@@ -1,14 +1,24 @@
 
 
+
 # Readme <a href='https://osf.io/zcvbs/'><img src='worcs_icon.png' align="right" height="139" /></a>
 
 This is the github of my project ["Naming before Taming? Emotion Differentiation and Emotion Regulation Variability Hinder Each Other within Adolescents"](https://osf.io/cq6n4/). You can reproduce the analysis results in the manuscript following this readme. 
 
-<!-- Please add a brief introduction to explain what the project is about    -->
+## Data availability
+
+### Main analysis
+
+Our paper have analyzed 5 datasets. 3 of them are available in the [dataPrimary folder](dataPrimary), and 2 others can be accessed at the [EMOTE database](http://emotedatabase.com/requestid/1D13C1YC2Q). The R scripts have been adapted so that they can be run with a subset of 3 datasets, but as a result there will be slight differences in the results produced.
+
+### Power analysis 
+
+We made use of a reference dataset for our power analyses. That dataset is currently not shared publicly as the dataset owners are still preparing their manuscript. However, all codes, parameter values, and results are available.
 
 ## Where do I start?
 
 You can load this project in RStudio by opening the file called 'EDpredictsERV.Rproj'.
+
 
 ## Project structure
 
@@ -26,6 +36,8 @@ megaanalysis.R                 | Multilevel models (confirmatory & exploratory) 
 poweranalysis.R                | Produces estimates for running power analyses on [Lafit et al.'s Shiny app](https://github.com/ginettelafit/PowerAnalysisIL) | Read only
 list_of_variables.R                | List of variable names of ESM measures and momentary indices| Read only
 func_preprocessing.R                 | Functions for pre-processing data (in prepare_data.R) | Read only
+checkdata_prepare.R                 | Check availability of data needed for data pre-processing | Read only
+checkdata_analysis.R                 | Check availability of data needed for main analyses | Read only
 
 ### Manuscript
 
@@ -97,8 +109,6 @@ Reproduce the results by these 5 steps.
  6. Run 3 R scripts to reproduce the results. Start new R session (Ctrl+Shift+F10 in R studio on Windows) and clear all environment variables before you run each R script.
  
 	- prepare_data.R 
-		- Expect to see error messages in "Curate primary data (Part 0)" because raw data from Radboud, Tilburg, and Ghent are not available. This part still needs to be run so that you can prepare primary data for the 2 EMOTE datasets.
-		- We have uploaded primary data from Radboud Tilburg, and Ghent to Github. So, from "Data pre-processing (Part 1)" onwards the R script will run normally.
 	- desstat&MCFA.R 
 	- megaanalysis.R 
 
