@@ -1,0 +1,17 @@
+Power analysis parameters,Input,Number of participant,Simulated power
+Outcome,Emotion differentiation,80,0.938
+Predictor,Emotion regulation variability,90,0.966
+Number of observations per participant,13,100,0.984
+Fixed Intercept,-1.75,,
+Fixed Slope,-0.187,,
+SD of error residual,2.583,,
+Autocorrelation of level-1 errors,0.118,,
+SD random intercept,0.514,,
+SD random slope,0.417,,
+Correlation (random intercept and random slope),0.124,,
+Mean of predictor,-2.883,,
+SD of predictor,6.079,,
+Estimate AR(1) correlated errors,Yes,,
+Type I error,0.05,,
+Monte Carlo Replicates,1000,,
+Method,Maximizing the log-likelihood,,
