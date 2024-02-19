@@ -1,6 +1,7 @@
 
 
 
+
 # Readme <a href='https://osf.io/zcvbs/'><img src='worcs_icon.png' align="right" height="139" /></a>
 
 This is the github of my project ["Naming before Taming? Emotion Differentiation and Emotion Regulation Variability Hinder Each Other within Adolescents"](https://osf.io/cq6n4/). You can reproduce the analysis results in the manuscript following this readme. 
@@ -9,7 +10,7 @@ This is the github of my project ["Naming before Taming? Emotion Differentiation
 
 ### Main analysis
 
-Our paper have analyzed 5 datasets. 3 of them are available in the [dataPrimary folder](dataPrimary), and 2 others can be accessed at the [EMOTE database](http://emotedatabase.com/requestid/1D13C1YC2Q). The R scripts have been adapted so that they can be run with a subset of 3 datasets, but as a result there will be slight differences in the results produced.
+Our paper have analyzed 5 datasets. 3 of them are available in the [dataPrimary folder](dataPrimary), and 2 others can be accessed at the [EMOTE database](http://emotedatabase.com/requestid/1D13C1YC2Q). The R scripts have been adapted so that they can be run with a subset of 3 datasets in the [dataPrimary folder](dataPrimary), but as a result there will be slight differences in the results produced.
 
 ### Power analysis 
 
