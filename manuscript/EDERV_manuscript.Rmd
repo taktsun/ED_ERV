@@ -16,6 +16,15 @@ author:
       - "Visualization"
       - "Writing — original draft"
       - "Writing — Review & Editing"
+  - name          : "Maaike Verhagen"
+    affiliation   : "1"
+    role:
+      - "Conceptualization"
+      - "Funding acquisition"
+      - "Investigation"
+      - "Resources"
+      - "Supervision"
+      - "Writing — review & editing"
   - name          : "J. Loes Pouwels"
     affiliation   : "1"
     role:
@@ -23,14 +32,6 @@ author:
       - "Methodology"
       - "Supervision"
       - "Writing — original draft"
-      - "Writing — Review & Editing"
-  - name          : "Jacqueline M. Vink"
-    affiliation   : "1"
-    role:
-      - "Conceptualization"
-      - "Funding acquisition"
-      - "Resources"
-      - "Supervision"
       - "Writing — Review & Editing"
   - name          : "Eeske van Roekel"
     affiliation   : "2"
@@ -56,15 +57,14 @@ author:
       - "Investigation"
       - "Resources"
       - "Writing - Review & Editing"
-  - name          : "Maaike Verhagen"
+  - name          : "Jacqueline M. Vink"
     affiliation   : "1"
     role:
       - "Conceptualization"
       - "Funding acquisition"
-      - "Investigation"
       - "Resources"
       - "Supervision"
-      - "Writing — review & editing"
+      - "Writing — Review & Editing"
   - name          : "Dominique F. Maciejewski"
     affiliation   : "2"
     role:
@@ -94,7 +94,7 @@ abstract: |
   
   _Keywords_: Dynamics, Variability, Emotion Differentiation, Emotion Regulation, Adolescents
   
-  Word count: Abstract: 150 words. Statement of relevance: 148 words. Introduction and Discussion: 1995 words. Methods and Results (excluding tables and figures): 2110 words; including tables and figures: 2713 words.
+  Word count: Abstract: 150 words. Statement of relevance: 148 words. Introduction and Discussion: 1972 words. Methods and Results (excluding tables and figures): 2196 words. Tables and figures: 683 words.
   
   \newpage
   
@@ -108,16 +108,27 @@ abstract: |
   
   ## General Disclosures
   
+  <!--NON-ANONYMIZED version-->
+  
   Conflicts of interest: All authors declare no conflicts of interest. Funding: Jacqueline M. Vink and Maaike Verhagen were supported by a ZonMw grant (grant number: 10430 03201 0009). Jolien Braet was supported by funding from the Bijzonder Onderzoeksfonds (BOF) from Ghent University (Grant agreement No. BOF20/DOC/015). Artificial intelligence: Artificial intelligence assisted technologies were used in the creation of this article for paraphrasing and grammatical checks. Ethics: This research complies with the Declaration of Helsinki (2023), aside from the requirement to preregister human subjects research, and received approval from local ethics boards (ID: ECSW20170805-516, EC-2017.95, BC-09559). Computational reproducibility: Following the Workflow for Open Reproducible Code in Science [@vanlissaWORCSWorkflowOpen2021], the preregistration (hypotheses and analysis plan), primary data and analysis codes of this study are available via https://doi.org/10.17605/OSF.IO/9VX7T. The authors are applying for a Computational Reproducibility Badge which will be awarded pending checks by the STAR Team.
+  
+  <!--ANONYMIZED version-->
+  
+  <!--Conflicts of interest: All authors declare no conflicts of interest. Funding: ANONYMIZED. Artificial intelligence: Artificial intelligence assisted technologies were used in the creation of this article for paraphrasing and grammatical checks. Ethics: This research complies with the Declaration of Helsinki (2023), aside from the requirement to preregister human subjects research, and received approval from local ethics boards (ID: ANONYMIZED). Computational reproducibility: Following the Workflow for Open Reproducible Code in Science [@vanlissaWORCSWorkflowOpen2021], the preregistration (hypotheses and analysis plan), primary data and analysis codes of this study are available via ANONYMIZED. The authors are applying for a Computational Reproducibility Badge which will be awarded pending checks by the STAR Team.-->
 
   ## Study One
 
-  Preregistration: The hypotheses and methods were preregistered (https://doi.org/10.17605/OSF.IO/9VX7T) on 2022-05-04 prior to accessing the five datasets used in this study. There was an update of preregistration on 2023-10-19 for the purpose of including more datasets to achieve sufficient power for our hypotheses (for details, see Supplementary Materials 1). Materials: All study materials are publicly available (https://doi.org/10.17605/OSF.IO/CQ6N4 and Supplemental Materials 2). Data: All primary data are publicly available (https://doi.org/10.17605/OSF.IO/CQ6N4). All ready-to-analyze data are available (https://github.com/taktsun/ED_ERV). Analysis scripts: All analysis scripts are publicly available (https://github.com/taktsun/ED_ERV).
+  <!--NON-ANONYMIZED version-->
+  
+  Preregistration: The hypotheses and methods were preregistered (https://doi.org/10.17605/OSF.IO/9VX7T) on 2022-05-04 prior to accessing the five datasets used in this study. There was an update of preregistration on 2023-10-19 for the purpose of including more datasets to achieve sufficient power for our hypotheses (for details, see Supplementary Materials 1). Materials: All study materials are publicly available (https://doi.org/10.17605/OSF.IO/CQ6N4 and Supplemental Materials 2). Data: All primary data are publicly available (https://doi.org/10.17605/OSF.IO/CQ6N4). Analysis scripts: All analysis scripts are publicly available (https://github.com/taktsun/ED_ERV).
+
+    <!--ANONYMIZED version-->
+    
+  <!--Preregistration: The hypotheses and methods were preregistered (ANONYMIZED) on 2022-05-04 prior to accessing the five datasets used in this study. There was an update of preregistration on 2023-10-19 for the purpose of including more datasets to achieve sufficient power for our hypotheses (for details, see Supplementary Materials 1). Materials: All study materials are publicly available (ANONYMIZED and Supplemental Materials 2). Data: All primary data are publicly available (ANONYMIZED). Analysis scripts: All analysis scripts are publicly available (ANONYMIZED).-->
 
   
   
-  
-# keywords          : "Dynamics, Variability, Emotion Differentiation, Emotion Regulation"
+# keywords          : "Dynamics, Variability, Emotion Differentiation, Emotion Regulation, Adolescents"
 # wordcount         : "X"
 
 bibliography      : ["r-references.bib", "mainreferences.bib", "datasets_and_OSF.bib"]
@@ -136,7 +147,7 @@ header-includes:
   - \DeclareDelayedFloatFlavor{sidewaysfigure}{figure}
   - \xpatchcmd{\authorsnames}{\newcounter{NumberOfAuthors}}{\setcounter{NumberOfAuthors}{0}}{}{}
   - \xpatchcmd{\authorsnames}{\newcounter{NumberOfSuperscripts}}{\setcounter{NumberOfSuperscripts}{0}}{}{}
-  - \authorsnames[1, 1, 1, 2, 3, 4, 4, 1, 2]{Tak Tsun Lo, J. Loes Pouwels, Jacqueline M. Vink, Eeske van Roekel,Sarah O’Brien, Gillian Debra, Jolien Braet, Maaike Verhagen, Dominique F. Maciejewski}
+  - \authorsnames[1, 1, 1, 2, 3, 4, 4, 1, 2]{Tak Tsun Lo, Maaike Verhagen, J. Loes Pouwels, Eeske van Roekel,Sarah O’Brien, Gillian Debra, Jolien Braet, Jacqueline M. Vink, Dominique F. Maciejewski}
   - \authorsaffiliations{{Behavioural Science Institute, Radboud University}, {School of Social and Behavioral Sciences, Tilburg University}, {Melbourne School of Psychological Sciences, the University of Melbourne}, {Faculty of Psychology and Educational Sciences, Ghent University}}
   - \renewcommand{\affiliation}[1]{}
   - |
@@ -501,16 +512,16 @@ colnames(table3) <- c("",
 kbl(table3[,1:4],
     booktabs = T, align = rep("l",4), linesep = '',
     escape = FALSE,
-    caption = "Fixed Effect Estimates in within-person Temporal Associations and within-person Differences Between Emotion Differentiation and Emotion Regulation Variability",) %>%
+    caption = "Fixed Effect Estimates in Within-person Temporal Associations and Between-person Differences Between Emotion Differentiation and Emotion Regulation Variability",) %>%
       column_spec(1, width = "8cm") %>%
       column_spec(2, width = "3cm", bold = boldNA) %>%
       column_spec(3, width = "3cm", bold = boldPA) %>%
       column_spec(4, width = "1cm")%>%
     kable_styling(font_size = 7, position = "left")%>%
-    pack_rows("within-person temporal hypotheses", 1, 6, bold = FALSE) %>%
+    pack_rows("Within-person temporal hypotheses", 1, 6, bold = FALSE) %>%
     pack_rows(paste0("H1: Higher emotion differentiation is associated with subs equently higher emotion regulation variability (N = ",iNmodel1,", n = ",itmodel1,")"), 1, 3, bold = FALSE) %>%
     pack_rows(paste0("H2: Emotion regulation variability is not associated  with subsequent changes in emotion differentiation (N = ",iNmodel2,", n = ",itmodel2,")"), 4, 6, bold = FALSE) %>%
-    pack_rows("Within-person hypothesis", 7, 9, bold = FALSE) %>%
+    pack_rows("Between-person hypothesis", 7, 9, bold = FALSE) %>%
     pack_rows(paste0("H3: Higher emotion differentiation is associated with higher emotion regulation variability (N= ",iNmodel2,")"), 7, 9, bold = FALSE)%>%
 footnote(general = "Significant effects are displayed in bold. →: temporal precedence; ←→: between-person association; n: number of ESM assessments with complete observations of all indices required for modeling; N: number of adolescents; b: unstandardized effect; CI: confidence interval; H1 – H3: Hypotheses 1 to 3. Negative emotions and positive emotions were analyzed in separate models. Small differences in n and N between models exist due to different availability of indices as required in the different models. For brevity, we displayed the smaller n and N of the models grouped under the same hypotheses. H1 was tested using three negative emotion models and three positive emotion models because of three outcome variables (emotion regulation variability and its two subcomponents). H2 was tested using two models for positive emotions and two models for negative emotions. Two subcomponents were included together in model 2B  . Full model results with estimates of covariates (emotion intensity, emotion regulation intensity, time, gender, and age) are available in Supplemental Material 5.",
 threeparttable = TRUE
