@@ -5,13 +5,13 @@ shorttitle        : "EMOTION DIFFERENTIATION & REGULATION VARIABILITY"
 author: 
   - name          : "Tak Tsun Lo"
     corresponding : yes    # Define only one corresponding author
+  - name          : "Maaike Verhagen"
   - name          : "J. Loes Pouwels"
-  - name          : "Jacqueline M. Vink"
   - name          : "Eeske van Roekel"
   - name          : "Sarah O’Brien"
   - name          : "Gillian Debra"
   - name          : "Jolien Braet"
-  - name          : "Maaike Verhagen"
+  - name          : "Jacqueline M. Vink"
   - name          : "Dominique F. Maciejewski"
 
 
@@ -34,7 +34,7 @@ header-includes:
   - \newcommand{\elandscape}{\end{landscape}}
   - \xpatchcmd{\authorsnames}{\newcounter{NumberOfAuthors}}{\setcounter{NumberOfAuthors}{0}}{}{}
   - \xpatchcmd{\authorsnames}{\newcounter{NumberOfSuperscripts}}{\setcounter{NumberOfSuperscripts}{0}}{}{}
-  - \authorsnames[1, 1, 1, 2, 3, 4, 4, 1, 2]{Tak Tsun Lo, J. Loes Pouwels, Jacqueline M. Vink, Eeske van Roekel,Sarah O’Brien, Gillian Debra, Jolien Braet, Maaike Verhagen, Dominique F. Maciejewski}
+  - \authorsnames[1, 1, 1, 2, 3, 4, 4, 1, 2]{Tak Tsun Lo, Maaike Verhagen, J. Loes Pouwels, Eeske van Roekel,Sarah O’Brien, Gillian Debra, Jolien Braet, Jacqueline M. Vink, Dominique F. Maciejewski}
   - \authorsaffiliations{{Behavioural Science Institute, Radboud University}, {School of Social and Behavioral Sciences, Tilburg University}, {Melbourne School of Psychological Sciences, the University of Melbourne}, {Faculty of Psychology and Educational Sciences, Ghent University}}
   - \renewcommand{\affiliation}[1]{}
   - |
@@ -83,7 +83,7 @@ On 04 May 2022, we submitted our original version of pre-registration [https://o
 
 ## Updated Power Analysis
 
-The pooled sample size across five datasets was 811. We used the PowerAnalysisIL Shiny app [@lafitSelectionNumberParticipants2021] to calculate power for Hypothesis 1 (greater emotion differentiation at a given moment will result in heightened variability in emotion regulation at the subsequent moment) and Hypothesis 2 (variability in emotion regulation at one moment will not be associated with emotion differentiation at the following moment). We obtained parameters needed analyzing an unrelated ESM dataset collected by are searcher in Radboud University, not involved in this specific project.
+The pooled sample size across five datasets was 811. We used the PowerAnalysisIL Shiny app [@lafitSelectionNumberParticipants2021] to calculate power for Hypothesis 1 (greater emotion differentiation at a given moment will result in heightened variability in emotion regulation at the subsequent moment) and Hypothesis 2 (variability in emotion regulation at one moment will not be associated with emotion differentiation at the following moment). We obtained parameters needed analyzing an unrelated ESM dataset collected by another researcher in Radboud University not involved in this specific project [@mosannenzadehAttachmentEmotionsRomantic2021].
 
 ### Hypothesis 1
 
@@ -150,7 +150,7 @@ The goal for the ESM phase was to recruit a subsample of 100 participants. 257 f
 
 ### Procedure
 
-All participants completed ESM using the SEMA-app [version 3; @o2023sema3]   which they installed on their mobile phones a few days before starting the study. A semi-random sampling scheme was employed, with participants receiving 10 notifications per day at random moments within a fixed time interval spanning from 07.30 a.m. to 09.00 p.m. over seven consecutive days. Upon receiving a notification, participants had a 30-minute window to complete the ESM assessment. For the end-of-the-day assessment, a longer period of 149 minutes was allowed. In cases where participants did not open the momentary assessments, the app sent two reminders at 15 minutes and 25 minutes after the initial notification (75 minutes and 145 minutes for the end-of-the-day assessment). Participants responded to 3674 out of 6020 (61%) ESM notifications sent. The median number of assessments completed per participant was 47 out of 70 (67%; M = 41.83, SD = 17.06). All participants entered into a raffle for two €250 vouchers. Participants were paid at least €5 and up to €25 if they and their parents both had high compliance in the study.
+All participants completed ESM using the SEMA-app [version 3, @o2023sema3] which they installed on their mobile phones a few days before starting the study. A semi-random sampling scheme was employed, with participants receiving 10 notifications per day at random moments within a fixed time interval spanning from 07.30 a.m. to 09.00 p.m. over seven consecutive days. Upon receiving a notification, participants had a 30-minute window to complete the ESM assessment. For the end-of-the-day assessment, a longer period of 149 minutes was allowed. In cases where participants did not open the momentary assessments, the app sent two reminders at 15 minutes and 25 minutes after the initial notification (75 minutes and 145 minutes for the end-of-the-day assessment). Participants responded to 3674 out of 6020 (61%) ESM notifications sent. The median number of assessments completed per participant was 47 out of 70 (67%; M = 41.83, SD = 17.06). All participants entered into a raffle for two €250 vouchers. Participants were paid at least €5 and up to €25 if they and their parents both had high compliance in the study.
 
 ### ESM Measures
 
@@ -160,7 +160,7 @@ At each momentary assessment, participants rated four positive emotions (content
 
 #### Emotion regulation strategies
 
-At each even beep throughout the day (i.e., assessed five times daily), following the rating of negative emotions, participants responded to one additional question on a slider scale regarding the intensity of the most unpleasant event since the previous beep (“Think about the most unpleasant thing that you have experienced, since the last beep. How unpleasant was it?” 0= not at all unpleasant, 10 = very much unpleasant). If the unpleasantness was 5 or higher, participants had the opportunity to rate their use of emotion regulation strategies related to the event. This branching was introduced with a rationale of collecting reports with more intensive use of emotion regulation strategies. At the final beep of each day, regardless of event intensity, questions about emotion regulation strategies were asked.  For each of the five emotion regulation strategies listed below, participants rated their use on a 11-point scale (0 = not applicable at all, 10 = very applicable): acceptance (“I have accepted my feelings about it”; adapted from @bransRegulationNegativePositive2013a), reappraisal (“to feel better, I have changed the way I think about it”; adapted from @bransRegulationNegativePositive2013a), expression suppression (“I have avoided expressing my feelings about it”; adapted from @bransRegulationNegativePositive2013a), rumination (“I couldn’t stop thinking my feelings about it”; adapted from @bransRegulationNegativePositive2013a), and sharing (“I talked about it to someone”; adapted from @bransRegulationNegativePositive2013a). With 5 even-beep assessments over 7 days, the maximum possible number of measurements for emotion regulation strategies was 35. Adolescents had a total of 752 beeps which they had the opportunity to report emotion regulation strategy use from 609 end-of-day beeps and 143 non-end-of-day even beeps which they rated having experienced a negative event with unpleasantness at 5 or above. Adolescents reported their use of emotion regulation strategies in 598 out of the 752 possible beeps (79.5%).
+At each even beep throughout the day (i.e., assessed five times daily), following the rating of negative emotions, participants responded to one additional question on a slider scale regarding the intensity of the most unpleasant event since the previous beep (“Think about the most unpleasant thing that you have experienced, since the last beep. How unpleasant was it?” 0= not at all unpleasant, 10 = very much unpleasant). If the unpleasantness was 5 or higher, participants had the opportunity to rate their use of emotion regulation strategies related to the event. This branching was introduced with a rationale of collecting reports with more intensive use of emotion regulation strategies. At the final beep of each day, regardless of event intensity, questions about emotion regulation strategies were asked.  For each of the five emotion regulation strategies listed below, participants rated their use on a 11-point scale (0 = not applicable at all, 10 = very applicable): acceptance (“I have accepted my feelings about it”; adapted from @bransRegulationNegativePositive2013a), reappraisal (“to feel better, I have changed the way I think about it”; adapted from @bransRegulationNegativePositive2013a), expression suppression (“I have avoided expressing my feelings about it”; adapted from @bransRegulationNegativePositive2013a), rumination (“I couldn’t stop thinking my feelings about it”; adapted from @bransRegulationNegativePositive2013a), and sharing (“I talked about it to someone”; adapted from @bransRegulationNegativePositive2013a). With 5 even-beep assessments over 7 days, the maximum possible number of measurements for emotion regulation strategies was 35. Adolescents had a total of 719 beeps which they had the opportunity to report emotion regulation strategy use from 575 end-of-day beeps and 144 non-end-of-day even beeps which they rated having experienced a negative event with unpleasantness at 5 or above. Adolescents reported their use of emotion regulation strategies in 586 out of the 719 possible beeps (81.50%).
 
 ## Dataset 2: Emotions in daily life 2011, KU Leuven [main reference: @koval2013affect]
 
