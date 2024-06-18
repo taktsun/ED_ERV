@@ -28,6 +28,7 @@ library(readxl) # for reading xlsx files
 library(lubridate) #for function day
 library(betapart)
 library(emodiff)
+library(moments)
 
 source("list_of_variables.R") # load all ESM measures variable names
 source("func_preprocessing.R") # load functions for pre-processing data (including calculation of momentary indices)
