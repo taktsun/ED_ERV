@@ -1604,6 +1604,14 @@
         "vctrs"
       ]
     },
+    "moments": {
+      "Package": "moments",
+      "Version": "0.14.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "bb94fd8ee5f7f127eae2bddbff26864d",
+      "Requirements": []
+    },
     "multcomp": {
       "Package": "multcomp",
       "Version": "1.4-25",
