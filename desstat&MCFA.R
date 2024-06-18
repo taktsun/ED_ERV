@@ -14,7 +14,7 @@
 # 3. OMEGA RELIABILITY for momentary indices
 # 4. Descriptive statistics for momentary indices
 # 5. Supplementary descriptive statistics
-# 6. Multilevel Confirmatory Factor Analysis per Dataset (supplemental materials 3)
+# 6. Multilevel Confirmatory Factor Analysis per Dataset (supplemental materials 4)
 # ======================================================================
 
 # In case you run into the following error code (happened with a new Matrix package release):
@@ -32,7 +32,8 @@ library(misty) # for multilevel.cor and multilevel ICC
 library(multilevelTools) # for omega reliability
 library(psych) #needed for Statsby
 library(lavaan) # for MCFA
-
+library(ggplot2)
+library(ggpubr)
 
 
 # ======================================================================
@@ -171,6 +172,11 @@ write.csv(outputReliability, "manuscript/results/outputReliability.csv", row.nam
 # Results => Descriptive Statistics
 # ===================================
 
+mymax <- function(...,def=NA,na.rm=FALSE)
+  if(!is.infinite(x<-suppressWarnings(max(...,na.rm=na.rm)))) x else def
+mymin <- function(...,def=NA,na.rm=FALSE)
+  if(!is.infinite(x<-suppressWarnings(min(...,na.rm=na.rm)))) x else def
+
 # function to calculate descriptive statistics
 desstat <- function(x, varname, group, ndigit=2){
   c(
@@ -180,13 +186,15 @@ desstat <- function(x, varname, group, ndigit=2){
     nobs = sum(!is.na(x)),
     # grand mean
     mean = round(mean(x, na.rm = TRUE),ndigit),
+    # between person SD
+    bSD = round(sd(unlist(aggregate(x, by=list(group), FUN=mean, na.rm = TRUE)[2]),na.rm=TRUE),ndigit),
     # within person SD
     wSD = round(mean(unlist(aggregate(x, by=list(group), FUN=sd, na.rm = TRUE)[2]),na.rm=TRUE),ndigit),
-    # between person SD
-    bSD = round(sd(unlist(aggregate(x, by=list(group), FUN=mean, na.rm = TRUE)[2]),na.rm=TRUE),ndigit)
+    #range = round(range(x, na.rm = TRUE),ndigit)
+    min = round(mean(unlist(aggregate(x, by=list(group), FUN=mymin, na.rm = TRUE)[2]),na.rm=TRUE),ndigit),
+    max = round(mean(unlist(aggregate(x, by=list(group), FUN=mymax, na.rm = TRUE)[2]),na.rm=TRUE),ndigit)
   )
 }
-
 # wrapper function to produce descriptive statistics for many variables
 summarydesstat <- function(df, group, strlist){
   output <- desstat(unlist(df[strlist[1]]),strlist[1],unlist(df[group]))
@@ -206,7 +214,7 @@ write.csv(outputDesStat, "manuscript/results/Table2.csv", row.names=FALSE)
 
 # ===================================
 # Part 5: supplementary descriptive statistics
-# Supplemental materials 4
+# Supplemental materials 3
 # ===================================
 
 # Descriptive Statistics
@@ -255,8 +263,8 @@ cortablesummary <- function(df, inputIndices = inputIndices, labelIndices = labe
   mat <- matrix(paste0(sub("0.", ".",format(round(tmp.r,2),nsmall=2)), " [",
                          sub("0.", ".",format(round(tmp.low.ci,2),nsmall=2)),",",
                              sub("0.", ".",format(round(tmp.up.ci,2),nsmall=2)),"]"), nrow = nrow(tmp.r),
-       dimnames = list(paste0(c(1:length(labelIndices)),". ",inputIndices),
-                       c(1:length(inputIndices)))
+       dimnames = list(paste0(c(1:length(labelIndices)),". ",labelIndices),
+                       c(1:length(labelIndices)))
        )
 
   diag(mat) <- ""
@@ -266,7 +274,9 @@ cortablesummary <- function(df, inputIndices = inputIndices, labelIndices = labe
                         "M",
                         "SDw",
                         "SDb",
-                        colnames(mat)[-c(1:4)])
+                     "Min",
+                     "Max",
+                        colnames(mat)[-c(1:6)])
   mat
 }
 
@@ -275,9 +285,30 @@ write.csv(cortablesummary(df,inputIndices,labelIndices),"manuscript/results/SMTa
 write.csv(cortablesummary(dataGVE,inputIndices,labelIndices),"manuscript/results/SMTable421.csv")
 write.csv(cortablesummary(dataTilburg,inputIndices,labelIndices),"manuscript/results/SMTable424.csv")
 write.csv(cortablesummary(dataGhent,inputIndices,labelIndices),"manuscript/results/SMTable425.csv")
+
+write.csv(cortablesummary(dataGVE,inputPA.GVE,labelPA.GVE),"manuscript/results/SMTable4311.csv")
+write.csv(cortablesummary(dataGVE,inputNA.GVE,labelNA.GVE),"manuscript/results/SMTable4312.csv")
+write.csv(cortablesummary(dataGVE,inputER.GVE,labelER.GVE),"manuscript/results/SMTable4313.csv")
+
+write.csv(cortablesummary(dataTilburg,inputPA.Tilburg,labelPA.Tilburg),"manuscript/results/SMTable4341.csv")
+write.csv(cortablesummary(dataTilburg,inputNA.Tilburg,labelNA.Tilburg),"manuscript/results/SMTable4342.csv")
+write.csv(cortablesummary(dataTilburg,inputER.Tilburg,labelER.Tilburg),"manuscript/results/SMTable4343.csv")
+
+write.csv(cortablesummary(dataGhent,inputPA.Ghent,labelPA.Ghent),"manuscript/results/SMTable4351.csv")
+write.csv(cortablesummary(dataGhent,inputNA.Ghent,labelNA.Ghent),"manuscript/results/SMTable4352.csv")
+write.csv(cortablesummary(dataGhent,inputER.Ghent,labelER.Ghent),"manuscript/results/SMTable4353.csv")
+
 if (ready.5datasets) {
   write.csv(cortablesummary(dataLeuven2011,inputIndices,labelIndices),"manuscript/results/SMTable422.csv")
   write.csv(cortablesummary(dataLeuven3W,inputIndices,labelIndices),"manuscript/results/SMTable423.csv")
+  
+  write.csv(cortablesummary(dataLeuven2011,inputPA.Leuven2011,labelPA.Leuven2011),"manuscript/results/SMTable4321.csv")
+  write.csv(cortablesummary(dataLeuven2011,inputNA.Leuven2011,labelNA.Leuven2011),"manuscript/results/SMTable4322.csv")
+  write.csv(cortablesummary(dataLeuven2011,inputER.Leuven2011,labelER.Leuven2011),"manuscript/results/SMTable4323.csv")
+  write.csv(cortablesummary(dataLeuven3W,inputPA.Leuven3W,labelPA.Leuven3W),"manuscript/results/SMTable4331.csv")
+  write.csv(cortablesummary(dataLeuven3W,inputNA.Leuven3W,labelNA.Leuven3W),"manuscript/results/SMTable4332.csv")
+  write.csv(cortablesummary(dataLeuven3W,inputER.Leuven3W,labelER.Leuven3W),"manuscript/results/SMTable4333.csv")
+  
 }else{
   #filler output files with 0
   subcortable <- cortablesummary(df,inputIndices,labelIndices)
@@ -286,9 +317,18 @@ if (ready.5datasets) {
   write.csv(subcortable,"manuscript/results/SMTable423.csv")
 }
 
+
+p <- ggplot(dfPerson, aes(x=study, y=person_PA, color=study)) + 
+  geom_violin(linewidth = 1)
+p
+p+ geom_boxplot(width=0.1) +
+  scale_color_manual(values=c("#4477AA", "#CCBB44", "#228833", "#66CCEE", "#AA3377")) +
+  theme_bw()+theme(legend.position="none") 
+
+
 # ===================================
 # Part 6: Multilevel Confirmatory Factor Analysis per Dataset
-# Supplemental materials 3
+# Supplemental materials 4
 # ===================================
 # function that extract fit indices
 summaryfit <- function(cfamodel, inputPA,inputNA){
@@ -340,11 +380,11 @@ RMSEAb = function(f1ab) {
 # Different models were run and compared to see which fits ebst theoretically. 
 # Note that we only report the within-person (mxaw) and the between-person (mxab) in the supplement.
 
-##### 1.1 Factor structure short questionnaire/ Establish reference model #####
-#### 1.1a Within level (between level saturated) ####
-#specify the two-factor structure at the within level
+# 1.1 Factor structure short questionnaire/ Establish reference model
+# 1.1a Within level (between level saturated
+# specify the two-factor structure at the within level
 
-# ======= Dataset 1: GVE==============
+# ==== Dataset 1: GVE
 
 m1aw <- '
 level: 1
@@ -442,9 +482,7 @@ inspect(f1aw)$lambda
 summary(f1ab, standardized = TRUE, fit.measures = TRUE)
 inspect(f1ab,what="std")
 
-# ============================
 # ======= DATASET 2: Leuven2011
-# ============================
 if (ready.5datasets) {
   
   m2aw <- '
@@ -531,9 +569,7 @@ if (ready.5datasets) {
   summary(f2ab, standardized = TRUE, fit.measures = TRUE)
   inspect(f2ab,what="std")
 
-# ============================
-# DATASET 3: Leuven 3-WAVE
-# ============================
+#  ==== DATASET 3: Leuven 3-WAVE
 
   
   m3aw <- '
@@ -668,9 +704,9 @@ if (ready.5datasets) {
   
   summary(f3aw_mod, standardized = TRUE, fit.measures = TRUE)
 } # end of dataset subset if-clause
-# ============================
-# DATASET 4: Tilburg
-# ============================
+
+
+# ====  DATASET 4: Tilburg
 
 
 m4aw <- '
@@ -830,9 +866,7 @@ summary(f4aw_mod, standardized = TRUE, fit.measures = TRUE)
 modificationindices(f4aw_mod, sort = TRUE)
 
 
-# ============================
-# DATASET 5: Ghent
-# ============================
+# ====  DATASET 5: Ghent
 
 
 m5aw <- '
@@ -966,9 +1000,7 @@ f5aw_mod <- lavaan::sem(
 summary(f5aw_mod, standardized = TRUE, fit.measures = TRUE)
 modificationindices(f5aw_mod, sort = TRUE)
 
-# ====================================
-# summarize all the fitting
-# ====================================
+# ====  summarize all the fitting
 cfasub <- c(model ="unavailable",rep(0,6))
 rescfa <- rbind(c(model = deparse(substitute(f1aw)), summaryfit(f1aw, inputPA.GVE,inputNA.GVE)),
       if (ready.5datasets) c(model = deparse(substitute(f2aw)), summaryfit(f2aw, inputPA.Leuven2011,inputNA.Leuven2011)) else cfasub,
@@ -981,5 +1013,163 @@ rescfa <- rbind(c(model = deparse(substitute(f1aw)), summaryfit(f1aw, inputPA.GV
       c(model = deparse(substitute(f4ab)), summaryfit(f4ab, inputPA.Tilburg,inputNA.Tilburg)),
       c(model = deparse(substitute(f5ab)), summaryfit(f5ab, inputPA.Ghent,inputNA.Ghent)))
 colnames(rescfa) <- c("model","min","max","chisq","rmsea","cfi","tli")
-write.csv(rescfa,"manuscript/results/SMTable3.csv", row.names = FALSE)
+write.csv(rescfa,"manuscript/results/SMTable4.csv", row.names = FALSE)
 
+
+# ===================================
+# Part 7: Distributions of Momentary Indices
+# Supplemental materials 3
+# ===================================
+
+# Figure S3
+
+dfPersonLong <- reshape(dfPerson[,c("PARTICIPANT_ID","study",poolinfo_person)], 
+                        direction = "long",
+                        varying = poolinfo_person,
+                        v.names = "Value",
+                        idvar = c("PARTICIPANT_ID", "study"),
+                        timevar = "Index",
+                        times = index_order)
+dfPersonLong.mean <- dfPersonLong[dfPersonLong$Index %in% index_order[1:8],]
+dfPersonLong.mean$Value <- dfPersonLong.mean$Value *
+  (1+dfPersonLong.mean$Index %in% c("dperson_ED.m","bperson_EDPA.m")*(-2))
+dfPersonLong.sd <- dfPersonLong[dfPersonLong$Index %in% index_order[12:19],]
+dfPersonLong.skew <- dfPersonLong[dfPersonLong$Index %in% index_order[23:30],]
+
+# https://stackoverflow.com/questions/44141193/apply-jittering-to-outliers-data-in-a-boxplot-with-ggplot2
+dfPersonLong.mean <-  dfPersonLong.mean %>%  group_by(Index) %>%
+  mutate(
+    outlier_lwr = Value < quantile(Value, probs = 0.25, na.rm=TRUE) - IQR(Value, na.rm=TRUE) * 1.5,
+    outlier_upr = Value > quantile(Value, probs = 0.75, na.rm=TRUE) + IQR(Value, na.rm=TRUE) * 1.5
+  ) %>%  ungroup
+dfPersonLong.sd <-  dfPersonLong.sd %>%  group_by(Index) %>%
+  mutate(
+    outlier_lwr = Value < quantile(Value, probs = 0.25, na.rm=TRUE) - IQR(Value, na.rm=TRUE) * 1.5,
+    outlier_upr = Value > quantile(Value, probs = 0.75, na.rm=TRUE) + IQR(Value, na.rm=TRUE) * 1.5
+  ) %>%  ungroup
+dfPersonLong.skew <-  dfPersonLong.skew %>%  group_by(Index) %>%
+  mutate(
+    outlier_lwr = Value < quantile(Value, probs = 0.25, na.rm=TRUE) - IQR(Value, na.rm=TRUE) * 1.5,
+    outlier_upr = Value > quantile(Value, probs = 0.75, na.rm=TRUE) + IQR(Value, na.rm=TRUE) * 1.5
+  ) %>%  ungroup
+
+# violin plot for mean
+p <- ggplot(dfPersonLong.mean, aes(x=Index, y=Value, colour=Index)) + 
+  geom_violin(linewidth = 1) + scale_x_discrete(limits=paste0(index_seed_label[1:8],".m"),
+                                                labels = c("aperson_PA.m" = "Positive\nEmotion\nIntensity",
+                                                           "cperson_NA.m" = "Negative\nEmotion\nIntensity",
+                                                           "eperson_ER.m" = "Emotion\nRegulation\nIntensity",
+                                                           "dperson_ED.m" = "(-1)*Negative\nEmotion\nDifferentiation",
+                                                           "bperson_EDPA.m" = "(-1)*Positive\nEmotion\nDifferentiation",
+                                                           "fperson_BrayCurtisFull.amm.m" = "Emotion\nRegulation\nVariability",
+                                                           "hperson_BrayCurtisRepl.amm.m" = "Strategy\nSwitching",
+                                                           "gperson_BrayCurtisNest.amm.m" = "Endorsement\nChange"))
+figs31 <- p +geom_boxplot(width = 0.1, outlier.shape = NA) +
+  geom_point(data = function(x) subset(x, outlier_lwr | outlier_upr), 
+             position = 'jitter') + # Outliers 
+  scale_color_manual(values=colour_order) +
+  theme_bw()+theme(legend.position="none") + ylab("Mean")
+
+# violin plot for sd
+figs32_outlierNED.sd <- dfPersonLong.sd[dfPersonLong.sd$Index=="dperson_ED.sd" & dfPersonLong.sd$Value >10.5,]$Value
+figs32_outlierPED.sd <- (dfPersonLong.sd[dfPersonLong.sd$Index=="bperson_EDPA.sd" & dfPersonLong.sd$Value >10.5,]$Value)
+figs32_outlierNED.sd <- figs32_outlierNED.sd[!is.na(figs32_outlierNED.sd)]
+figs32_outlierPED.sd <- figs32_outlierPED.sd[!is.na(figs32_outlierPED.sd)]
+
+
+
+
+p <- ggplot(dfPersonLong.sd, aes(x=Index, y=Value, colour=Index)) + 
+  geom_violin(linewidth = 1) + scale_x_discrete(limits=paste0(index_seed_label[1:8],".sd"),
+                                                labels = c("aperson_PA.sd" = "Positive\nEmotion\nIntensity",
+                                                           "cperson_NA.sd" = "Negative\nEmotion\nIntensity",
+                                                           "eperson_ER.sd" = "Emotion\nRegulation\nIntensity",
+                                                           "dperson_ED.sd" = "Negative\nEmotion\nDifferentiation",
+                                                           "bperson_EDPA.sd" = "Positive\nEmotion\nDifferentiation",
+                                                           "fperson_BrayCurtisFull.amm.sd" = "Emotion\nRegulation\nVariability",
+                                                           "hperson_BrayCurtisRepl.amm.sd" = "Strategy\nSwitching",
+                                                           "gperson_BrayCurtisNest.amm.sd" = "Endorsement\nChange"))
+
+
+figs32 <-p +geom_boxplot(width = 0.1, outlier.shape = NA) +
+  geom_point(data = function(x) subset(x, outlier_lwr | outlier_upr), 
+             position = 'jitter') + # Outliers 
+  scale_color_manual(values=colour_order) + theme_bw()+theme(legend.position="none") + ylab("Standard Deviation (SD)") + 
+  scale_y_continuous(limits = c(0,10), oob = scales::oob_keep)
+figs32 <- figs32 + annotate("label", x = 4, y = 8.5, 
+                            label = paste0(length(figs32_outlierNED.sd), " SDs are out of range: \n",
+                            sum(figs32_outlierNED.sd <= 15,na.rm=TRUE)," SDs lie between 10 and 15,\n",
+                            sum(figs32_outlierNED.sd > 15 & figs32_outlierNED.sd < 20,na.rm=TRUE), " SDs lie between 15 and 20,\n",
+                            sum(figs32_outlierNED.sd > 20 & figs32_outlierNED.sd < 30,na.rm=TRUE), " SDs lie between 20 and 30,\n",
+                  "and the largest SD is ",
+                  round(max(figs32_outlierNED.sd,na.rm=TRUE),0), "."), lineheight = 1, hjust = 0) +
+  annotate("label", x = 1.8, y = 5, label = paste0(length(figs32_outlierPED.sd),
+                                                   " SDs are out of range:\n",
+                                                   paste(round(sort(figs32_outlierPED.sd),0),collapse = ","),"."), 
+           lineheight = 1,hjust = 0)
+figs32
+# dfPersonLong.sd$outlier_upr & 
+# violin plot for skewness
+p <- ggplot(dfPersonLong.skew, aes(x=Index, y=Value, colour=Index)) + 
+  geom_violin(linewidth = 1) + scale_x_discrete(limits=paste0(index_seed_label[1:8],".skew"),
+                                                labels = c("aperson_PA.skew" = "Positive\nEmotion\nIntensity",
+                                                           "cperson_NA.skew" = "Negative\nEmotion\nIntensity",
+                                                           "eperson_ER.skew" = "Emotion\nRegulation\nIntensity",
+                                                           "dperson_ED.skew" = "Negative\nEmotion\nDifferentiation",
+                                                           "bperson_EDPA.skew" = "Positive\nEmotion\nDifferentiation",
+                                                           "fperson_BrayCurtisFull.amm.skew" = "Emotion\nRegulation\nVariability",
+                                                           "hperson_BrayCurtisRepl.amm.skew" = "Strategy\nSwitching",
+                                                           "gperson_BrayCurtisNest.amm.skew" = "Endorsement\nChange"))
+figs33 <-p +geom_boxplot(width = 0.1, outlier.shape = NA) +
+  geom_point(data = function(x) subset(x, outlier_lwr | outlier_upr), 
+             position = 'jitter') + # Outliers 
+  scale_color_manual(values=colour_order) + theme_bw()+theme(legend.position="none") + ylab("Skewness") 
+ggarrange(figs31,figs32,figs33, # Second row with box and dot plots
+          nrow = 3, 
+          labels = c("A","B","C")                                        # Labels of the scatter plot
+) 
+ggsave("manuscript/results/FigS3.png",  width = 12, height = 12, dpi = 300)
+
+# Percentage at floor
+
+## Wrapper useful to calculate percentage of person/occasion that has all ratings at the floor (==0)
+pcZero <- function(d, var){
+  sum(d[var] == 0, na.rm=TRUE)/sum(!is.na(d[var]))
+}
+
+output_pcZero <- data.frame(var = labelIndices,
+           personMzero = c(pcZero(dfPerson,"person_PA"),
+                           pcZero(dfPerson,"person_EDPA"),
+                           pcZero(dfPerson,"person_NA"),
+                           pcZero(dfPerson,"person_ED"),
+                           pcZero(dfPerson,"person_ER"),
+                           pcZero(dfPerson,"person_BrayCurtisFull.amm"),
+                           pcZero(dfPerson,"person_BrayCurtisNest.amm"),
+                           pcZero(dfPerson,"person_BrayCurtisRepl.amm")
+           ),
+           personSDzero = c(pcZero(dfPerson,"person_PA.sd"),
+                           pcZero(dfPerson,"person_EDPA.sd"),
+                           pcZero(dfPerson,"person_NA.sd"),
+                           pcZero(dfPerson,"person_ED.sd"),
+                           pcZero(dfPerson,"person_ER.sd"),
+                           pcZero(dfPerson,"person_BrayCurtisFull.amm.sd"),
+                           pcZero(dfPerson,"person_BrayCurtisNest.amm.sd"),
+                           pcZero(dfPerson,"person_BrayCurtisRepl.amm.sd")
+           ),
+           momentMzero = c(pcZero(df,"m_PA"),
+                           pcZero(df,"m_EDPA"),
+                           pcZero(df,"m_NA"),
+                           pcZero(df,"m_ED"),
+                           pcZero(df,"m_ER"),
+                           pcZero(df,"BrayCurtisFull.amm"),
+                           pcZero(df,"BrayCurtisNest.amm"),
+                           pcZero(df,"BrayCurtisRepl.amm")
+           )
+)
+
+# output_pcZero[,2:4] <- round(output_pcZero[,2:4]*100,2)
+# papaja::apa_num(output_pcZero[,2:4])
+# output_pcZero[,2] <- paste0(output_pcZero[,2],"%") 
+# output_pcZero[,3] <- paste0(output_pcZero[,3],"%") 
+# output_pcZero[,4] <- paste0(output_pcZero[,4],"%") 
+write.csv(output_pcZero,"manuscript/results/SMTable3.csv", row.names = FALSE)
