@@ -90,44 +90,20 @@ authornote: We thank Farnaz Mosannenzadeh for giving us access to her dataset fo
 
 abstract: |
   
-  To adapt to changing situations in daily lives, adolescents vary the intensity of strategies or switch between strategies to regulate their emotions. This emotion regulation variability is thought to be enhanced by emotion differentiation, which refers to how well adolescents distinctively label their emotions. We tested this assumption in five experience sampling method datasets, which repeatedly assessed emotion differentiation and emotion regulation variability in 750 adolescents’ daily life (aged 11 to 25, 59.17% female, 25834 observations). Unexpectedly, moments of higher emotion differentiation were followed by more consistent use of emotion regulation strategies (i.e., lower emotion regulation variability). Reciprocally, moments with high emotion regulation variability were followed by less emotion differentiation. These negative bidirectional temporal influences were present regardless of the types of variability (intensity or switching) and emotions (positive or negative). Our results prompt the need of further studying the benefits and interplay between emotion differentiation and regulation variability.
+  To adapt to changing situations in daily lives, adolescents vary the intensity of strategies or switch between strategies to regulate their emotions. This emotion regulation variability is thought to be enhanced by emotion differentiation, which refers to how well adolescents distinctively label their emotions. We tested this assumption in five experience sampling method datasets, which repeatedly assessed emotion differentiation and emotion regulation variability in 750 adolescents’ daily life (aged 11 to 25, 59.17% female, 25,834 observations). Unexpectedly, moments of higher emotion differentiation were followed by more consistent use of emotion regulation strategies (i.e., lower emotion regulation variability). Reciprocally, moments with high emotion regulation variability were followed by less emotion differentiation. These negative bidirectional temporal influences were present regardless of the types of variability (intensity or switching) and emotions (positive or negative). Our results prompt the need of further studying the benefits and interplay between emotion differentiation and regulation variability.
   
   _Keywords_: Dynamics, Variability, Emotion Differentiation, Emotion Regulation, Adolescents
   
-  Word count: Abstract: 150 words. Statement of relevance: 148 words. Introduction and Discussion: 1972 words. Methods and Results (excluding tables and figures): 2196 words. Tables and figures: 683 words.
+  Word count: Abstract: 150 words. Introduction, Results, Discussion, and Tables: 3394 words. Methods: 1754 words.
   
-  \newpage
+  <!--\newpage
   
   # Statement of relevance
   
-  Adolescents go through a crucial period of biological, occupational, social and emotional development. They need to vary the strategies of emotion regulation, either by changing the intensity of strategies or switching between strategies, to adapt to changing situations and needs. This emotion regulation variability is expected to be facilitated by emotion differentiation — the ability to identify and label emotions distinctively — because knowing what one feels informs ways of regulating one’s emotions. Unexpectedly, in the daily lives among 750 adolescents that we examined, higher emotion differentiation was followed by more consistent use of emotion regulation strategies, rather than more variable use. Furthermore, after moments of high emotion regulation variability, adolescents showed decreased emotion differentiation. Our findings challenge the idea that emotion differentiation facilitates emotion regulation. These results guide future research on the interplay between emotion differentiation and emotion regulation variability, and might help practitioners optimize emotion-related psychoeducation for adolescents.
+  Adolescents go through a crucial period of biological, occupational, social and emotional development. They need to vary the strategies of emotion regulation, either by changing the intensity of strategies or switching between strategies, to adapt to changing situations and needs. This emotion regulation variability is expected to be facilitated by emotion differentiation — the ability to identify and label emotions distinctively — because knowing what one feels informs ways of regulating one’s emotions. Unexpectedly, in the daily lives among 750 adolescents that we examined, higher emotion differentiation was followed by more consistent use of emotion regulation strategies, rather than more variable use. Furthermore, after moments of high emotion regulation variability, adolescents showed decreased emotion differentiation. Our findings challenge the idea that emotion differentiation facilitates emotion regulation. These results guide future research on the interplay between emotion differentiation and emotion regulation variability, and might help practitioners optimize emotion-related psychoeducation for adolescents.-->
   
-  \newpage
-  
-  # Research Transparency Statement
-  
-  ## General Disclosures
-  
-  <!--NON-ANONYMIZED version-->
-  
-  Conflicts of interest: All authors declare no conflicts of interest. Funding: Jacqueline M. Vink and Maaike Verhagen were supported by a ZonMw grant (grant number: 10430 03201 0009). Jolien Braet was supported by funding from the Bijzonder Onderzoeksfonds (BOF) from Ghent University (Grant agreement No. BOF20/DOC/015). Artificial intelligence: Artificial intelligence assisted technologies were used in the creation of this article for paraphrasing and grammatical checks. Ethics: This research complies with the Declaration of Helsinki (2023), aside from the requirement to preregister human subjects research, and received approval from local ethics boards (ID: ECSW20170805-516, EC-2017.95, BC-09559). Computational reproducibility: Following the Workflow for Open Reproducible Code in Science [@vanlissaWORCSWorkflowOpen2021], the preregistration (hypotheses and analysis plan), primary data and analysis codes of this study are available via https://doi.org/10.17605/OSF.IO/9VX7T. The authors are applying for a Computational Reproducibility Badge which will be awarded pending checks by the STAR Team.
-  
-  <!--ANONYMIZED version-->
-  
-  <!--Conflicts of interest: All authors declare no conflicts of interest. Funding: ANONYMIZED. Artificial intelligence: Artificial intelligence assisted technologies were used in the creation of this article for paraphrasing and grammatical checks. Ethics: This research complies with the Declaration of Helsinki (2023), aside from the requirement to preregister human subjects research, and received approval from local ethics boards (ID: ANONYMIZED). Computational reproducibility: Following the Workflow for Open Reproducible Code in Science [@vanlissaWORCSWorkflowOpen2021], the preregistration (hypotheses and analysis plan), primary data and analysis codes of this study are available via ANONYMIZED. The authors are applying for a Computational Reproducibility Badge which will be awarded pending checks by the STAR Team.-->
 
-  ## Study One
 
-  <!--NON-ANONYMIZED version-->
-  
-  Preregistration: The hypotheses and methods were preregistered (https://doi.org/10.17605/OSF.IO/9VX7T) on 2022-05-04 prior to accessing the five datasets used in this study. There was an update of preregistration on 2023-10-19 for the purpose of including more datasets to achieve sufficient power for our hypotheses (for details, see Supplementary Materials 1). Materials: All study materials are publicly available (https://doi.org/10.17605/OSF.IO/CQ6N4 and Supplemental Materials 2). Data: All primary data are publicly available (https://doi.org/10.17605/OSF.IO/CQ6N4). Analysis scripts: All analysis scripts are publicly available (https://github.com/taktsun/ED_ERV).
-
-    <!--ANONYMIZED version-->
-    
-  <!--Preregistration: The hypotheses and methods were preregistered (ANONYMIZED) on 2022-05-04 prior to accessing the five datasets used in this study. There was an update of preregistration on 2023-10-19 for the purpose of including more datasets to achieve sufficient power for our hypotheses (for details, see Supplementary Materials 1). Materials: All study materials are publicly available (ANONYMIZED and Supplemental Materials 2). Data: All primary data are publicly available (ANONYMIZED). Analysis scripts: All analysis scripts are publicly available (ANONYMIZED).-->
-
-  
-  
 # keywords          : "Dynamics, Variability, Emotion Differentiation, Emotion Regulation, Adolescents"
 # wordcount         : "X"
 
@@ -204,7 +180,7 @@ Previous studies have analyzed emotion regulation strategies separately. However
 
 ## The Present Study
 
-Our study examined the temporal relationship between emotion differentiation and emotion regulation variability during adolescence. We pre-registered two within-person temporal hypotheses: In line with the idea that emotion differentiation facilitates emotion regulation, Hypothesis 1 stated that greater emotion differentiation at a given moment is related to higher emotion regulation variability at the subsequent moment. Previous theoretical discussions did not expect a reversed temporal sequence [@kashdanUnpackingEmotionDifferentiation2015; @thompsonGainingClarityEmotion2021]. Therefore, Hypothesis 2 stated that emotion regulation variability at one moment is not associated with emotion differentiation at the following moment. Additionally, we had a between-person hypothesis: Hypothesis 3 stated that adolescents with higher emotion differentiation will show higher emotion regulation variability on average. We tested these hypotheses using data from five ESM studies, in which adolescents rated momentary emotions and emotion regulation strategies multiple times per day. All pre-registered hypotheses concerned the differentiation of _negative_ emotions because previous literature mostly investigated negative emotion differentiation. Due to limited previous research, we explored these hypotheses again with the subcomponents of emotion regulation variability, and with positive emotion differentiation.
+Our study examined the temporal relationship between emotion differentiation and emotion regulation variability from early to late adolescence. We pre-registered two within-person temporal hypotheses: In line with the idea that emotion differentiation facilitates emotion regulation, Hypothesis 1 stated that greater emotion differentiation at a given moment is related to higher emotion regulation variability at the subsequent moment. Previous theoretical discussions did not expect a reversed temporal sequence [@kashdanUnpackingEmotionDifferentiation2015; @thompsonGainingClarityEmotion2021]. Therefore, Hypothesis 2 stated that emotion regulation variability at one moment is not associated with emotion differentiation at the following moment. Additionally, we had a between-person hypothesis: Hypothesis 3 stated that adolescents with higher emotion differentiation will show higher emotion regulation variability on average. We tested these hypotheses using data from five ESM studies, in which adolescents rated momentary emotions and emotion regulation strategies multiple times per day. All pre-registered hypotheses concerned the differentiation of _negative_ emotions because previous literature mostly investigated negative emotion differentiation. Due to limited previous research, we explored these hypotheses again with the subcomponents of emotion regulation variability, and with positive emotion differentiation. In all our hypotheses, we focused solely on negative emotion regulation, as there were limited datasets available that measured positive emotion regulation, preventing us from testing similar hypotheses with sufficient statistical power.
 
 
 
@@ -219,9 +195,9 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
 
 
 
-# Methods
+# Method
 
-This paper follows the Workflow for Open Reproducible Code in Science [@vanlissaWORCSWorkflowOpen2021]. The pre-registration (hypotheses and analysis plan), data and analysis codes of this study are available via https://doi.org/10.17605/OSF.IO/9VX7T. In Supplemental Materials 1, we detailed our _a priori_ power analysis which showed we had more than 80% power to test our hypotheses, and reported three minor deviations we had from our pre-registration.
+This paper follows the Workflow for Open Reproducible Code in Science [@vanlissaWORCSWorkflowOpen2021]. The pre-registration (hypotheses and analysis plan), data and analysis codes of this study are available via https://osf.io/cq6n4/?view_only=d0317604686d4ea6b65176672a722a64. In Supplemental Materials 1, we detailed our _a priori_ power analysis which showed we had more than 80% power to test our hypotheses, and reported three minor deviations we had from our pre-registration.
 
 ```{r, echo = FALSE}
 table1 <- as.data.frame(read.csv("results/Table1.csv"))
@@ -230,7 +206,7 @@ table1 <- as.data.frame(read.csv("results/Table1.csv"))
 ```
 
 ## Participants and Procedures
-This study combines five ESM datasets (see Supplemental Material 1 for details on participants and procedures). Table 1 shows an overview of the demographics per dataset. The five datasets included participants with a mean age of `r table1[6,"mean_AGE"]` years (_SD_ = `r table1[6,"SD_AGE"]`; range: `r table1[6,"lrange_AGE"]` to `r table1[6,"urange_AGE"]` years), with `r table1[6,"mean_FEMALE"]*100`% females (range across datasets: `r min(table1[1:5,"mean_FEMALE"]*100)`% to `r max(table1[1:5,"mean_FEMALE"]*100)`%). All studies, approved by respective ethical committees, were conducted in Belgium and the Netherlands with Dutch-speaking participants. All studies assessed participants either 10 times for 7 days or 5 times for 14 days, resulting in the same 70 observations. As pre-registered, we excluded 33 participants with zero variance in positive emotions, negative emotions or emotion regulation strategies. We further excluded 4 participants with an average reaction time below 500ms because it may indicate careless responding [@mccabeGuideDataCleaning2012]. Participants completed on average `r round(table1[6,"mean_t"]*100,0)`% of all possible observations (_SD_ = `r round(table1[6,"SD_t"]*100,0)`%). Supplemental Materials 2 has further details on participants and procedures of all datasets. 
+This study combines five ESM datasets (see Supplemental Materials 2 for details on participants and procedures). Table 1 shows an overview of the demographics per dataset. The five datasets included participants with a mean age of `r table1[6,"mean_AGE"]` years (_SD_ = `r table1[6,"SD_AGE"]`; range: `r table1[6,"lrange_AGE"]` to `r table1[6,"urange_AGE"]` years), with `r table1[6,"mean_FEMALE"]*100`% females (range across datasets: `r min(table1[1:5,"mean_FEMALE"]*100)`% to `r max(table1[1:5,"mean_FEMALE"]*100)`%). All studies, approved by respective ethical committees, were conducted in Belgium and the Netherlands with Dutch-speaking participants. All studies assessed participants either 10 times for 7 days or 5 times for 14 days, resulting in the same 70 observations. As pre-registered, we excluded 33 participants with zero variance in positive emotions, negative emotions or emotion regulation strategies. We further excluded 4 participants with an average reaction time below 500ms because it may indicate careless responding [@mccabeGuideDataCleaning2012]. Participants completed on average `r round(table1[6,"mean_t"]*100,0)`% of all possible observations (_SD_ = `r round(table1[6,"SD_t"]*100,0)`%). Supplemental Materials 2 has further details on participants and procedures of all datasets. 
 
 
 ```{r, echo = FALSE, warning=FALSE}
@@ -264,7 +240,7 @@ table1$Interval <- c("Semi-random",
 table1$PA <- c("4 items:\nContent\nRelaxed\nJoyful\nEnergetic",
                "2 items:\nRelaxed\nHappy",
                 "3 items:\nHappy\nRelaxed\nCheerful",
-                "7 items:\nEnthusiastic\nContent\nEnergetic\nCalm\nPowerful\nCheerful\nGrateful",
+                "7 items:\nEnthusiastic\nContent\nEnergetic\nCalm\nDeteremined\nCheerful\nGrateful",
                 "3 items:\nHappy\nCalm\nEnthusiastic")
 table1$NAE <- c("5 items:\nIrritated\nWorried\nDepressed\nInsecure\nLonely",
                 "4 items:\nAngry\nAnxious\nDepressed\nSad",
@@ -315,7 +291,9 @@ maxICC <- max(ESMICC$ICC)
 
 ## Measures
 
-The studies differed in how many items were used to assess negative emotions, positive emotions, and emotion regulation strategies, but they all used multiple items with unipolar scales (see Table 1). Within each dataset, all items were rescaled before analyses to a scale of 0 to 10 to facilitate pooling across studies. Intraclass correlation coefficients (ICC) of all items ranged from `r printnum(minICC, gt1=FALSE)` to `r printnum(maxICC, gt1=FALSE)`, indicating they had adequate within-person variance for further analyses. Supplemental Materials 2 has full item wordings for all ESM measures.
+### ESM Measures
+
+The studies differed in how many items were used to assess negative emotions, positive emotions, and emotion regulation strategies, but they all used multiple items with unipolar scales (see Table 1). Within each dataset, all items were rescaled before analyses to a scale of 0 to 10 to facilitate pooling across studies. Within-person correlations of items in the same scales were all lower than .80 (Supplemental Materials 3), indicating no multicollinearity problem [@katz2006study; see application to an ESM study, @wang2024reciprocal]. Intraclass correlation coefficients (ICC) of all items ranged from `r printnum(minICC, gt1=FALSE)` to `r printnum(maxICC, gt1=FALSE)`, indicating they had adequate within-person variance for further analyses. Supplemental Materials 2 has full item wordings for all items and the steps we have taken to assess their reliability and validity.
 
 
 ```{r, echo = FALSE}
@@ -324,27 +302,39 @@ ESMreliability <- as.data.frame(read.csv("results/outputReliability.csv", na.str
 ```
 
 
-## Momentary indices
+### Momentary Indices Calculated from ESM Measures
 
-### Intensity of positive emotions, negative emotions, and emotion regulation
+#### Intensity of Positive Emotions, Negative Emotions, and Emotion Regulation
 
-We calculated momentary intensities of negative emotions, positive emotions, and emotion regulation as the mean intensities of relevant items (e.g., in dataset 2, momentary negative emotion intensity is the mean of _angry_, _sad_, _anxious_, and _depressed_). Multi-level confirmatory factor analyses using the _lavaan_ package [@rosseelLavaanPackageStructural2012a] showed positive and negative emotions loaded separately on two factors as indicated with satisfactory fit indices (See Supplemental Materials 3 for more information). Reliability was satisfactory for all indices within adolescents (positive emotion intensity: `r printnum(ESMreliability%>%filter(var=="PA")%>%filter(label=="omega_within")%>%select(est)%>%min, , gt1=FALSE)` to `r printnum(ESMreliability%>%filter(var=="PA")%>%filter(label=="omega_within")%>%select(est)%>%max, , gt1=FALSE)`; negative emotion intensity: `r printnum(ESMreliability%>%filter(var=="NA")%>%filter(label=="omega_within")%>%select(est)%>%min, , gt1=FALSE)` to `r printnum(ESMreliability%>%filter(var=="NA")%>%filter(label=="omega_within")%>%select(est)%>%max, , gt1=FALSE)`; emotion regulation intensity: `r printnum(ESMreliability%>%filter(var=="ER")%>%filter(label=="omega_within")%>%select(est)%>%min, , gt1=FALSE)` to `r printnum(ESMreliability%>%filter(var=="ER")%>%filter(label=="omega_within")%>%select(est)%>%max, , gt1=FALSE)`) and between adolescents (positive emotion intensity: `r printnum(ESMreliability%>%filter(var=="PA")%>%filter(label=="omega_between")%>%select(est)%>%min, , gt1=FALSE)` to `r printnum(ESMreliability%>%filter(var=="PA")%>%filter(label=="omega_between")%>%select(est)%>%max, , gt1=FALSE)`; negative emotion intensity: `r printnum(ESMreliability%>%filter(var=="NA")%>%filter(label=="omega_between")%>%select(est)%>%min, , gt1=FALSE)` to `r printnum(ESMreliability%>%filter(var=="NA")%>%filter(label=="omega_between")%>%select(est)%>%max, , gt1=FALSE)`; emotion regulation intensity: `r printnum(ESMreliability%>%filter(var=="ER")%>%filter(label=="omega_between")%>%select(est)%>%min, , gt1=FALSE)` to `r printnum(ESMreliability%>%filter(var=="ER")%>%filter(label=="omega_between")%>%select(est)%>%max, , gt1=FALSE)`).
-
-### Dynamic indices
+We calculated momentary intensities of negative emotions, positive emotions, and emotion regulation as the mean intensities of relevant items (e.g., in dataset 2, momentary negative emotion intensity is the mean of _angry_, _sad_, _anxious_, and _depressed_). Multi-level confirmatory factor analyses using the _lavaan_ package [@rosseelLavaanPackageStructural2012a] showed positive and negative emotions loaded separately on two factors as indicated with satisfactory fit indices (Supplemental Materials 4). Reliability was satisfactory for all indices within adolescents (positive emotion intensity: `r printnum(ESMreliability%>%filter(var=="PA")%>%filter(label=="omega_within")%>%select(est)%>%min, , gt1=FALSE)` to `r printnum(ESMreliability%>%filter(var=="PA")%>%filter(label=="omega_within")%>%select(est)%>%max, , gt1=FALSE)`; negative emotion intensity: `r printnum(ESMreliability%>%filter(var=="NA")%>%filter(label=="omega_within")%>%select(est)%>%min, , gt1=FALSE)` to `r printnum(ESMreliability%>%filter(var=="NA")%>%filter(label=="omega_within")%>%select(est)%>%max, , gt1=FALSE)`; emotion regulation intensity: `r printnum(ESMreliability%>%filter(var=="ER")%>%filter(label=="omega_within")%>%select(est)%>%min, , gt1=FALSE)` to `r printnum(ESMreliability%>%filter(var=="ER")%>%filter(label=="omega_within")%>%select(est)%>%max, , gt1=FALSE)`) and between adolescents (positive emotion intensity: `r printnum(ESMreliability%>%filter(var=="PA")%>%filter(label=="omega_between")%>%select(est)%>%min, , gt1=FALSE)` to `r printnum(ESMreliability%>%filter(var=="PA")%>%filter(label=="omega_between")%>%select(est)%>%max, , gt1=FALSE)`; negative emotion intensity: `r printnum(ESMreliability%>%filter(var=="NA")%>%filter(label=="omega_between")%>%select(est)%>%min, , gt1=FALSE)` to `r printnum(ESMreliability%>%filter(var=="NA")%>%filter(label=="omega_between")%>%select(est)%>%max, , gt1=FALSE)`; emotion regulation intensity: `r printnum(ESMreliability%>%filter(var=="ER")%>%filter(label=="omega_between")%>%select(est)%>%min, , gt1=FALSE)` to `r printnum(ESMreliability%>%filter(var=="ER")%>%filter(label=="omega_between")%>%select(est)%>%max, , gt1=FALSE)`).
 
 #### Emotion differentiation 
 
-To assess the degree of positive and negative emotion differentiation within adolescents at a specific moment, we calculated the momentary emotion differentiation index from the positive and negative emotion items [@erbasMomentaryEmotionDifferentiation2021a]. This index was mathematically derived from the average consistency variant of ICC, a between-person measure of emotion differentiation commonly used in prior research to assess emotion differentiation. This index has no lower bound and an upper bound of 0 and it shows good predictive validity [@erbasMomentaryEmotionDifferentiation2021a]. The momentary emotion differentiation index measures how consistently intensities of emotions are deviating in the same direction (i.e., positively or negatively) with regard to a person’s mean. For example, if an adolescent has an average rating of 5 in each of the four emotions assessed 70 times, a moment when all four emotions are rated at 10 will give a low value of momentary emotion differentiation, whereas a moment when two of the four emotions are rated at 10 and two at 0 will give a high value of momentary emotion differentiation. 
+To assess the degree of positive and negative emotion differentiation within adolescents at a specific moment, we calculated the momentary emotion differentiation index from the positive and negative emotion items [@erbasMomentaryEmotionDifferentiation2021a]. This index was mathematically derived from the average consistency variant of ICC, a between-person measure of emotion differentiation commonly used in prior research to assess emotion differentiation. This index has no lower bound and an upper bound of 0 and it shows good predictive validity [@erbasMomentaryEmotionDifferentiation2021a]. The momentary emotion differentiation index measures how consistently intensities of emotions are deviating in the same direction (i.e., positively or negatively) with regard to a person’s mean. For example, if an adolescent has a mean rating of 3 in each of the four emotions assessed 70 times, a moment when all four emotions are rated at 5 will give a low value of momentary emotion differentiation, whereas a moment when two of the four emotions are rated higher (e.g., 6 and 5) and two lower (e.g., 0 and 1) will give a high value of momentary emotion differentiation (Figure 1). 
+
+(ref:figure1-caption) Hypothetical assessments of ESM measures to illustrate how to calculate emotion differentiation. For simplicity, only the calculation steps of the numerator but not the denominator are shown. Numbers on the bars represent the intensity ratings of emotions.
+
+```{r figure1, out.width="100%", fig.cap = "(ref:figure1-caption)"}
+knitr::include_graphics("Figure1.png")
+```
+
 
 #### Emotion regulation variability
 
-We calculated momentary emotion regulation variability as Bray-Curtis dissimilarity from the emotion regulation strategy items. This index has recently been validated [@lo2023theory]. This momentary index can be partitioned into two subcomponents that respectively detect two qualitatively different and theoretically relevant subcomponents [@aldaoEmotionRegulationFlexibility2015]: endorsement change (e.g., from not using any strategies to using distraction) and strategy switching (e.g., replacing distraction with reappraisal). Bray-Curtis dissimilarity was calculated by comparing the moment of interest with all other moments the same adolescent reported using the _betapart_ package [@baselgaBetapartPartitioningBeta2022; see Github tutorial at @Lo_Bray-Curtis_dissimilarity_for_2023]. In this way, Bray-Curtis dissimilarity reflects the within-person deviation from their typical emotion regulation style - in terms of intensity or strategy selection[^2]. Before calculating Bray-Curtis dissimilarity, we linearly transformed all emotion regulation intensity ratings by adding a small constant 0.001 to prevent division-by-zero computational errors, so that two moments with all strategies rated 0 can still be compared. The Bray-Curtis dissimilarity index falls between 0 and 1. To improve comparison with other indices, we multiplied the Bray-Curtis dissimilarity index with 10 so it ranges from 0 to 10 . 
+We calculated momentary emotion regulation variability as Bray-Curtis dissimilarity from the emotion regulation strategy items. This index has recently been validated [@lo2023theory]. This momentary index can be partitioned into two subcomponents that respectively detect two qualitatively different and theoretically relevant subcomponents [@aldaoEmotionRegulationFlexibility2015]: endorsement change (e.g., from not using any strategies to using distraction) and strategy switching (e.g., replacing distraction with reappraisal). Bray-Curtis dissimilarity was calculated by comparing the moment of interest with all other moments the same adolescent reported (Figure 2) using the _betapart_ package [@baselgaBetapartPartitioningBeta2022; see Github tutorial at @Lo_Bray-Curtis_dissimilarity_for_2023]. In this way, Bray-Curtis dissimilarity reflects the within-person deviation from their typical emotion regulation style - in terms of intensity or strategy selection[^2]. Before calculating Bray-Curtis dissimilarity, we linearly transformed all emotion regulation intensity ratings by adding a small constant 0.001 to prevent division-by-zero computational errors, so that two moments with all strategies rated 0 can still be compared. Bray-Curtis dissimilarity index falls between 0 and 1. To improve comparison with other indices, we multiplied the Bray-Curtis dissimilarity index with 10 so it ranges from 0 to 10, where 0 indicates no variability and 10 represents the maximum variability possible, based on the emotion regulation intensity it is derived from.
 
-[^2]: Another method to compute Bray-Curtis dissimilarity is by contrasting each moment with the preceding one. To check the robustness of our results, we ran sensitivity analyses with this successive temporal comparison approach. Results were generally consistent with what we present in the main text. Details can be found in Supplemental Material 6.
+[^2]: Another method to compute Bray-Curtis dissimilarity is by contrasting each moment with the preceding one. To check the robustness of our results, we ran sensitivity analyses with this successive temporal comparison approach. Results were generally consistent with what we present in the main text. Details can be found in Supplemental Materials 6.
+
+(ref:figure2-caption) Hypothetical assessments of ESM measures to illustrate how to calculate emotion regulation variability. For simplicity, only the calculation steps of the numerator but not the denominator are shown.
+
+```{r figure2, out.width="100%", fig.cap = "(ref:figure2-caption)"}
+knitr::include_graphics("Figure2.png")
+```
+
 
 ## Analysis
 
-We conducted all analyses in this paper in R [@rcoreteamLanguageEnvironmentStatistical2023]. After preparing each dataset, data were pooled into an overall dataset for analysis. To distinguish temporal effects (Hypothesis 1 & 2) from individual differences (Hypothesis 3), we separated observations of indices (negative emotion intensity, negative emotion differentiation, emotion regulation variability) into two components. The within-person component, which can vary at each time point, is the raw score minus the person-mean. The within-person component, which indicate an adolescent’s time-invariant difference from others, is the person-mean minus the grand-mean [@bolgerIntensiveLongitudinalMethods2013]. 
+We conducted all analyses in this paper in R [@rcoreteamLanguageEnvironmentStatistical2023]. After preparing each dataset, data were pooled into an overall dataset for analysis. To distinguish temporal effects (Hypothesis 1 & 2) from individual differences (Hypothesis 3), we separated observations of indices (negative emotion intensity, negative emotion differentiation, emotion regulation variability) into two components. The within-person component, which can vary at each time point, is the raw score minus the person-mean. The between-person component, which indicate an adolescent’s time-invariant difference from others, is the person-mean minus the grand-mean [@bolgerIntensiveLongitudinalMethods2013]. 
 
 ### Confirmatory Models
 
@@ -354,16 +344,16 @@ To test our hypotheses, we ran multilevel models. In model 1A, which corresponde
 
 ### Exploratory Models
 
-We had two sets of exploratory analyses. First, to delineate how emotion differentiation is associated with strategy switching and endorsement change, we ran exploratory models 1B, 1C, and 2B. Model 1B and 1C followed the structure of model 1A, treating emotion differentiation as the predictor, but differed as follows: Model 1B made strategy switching the outcome and added endorsement change as a covariate; model 1C made endorsement change the outcome and added strategy switching as a covariate. Model 2B followed the structure of model 2A, treating emotion differentiation as the outcome but used both emotion regulation variability subcomponents (strategy switching and endorsement change) as simultaneous predictors in replacement of the full index in model 2A. Second, we also tested for the associations regarding positive emotions. For this, we repeated all the analyses (model 1A to 2B) by substituting negative emotion indices (differentiation and intensity) with positive emotion indices.
+We had two sets of exploratory analyses. First, to delineate how emotion differentiation is associated with strategy switching and endorsement change, we ran exploratory models 1B, 1C, and 2B. Model 1B and 1C followed the structure of model 1A, treating emotion differentiation as the predictor, but differed as follows: Model 1B made strategy switching the outcome and added endorsement change as a covariate; model 1C made endorsement change the outcome and added strategy switching as a covariate. Model 2B followed the structure of model 2A, treating emotion differentiation as the outcome but used both emotion regulation variability subcomponents (strategy switching and endorsement change) as simultaneous predictors in replacement of the full index in model 2A. Second, we also tested for the associations between positive emotion differentiation and emotion regulation of negative emotions. For this, we repeated all the analyses (model 1A to 2B) by substituting negative emotion indices (differentiation and intensity) with positive emotion indices.
 
 ### Frame of Reference
 
-In all datasets, the frame of reference for rating emotion regulation strategies was about regulating the negative emotions between the previous and current assessment (e.g., “Since the last beep, to change my negative feelings, I have sought for distraction”), whereas emotion items were assessed in terms of “right now” during each assessment (Figure 1). Therefore, associations between momentary emotion regulation variability and emotion differentiation index derived from the same assessment indicate emotion regulation variability precedes emotion differentiation. As such, to examine Hypothesis 1 (i.e., emotion differentiation facilitating subsequent emotion regulation variability; model 1A to 1C), we used the lagged momentary emotion differentiation index as the predictor (and lagged momentary negative emotion intensity as covariate), and momentary emotion regulation variability as the outcome. In contrast, to examine Hypothesis 2 (i.e., emotion regulation variability does not affect subsequent emotion differentiation; model 2A and 2B), momentary emotion regulation variability as the predictor and the momentary emotion differentiation index as the outcome both came from the same assessment.
+In all datasets, the frame of reference for rating emotion regulation strategies was about regulating the negative emotions between the previous and current assessment (e.g., “Since the last beep, to change my negative feelings, I have sought for distraction”), whereas emotion items were assessed in terms of “right now” during each assessment (Figure 3). Therefore, associations between momentary emotion regulation variability and emotion differentiation index derived from the same assessment indicate emotion regulation variability precedes emotion differentiation. As such, to examine Hypothesis 1 (i.e., emotion differentiation facilitating subsequent emotion regulation variability; model 1A to 1C), we used the lagged momentary emotion differentiation index as the predictor (and lagged momentary negative emotion intensity as covariate), and momentary emotion regulation variability as the outcome. In contrast, to examine Hypothesis 2 (i.e., emotion regulation variability does not affect subsequent emotion differentiation; model 2A and 2B), momentary emotion regulation variability as the predictor and the momentary emotion differentiation index as the outcome both came from the same assessment.
 
-(ref:figure1-caption) t refers to the moment of interest. Tiles with similar colours and borders belong to the same moment.
+(ref:figure3-caption) t refers to the moment of interest. Tiles with similar colours and borders belong to the same moment.
 
-```{r figure1, out.width="100%", fig.cap = "(ref:figure1-caption)"}
-knitr::include_graphics("Figure1.png")
+```{r figure3, out.width="100%", fig.cap = "(ref:figure3-caption)"}
+knitr::include_graphics("Figure3.png")
 ```
 
 
@@ -371,11 +361,19 @@ knitr::include_graphics("Figure1.png")
 
 ## Descriptive Statistics
 
-On average, adolescents showed relatively low intensity of negative emotions and emotion regulation but high intensity of positive emotions (Table 2). With regards to dynamic indices (emotion differentiation and emotion regulation variability), within-person and between-person variance indicates that there is sufficient variation across time and between people. Within-person and between-person correlations between dynamic indices were generally weak (Supplemental Materials 4).
+On average, adolescents showed relatively low intensity of negative emotions and emotion regulation but moderate positive emotion intensity (Table 2). With regards to emotion differentiation and emotion regulation variability indices, within-person and between-person variance indicates that there is sufficient variation across time and between people. In Supplemental Materials 3, we detailed how we inspected the indices' distributions, assessed potential floor and ceiling effects, and compared correlations of momentary indices against published studies. In general, we considered it appropriate to further analyze emotion differentiation and emotion regulation variability indices as the primary (in)dependent variables in our hypotheses.
+
 
 ```{r, echo = FALSE}
-table2 <- as.data.frame(read.csv("results/Table2.csv"))[,c(1,3:5)]
+# table2 <- as.data.frame(read.csv("results/Table2.csv"))[,c(1,3:7)]
+table2 <- cbind(as.data.frame(read.csv("results/Table2.csv"))[,c(1)],
+                data.frame(tmin = c(" 0.00","-Infinity"," 0.00","-Infinity",
+                                    rep(" 0.00",4)),
+                              tmax = c(rep(c("10.00"," 0.00"),2),
+                                       rep("10.00",4))),
+                as.data.frame(read.csv("results/Table2.csv"))[,c(3:7)])
 row.names(table2) <- NULL
+colnames(table2)[1] <- "var"
 table2$var <- c("Positive emotion intensity",
                              "Positive emotion differentiation",
                              "Negative emotion intensity",
@@ -386,9 +384,13 @@ table2$var <- c("Positive emotion intensity",
                        "  Strategy switching subcomponent"
                              )
 colnames(table2) <- c("Momentary index",
+                      "Minimum Possible Value",
+                      "Maximum Possible Value",
                       "Mean",
+                      "Between-person SD",
                       "Within-person SD",
-                      "Between-person SD")
+                      "Within-person Minimum",
+                      "Within-person Maximum")
 outTable2 <- apa_table(table2, 
           # langscape = TRUE,
           caption = "Descriptive Statistics of Momentary Indices of the Pooled Dataset (N=778)",
@@ -397,7 +399,14 @@ outTable2 <- apa_table(table2,
           # align = c("m{8cm}", rep("m{2cm}", 5))
           )
 # outTable1[1] <- gsub("XXnewlineXX", "<br>", outTable1[1])
-outTable2
+# outTable2
+kbl(table2,
+    booktabs = T, align = "l", linesep = '',
+    escape = FALSE,
+    caption = "Descriptive Statistics of Momentary Indices of the Pooled Dataset (N=778)")  %>%
+    column_spec(1, width = "1.4in") %>%
+    column_spec(2:8, width = "0.65in") %>%
+    kable_styling(font_size = 9)
 
 ```
 
@@ -523,7 +532,7 @@ kbl(table3[,1:4],
     pack_rows(paste0("H2: Emotion regulation variability is not associated  with subsequent changes in emotion differentiation (N = ",iNmodel2,", n = ",itmodel2,")"), 4, 6, bold = FALSE) %>%
     pack_rows("Between-person hypothesis", 7, 9, bold = FALSE) %>%
     pack_rows(paste0("H3: Higher emotion differentiation is associated with higher emotion regulation variability (N= ",iNmodel2,")"), 7, 9, bold = FALSE)%>%
-footnote(general = "Significant effects are displayed in bold. →: temporal precedence; ←→: between-person association; n: number of ESM assessments with complete observations of all indices required for modeling; N: number of adolescents; b: unstandardized effect; CI: confidence interval; H1 – H3: Hypotheses 1 to 3. Negative emotions and positive emotions were analyzed in separate models. Small differences in n and N between models exist due to different availability of indices as required in the different models. For brevity, we displayed the smaller n and N of the models grouped under the same hypotheses. H1 was tested using three negative emotion models and three positive emotion models because of three outcome variables (emotion regulation variability and its two subcomponents). H2 was tested using two models for positive emotions and two models for negative emotions. Two subcomponents were included together in model 2B  . Full model results with estimates of covariates (emotion intensity, emotion regulation intensity, time, gender, and age) are available in Supplemental Material 5.",
+footnote(general = "Significant effects are displayed in bold. →: temporal precedence; ←→: between-person association; n: number of ESM assessments with complete observations of all indices required for modeling; N: number of adolescents; b: unstandardized effect; CI: confidence interval; H1 – H3: Hypotheses 1 to 3. Negative emotions and positive emotions were analyzed in separate models. Small differences in n and N between models exist due to different availability of indices as required in the different models. For brevity, we displayed the smaller n and N of the models grouped under the same hypotheses. H1 was tested using three negative emotion models and three positive emotion models because of three outcome variables (emotion regulation variability and its two subcomponents). H2 was tested using two models for positive emotions and two models for negative emotions. Two subcomponents were included together in model 2B  . Full model results with estimates of covariates (emotion intensity, emotion regulation intensity, time, gender, and age) are available in Supplemental Materials 5.",
 threeparttable = TRUE
 )
 
@@ -548,7 +557,7 @@ Our exploratory analyses showed that temporal relations between emotion regulati
 
 # Discussion
 
-Using five ESM datasets that encompassed 25834 observations in 750 adolescents, we tested whether higher emotion differentiation was related to higher subsequent emotion regulation variability. Contrary to our expectations, we discovered that when adolescents had better differentiation between their positive or negative emotions at a given moment, they tended to be more stable in their use of emotion regulation strategies subsequently (i.e., lower emotion regulation variability). Reciprocally, the more adolescents deviated from their typical emotion regulation strategies (i.e., the higher their emotion regulation variability), the less they differentiated their emotions at the next moment. These negative bidirectional temporal influences were robust: They were present independently in two emotion regulation variability subcomponents (endorsement change and strategy switching), and regardless of whether emotion differentiation was operationalized with positive or negative emotions. Overall, those results do not support the hypothesis that emotion differentiation facilitates subsequent emotion regulation variability on a momentary level in adolescents.
+Using five ESM datasets that encompassed 25,834 observations in 750 adolescents, we tested whether higher emotion differentiation was related to higher subsequent emotion regulation variability. Contrary to our expectations, we discovered that when adolescents had better differentiation between their positive or negative emotions at a given moment, they tended to be more stable in their use of emotion regulation strategies subsequently (i.e., lower emotion regulation variability). Reciprocally, the more adolescents deviated from their typical emotion regulation strategies (i.e., the higher their emotion regulation variability), the less they differentiated their emotions at the next moment. These negative bidirectional temporal influences were robust: They were present independently in two emotion regulation variability subcomponents (endorsement change and strategy switching), and regardless of whether emotion differentiation was operationalized with positive or negative emotions. Overall, those results do not support the hypothesis that emotion differentiation facilitates subsequent emotion regulation variability on a momentary level in adolescents.
 
 ## Possible Explanations of the Interplay between Emotion Differentiation and Emotion Regulation Variability
 
@@ -559,23 +568,66 @@ The second explanation is that emotion differentiation and emotion regulation va
 
 ## Open questions in emotion regulation variability
 
-As research on emotion regulation variability in daily life is still in its infancy, several open questions linger about emotion regulation variability. Developmentally, middle adolescents are less likely to regulate their sadness and anger than younger and older adolescents [@zimmermannEmotionRegulationEarly2014b]. If they use strategies  around the lower bounds of ESM measures, it is easier to have all-or-nothing changes resulting in high emotion regulation variability. Relatedly, as adolescents develop their repertoire of regulation strategies, they may exhibit higher emotion regulation variability as they experiment with the new strategies [@elkjaerEmotionRegulationPatterns2022]. Differences in study designs between datasets prevented us from testing age differences, but future studies should investigate the developmental trajectory of emotion regulation variability.
+As research on emotion regulation variability in daily life is still in its infancy, several open questions linger about emotion regulation variability. Developmentally, middle adolescents are less likely to regulate their sadness and anger than younger and older adolescents [@zimmermannEmotionRegulationEarly2014b]. If they use strategies  around the lower bounds of ESM measures, it is easier to have all-or-nothing changes resulting in high emotion regulation variability. Relatedly, as adolescents develop their repertoire of regulation strategies, they may exhibit higher emotion regulation variability as they experiment with the new strategies [@elkjaerEmotionRegulationPatterns2022]. Future studies should investigate the developmental trajectory of emotion regulation variability.
 
 Furthermore, emotion regulation variability and its subcomponents may exhibit complex relations with other emotion characteristics. For instance, a recent study showed that when emotions are either less intense or more intense than usual, emotion regulation variability is highest [@maciejewskiEmoCharacteristics]. This suggests that there may be an optimal level of when and how to vary emotion regulation. 
 
-Outside of the emotion regulation system, it is also theorized that (changes in) context is related to emotion regulation variability. For example, adolescents may have limited choices of emotion regulation strategies while they are commuting to school but are more likely to adjust their strategies upon changes of context (e.g., arriving home from school). Varying strategies in synchrony with changing contexts is different from context-insensitive fluctuations [flexibility and instability, @kalokerinosEmotionRegulationFlexibility2022]. Further research that shows how developmental factors, emotion characteristics, and daily life contexts influence emotion regulation variability and its subcomponents may ultimately enrich our understanding of the interplay between emotion differentiation and emotion regulation variability .
+Outside of the emotion regulation system, it is also theorized that (changes in) context is related to emotion regulation variability. For example, adolescents may have limited choices of emotion regulation strategies while they are commuting to school but are more likely to adjust their strategies upon changes of context (e.g., arriving home from school). Varying strategies in synchrony with changing contexts is different from context-insensitive fluctuations [flexibility and instability, @kalokerinosEmotionRegulationFlexibility2022]. Further research that shows how developmental factors, emotion characteristics, and daily life contexts influence emotion regulation variability and its subcomponents may ultimately enrich our understanding of the interplay between emotion differentiation and emotion regulation variability.
 
 ## Limitations
 
-A few limitations must be considered when interpreting our results. First, there is heterogeneity across datasets due to varying sample characteristics and ESM protocols. We have included dataset-level random intercepts to mitigate this, but future studies should explore how these study characteristics affect outcomes. Second, although our datasets selected items with reference to conventional theoretical frameworks (Supplemental Materials 2), emotion and emotion regulation are highly idiographic [@entwistle2023natural; @grommischModelingIndividualDifferences2020]. Future studies could reexamine our results by exploring the use of personalized items [e.g., @olthof2023best]. Third, in our analysis, we assumed equal intervals in the temporal sequences of emotion differentiation and emotion regulation variability, but in reality, they varied due to study designs (Table 1) and the frame of reference (Figure 1). Future research should consider methodologies that can model irregular time intervals [e.g., @asparouhov2020comparison] to validate our findings. 
+A few limitations must be considered when interpreting our results. First, there is heterogeneity across datasets due to varying sample characteristics and ESM protocols. We have included dataset-level random intercepts to mitigate this, but future studies should explore how these study characteristics affect outcomes. 
+Second, emotional processes develop across the age range we studied [@yurgelun2007emotional; @casey2019development]. We have controlled for age in our main analyses, but differences in study designs between datasets prevented us from systematically testing age differences. Therefore, we cannot rule out the possibility that different underlying processes are in play across age. Ideally, future research could make use of one large dataset that covers the whole adolescent age range to test age differences.
+Third, the generalizability of our conclusions depends on the scope of emotion and emotion regulation items included. We advise readers to be cautious when generalizing our exploratory results due to having few items in some datasets for forming positive emotion momentary indices. In contrast, our confirmatory results about negative emotion differentiation are more generalizable because of being derived from at least four negative emotion items. 
+Relatedly, although our datasets selected items with reference to conventional theoretical frameworks (Supplemental Materials 2), emotion and emotion regulation are highly idiographic [@entwistle2023natural; @grommischModelingIndividualDifferences2020]. Future studies could reexamine our results by exploring the use of personalized items [e.g., @olthof2023best]. 
+Fourth, in our analysis, we assumed equal intervals in the temporal sequences of emotion differentiation and emotion regulation variability, but in reality, they varied due to study designs (Table 1) and the frame of reference (Figure 2). Future research should consider methodologies that can model irregular time intervals [e.g., @asparouhov2020comparison] to validate our findings. 
 
 ## Practical Implications
 
-Our study provides two considerations for practitioners in emotion-focused psychoeducation [e.g., @metz2013effectiveness]. First, combining emotion differentiation and regulation variability training in one session could be counterproductive, as our within-person results indicate these processes hinder each other in daily life.    Second, adolescents may present different training needs, as our within-person findings suggest that adolescents may be weaker in either negative emotion differentiation or strategy endorsement change, but not typically in both. However, we emphasize that our current findings are correlational, thus cannot inform the expected relationship between the processes after interventions.
+Our study provides two considerations for practitioners in emotion-focused psychoeducation [e.g., @metz2013effectiveness]. First, combining emotion differentiation and regulation variability training in one session could be counterproductive, as our within-person results indicate these processes hinder each other in daily life.    Second, adolescents may present different training needs, as our between-person findings suggest that adolescents may be weaker in either negative emotion differentiation or strategy endorsement change, but not typically in both. However, we emphasize that our current findings are correlational, thus cannot inform the expected relationship between the processes after interventions.
 
 ## Conclusion
 
 To conclude, this well-powered study is the first to test how emotion differentiation and emotion regulation variability temporally influence each other in adolescents’ daily lives. Our findings suggest that, at least in the short term, emotion differentiation and emotion regulation variability hinder each other, regardless of the type of variability (endorsement change or strategy switching) or valence of emotions (positive or negative). In terms of individual differences, adolescents with better negative emotion differentiation had lower fluctuations in emotion regulation intensity, but did not differ in overall strategy switching. These results prompt reconsideration of existing theoretical frameworks that posit that emotion differentiation facilitates emotion regulation.
+
+  \newpage
+  
+# Statements and Declarations
+  
+## Competing Interests
+  
+  The authors have no competing interests to declare that are relevant to the content of this article. 
+  
+<!--ANONYMIZED version-->
+<!--## Funding
+  
+  ANONYMIZED.
+  
+## Ethics Approval
+  
+  This research complies with the Declaration of Helsinki (2023) and received approval from local ethics boards (ID: ANONYMIZED).-->
+
+  
+<!--NON-ANONYMIZED version-->
+## Funding
+  
+  Jacqueline M. Vink and Maaike Verhagen were supported by a ZonMw grant (grant number: 10430 03201 0009). Jolien Braet was supported by funding from the Bijzonder Onderzoeksfonds (BOF) from Ghent University (Grant agreement No. BOF20/DOC/015). 
+  
+## Ethics Approval
+  
+  This research complies with the Declaration of Helsinki (2023) and received approval from local ethics boards (ID: ECSW20170805-516, EC-2017.95, BC-09559).
+
+## Consent to Participate
+  
+  Informed consent, parental consent, and/or written assent from adolescents were obtained in the five studies (see Supplemental Materials 2 for details).
+  
+## Preregistration
+  
+  The hypotheses and methods were preregistered (https://osf.io/9vx7t?view_only=bbeadda0702c4a6696d906bbf8faaa83) on 2022-05-04 prior to accessing the five datasets used in this study. There was an update of preregistration on 2023-10-19 for the purpose of including more datasets to achieve sufficient power for our hypotheses (for details, see Supplementary Materials 1).
+
+## Materials, Data and Code Availability
+  
+Following the Workflow for Open Reproducible Code in Science [@vanlissaWORCSWorkflowOpen2021], the preregistration (hypotheses and analysis plan), materials, primary data and analysis codes of this study are available via https://osf.io/9vx7t?view_only=bbeadda0702c4a6696d906bbf8faaa83.
 
 
 \newpage

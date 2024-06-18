@@ -79,7 +79,7 @@ r_refs("r-references.bib")
 
 ## Pre-registration: the Original and Updated Version
 
-On 04 May 2022, we submitted our original version of pre-registration [https://osf.io/9vx7t?revisionId=62723c863252440156414dd8]. While we initially expected to have sufficient power to test our hypotheses usingthe G(F)ood together dataset from Radboud University, we are now using Bray-Curtis dissimilarity, a newly proposed emotion regulation variability [@lo2023theory], for testing our hypotheses. Therefore, we updated the power analysis. The new power analysis revealed that we are underpowered at 30% to test our hypotheses with multilevel modeling with only the G(F)ood together dataset. To ensure sufficient power, we decided to include more experience sampling method (ESM) datasets to test our hypotheses. We reached out to researchers who used ESM in Dutch-speaking regions with the same specified inclusion criteria in terms of frame of reference of ESM items and age group. We received favorable replies from researchers in accessing four ESM datasets, which provided us with a large enough sample size to reach 80% power. The pre-registered questions and hypotheses remained the same. We updated our pre-registration on 19 Oct 2023 prior to accessing the new datasets  [https://osf.io/9vx7t].
+On 04 May 2022, we submitted our original version of pre-registration [https://osf.io/9vx7t?revisionId=62723c863252440156414dd8&view_only=bbeadda0702c4a6696d906bbf8faaa83]. While we initially expected to have sufficient power to test our hypotheses usingthe G(F)ood together dataset from Radboud University, we are now using Bray-Curtis dissimilarity, a newly proposed emotion regulation variability [@lo2023theory], for testing our hypotheses. Therefore, we updated the power analysis. The new power analysis revealed that we are underpowered at 30% to test our hypotheses with multilevel modeling with only the G(F)ood together dataset. To ensure sufficient power, we decided to include more experience sampling method (ESM) datasets to test our hypotheses. We reached out to researchers who used ESM in Dutch-speaking regions with the same specified inclusion criteria in terms of frame of reference of ESM items and age group. We received favorable replies from researchers in accessing four ESM datasets, which provided us with a large enough sample size to reach 80% power. The pre-registered questions and hypotheses remained the same. We updated our pre-registration on 19 Oct 2023 prior to accessing the new datasets  [https://osf.io/9vx7t?view_only=bbeadda0702c4a6696d906bbf8faaa83].
 
 ## Updated Power Analysis
 
@@ -138,29 +138,39 @@ Third, in section 27 (data exclusion), we specified the exclusion of data with z
 \newpage
 # Supplemental Materials 2: Participants, Procedures and ESM Measures per Dataset
 
-Note that though descriptions of ESM measures are in English here, questionnaires were presented in Dutch to participants across the five studies.
+Note that though descriptions of ESM measures are in English here, questionnaires were presented in Dutch to participants across the five studies. 
+
+We assessed the validity of ESM measures in four steps that were recognized as good practices given the current state of development in ESM measures validation [@vogelsmeier2023assessing]. First, we documented the reliability of measures in our samples (ESM Measures subsection in each dataset in Supplemental Materials 2). Second,  we cited how these measures have been validated or used in earlier studies (Supplemental Materials 2). Third, we inspected the distributions of measures in our samples and compared them with those reported in earlier studies (Supplemental Materials 3). Fourth, we compared relations between measures in our samples against those reported in earlier studies (Supplemental Materials 3).
+
+Most studies that we cited for the purpose of assessing ESM measures validity had samples with mean ages that fell between early to late adolescence [@sawyer2018age]: (In ascending order of age) @schneiders2006mood; @achterhof2022adolescents; @bulow2022parent; @rauschenberg2017stress; @hasmi2017network; @bennik2015every; @barrantes-vidalPsychometricSchizotypyPredicts2013; @fried2022mental; @medlandRegulatingEmotionSystems2020; @bakker2019laboratory; @bransRegulationNegativePositive2013a. We also included studies with a wider age range but still covered adolescent participants [@kiekens2023detection; @jacobs2007momentary; @delespaul1987daily; @barge1999quality; @bastiaansen2018self] and a few that covered only adults [@myin2000schizophrenia; @spence2014helpful; @hartley2014experience; @van1998effects]. In the subsequent pages, where we detail each dataset we analyzed, the mean age and standard deviation of each sample are specified under the "Participants" heading (page 8, 11, 13, 14, and 17, corresponding to the five datasets).
+
+```{r, echo = FALSE}
+ESMreliability <- as.data.frame(read.csv("results/outputReliability.csv", na.strings="XXX"))
+# one of the var name is "NA" so we deactivate treating string "NA" as missing (value NA in R)
+```
+
 
 ## Dataset 1: G(F)ood together, Radboud University [main reference: @verhagenFlitsStudyDyadic2022]
 
 ### Participants
 
-This study was part of a larger project (G(F)ood together; see @vandenbroekAdolescentsFoodIntake2020 for other details) that studied adolescents’ eating behaviours and health with six longitudinal waves of data collection across 2017 to 2021 and one ESM phase (in 2021) among Dutch adolescents and their parents. The study procedures were approved by the Ethics Committee Social Sciences of Radboud University, Nijmegen, the Netherlands (ECSW20170805-516). The ESM phase was administered between the fifth and sixth wave in June and July 2021. An active parental consent procedure was used for the participation of the ESM phase.
+This study was part of a larger project (G(F)ood together, in Dutch: G(V)oed voor elkaar; see @vandenbroekAdolescentsFoodIntake2020 for other details) that studied adolescents’ eating behaviours and health with six longitudinal waves of data collection across 2017 to 2021 and one ESM study (in 2021) among Dutch adolescents and their parents. The study procedures were approved by the Ethics Committee Social Sciences of Radboud University, Nijmegen, the Netherlands (ECSW20170805-516). The ESM study was administered between the fifth and sixth wave in June and July 2021. An active parental consent procedure was used for the participation of the ESM study.
 
-The goal for the ESM phase was to recruit a subsample of 100 participants. 257 families whose parents or adolescents remained active at wave 5 of the G(V)voed voor elkaar study were invited to participate the ESM phase, resulting in the inclusion of 89 adolescent participants (age M = 16.42, SD = 0.61). After excluding observations in which each ESM item was completed in less than 500ms (potential careless responding) and excluding participants who showed zero variance across all ESM items, the final sample size consisted of 83 participants (age M = 16.43, SD = 0.68, female = 57.63%). Most of the participants were born in the Netherlands (97.59%). 
+The goal for the ESM study was to recruit a subsample of 100 participants. 257 families whose parents or adolescents remained active at wave 5 of the G(F)ood together study were invited to participate in the ESM study, resulting in the inclusion of 89 adolescent participants (age M = 16.42, SD = 0.61) and one of their parents. After excluding observations in which each ESM item was completed in less than 500ms (potential careless responding) and excluding participants who showed zero variance across all ESM items, the final sample size consisted of 83 participants (age M = 16.43, SD = 0.68, female = 57.63%). Most of the participants were born in the Netherlands (97.59%). 
 
 ### Procedure
 
-All participants completed ESM using the SEMA-app [version 3, @o2023sema3] which they installed on their mobile phones a few days before starting the study. A semi-random sampling scheme was employed, with participants receiving 10 notifications per day at random moments within a fixed time interval spanning from 07.30 a.m. to 09.00 p.m. over seven consecutive days. Upon receiving a notification, participants had a 30-minute window to complete the ESM assessment. For the end-of-the-day assessment, a longer period of 149 minutes was allowed. In cases where participants did not open the momentary assessments, the app sent two reminders at 15 minutes and 25 minutes after the initial notification (75 minutes and 145 minutes for the end-of-the-day assessment). Participants responded to 3674 out of 6020 (61%) ESM notifications sent. The median number of assessments completed per participant was 47 out of 70 (67%; M = 41.83, SD = 17.06). All participants entered into a raffle for two €250 vouchers. Participants were paid at least €5 and up to €25 if they and their parents both had high compliance in the study.
+All participants completed the ESM using the SEMA-app [version 3, @o2023sema3] which they installed on their mobile phones a few days before starting the study. A semi-random sampling scheme was employed, with participants receiving 10 notifications per day at random moments within a fixed time interval spanning from 07.30 a.m. to 09.00 p.m. over seven consecutive days. Upon receiving a notification, participants had a 30-minute window to complete the ESM assessment. For the end-of-the-day assessment, a longer period of 149 minutes was allowed. In cases where participants did not open the momentary assessments, the app sent two reminders at 15 minutes and 25 minutes after the initial notification (75 minutes and 145 minutes for the end-of-the-day assessment). Participants responded to 3674 out of 6020 (61%) ESM notifications sent. The median number of assessments completed per participant was 47 out of 70 (67%; M = 41.83, SD = 17.06). All participants entered into a raffle for two €250 vouchers. Participants were paid at least €5 and up to €25 if they and their parents both had high compliance in the study.
 
 ### ESM Measures
 
 #### Emotions
 
-At each momentary assessment, participants rated four positive emotions (content, relaxed, joyful, and energetic) and five negative emotions (irritated, worried, depressed, insecure, and lonely) presented in a randomized order on a 10-point slider scale (0 = not at all, 10 = a lot). The stem for these items was “Right now I feel [emotion]”. These items were used in [@barrantes-vidalPsychometricSchizotypyPredicts2013]. With 10 daily assessments over 7 days, the maximum possible number of measurements for negative and positive emotions was 70.
+At each momentary assessment, participants rated four positive emotions (content, relaxed, joyful, and energetic) and five negative emotions (irritated, worried, depressed, insecure, and lonely) presented in a randomized order on a 10-point slider scale (0 = not at all, 10 = a lot). The stem for these items was “Right now I feel [emotion]”. These items have been used in other ESM studies [@barrantes-vidalPsychometricSchizotypyPredicts2013; @schneiders2006mood; @rauschenberg2017stress; @delespaul1987daily; @bakker2019laboratory; @hasmi2017network; @kiekens2023detection; @van1998effects; @jacobs2007momentary; @fried2022mental; @barge1999quality; @bennik2015every; @myin2000schizophrenia; @achterhof2022adolescents; @bastiaansen2018self; @bulow2022parent]. With 10 daily assessments over 7 days, the maximum possible number of measurements for negative and positive emotions was 70. Reliability was satisfactory for positive emotions (`r printnum(ESMreliability%>%filter(var=="PA")%>%filter(label=="omega_within")%>%select(est)%>%slice(1), , gt1=FALSE)`) and negative emotions (`r printnum(ESMreliability%>%filter(var=="NA")%>%filter(label=="omega_within")%>%select(est)%>%slice(1), , gt1=FALSE)`).
 
 #### Emotion regulation strategies
 
-At each even beep throughout the day (i.e., assessed five times daily), following the rating of negative emotions, participants responded to one additional question on a slider scale regarding the intensity of the most unpleasant event since the previous beep (“Think about the most unpleasant thing that you have experienced, since the last beep. How unpleasant was it?” 0= not at all unpleasant, 10 = very much unpleasant). If the unpleasantness was 5 or higher, participants had the opportunity to rate their use of emotion regulation strategies related to the event. This branching was introduced with a rationale of collecting reports with more intensive use of emotion regulation strategies. At the final beep of each day, regardless of event intensity, questions about emotion regulation strategies were asked.  For each of the five emotion regulation strategies listed below, participants rated their use on a 11-point scale (0 = not applicable at all, 10 = very applicable): acceptance (“I have accepted my feelings about it”; adapted from @bransRegulationNegativePositive2013a), reappraisal (“to feel better, I have changed the way I think about it”; adapted from @bransRegulationNegativePositive2013a), expression suppression (“I have avoided expressing my feelings about it”; adapted from @bransRegulationNegativePositive2013a), rumination (“I couldn’t stop thinking my feelings about it”; adapted from @bransRegulationNegativePositive2013a), and sharing (“I talked about it to someone”; adapted from @bransRegulationNegativePositive2013a). With 5 even-beep assessments over 7 days, the maximum possible number of measurements for emotion regulation strategies was 35. Adolescents had a total of 719 beeps which they had the opportunity to report emotion regulation strategy use from 575 end-of-day beeps and 144 non-end-of-day even beeps which they rated having experienced a negative event with unpleasantness at 5 or above. Adolescents reported their use of emotion regulation strategies in 586 out of the 719 possible beeps (81.50%).
+At each even beep throughout the day (i.e., assessed five times daily), following the rating of negative emotions, participants responded to one additional question on a slider scale regarding the intensity of the most unpleasant event since the previous beep (“Think about the most unpleasant thing that you have experienced, since the last beep. How unpleasant was it?” 0= not at all unpleasant, 10 = very much unpleasant). If the unpleasantness was 5 or higher, participants had the opportunity to rate their use of emotion regulation strategies related to the event. This branching was introduced with a rationale of collecting reports with more intensive use of emotion regulation strategies. At the final beep of each day, regardless of event intensity, questions about emotion regulation strategies were asked. Adapted from @bransRegulationNegativePositive2013a, for each of the five emotion regulation strategies listed below, participants rated their use on a 11-point scale (0 = not applicable at all, 10 = very applicable): acceptance (“I have accepted my feelings about it”), reappraisal (“to feel better, I have changed the way I think about it”), expression suppression (“I have avoided expressing my feelings about it”), rumination (“I couldn’t stop thinking my feelings about it”), and sharing (“I talked about it to someone”). These strategies have been assessed in previous ESM studies [@kiekens2023detection; @kiekens2023detection; @hartley2014experience]. With 5 even-beep assessments over 7 days, the maximum possible number of measurements for emotion regulation strategies was 35. Adolescents had a total of 719 beeps which they had the opportunity to report emotion regulation strategy use from 575 end-of-day beeps and 144 non-end-of-day even beeps which they rated having experienced a negative event with unpleasantness at 5 or above. Adolescents reported their use of emotion regulation strategies in 586 out of the 719 possible beeps (81.50%). Reliability was satisfactory for emotion regulation strategies  (`r printnum(ESMreliability%>%filter(var=="ER")%>%filter(label=="omega_within")%>%select(est)%>%slice(1), , gt1=FALSE)`).
 
 ## Dataset 2: Emotions in daily life 2011, KU Leuven [main reference: @koval2013affect]
 
@@ -170,17 +180,17 @@ Participants were recruited from a pool of 439 undergraduates at the University 
 
 ### Procedure
 
-Participants took part in an introductory session in the laboratory, in which they gave informed consent to participate, filled out questionnaires unrelated to the current study, and received standardized devices (Tungsten E2 PalmOne, Mankato, MN), which were programmed with a program that assess ESM items. The ESM phase started the following day and lasted 7 days, during which 10 beeps occurred semi-randomly each day in a 12-hr time frame. Participants were informed that completing one measurement would take an average of 1 minute. Participants had to start the questionnaire within 2 minutes after the notification . Participants had 90 seconds to answer each question once they opened the questionnaire before it timed out. There were no reminders for participants in case they did not open the momentary assessments  Participants answered 91.5% of the beeps (_SD_ = 6.2%, range: 67–100% of all beeps). The participants were reimbursed with 70 Euros for the entire study. 
+Participants took part in an introductory session in the laboratory, in which they gave informed consent to participate, filled out questionnaires unrelated to the current study, and received standardized devices (Tungsten E2 PalmOne, Mankato, MN), which were programmed to assess ESM items. The ESM study started the following day and lasted 7 days, during which 10 beeps occurred semi-randomly each day in a 12-hr time frame. Participants were informed that completing one measurement would take an average of 1 minute. Participants had to start the questionnaire within 2 minutes after the notification. Participants had 90 seconds to answer each question once they opened the questionnaire before it timed out. There were no reminders for participants in case they did not open the momentary assessments  Participants answered 91.5% of the beeps (_SD_ = 6.2%, range: 67–100% of all beeps). The participants were reimbursed with 70 Euros for the entire study. 
 
 ### ESM measures
 
 #### Emotions
 
-At each momentary assessment, participants rated two positive emotions (relaxed, happy) and four negative emotions (angry, sad, anxious, and depressed) presented on a 100-point slider scale (1 = not at all, 100 = very much). The stem for these items was “How [emotion] do you feel at the moment?”. With 10 daily assessments over 7 days, the maximum possible number of measurements for negative and positive emotions was 70.
+At each momentary assessment, participants rated two positive emotions (relaxed, happy) and four negative emotions (angry, sad, anxious, and depressed) presented on a 100-point slider scale (1 = not at all, 100 = very much). The stem for these items was “How [emotion] do you feel at the moment?”. These items have been used in other ESM studies [@schneiders2006mood;	@delespaul1987daily; @rauschenberg2017stress; @bakker2019laboratory; @hasmi2017network; @kiekens2023detection; @jacobs2007momentary; @fried2022mental; @barge1999quality; @bennik2015every; @myin2000schizophrenia; @achterhof2022adolescents; @bransRegulationNegativePositive2013a; @bastiaansen2018self; @bulow2022parent]. With 10 daily assessments over 7 days, the maximum possible number of measurements for negative and positive emotions was 70. Reliability was satisfactory for positive emotions (`r printnum(ESMreliability%>%filter(var=="PA")%>%filter(label=="omega_within")%>%select(est)%>%slice(2), , gt1=FALSE)`) and negative emotions (`r printnum(ESMreliability%>%filter(var=="NA")%>%filter(label=="omega_within")%>%select(est)%>%slice(2), , gt1=FALSE)`).
 
 #### Emotion regulation strategies
 
-At each momentary assessment, participants rated the extent they used six emotion regulation strategies presented on a 100-point slider scale (1 = not at all, 100 = very much so). The stem for these items was “Since the last beep, did you…” and ended with “ruminate about your feelings” (rumination), “calmly reflect on your feelings?” (reflection), “see the event that caused your feelings from a different perspective?” (reappraisal), “try to distract yourself from your feelings?” (distraction), “suppress the expression of your feelings?” (expressive suppression), and “talk with others about your feelings” (social sharing). With 10 daily assessments over 7 days, the maximum possible number of measurements for emotion regulation strategies was 70.
+At each momentary assessment, participants rated the extent they used six emotion regulation strategies presented on a 100-point slider scale (1 = not at all, 100 = very much so). The stem for these items was “Since the last beep, did you…” and ended with “ruminate about your feelings” (rumination), “calmly reflect on your feelings?” (reflection), “see the event that caused your feelings from a different perspective?” (reappraisal), “try to distract yourself from your feelings?” (distraction), “suppress the expression of your feelings?” (expressive suppression), and “talk with others about your feelings” (social sharing). These strategies have been assessed in previous ESM studies [@kiekens2023detection; @kiekens2023detection; @hartley2014experience; @medlandRegulatingEmotionSystems2020; @bransRegulationNegativePositive2013a]. With 10 daily assessments over 7 days, the maximum possible number of measurements for emotion regulation strategies was 70. Reliability was satisfactory for emotion regulation strategies  (`r printnum(ESMreliability%>%filter(var=="ER")%>%filter(label=="omega_within")%>%select(est)%>%slice(2), , gt1=FALSE)`).
 
 ## Dataset 3: 3-wave longitudinal study, KU Leuven [main reference: @erbas2018don]
 
@@ -190,17 +200,18 @@ Participants were undergraduates from the University of Leuven, Belgium. This th
 
 ### Procedure
 
-The participants took part in an introductory session in the laboratory and filled out questionnaires unrelated to the current study. Then, they received standardized devices (Motorola Defy Plus) with custom-built ESM software installed and were trained to use the phone to complete the ESM questionnaires. Participants practiced filling the ESM questionnaire and could clarify with an experimenter before leaving the lab. The ESM phase lasted for 7 consecutive days, during which 10 beeps occurred semi-randomly each day in a 12-hr time frame. Participants were informed that completing one measurement would take an average of 1-2 minutes. Participants had 90 seconds to answer each question once they opened the questionnaire before it timed out. There were no reminders for participants in case they did not open the momentary assessments.  Participants answered 87.27% of the beeps (SD = 9.05%, range: 67–100% of all beeps). The participants were reimbursed with 60 Euros  for this wave of study. They were eligible for an extra 60 EUR reimbursement for completing all three waves of study.
+The participants took part in an introductory session in the laboratory and filled out questionnaires unrelated to the current study. Then, they received standardized devices (Motorola Defy Plus) with custom-built ESM software installed and were trained to use the phone to complete the ESM questionnaires. Participants practiced filling the ESM questionnaire and could clarify with an experimenter before leaving the lab. The ESM study lasted for 7 consecutive days, during which 10 beeps occurred semi-randomly each day in a 12-hr time frame. Participants were informed that completing one measurement would take an average of 1-2 minutes. Participants had 90 seconds to answer each question once they opened the questionnaire before it timed out. There were no reminders for participants in case they did not open the momentary assessments.  Participants answered 87.27% of the beeps (SD = 9.05%, range: 67–100% of all beeps). The participants were reimbursed with 60 Euros  for this wave of study. They were eligible for an extra 60 EUR reimbursement for completing all three waves of study.
 
 ### ESM measures
 
 #### Emotions
 
-At each momentary assessment, participants rated three positive emotions (happy, relaxed, cheerful) and six negative emotions (lonely, angry, anxious, sad, depressed, and stressed) presented on a slider scale from 0 (not at all) to 100 (very much). The stem for these items was “How [emotion] do you feel at the moment?”. With 10 daily assessments over 7 days, the maximum possible number of measurements for negative and positive emotions was 70.
+At each momentary assessment, participants rated three positive emotions (happy, relaxed, cheerful) and six negative emotions (lonely, angry, anxious, sad, depressed, and stressed) presented on a slider scale from 0 (not at all) to 100 (very much). The stem for these items was “How [emotion] do you feel at the moment?”. These items have been used in other ESM studies [@schneiders2006mood; @delespaul1987daily; @rauschenberg2017stress; @bakker2019laboratory; @hasmi2017network;	@kiekens2023detection;	@jacobs2007momentary; @fried2022mental; @barge1999quality; @bennik2015every; @myin2000schizophrenia; @achterhof2022adolescents; @bransRegulationNegativePositive2013a; @bastiaansen2018self; @bulow2022parent]. With 10 daily assessments over 7 days, the maximum possible number of measurements for negative and positive emotions was 70.
+Reliability was satisfactory for positive emotions (`r printnum(ESMreliability%>%filter(var=="PA")%>%filter(label=="omega_within")%>%select(est)%>%slice(3), , gt1=FALSE)`) and negative emotions (`r printnum(ESMreliability%>%filter(var=="NA")%>%filter(label=="omega_within")%>%select(est)%>%slice(3), , gt1=FALSE)`).
 
 #### Emotion regulation strategies
 
-At each momentary assessment, participants rated the extent they used six emotion regulation strategies presented on a slider scale from 0 (not at all) to 100 (almost all the time). The stem for these items was “Since the last beep, have you…” and ended with “viewed the cause of your feelings from a different perspective?” (cognitive reappraisal), “suppressed the expression of your feelings” (expressive suppression), “distracted your attention away from your feelings” (distraction), “talked about your feelings with others” (social sharing), “brooded about something in the past” (rumination) and “brooded about something in the future” (worry). With 10 daily assessments over 7 days, the maximum possible number of measurements for emotion regulation strategies was 70.
+At each momentary assessment, participants rated the extent they used six emotion regulation strategies presented on a slider scale from 0 (not at all) to 100 (almost all the time). The stem for these items was “Since the last beep, have you…” and ended with “viewed the cause of your feelings from a different perspective?” (cognitive reappraisal), “suppressed the expression of your feelings” (expressive suppression), “distracted your attention away from your feelings” (distraction), “talked about your feelings with others” (social sharing), “brooded about something in the past” (rumination) and “brooded about something in the future” (worry). These strategies have been assessed in previous ESM studies [@kiekens2023detection; @achterhof2022adolescents;	@bransRegulationNegativePositive2013a;	@hartley2014experience;	@bastiaansen2018self; @medlandRegulatingEmotionSystems2020]. With 10 daily assessments over 7 days, the maximum possible number of measurements for emotion regulation strategies was 70. Reliability was satisfactory for emotion regulation strategies  (`r printnum(ESMreliability%>%filter(var=="ER")%>%filter(label=="omega_within")%>%select(est)%>%slice(3), , gt1=FALSE)`).
 
 ## Dataset 4: Emotion regulation in daily life, Tilburg University [main reference: @vanroekelESMOSF]
 
@@ -210,17 +221,17 @@ Participants were undergraduates from Tilburg University, the Netherlands. This 
 
 ### Procedure
 
-Participants were recruited through the University course credit system, where they were able to read information about the research and could register via the same system. To participate, students had to click a link in an information letter sent to them by email. There, they signed informed consent and completed a questionnaire with baseline data that were not relevant for this study. The email also instructed participants to download the app "Ethica" (www.ethicadata.com) on their smartphone for the ESM assessments. The ESM period started within a few days after completing the baseline questionnaires. The ESM phase lasted for 14 consecutive days, during which the Ethica app gave 5 beeps quasi-randomly each day in a 12-hr time frame. The participants had to complete the questionnaire within 30 minutes after the notification. Participants were informed that completing one measurement would take an average of 3 minutes. In cases where participants did not open the momentary assessments, the app sent after the initial notification, but the details of the notification setting were lost due to interface change of Ethica. The median number of completed assessments per participant was 52 out of 70 (73.97%, M = 66.36% , SD = 23.50%, range: 5.35–98.63% of all beeps). When the 14 days were over, the study was completed and the participants were rewarded with 4 test credits for participants recruited via the Tilburg course credit system or a chance of winning 30-Euro shopping vouchers for participants recruited via other channels. 
+Participants were recruited through the University course credit system, where they were able to read information about the research and could register via the same system. To participate, students had to click a link in an information letter sent to them by email. There, they signed informed consent and completed a questionnaire with baseline data that were not relevant for this study. The email also instructed participants to download the app "Ethica" (www.ethicadata.com) on their smartphone for the ESM assessments. The ESM period started within a few days after completing the baseline questionnaires. The ESM study lasted for 14 consecutive days, during which the Ethica app gave 5 beeps quasi-randomly each day in a 12-hr time frame. The participants had to complete the questionnaire within 30 minutes after the notification. Participants were informed that completing one measurement would take an average of 3 minutes. In cases where participants did not open the momentary assessments, the app sent a reminder after the initial notification, but the details of the notification setting were lost due to interface change of Ethica. The median number of completed assessments per participant was 52 out of 70 (73.97%, M = 66.36% , SD = 23.50%, range: 5.35–98.63% of all beeps). When the 14 days were over, the study was completed and the participants were rewarded with 4 test credits for participants recruited via the Tilburg course credit system or a chance of winning 30-Euro shopping vouchers for participants recruited via other channels. 
 
 ### ESM measures
 
 #### Emotions
 
-At each momentary assessment, participants rated seven positive emotions (enthusiastic, content, energetic, calm, powerful, cheerful, and grateful) and six negative emotions (irritated, bored, nervous, sad, angry, and depressed) presented on a slider scale from 0 (not at all) to 100 (very much). The stem for these items was “I now feel (right before the beep went off) [emotion]”. With 10 daily assessments over 7 days, the maximum possible number of measurements for negative and positive emotions was 70.
+At each momentary assessment, participants rated seven positive emotions (enthusiastic, content, energetic, calm, powerful, cheerful, and grateful) and six negative emotions (irritated, bored, nervous, sad, angry, and depressed) presented on a slider scale from 0 (not at all) to 100 (very much). The stem for these items was “I now feel (right before the beep went off) [emotion]”. These items have been used in other ESM studies [@schneiders2006mood;	@delespaul1987daily; @rauschenberg2017stress;	@bakker2019laboratory;	@hasmi2017network;	@kiekens2023detection;	@jacobs2007momentary;	@spence2014helpful;	@fried2022mental;	@barge1999quality;	@bennik2015every;	@myin2000schizophrenia;	@achterhof2022adolescents; @bastiaansen2018self;	@bulow2022parent]. With 10 daily assessments over 7 days, the maximum possible number of measurements for negative and positive emotions was 70. Reliability was satisfactory for positive emotions (`r printnum(ESMreliability%>%filter(var=="PA")%>%filter(label=="omega_within")%>%select(est)%>%slice(4), , gt1=FALSE)`) and negative emotions (`r printnum(ESMreliability%>%filter(var=="NA")%>%filter(label=="omega_within")%>%select(est)%>%slice(4), , gt1=FALSE)`).
 
 #### Emotion regulation strategies
 
-At each momentary assessment, participants rated the extent they used seven emotion regulation strategies presented on a slider scale from 0 (not at all) to 100 (very much). The stem for these items was “Indicate to what extent you have used each of the following strategies since the last beep, regardless of whether they helped. To change my negative emotions, I have…” and ended with “addressed the situation that caused my emotions or have made plans for addressing it” (problem solving), “brooded my emotions with others” (co-brooding), “sought distraction” (distraction), “suppressed, ignored or avoided (the thoughts about) my emotions or the situation that caused them.” (avoidance), “talked about my feelings with others for advice or support” (social sharing), “been thinking about my feelings and their causes and/or consequences” (rumination) and “experienced my emotions as they are without wanting them change: it is OK that they are there” (acceptance). With 10 daily assessments over 7 days, the maximum possible number of measurements for emotion regulation strategies was 70.
+At each momentary assessment, participants rated the extent they used seven emotion regulation strategies presented on a slider scale from 0 (not at all) to 100 (very much). Based on theoretical frameworks of @parkinson1999classifying and @aldao2010emotion, the stem for these items was “Indicate to what extent you have used each of the following strategies since the last beep, regardless of whether they helped. To change my negative emotions, I have…” and ended with “addressed the situation that caused my emotions or have made plans for addressing it” (problem solving), “brooded my emotions with others” (co-brooding), “sought distraction” (distraction), “suppressed, ignored or avoided (the thoughts about) my emotions or the situation that caused them.” (avoidance), “talked about my feelings with others for advice or support” (social sharing), “been thinking about my feelings and their causes and/or consequences” (rumination) and “experienced my emotions as they are without wanting them change: it is OK that they are there” (acceptance). Rumination, acceptance, social sharing, and distraction have been assessed in previous ESM studies [@kiekens2023detection; @achterhof2022adolescents]. With 10 daily assessments over 7 days, the maximum possible number of measurements for emotion regulation strategies was 70. Reliability was satisfactory for emotion regulation strategies  (`r printnum(ESMreliability%>%filter(var=="ER")%>%filter(label=="omega_within")%>%select(est)%>%slice(4), , gt1=FALSE)`).
 
 ## Dataset 5: Outside-in, Ghent University [main reference: @braetVeGotFriend2023]
 
@@ -231,43 +242,272 @@ At each momentary assessment, participants rated the extent they used seven emot
 ### Proceure
 
 
-Participants were recruited through nine different schools (Flanders region). Parental consent and written assent from adolescents were obtained. All participants installed the m-path app on their smartphones [www.m-path.io, @mestdagh2023m]. The ESM period started within a few days after completing different baseline questionnaires. The ESM phase lasted for 14 consecutive days during school weeks, during which the m-path app gave 5 beeps at fixed intervals each day in a 12-hr time frame. One measurement took an average of 2 minutes  . The participants had 50 to 120 minutes after the notification  to complete the questionnaire (first to third beep of the day: 50 minutes, fourth beep of the day: 90 minutes, and last beep of the day: 120 minutes). In cases where participants did not open the momentary assessments, the app sent reminders every 10 minutes after the initial notification.  Compliance rate was also monitored during the study for each participant, after two days of low compliance participants received a message via m-path. Out of all participants, one discontinued the study after seven days, thus only receiving 35 beeps. Two participants encountered technical issues that prevented them from receiving some beeps on weekends, resulting in only 52 and 56 beeps received. Another 27 participants experienced occasional technical issues, receiving 65 to 69 beeps over the course of 14 days. The median number of assessments completed per participant was 49 out of 70 (70%, M = 64.51% , SD = 24.97%, range: 1.4%–100% of all possible beeps). When the 14 days were over, the study was completed and the participants were rewarded with a gift voucher worth €20 when they completed at least 70% of surveys, while a voucher of €10 was given to those who completed between 50% and 70% of surveys. 
+Participants were recruited through nine different schools (Flanders region). Parental consent and written assent from adolescents were obtained. All participants installed the m-Path app on their smartphones [www.m-path.io, @mestdagh2023m]. The ESM period started within a few days after completing different baseline questionnaires. The ESM study lasted for 14 consecutive days during school weeks, during which the m-path app gave 5 beeps at fixed intervals each day in a 12-hr time frame. One measurement took an average of 2 minutes. The participants had 50 to 120 minutes after the notification to complete the questionnaire (first to third beep of the day: 50 minutes, fourth beep of the day: 90 minutes, and last beep of the day: 120 minutes). In cases where participants did not open the momentary assessments, the app sent reminders every 10 minutes after the initial notification.  Compliance rate was also monitored during the study for each participant, after two days of low compliance participants received a message via m-path. Out of all participants, one discontinued the study after seven days, thus only receiving 35 beeps. Two participants encountered technical issues that prevented them from receiving some beeps on weekends, resulting in only 52 and 56 beeps received. Another 27 participants experienced occasional technical issues, receiving 65 to 69 beeps over the course of 14 days. The median number of assessments completed per participant was 49 out of 70 (70%, M = 64.51% , SD = 24.97%, range: 1.4%–100% of all possible beeps). When the 14 days were over, the study was completed and the participants were rewarded with a gift voucher worth €20 when they completed at least 70% of surveys, while a voucher of €10 was given to those who completed between 50% and 70% of surveys. 
 
 ### ESM measures
 
 #### Emotions
 
-At each momentary assessment, participants rated three positive emotions (happy, energetic, and relaxed) and six negative emotions (sad, angry, anxious, uncertain, annoyed, and stressed) presented on a 7-point scale from 1 (totally not) to 7 (totally). The stem for these items was “I now feel: [emotion]”. With 5 daily assessments over 14 days, the maximum possible number of measurements for negative and positive emotions was 70.
+At each momentary assessment, participants rated three positive emotions (happy, energetic, and relaxed) and six negative emotions (sad, angry, anxious, uncertain, annoyed, and stressed) presented on a 7-point scale from 1 (totally not) to 7 (totally). The stem for these items was “I now feel: [emotion]”. These items have been used in other ESM studies [@schneiders2006mood;	@delespaul1987daily; @rauschenberg2017stress;	@bakker2019laboratory;	@hasmi2017network;	@kiekens2023detection;	@jacobs2007momentary; @barge1999quality;	@bennik2015every;	@myin2000schizophrenia;	@achterhof2022adolescents;	@bransRegulationNegativePositive2013a; @bastiaansen2018self;	@bulow2022parent]. With 5 daily assessments over 14 days, the maximum possible number of measurements for negative and positive emotions was 70. Reliability was satisfactory for positive emotions (`r printnum(ESMreliability%>%filter(var=="PA")%>%filter(label=="omega_within")%>%select(est)%>%slice(5), , gt1=FALSE)`) and negative emotions (`r printnum(ESMreliability%>%filter(var=="NA")%>%filter(label=="omega_within")%>%select(est)%>%slice(5), , gt1=FALSE)`).
 
 #### Emotion regulation strategies
 
-First, participants reported the intensity of their experienced negative emotions since the last survey (or after waking up). In case no negative emotion was experienced, participants were instructed to respond with a score of 1. Then, Participants rated the extent they used eight emotion regulation strategies presented on a 7-point scale from 1 (totally not) to 7 (totally). The stem for these items was “When I felt those negative emotions…”. With reference to [@medlandRegulatingEmotionSystems2020a], five items ended with “I tried to see the situation in other ways” (cognitive reappraisal), “I tried to hide my emotions” (expressive suppression), “I did things to distract myself” (distraction), “I could not stop thinking about them” (rumination), and “I tried to express my emotions” (expression). Next, one item was added to assess social sharing, “I talked with someone else about the situation” (social sharing). Finally, based on @berking2011sek, two more self-compassion  items were included: “I have supported myself” (self-compassion) and “I tried to cheer up myself” (self-compassion). With 5 daily assessments over 14 days, the maximum possible number of measurements for emotion regulation strategies was 70.
+First, participants reported the intensity of their experienced negative emotions since the last survey (or after waking up). In case no negative emotion was experienced, participants were instructed to respond with a score of 1. Then, Participants rated the extent they used eight emotion regulation strategies presented on a 7-point scale from 1 (totally not) to 7 (totally). The stem for these items was “When I felt those negative emotions…”. With reference to @medlandRegulatingEmotionSystems2020, five items ended with “I tried to see the situation in other ways” (cognitive reappraisal), “I tried to hide my emotions” (expressive suppression), “I did things to distract myself” (distraction), “I could not stop thinking about them” (rumination), and “I tried to express my emotions” (expression). Next, one item was added to assess social sharing, “I talked with someone else about the situation” (social sharing). These strategies have been assessed in previous ESM studies [@achterhof2022adolescents;	@bransRegulationNegativePositive2013a;	@hartley2014experience;	@bastiaansen2018self; @kiekens2023detection]. Finally, based on @berking2011sek, two more self-compassion items were included: “I have supported myself” (self-compassion) and “I tried to cheer up myself” (self-compassion). With 5 daily assessments over 14 days, the maximum possible number of measurements for emotion regulation strategies was 70. Reliability was satisfactory for emotion regulation strategies  (`r printnum(ESMreliability%>%filter(var=="ER")%>%filter(label=="omega_within")%>%select(est)%>%slice(5), , gt1=FALSE)`).
 
 \newpage
+
+# Supplemental Materials 3: Distributions, Descriptive Statistics and Correlations of Measures
+
+## Distrbutions of Momentary Indices
+
 \renewcommand{\thetable}{S\arabic{table}} \setcounter{table}{2}
 
-# Supplemental Materials 3 – Multilevel Confirmatory Factor Analysis per Dataset
+We visually inspected the distributions of within-person means, standard deviations, and skewness values of all momentary indices calculated from ESM measures (Figure S3). All indices have comparable means and standard deviations with earlier ESM studies that reported emotion intensity [@bennik2015every; @bulow2022parent; @jacobs2007momentary; @rauschenberg2017stress; @schneiders2006mood], emotion differentiation [@erbasMomentaryEmotionDifferentiation2021a; @lischetzkeNegativeEmotionDifferentiation2021; @knapp2024emotion; @emery2022emotion], and emotion regulation variability [@lo2023theory].
+
+Referencing to @von2023increased's procedures in assessing potential floor or ceiling effects, we noticed that negative emotion intensity, emotion regulation intensity, and the strategy switching subcomponent of emotion regulation variability have some mean values close to the lower bound of the scale, indicating potential floor effects. We further checked the proportion of zero values in these indices across persons and across measurements (Table S3). Across all ESM measurements, 18.62% of ratings for negative emotion intensity and 15.02% for emotion regulation intensity were zero. However, these percentages are significantly lower than the 51.7% zero-rating proportion reported in @von2023increased, with which they demonstrated a floor effect in negative emotion intensity in their sample. The comparatively lower proportions in our samples suggest a lesser extent of floor effects, if present at all. Despite the potential floor effects, the distribution of negative emotion differentiation is comparable to that of positive emotion differentiation, originating from normally distributed positive emotion intensities. Moreover, emotion regulation variability calculations inherently control for emotion regulation intensity, protecting against floor effects. This is evident from a very low proportion of zero values across adolescents and ESM measurements in emotion regulation variability. Interestingly, the strategy switching subcomponent of emotion regulation variabiliity has the highest proportion of floored within-person mean and SD, and is among the indices with highest proportion of floored values at ESM measurement-level. So, for some adolescents, their emotion regulation variability is solely comprised of the endorsement change subcomponent. This means that these adolescents varied the _intensity_ of the same strategies but seldom change varied their strategy _selection_. As our confirmatory hypotheses primarily tested negative emotion differentiation and the full index of emotion regulation variability, with these distribution patterns, we deemed it appropriate to further analyze these indices.
+
+```{r, echo = FALSE}
+tablesm3 <- as.data.frame(read.csv("results/SMTable3.csv"))
+row.names(tablesm3) <- NULL
+tablesm3$var <- c("Positive emotion intensity",
+                             "Positive emotion differentiation",
+                             "Negative emotion intensity",
+                             "Negative emotion differentiation",
+                             "Emotion regulation intensity",
+                       "Emotion regulation variability (full index)",
+                       "  Endorsement change subcomponent",
+                       "  Strategy switching subcomponent"
+                             )
+colnames(tablesm3) <- c("Momentary index",
+                      "Within-person Mean",
+                      "Within-person SD",
+                      "Across all ESM Measurements")
+tablesm3[,2:4] <- apa_num(tablesm3[,2:4]*100)
+tablesm3[,2] <- paste0(tablesm3[,2],"\\%")
+tablesm3[,3] <- paste0(tablesm3[,3],"\\%")
+tablesm3[,4] <- paste0(tablesm3[,4],"\\%")
+# tablesm3 <- apa_table(tablesm3,
+#           # langscape = TRUE,
+#           caption = "Proportion of Zero Values on Momentary Indices Across Persons and Across ESM Measurements",
+#           escape = FALSE,
+#           # , format = "html"
+#           align = c("m{10cm}", rep("m{3cm}", 3))
+#           )
+# tablesm3
+kbl(tablesm3,
+    booktabs = T, align = "l", linesep = '',
+    escape = FALSE,
+    caption = "Proportion of Zero Values on Momentary Indices Across Persons and Across ESM Measurements") %>%
+    column_spec(1, width = "3in") %>%
+    column_spec(2:4, width = "1in") %>%
+    kable_styling(font_size = 11)
+
+```
+
+\renewcommand{\thefigure}{S\arabic{figure}} \setcounter{figure}{2}
+
+(ref:figureS3-caption) Combined violin plots and box plots of the within-person means (M; Panel A), within-person standard deviations (SD; Panel B), and within-person skewness (Panel C) of momentary indices derived from ESM measurements. The outer shapes represent the mirrored density function, encompassing box plots. The thick central line in the box plot marks the median, while the bottom and top edges of the rectangle show the 25th and 75th percentiles, respectively. Vertical lines stretch beyond these percentiles to a maximum of 1.5 times the inter-quartile range, and dots represent values outside this range of the vertical lines. Note that in Panel A, we inverted the negative values of means of positive and negative emotion differentiation to positive values to ease comparison.
+
+```{r figureS3, out.width="100%", fig.cap = "(ref:figureS3-caption)"}
+knitr::include_graphics("results/FigS3.png")
+```
+
+
+## Descriptive Statistics and Correlations of Measures
+
+We further inspected the descriptive statistics, within-person correlations and between-person correlations of momentary indices (Table S3.1 to S3.2.5) and ESM measures (Table S3.3.1 to S3.3.5). First, between positive and negative emotion intensity, there were negative within-person and between-person correlations, matching previous ESM studies that reported such negative within-person correlations [@springstein2023examining] and between-person correlations [@van1998effects; @schneiders2006mood]. Second, between any pairs of positive/negative emotion differentiation and positive/negative emotion intensity, their within-person and between-person correlations matched in directions and were of comparable strengths with previous ESM studies that reported such correlations [@lischetzkeNegativeEmotionDifferentiation2021; @springstein2023examining;	@knapp2024emotion]. Third, between negative emotion intensity and emotion regulation variability, although within-person correlations were not consistent in directions across datasets, negative between-person correlations between negative emotion intensity and emotion regulation variability (and its endorsement subcomponent) matched previous reports [@lo2023theory]. Overall, correlations between momentary indices in our pooled dataset were generally in line with previous ESM studies, supporting us to further analyze these indices. 
+
+
+\newpage
+\blandscape
+\renewcommand{\thetable}{S3.\arabic{table}} \setcounter{table}{0}
+
+```{r, echo = FALSE, warning=FALSE}
+
+printDesCorTable <- function(filesource, strcaption, strfootnote){
+temptbl <- as.data.frame(read.csv(filesource))
+temptbl<- as.data.frame(sapply(temptbl, function(x) sub("\\[", "\\\n\\[", x)))
+temptbl<- temptbl %>% mutate_all(linebreak)
+colnames(temptbl) <- c("Variable(Index/Measure)", "n"	,"M"	,"SDw"	,"SDb","Min","Max",	1:(ncol(temptbl)-7))
+# temptbl$Index <- c("1. Positive emotion intensity",
+#                           "2. Positive emotion differentiation",
+#                           "3. Negative emotion intensity",
+#                           "4. Negative emotion differentiation",
+#                           "5. Emotion regulation intensity",
+#                           "6. Emotion regulation variability",
+#                           "7. Endorsement change",
+#                           "8. Strategy switching"
+#                           )
+kbl(temptbl,
+    booktabs = T, align = "l", linesep = '',
+    escape = FALSE,
+    caption = strcaption)  %>%
+    row_spec(0, bold = TRUE) %>%
+    column_spec(8:ncol(temptbl), width = "1.15cm") %>%
+    kable_styling(font_size = 7)%>%
+        footnote(threeparttable = T, general = paste0("SDw: Within-person SD. SDb: Between-person SD. Min: mean of minimum rating. Max: mean of maximum rating. Within-person correlations at lower triangle and between-person correlations at upper triangle. Confidence interval of correlations in squared brackets. ",strfootnote))
+  
+}
+
+printDesCorTable("results/SMTable41.csv",
+                 "Descriptive Statistics, Within- and Between-person Correlations of Momentary Indices in the Pooled Dataset (N=778)",
+                 "All these indices were calculated only in observations with no missingness in relevant ESM items, so the lower n for emotion regulation indices reflected more missing items in constituent ESM items.")
+
+```
+
+\renewcommand{\thetable}{S3.2.\arabic{table}} \setcounter{table}{0}
+\newpage
+
+```{r, echo = FALSE, warning=FALSE}
+printDesCorTable("results/SMTable421.csv",
+                 "Descriptive Statistics, Within- and Between-person Correlations of Momentary Indices in Dataset 1: G(F)ood together (Radboud)",
+                 "All these indices were calculated only in observations with no missingness in relevant ESM items, so the lower n for emotion regulation indices reflected more missing items in constituent ESM items.")
+
+```
+\newpage
+
+```{r, echo = FALSE, warning=FALSE}
+printDesCorTable("results/SMTable422.csv",
+                 "Descriptive Statistics, Within- and Between-person Correlations of Momentary Indices in Dataset 2: Emotions in daily life (Leuven)",
+                 "All these indices were calculated only in observations with no missingness in relevant ESM items, so the lower n for emotion regulation indices reflected more missing items in constituent ESM items.")
+
+```
+\newpage
+
+```{r, echo = FALSE, warning=FALSE}
+printDesCorTable("results/SMTable423.csv",
+                 "Descriptive Statistics, Within- and Between-person Correlations of Momentary Indices in Dataset 3: 3-wave longitudinal study (Leuven)",
+                 "All these indices were calculated only in observations with no missingness in relevant ESM items, so the lower n for emotion regulation indices reflected more missing items in constituent ESM items.")
+
+```
+\newpage
+
+```{r, echo = FALSE, warning=FALSE}
+printDesCorTable("results/SMTable424.csv",
+                 "Descriptive Statistics, Within- and Between-person Correlations of Momentary Indices in Dataset 4: Emotion regulation in daily life (Tilburg)",
+                 "All these indices were calculated only in observations with no missingness in relevant ESM items, so the lower n for emotion regulation indices reflected more missing items in constituent ESM items.")
+
+```
+\newpage
+
+```{r, echo = FALSE, warning=FALSE}
+printDesCorTable("results/SMTable425.csv",
+                 "Descriptive Statistics, Within- and Between-person Correlations of Momentary Indices in Dataset 5: Outside-in (Ghent)",
+                 "All these indices were calculated only in observations with no missingness in relevant ESM items, so the lower n for emotion regulation indices reflected more missing items in constituent ESM items.")
+
+```
+
+\renewcommand{\thetable}{S3.3.1.\arabic{table}} \setcounter{table}{0}
+\newpage
+
+```{r, echo = FALSE, warning=FALSE}
+printDesCorTable("results/SMTable4311.csv",
+                 "Descriptive Statistics, Within- and Between-person Correlations of Positive Emotions in Dataset 1: G(F)ood together (Radboud)",
+                 "All these ESM measures were calculated only in observations with no missingness.")
+printDesCorTable("results/SMTable4312.csv",
+                 "Descriptive Statistics, Within- and Between-person Correlations of Negative Emotions in Dataset 1: G(F)ood together (Radboud)",
+                 "All these ESM measures were calculated only in observations with no missingness.")
+printDesCorTable("results/SMTable4313.csv",
+                 "Descriptive Statistics, Within- and Between-person Correlations of Emotion Regulation Strategies in Dataset 1: G(F)ood together (Radboud)",
+                 "All these ESM measures were calculated only in observations with no missingness.")
+
+```
+
+\renewcommand{\thetable}{S3.3.2.\arabic{table}} \setcounter{table}{0}
+\newpage
+
+```{r, echo = FALSE, warning=FALSE}
+printDesCorTable("results/SMTable4321.csv",
+                 "Descriptive Statistics, Within- and Between-person Correlations of Positive Emotions in Dataset 2: Emotions in daily life (Leuven)",
+                 "All these ESM measures were calculated only in observations with no missingness.")
+printDesCorTable("results/SMTable4322.csv",
+                 "Descriptive Statistics, Within- and Between-person Correlations of Negative Emotions in Dataset 2: Emotions in daily life (Leuven)",
+                 "All these ESM measures were calculated only in observations with no missingness.")
+printDesCorTable("results/SMTable4323.csv",
+                 "Descriptive Statistics, Within- and Between-person Correlations of Emotion Regulation Strategies in Dataset 2: Emotions in daily life (Leuven)",
+                 "All these ESM measures were calculated only in observations with no missingness.")
+
+```
+
+\renewcommand{\thetable}{S3.3.3.\arabic{table}} \setcounter{table}{0}
+\newpage
+
+```{r, echo = FALSE, warning=FALSE}
+printDesCorTable("results/SMTable4331.csv",
+                 "Descriptive Statistics, Within- and Between-person Correlations of Positive Emotions in Dataset 3: 3-wave longitudinal study (Leuven)",
+                 "All these ESM measures were calculated only in observations with no missingness.")
+printDesCorTable("results/SMTable4332.csv",
+                 "Descriptive Statistics, Within- and Between-person Correlations of Negative Emotions in Dataset 3: 3-wave longitudinal study (Leuven)",
+                 "All these ESM measures were calculated only in observations with no missingness.")
+printDesCorTable("results/SMTable4333.csv",
+                 "Descriptive Statistics, Within- and Between-person Correlations of Emotion Regulation Strategies in Dataset 3: 3-wave longitudinal study (Leuven)",
+                 "All these ESM measures were calculated only in observations with no missingness.")
+
+```
+\renewcommand{\thetable}{S3.3.4.\arabic{table}} \setcounter{table}{0}
+\newpage
+
+```{r, echo = FALSE, warning=FALSE}
+printDesCorTable("results/SMTable4341.csv",
+                 "Descriptive Statistics, Within- and Between-person Correlations of Positive Emotions in Dataset 4: Emotion regulation in daily life (Tilburg)",
+                 "All these ESM measures were calculated only in observations with no missingness.")
+printDesCorTable("results/SMTable4342.csv",
+                 "Descriptive Statistics, Within- and Between-person Correlations of Negative Emotions in Dataset 4: Emotion regulation in daily life (Tilburg)",
+                 "All these ESM measures were calculated only in observations with no missingness.")
+printDesCorTable("results/SMTable4343.csv",
+                 "Descriptive Statistics, Within- and Between-person Correlations of Emotion Regulation Strategies in Dataset 4: Emotion regulation in daily life (Tilburg)",
+                 "All these ESM measures were calculated only in observations with no missingness.")
+
+```
+
+\renewcommand{\thetable}{S3.3.5.\arabic{table}} \setcounter{table}{0}
+\newpage
+
+```{r, echo = FALSE, warning=FALSE}
+printDesCorTable("results/SMTable4351.csv",
+                 "Descriptive Statistics, Within- and Between-person Correlations of Positive Emotions in Dataset 5: Outside-in (Ghent)",
+                 "All these ESM measures were calculated only in observations with no missingness.")
+printDesCorTable("results/SMTable4352.csv",
+                 "Descriptive Statistics, Within- and Between-person Correlations of Negative Emotions in Dataset 5: Outside-in (Ghent)",
+                 "All these ESM measures were calculated only in observations with no missingness.")
+printDesCorTable("results/SMTable4353.csv",
+                 "Descriptive Statistics, Within- and Between-person Correlations of Emotion Regulation Strategies in Dataset 5: Outside-in (Ghent)",
+                 "All these ESM measures were calculated only in observations with no missingness.")
+
+```
+
+
+\elandscape
+
+
+
+\newpage
+\renewcommand{\thetable}{S\arabic{table}} \setcounter{table}{3}
+
+# Supplemental Materials 4 – Multilevel Confirmatory Factor Analysis per Dataset
 
 We ran Multilevel Confirmatory Factor Analyses [MCFA; see procedures in @eiseleAffectiveStructureMeasurement2021] to confirm the factor structure for positive emotions and negative emotions at both within-adolescent and between-adolescent levels. In the MCFA, positive emotion items were loaded on an overall positive emotion factor, negative emotion items were loaded on an overall negative emotion factor. The positive and negative emotion latent factors were allowed to correlate. We inspected model fit with conventional cutoff values [RMSEA < .08, CFI > .90 and TLI > .90; see @schermelleh2003evaluating]. When model fits were unsatisfactory, as in datasets 3, 4, and 5, we allowed residual variance of overlapping items to correlate to improve model fit. In general, model fit at the within-person level was usually worse than at the between-person level. While the TLI is not acceptable in some models, both the RMSEA and CFI are. Overall, positive and negative emotions loaded separately on two factors as indicated with satisfactory fit indices, as shown in Table S3. In other words, it was suitable to take the mean of the positive emotions as a single-factor index, and likewise for negative emotions.
 
+\newpage
+
 ```{r, echo = FALSE}
-SMtable3 <- as.data.frame(read.csv("results/SMTable3.csv"))
-SMtable3$loadings <- paste0(papaja::apa_num(SMtable3$min, gt1 = FALSE),"–",
-                            papaja::apa_num(SMtable3$max, gt1 = FALSE))
-SMtable3$chisq <- papaja::apa_num(SMtable3$chisq)
-SMtable3[,c("rmsea","cfi","tli")]<-
-  SMtable3[,c("rmsea","cfi","tli")]%>% papaja::apa_num(gt1 = FALSE)
-SMtable3 <- SMtable3[,c("loadings","chisq","rmsea","cfi","tli")]
-colnames(SMtable3) <- c("SFL","X2","RMSEA","CFI","TLI") #λ*χ2 can't be knitted somehow
-SMtable3 <- cbind(SMtable3[1:5,],SMtable3[6:10,])
-row.names(SMtable3) <- c("G(F)ood together (Radboud)",
+SMtable4 <- as.data.frame(read.csv("results/SMTable4.csv"))
+SMtable4$loadings <- paste0(papaja::apa_num(SMtable4$min, gt1 = FALSE),"–",
+                            papaja::apa_num(SMtable4$max, gt1 = FALSE))
+SMtable4$chisq <- papaja::apa_num(SMtable4$chisq)
+SMtable4[,c("rmsea","cfi","tli")]<-
+  SMtable4[,c("rmsea","cfi","tli")]%>% papaja::apa_num(gt1 = FALSE)
+SMtable4 <- SMtable4[,c("loadings","chisq","rmsea","cfi","tli")]
+colnames(SMtable4) <- c("SFL","X2","RMSEA","CFI","TLI") #λ*χ2 can't be knitted somehow
+SMtable4 <- cbind(SMtable4[1:5,],SMtable4[6:10,])
+row.names(SMtable4) <- c("G(F)ood together (Radboud)",
                              "Emotions in daily life 2011 (Leuven)",
                              "3-wave longitudinal study (Leuven)*",
                              "Emotions in daily life (Tilburg)*",
                              "Outside-in (Ghent)*"
                              )
 
-kbl(SMtable3,
+kbl(SMtable4,
     booktabs = T, align = "l", linesep = '',
     escape = FALSE,
     caption = "Multilevel Confirmatory Factor Analysis per Datasets")  %>%
@@ -281,88 +521,9 @@ symbol = c("For datasets 3, 4 and 5, we included correlations between residual v
 ```
 
 
-\newpage
-\blandscape
-\renewcommand{\thetable}{S4.\arabic{table}} \setcounter{table}{0}
-
-# Supplemental Materials 4: Descriptive statistics and correlations per dataset
-
-```{r, echo = FALSE, warning=FALSE}
-
-printDesCorTable <- function(filesource, strcaption){
-temptbl <- as.data.frame(read.csv(filesource))
-temptbl<- as.data.frame(sapply(temptbl, function(x) sub("\\[", "\\\n\\[", x)))
-temptbl<- temptbl %>% mutate_all(linebreak)
-colnames(temptbl) <- c("Index", "n"	,"M"	,"SDw"	,"SDb",	1,2,3,4,5,6,7,8)
-temptbl$Index <- c("1. Positive emotion intensity",
-                          "2. Positive emotion differentiation",
-                          "3. Negative emotion intensity",
-                          "4. Negative emotion differentiation",
-                          "5. Emotion regulation intensity",
-                          "6. Emotion regulation variability",
-                          "7. Endorsement change",
-                          "8. Strategy switching"
-                          )
-kbl(temptbl,
-    booktabs = T, align = "l", linesep = '',
-    escape = FALSE,
-    caption = strcaption)  %>%
-    row_spec(0, bold = TRUE) %>%
-    column_spec(6:13, width = "1.3cm") %>%
-    kable_styling(font_size = 7)%>%
-        footnote(threeparttable = T, general = "SDw: Within-person SD. SDb: Between-person SD. Within-person correlations at lower triangle and between-person correlations at upper triangle. Confidence interval of correlations in squared brackets. All these indices were calculated only in observations with no missingness in relevant ESM items, so the lower n for emotion regulation indices reflected more missing items in constituent ESM items.")
-  
-}
-
-printDesCorTable("results/SMTable41.csv",
-                 "Within- and Between-person Correlations of Momentary Indices in the Pooled Dataset (N=778)")
-
-```
-
-\renewcommand{\thetable}{S4.2.\arabic{table}} \setcounter{table}{0}
-\newpage
-
-```{r, echo = FALSE, warning=FALSE}
-printDesCorTable("results/SMTable421.csv",
-                 "Within- and Between-person Correlations of Momentary Indices Dataset 1: G(F)ood together (Radboud)")
-
-```
-\newpage
-
-```{r, echo = FALSE, warning=FALSE}
-printDesCorTable("results/SMTable422.csv",
-                 "Within- and Between-person Correlations of Momentary Indices Dataset 2: Emotions in daily life (Leuven)")
-
-```
-\newpage
-
-```{r, echo = FALSE, warning=FALSE}
-printDesCorTable("results/SMTable423.csv",
-                 "Within- and Between-person Correlations of Momentary Indices Dataset 3: 3-wave longitudinal study (Leuven)")
-
-```
-\newpage
-
-```{r, echo = FALSE, warning=FALSE}
-printDesCorTable("results/SMTable424.csv",
-                 "Within- and Between-person Correlations of Momentary Indices Dataset 4: Emotion regulation in daily life (Tilburg)")
-
-```
-\newpage
-
-```{r, echo = FALSE, warning=FALSE}
-printDesCorTable("results/SMTable425.csv",
-                 "Within- and Between-person Correlations of Momentary Indices Dataset 5: Outside-in (Ghent)")
-
-```
-
-
-\elandscape
-
-
 \renewcommand{\thetable}{S\arabic{table}} \setcounter{table}{4}
-
 \newpage
+
 # Supplemental Materials 5: Full multilevel model results
 
 ```{r, echo = FALSE}
