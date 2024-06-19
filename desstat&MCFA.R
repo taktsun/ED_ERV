@@ -279,6 +279,21 @@ cortablesummary <- function(df, inputIndices = inputIndices, labelIndices = labe
                         colnames(mat)[-c(1:6)])
   mat
 }
+cortablesummaryblank <- function(labelIndices = labelIndices){
+  mat <- matrix(0, nrow = length(labelIndices), ncol = (length(labelIndices)),
+                dimnames = list(paste0(c(1:length(labelIndices)),". ",labelIndices),
+                                c(1:length(labelIndices))))
+  mat <- cbind(matrix(0, nrow = length(labelIndices), ncol = 6),
+               mat)
+  colnames(mat) <- c("n",
+                     "M",
+                     "SDw",
+                     "SDb",
+                     "Min",
+                     "Max",
+                     colnames(mat)[-c(1:6)])
+  mat
+}
 
 # warnings are about participants who have too few ESM observations so that some had no within-person SD
 write.csv(cortablesummary(df,inputIndices,labelIndices),"manuscript/results/SMTable41.csv")
@@ -315,15 +330,14 @@ if (ready.5datasets) {
   subcortable[] <- 0
   write.csv(subcortable,"manuscript/results/SMTable422.csv")
   write.csv(subcortable,"manuscript/results/SMTable423.csv")
+  
+  write.csv(cortablesummaryblank(labelPA.Leuven2011),"manuscript/results/SMTable4321.csv")
+  write.csv(cortablesummaryblank(labelNA.Leuven2011),"manuscript/results/SMTable4322.csv")
+  write.csv(cortablesummaryblank(labelER.Leuven2011),"manuscript/results/SMTable4323.csv")
+  write.csv(cortablesummaryblank(labelPA.Leuven3W),"manuscript/results/SMTable4331.csv")
+  write.csv(cortablesummaryblank(labelNA.Leuven3W),"manuscript/results/SMTable4332.csv")
+  write.csv(cortablesummaryblank(labelER.Leuven3W),"manuscript/results/SMTable4333.csv")
 }
-
-
-p <- ggplot(dfPerson, aes(x=study, y=person_PA, color=study)) + 
-  geom_violin(linewidth = 1)
-p
-p+ geom_boxplot(width=0.1) +
-  scale_color_manual(values=c("#4477AA", "#CCBB44", "#228833", "#66CCEE", "#AA3377")) +
-  theme_bw()+theme(legend.position="none") 
 
 
 # ===================================
