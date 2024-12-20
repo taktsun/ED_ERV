@@ -8,14 +8,14 @@ author:
   - name          : "Maaike Verhagen"
   - name          : "J. Loes Pouwels"
   - name          : "Eeske van Roekel"
-  - name          : "Sarah O’Brien"
+  - name          : "Sarah T. O’Brien"
   - name          : "Gillian Debra"
   - name          : "Jolien Braet"
   - name          : "Jacqueline M. Vink"
   - name          : "Dominique F. Maciejewski"
 
 
-bibliography      : ["r-references.bib", "mainreferences.bib", "datasets_and_OSF.bib"]
+bibliography      : ["r-references.bib", "mainreferences.bib", "datasets_and_OSF.bib", "revision.bib"]
 
 floatsintext      : TRUE
 linenumbers       : yes
@@ -127,7 +127,7 @@ add_header_above(c("Power Analysis Setup" = 2, "Power Analysis Result" = 2))
 
 ## Deviations from pre-registration
 
-Our study had three minor deviations from its original pre-registration.
+Our study had four minor deviations from its original pre-registration.
 
 First, in section 19 and 28 (indices), we initially planned to use intraclass correlation coefficient (ICC) for between-person emotion differentiation to test the between-person Hypothesis 3 (stated as Hypothesis 1 in the original pre-registration). In our actual analyses, we did not use ICC, but the between-person component of the momentary emotion differentiation index [@erbasMomentaryEmotionDifferentiation2021a]. We considered this deviation a better approach because the within-person and between-person hypotheses could be tested together. Momentary emotion differentiation index, derived from ICC, was shown to be statistically perfectly related to ICC [@erbasMomentaryEmotionDifferentiation2021a]. This supports us using the momentary emotion differentiation index in substitution of ICC in testing Hypothesis 3.
 
@@ -135,7 +135,9 @@ Second, in section 22 (analysis plan), we initially planned to test the between-
 
 Third, in section 27 (data exclusion), we specified the exclusion of data with zero variance across all observations. However, we did not clarify if this zero variance criterion was to be applied at the item level (e.g., for a specific emotion like sadness) or at the factor level (e.g., for a group of related emotions such as sad, angry, depressed, and anxious, useful in calculating negative emotion intensity and differentiation). In our actual analysis, we opted for the factor-level application. This decision was based on the understanding that some items might not be relevant to participants (see Discussion), leading to zero ratings, but this would not necessarily indicate poor data quality if there was variance in other items within the same factor. Additionally, our dynamic indices evaluate multiple items, not just single ones. Applying the exclusion criterion at the factor level aligns more closely with our research objectives and ensures a more accurate assessment of data quality than excluding data based on single-item zero variance.
 
+Fourth, in Section 28, we initially planned an exploratory analysis on the differentiation of positive emotions. Beyond this planned analysis, we conducted additional exploratory analyses: (a) within-person mediation on the temporal sequence from emotion differentiation to emotion regulation variability to emotion intensity, (b) an alternative specification of Bray-Curtis dissimilarity using the successive difference temporal comparison approach (Supplemental Materials 6), (c) the moderating effects of within-dataset age differences on our main hypotheses, and (d) the moderating effects of zero negative emotion (regulation) intensity on our main hypotheses.																																																																																																																																																																																								  
 \newpage
+
 # Supplemental Materials 2: Participants, Procedures and ESM Measures per Dataset
 
 Note that though descriptions of ESM measures are in English here, questionnaires were presented in Dutch to participants across the five studies. 
@@ -239,7 +241,7 @@ At each momentary assessment, participants rated the extent they used seven emot
 
 244 students were recruited from local schools in Belgium (age M = 13.46, SD = 0.42; female = 48%). This 3-wave study was approved by the Medical Ethics Committee of Ghent University Hospital (protocol number: BC-09559). For our analysis, we only utilized data from the third wave, which was collected in 2022. This choice ensures that participants from this study have a closer age range to participants in other studies. After excluding observations in which each ESM item was completed in less than 500ms and excluding participants who showed zero variance across all ESM items, the final sample consisted of 212 participants. Mean age of the sample was 13.46 years (SD = 0.42), and 44% were female. Majority of the sample were born to Belgian parents (90%).
 
-### Proceure
+### Procedure
 
 
 Participants were recruited through nine different schools (Flanders region). Parental consent and written assent from adolescents were obtained. All participants installed the m-Path app on their smartphones [www.m-path.io, @mestdagh2023m]. The ESM period started within a few days after completing different baseline questionnaires. The ESM study lasted for 14 consecutive days during school weeks, during which the m-path app gave 5 beeps at fixed intervals each day in a 12-hr time frame. One measurement took an average of 2 minutes. The participants had 50 to 120 minutes after the notification to complete the questionnaire (first to third beep of the day: 50 minutes, fourth beep of the day: 90 minutes, and last beep of the day: 120 minutes). In cases where participants did not open the momentary assessments, the app sent reminders every 10 minutes after the initial notification.  Compliance rate was also monitored during the study for each participant, after two days of low compliance participants received a message via m-path. Out of all participants, one discontinued the study after seven days, thus only receiving 35 beeps. Two participants encountered technical issues that prevented them from receiving some beeps on weekends, resulting in only 52 and 56 beeps received. Another 27 participants experienced occasional technical issues, receiving 65 to 69 beeps over the course of 14 days. The median number of assessments completed per participant was 49 out of 70 (70%, M = 64.51% , SD = 24.97%, range: 1.4%–100% of all possible beeps). When the 14 days were over, the study was completed and the participants were rewarded with a gift voucher worth €20 when they completed at least 70% of surveys, while a voucher of €10 was given to those who completed between 50% and 70% of surveys. 
@@ -264,7 +266,7 @@ First, participants reported the intensity of their experienced negative emotion
 
 We visually inspected the distributions of within-person means, standard deviations, and skewness values of all momentary indices calculated from ESM measures (Figure S3). All indices have comparable means and standard deviations with earlier ESM studies that reported emotion intensity [@bennik2015every; @bulow2022parent; @jacobs2007momentary; @rauschenberg2017stress; @schneiders2006mood], emotion differentiation [@erbasMomentaryEmotionDifferentiation2021a; @lischetzkeNegativeEmotionDifferentiation2021; @knapp2024emotion; @emery2022emotion], and emotion regulation variability [@lo2023theory].
 
-Referencing to @von2023increased's procedures in assessing potential floor or ceiling effects, we noticed that negative emotion intensity, emotion regulation intensity, and the strategy switching subcomponent of emotion regulation variability have some mean values close to the lower bound of the scale, indicating potential floor effects. We further checked the proportion of zero values in these indices across persons and across measurements (Table S3). Across all ESM measurements, 18.62% of ratings for negative emotion intensity and 15.02% for emotion regulation intensity were zero. However, these percentages are significantly lower than the 51.7% zero-rating proportion reported in @von2023increased, with which they demonstrated a floor effect in negative emotion intensity in their sample. The comparatively lower proportions in our samples suggest a lesser extent of floor effects, if present at all. Despite the potential floor effects, the distribution of negative emotion differentiation is comparable to that of positive emotion differentiation, originating from normally distributed positive emotion intensities. Moreover, emotion regulation variability calculations inherently control for emotion regulation intensity, protecting against floor effects. This is evident from a very low proportion of zero values across adolescents and ESM measurements in emotion regulation variability. Interestingly, the strategy switching subcomponent of emotion regulation variabiliity has the highest proportion of floored within-person mean and SD, and is among the indices with highest proportion of floored values at ESM measurement-level. So, for some adolescents, their emotion regulation variability is solely comprised of the endorsement change subcomponent. This means that these adolescents varied the _intensity_ of the same strategies but seldom change varied their strategy _selection_. As our confirmatory hypotheses primarily tested negative emotion differentiation and the full index of emotion regulation variability, with these distribution patterns, we deemed it appropriate to further analyze these indices.
+Referencing to @von2023increased's procedures in assessing potential floor or ceiling effects, we noticed that negative emotion intensity, emotion regulation intensity, and the strategy switching subcomponent of emotion regulation variability have some mean values close to the lower bound of the scale, indicating potential floor effects. We further checked the proportion of zero values in these indices across persons and across measurements (Table S3). Across all ESM measurements, 18.62% of ratings for negative emotion intensity and 15.02% for emotion regulation intensity were zero. However, these percentages are significantly lower than the 51.7% zero-rating proportion reported in @von2023increased, with which they demonstrated a floor effect in negative emotion intensity in their sample. The comparatively lower proportions in our samples suggest a lesser extent of floor effects, if present at all. Despite the potential floor effects, the distribution of negative emotion differentiation is comparable to that of positive emotion differentiation, originating from normally distributed positive emotion intensities. Moreover, emotion regulation variability calculations inherently control for emotion regulation intensity, protecting against floor effects. This is evident from a very low proportion of zero values across adolescents and ESM measurements in emotion regulation variability. Interestingly, the strategy switching subcomponent of emotion regulation variabiliity has the highest proportion of floored within-person mean and SD, and is among the indices with highest proportion of floored values at ESM measurement-level. So, for some adolescents, their emotion regulation variability is solely comprised of the endorsement change subcomponent. This means that these adolescents varied the _intensity_ of the same strategies but seldom change varied their strategy _selection_. Our confirmatory hypotheses primarily focused on negative emotion differentiation and the full index of emotion regulation variability. Based on the observed distribution patterns, we deemed it appropriate to use these indices for testing the confirmatory hypotheses. That said, our exploratory analyses included negative emotion intensity as an outcome variable. To address this, in Supplemental Materials 8, we conducted sensitivity analyses to examine whether the presence of zero emotion (regulation) intensity moderated the effects tested in our study.
 
 ```{r, echo = FALSE}
 tablesm3 <- as.data.frame(read.csv("results/SMTable3.csv"))
@@ -524,104 +526,270 @@ symbol = c("For datasets 3, 4 and 5, we included correlations between residual v
 \renewcommand{\thetable}{S\arabic{table}} \setcounter{table}{4}
 \newpage
 
-# Supplemental Materials 5: Full multilevel model results
+# Supplemental Materials 5: Specification of Within-Person Mediation Model and Full Results of all Multilevel Models
+
+## Detailed Specifications of the Within-Person Mediation Model 1M
+
+In Model 1M, we examined both the direct and indirect paths. The direct paths included the a-path (from lagged emotion differentiation to emotion regulation variability), the b-path (from emotion regulation variability to emotion intensity), and the c'-path (from lagged emotion differentiation to emotion intensity). The a-path corresponds to the effect analyzed in Model 1A, while the b-path and c'-path reflect how emotion intensity changes directly in response to fluctuations in emotion differentiation and emotion regulation variability. The indirect path in Model 1M, representing the mediation effect, is calculated as the sum of two components: the product of the a-path and b-path, and the covariance between a-path and b-path.
+
+### Estimation of the Direct Paths in Model 1M
+
+The direct paths of Model 1M were estimated using the _nlme_ package. Model 1M employed a stacked dataset, in which each row of data was split into two rows: one emphasizing the outcome (emotion intensity) and the other the mediator (emotion regulation variability) [@bauerConceptualizingTestingRandom2006; @bolgerIntensiveLongitudinalMethods2013]. In this setup, emotion regulation variability serves as both an outcome in the a-path and a predictor in the b-path. Since we focused on within-person fluctuations, emotion regulation variability had to be modeled as a within-person component, precluding the modeling of its between-person component as an outcome. Consequently, the predictor (emotion differentiation) and outcome (emotion intensity) also had to be specified as within-person components, excluding their between-person components. To align with this approach, the intercepts of the mediator and outcome were fixed to 0 because the within-person components, being person-mean-centered, had zero within-person means. Although this approach allowed us to evaluate within-person mediation accurately [@bolgerIntensiveLongitudinalMethods2013], it prevented us from simultaneously estimating between-person effects within Model 1M, unlike what we did in other models (e.g., Model 1A). However, the three between-person relations among emotion differentiation, emotion regulation variability, and emotion intensity were already evaluated in Models 1A, 1B, 1C, 2A, and 2B.
+
+Model 1M with positive emotion specification encountered an evaluation error for the first-order autocorrelation term on the residual. To check whether estimates deviated when the residual autocorrelation term was removed, we undertook the following steps. First, we ran Model 1M (positive emotion) in a two-step manner, including the autocorrelation term. This involved running Model 1A (positive emotion) and a modified version of Model 2A (positive emotion) with the outcome variable replaced by positive emotion intensity and the covariate positive emotion intensity replaced by lagged positive emotion intensity. Then, we ran these two models (two-step model 1M) again, this time excluding the autocorrelation term on the residual. Finally, we compared the fixed effects of interest (e.g., a-path: positive emotion differentiation → emotion regulation variability, and b-path: emotion regulation variability → positive emotion intensity) between the two-step models with and without the autocorrelation term. The comparisons revealed that the fixed effects for the a-, b-, and c'-paths remained in the same direction and statistical significance. Based on these findings, we proceeded with Model 1M (positive emotion) using the one-step approach described in the main text (i.e., evaluating the a-, b-, and c'-paths in a single multilevel model after the stacking procedure) without including the first-order autocorrelation term on the residual, which allowed Model 1M (positive emotion) to converge. As a result, in this and the subsequent Supplemental Materials, we report the Model 1M (positive emotion) results evaluated without specifying the first-order autocorrelation term on the residual.
+
+All within-person mediation models (whether for positive or negative emotions and across varied specifications in sensitivity analyses) produced warnings about singularity precision, indicating that some random slopes were estimated as zero or that correlations between them were approaching 1 or -1 [@bates2015parsimonious]. To address this, we first simplified the models by removing random effects for variables not central to our primary interests (e.g., from lagged emotion intensity to emotion intensity). However, the singularity warnings persisted. Upon inspecting the outputs from both the full models and the simplified models without additional random slopes, we found that the warnings were caused by correlations between dataset-level random effects approaching 1 or -1. At the person-level, however, none of the random effects were estimated as zero, nor were any correlations between them near 1 or -1. Given that our primary focus is on interpreting person-level results, we deemed it acceptable to proceed with the estimates despite the presence of singularity precision warnings.
+
+### Estimation of the Indirect Path of Model 1M
+
+Making use of the estimates from _nlme_, we can calculate the indirect path as the sum of two components: product of the a-path and b-path, and covariance of person-level random effects of the a-path and b-path. To further obtain the confidence interval of the indirect path, we made use of the Monte Carlo script by @preacher2010monte. To prepare for this, we used the _lme4_ package [@batesFittingLinearMixedeffects2015] in addition to _nlme_ which we have used for evaluating other models. Both the _nlme_ and _lme4_ packages can evaluate three-level models, grouping measurements within adolescents and adolescents within datasets. Apart from _nlme_ and _lme4_, other software options exist, namely the _brms_ package [see @ramMediation2022 for tutorial] and Mplus, a proprietary software [see @mcneish2022intensive for tutorial]. However, unlike  _nlme_ and _lme4_,  _brms_ and Mplus can not yet simultaneously handle three-level nested structure and estimation of within-person mediation. So, we could only proceed with the _nlme_ and _lme4_ packages.
+
+For models other than Model 1M, we primarily used the _nlme_ package, as it supports the inclusion of a first-order autocorrelation term on the residual, which _lme4_ does not. However, only _lme4_ has compatible resources for extracting the asymptotic covariance of random effects for two paths, an estimate needed for accurately assessing the confidence interval of the mediation effect (see @ramAnalysisExperienceSampling2017 for an overview). This estimate affects the dispersion of the Monte Carlo resampled indirect effect: the larger it is, the wider the resample distribution's bell curve. 
+
+It is still possible to produce a confidence interval without this estimate using _nlme_ results, but the interval will be liberal. This means that even if the interval does not include zero, we cannot be certain this would remain the case if the asymptotic covariance of random effects were included. Conversely, if the interval does include zero, we can be confident it will continue to include zero even when the missing estimate is added.
+
+In summary, each package has distinct advantages and disadvantages. The _nlme_ results come from better-specified models but provide a liberal confidence interval, which is not reliable for rejecting the null hypothesis of no within-person mediation. Conversely, _lme4_ can produce a confidence interval capable of rejecting this null hypothesis, but it does so based on model estimates evaluated without the first-order autocorrelation residual term. For this exploratory research question, we computed the 95% confidence intervals for mediation using the Monte Carlo script by @preacher2010monte with results from both packages. To ensure robustness of our results, we reported the more conservative results between the two sets. For example, if one set gave an interval that crossed zero but the other set did not, we reported the set that crossed zero.
+
+Before using _lme4_ results, it was necessary to assess whether _lme4_ results were similar as those from _nlme_. Therefore, we compared the fixed effects of interest (e.g., a-path:  emotion differentiation → emotion regulation variability, and b-path: emotion regulation variability →  emotion intensity) in Model 1M as estimated by both packages. The fixed effects showed the same direction and statistical significance in both _nlme_ and _lme4_. 
+
+We initially planned to use the _lme4_ package to reevaluate models under various specifications detailed in Supplemental Materials 6 and 7. However, under those sensitivity analysis specifications, the _lme4_ estimates showed very large deviations from those of _nlme_ and encountered other errors (see Supplemental Materials 6 and 7 for details), making it impractical to conduct sensitivity analyses as extensively as we did for the direct paths in Model 1M and for estimates in other models without within-person mediation.
+
+## Full Multilevel Model Results
 
 ```{r, echo = FALSE}
-# useful functions for supplemental materials 5 and 6
+# useful functions for supplemental materials 5-8
 
-prepareHeading <- function(df,strheading, strmodel){
-  data.frame("varname" = strheading,
+prepareHeading <- function(df,strheading, strmodel, suffix = "", NAPA = TRUE){
+  if (NAPA){
+    data.frame("varname" = strheading,
              "output" = paste0("N = ", 
-                               df %>% filter(model == paste0(strmodel,"_NA")) %>% select(N) %>% min,
+                               df %>% filter(model == paste0(strmodel,"_NA",suffix)) %>% select(N) %>% min,
                                ", n = ",
-                               df %>% filter(model == paste0(strmodel,"_NA")) %>% select(nobs) %>% min),
+                               df %>% filter(model == paste0(strmodel,"_NA",suffix)) %>% select(nobs) %>% min),
              "output.1" =paste0("N = ", 
-                                df %>% filter(model == paste0(strmodel,"_PA")) %>% select(N) %>% min,
+                                df %>% filter(model == paste0(strmodel,"_PA",suffix)) %>% select(N) %>% min,
                                 ", n = ",
-                                df %>% filter(model == paste0(strmodel,"_PA")) %>% select(nobs) %>% min),
+                                df %>% filter(model == paste0(strmodel,"_PA",suffix)) %>% select(nobs) %>% min),
              "sig" = FALSE,
              "sig.1" = FALSE,
              "indent" = FALSE)
+  }else{
+    data.frame("varname" = strheading,
+             "output" = paste0("N = ", 
+                               df %>% filter(model == paste0(strmodel,"_NA",suffix)) %>% select(N) %>% min,
+                               ", n = ",
+                               df %>% filter(model == paste0(strmodel,"_NA",suffix)) %>% select(nobs) %>% min),
+             "sig" = FALSE,
+             "indent" = FALSE)  }
 }
-prepareSubHeading <- function(strheading){
+prepareSubHeading <- function(strheading, NAPA = TRUE){
+  if (NAPA){
   data.frame("varname" = strheading,
              "output" = "",
              "output.1" ="",
              "sig" = FALSE,
              "sig.1" = FALSE,
             "indent" = FALSE)
+  }else{
+  data.frame("varname" = strheading,
+             "output" = "",
+             "sig" = FALSE,
+            "indent" = FALSE)
+  }
 }
 
-extractMMresult <- function(df,strmodel,strtype){
-  data.frame(df %>% filter(model==paste0(strmodel,"_NA"), type==strtype) %>% select(varname),
-             df %>% filter(model==paste0(strmodel,"_NA"), type==strtype) %>% select(output),
-             df %>% filter(model==paste0(strmodel,"_PA"), type==strtype) %>% select(output),
-             df %>% filter(model==paste0(strmodel,"_NA"), type==strtype) %>% select(sig),
-             df %>% filter(model==paste0(strmodel,"_PA"), type==strtype) %>% select(sig),
+# We hard-coded these mediation effect estimates, 
+# because the calculation cannot be fully automated in R script anyway.
+# These estimate can still be reproduced by re-running the analysis R scripts.
+
+indSM5 <- data.frame("varname" = "Mediation (sum of covariance and product of a- and b-path)",
+                     "output" = "-0.000 [-0.001, 0.000]",
+                     "output.1" ="-0.000 [-0.001, 0.001]",
+                     "sig" = FALSE,
+                     "sig.1" = FALSE,
+                     "indent" = TRUE)
+indSM8 <- data.frame("varname" = "Mediation (sum of covariance and product of a- and b-path)",
+                     "output" = "-0.000 [-0.001, 0.000]",
+                     "output.1" ="-0.000 [-0.001, 0.001]",
+                     "sig" = FALSE,
+                     "sig.1" = FALSE,
+                     "indent" = TRUE)
+extractMMresult <- function(df,strmodel,strtype, suffix = "", NAPA = TRUE){
+  if (NAPA){
+  data.frame(df %>% filter(model==paste0(strmodel,"_NA",suffix), type==strtype) %>% select(varname),
+             df %>% filter(model==paste0(strmodel,"_NA",suffix), type==strtype) %>% select(output),
+             df %>% filter(model==paste0(strmodel,"_PA",suffix), type==strtype) %>% select(output),
+             df %>% filter(model==paste0(strmodel,"_NA",suffix), type==strtype) %>% select(sig),
+             df %>% filter(model==paste0(strmodel,"_PA",suffix), type==strtype) %>% select(sig),
              "indent" = TRUE
   )
+  }else{
+  data.frame(df %>% filter(model==paste0(strmodel,"_NA",suffix), type==strtype) %>% select(varname),
+             df %>% filter(model==paste0(strmodel,"_NA",suffix), type==strtype) %>% select(output),
+             df %>% filter(model==paste0(strmodel,"_NA",suffix), type==strtype) %>% select(sig),
+             "indent" = TRUE
+  )
+  }
 }     
 
 givevarname <- function(df){
-  df %>% stringr::str_replace_all(c("BrayCurtisFull.ammcw" = "Emotion regulation variability", 
-                             "BrayCurtisRepl.ammcw"="Strategy switching",
-                             "BrayCurtisNest.ammcw"="Endorsement change",
-                             "BrayCurtisFull.succw" = "Emotion regulation variability", 
-                             "BrayCurtisRepl.succw"="Strategy switching",
-                             "BrayCurtisNest.succw"="Endorsement change",
-                             "m_EDcwL1D"="Lagged emotion differentiation",
-                             "m_EDPAcwL1D"="Lagged emotion differentiation",
-                             "m_NAcwL1D"="Lagged emotion intensity",
-                             "m_PAcwL1D"="Lagged emotion intensity",
-                             "m_NAcw"="Emotion intensity",
-                             "m_PAcw"="Emotion intensity",
-                             "m_ERcw"="Emotion regulation intensity",
-                             "timecw"="Time trend",
-                             "\\(Intercept\\)"="Intercept",
-                             "BrayCurtisFull.ammcb"="Emotion regulation variability",
-                             "BrayCurtisRepl.ammcb"="Strategy switching",
-                             "BrayCurtisNest.ammcb"="Endorsement change",
-                             "BrayCurtisFull.succb"="Emotion regulation variability",
-                             "BrayCurtisRepl.succb"="Strategy switching",
-                             "BrayCurtisNest.succb"="Endorsement change",
-                             "m_EDcb"="Emotion differentiation",
-                             "m_EDPAcb"="Emotion differentiation",
-                             "m_NAcb"="Emotion intensity",
-                             "m_PAcb"="Emotion intensity",
-                             "m_ERcb"="Emotion regulation intensity",
-                             "AGE"="Age",
-                             "FEMALE"="Gender (female = 1, male = 0)"))
+  df %>% stringr::str_replace_all(c(
+    "dm\\:m_EDcwL1D\\:m_EDcb"="Lagged emotion differentiation → emotion regulation variability (a-path), moderated by between-person emotion differentiation",
+    "m_EDcb\\:dy\\:BrayCurtisFull.ammcw"="Emotion regulation variability → emotion intensity (b-path), moderated by between-person emotion differentiation",
+    "m_EDcb\\:dy\\:BrayCurtisFull.succw"="Emotion regulation variability → emotion intensity (b-path), moderated by between-person emotion differentiation",
+    "dm\\:m_EDPAcwL1D\\:m_EDPAcb"="Emotion differentiation → emotion regulation variability (a-path), moderated by between-person emotion differentiation",
+    "m_EDPAcb\\:dy\\:BrayCurtisFull.ammcw"="Emotion regulation variability → emotion intensity (b-path), moderated by between-person emotion differentiation",
+    "m_EDPAcb\\:dy\\:BrayCurtisFull.succw"="Emotion regulation variability → emotion intensity (b-path), moderated by between-person emotion differentiation",
+    "dy\\:BrayCurtisFull.succw"="Emotion regulation variability → emotion intensity (b-path)",
+    "dm\\:m_EDcwL1D\\:AGEcd"="Lagged emotion differentiation → emotion regulation variability (a-path), moderated by within-dataset age difference",
+    "AGEcd\\:dy\\:BrayCurtisFull.ammcw"="Emotion regulation variability → emotion intensity (b-path), moderated by within-dataset age difference",
+    "dm\\:m_EDPAcwL1D\\:AGEcd"="Lagged emotion differentiation → emotion regulation variability (a-path), moderated by within-dataset age difference",
+    "dm\\:m_EDcwL1D\\:b0NAL1D"="Lagged emotion differentiation → emotion regulation variability (a-path), when the intensity of all emotions is rated zero",
+    "dy\\:BrayCurtisFull.ammcw\\:b0ER"="Emotion regulation variability → emotion intensity (b-path), when the intensity of all emotion regulation strategies is rated zero",
+    "dm\\:m_EDcwL1D\\:m_NAcwL1D"="Lagged emotion differentiation → emotion regulation variability (a-path), moderated by within-person emotion intensity",
+    "dy\\:BrayCurtisFull.ammcw\\:m_ERcw"="Emotion regulation variability → emotion intensity (b-path), moderated by within-person emotion regulation intensity",    
+"m_EDcwL1D:AGEcd"="Lagged emotion differentiation, moderated by within-dataset age difference",
+"BrayCurtisFull.ammcw:AGEcd"="Emotion regulation variability, moderated by within-dataset age difference",
+"BrayCurtisNest.ammcw:AGEcd"="Endorsement change, moderated by within-dataset age difference",
+"AGEcd:BrayCurtisRepl.ammcw"="Strategy switching, moderated by within-dataset age difference",
+"m_EDPAcwL1D:AGEcd"="Lagged emotion differentiation, moderated by within-dataset age difference",
+"BrayCurtisRepl.ammcw:AGEcd"="Strategy switching, moderated by within-dataset age difference",
+"AGEcd:BrayCurtisNest.ammcw"="Endorsement change, moderated by within-dataset age difference",
+    "b0NAL1D\\:m_EDcwL1D"="Lagged emotion differentiation, when the intensity of all emotions is rated zero",
+"m_EDcwL1D\\:m_NAcwL1D"="Lagged emotion differentiation, moderated by within-person emotion intensity",
+"b0ER\\:BrayCurtisRepl.ammcw"="Strategy switching, when the intensity of all emotion regulation strategies is rated zero",
+"BrayCurtisNest.ammcw\\:b0ER"="Endorsement change, when the intensity of all emotion regulation strategies is rated zero",
+"BrayCurtisNest.ammcw\\:m_ERcw"="Endorsement change, moderated by within-person emotion regulation intensity",
+"m_ERcw\\:BrayCurtisRepl.ammcw"="Strategy switching, moderated by within-person emotion regulation intensity",
+"BrayCurtisFull.ammcw\\:m_ERcw"="Emotion regulation variability, moderated by within-person emotion regulation intensity",
+"BrayCurtisFull.ammcw\\:b0ER"="Emotion regulation variability, when the intensity of all emotion regulation strategies is rated zero",
+"dm\\:m_EDcwL1D"="Lagged emotion differentiation → emotion regulation variability (a-path)",
+    "dm\\:m_NAcwL1D"="Lagged emotion intensity → emotion regulation variability",
+    "dm\\:timecw"="Time trend → emotion regulation variability",
+    "dy\\:BrayCurtisFull.ammcw"="Emotion regulation variability → emotion intensity (b-path)",
+    "dy\\:m_ERcw"="Emotion regulation intensity → emotion intensity",
+    "m_NAcwL1D\\:dy"="Lagged emotion intensity → emotion intensity",
+    "m_EDcwL1D\\:dy"="Lagged emotion differentiation → emotion intensity (c'-path)",
+    "timecw\\:dy"="Time trend → emotion intensity",
+    "dm\\:m_EDPAcwL1D"="Lagged emotion differentiation → emotion regulation variability (a-path)",
+    "dm\\:m_PAcwL1D"="Lagged emotion intensity → emotion regulation variability",
+    "m_PAcwL1D\\:dy"="Lagged emotion intensity → emotion intensity",
+    "m_EDPAcwL1D\\:dy"="Lagged emotion differentiation → emotion intensity (c'-path)",
+    "BrayCurtisFull.ammcw" = "Emotion regulation variability", 
+    "b0NAL1D"="When the intensity of all emotions is rated zero → emotion regulation variability",
+    "b0ER"="When the intensity of all emotion regulation strategies is rated zero → emotion intensity",
+    "dm"="Outcome intercept emotion regulation variability",
+    "dy"="Outcome intercept emotion intensity",
+    "BrayCurtisRepl.ammcw"="Strategy switching",
+                                    "BrayCurtisNest.ammcw"="Endorsement change",
+                                    "BrayCurtisFull.succw" = "Emotion regulation variability", 
+                                    "BrayCurtisRepl.succw"="Strategy switching",
+                                    "BrayCurtisNest.succw"="Endorsement change",
+                                    "m_EDcwL1D"="Lagged emotion differentiation",
+                                    "m_EDPAcwL1D"="Lagged emotion differentiation",
+                                    "m_NAcwL1D"="Lagged emotion intensity",
+                                    "m_PAcwL1D"="Lagged emotion intensity",
+                                    "m_NAcw"="Emotion intensity",
+                                    "m_PAcw"="Emotion intensity",
+                                    "m_ERcw"="Emotion regulation intensity",
+                                    "timecw"="Time trend",
+                                    "\\(Intercept\\)"="Intercept",
+                                    "BrayCurtisFull.ammcb"="Emotion regulation variability",
+                                    "BrayCurtisRepl.ammcb"="Strategy switching",
+                                    "BrayCurtisNest.ammcb"="Endorsement change",
+                                    "BrayCurtisFull.succb"="Emotion regulation variability",
+                                    "BrayCurtisRepl.succb"="Strategy switching",
+                                    "BrayCurtisNest.succb"="Endorsement change",
+                                    "m_EDcb"="Emotion differentiation",
+                                    "m_EDPAcb"="Emotion differentiation",
+                                    "m_NAcb"="Emotion intensity",
+                                    "m_PAcb"="Emotion intensity",
+                                    "m_ERcb"="Emotion regulation intensity",
+"AGEcd"="Within-dataset age difference",
+                                    "AGE"="Age",
+"mean\\_Age"="Age mean",
+    "SD\\_Age"="Age standard deviation",
+                                        "FEMALE"="Gender (female = 1, male = 0)"
+                                    
+  ))
 }
 givevartype <- function(df){
   df %>%
-  stringr::str_replace_all(c("BrayCurtisFull.ammcw" = "within", 
-                             "BrayCurtisRepl.ammcw"="within",
-                             "BrayCurtisNest.ammcw"="within",
-                             "BrayCurtisFull.succw" = "within", 
-                             "BrayCurtisRepl.succw"="within",
-                             "BrayCurtisNest.succw"="within",
-                             "m_EDcwL1D"="within",
-                             "m_EDPAcwL1D"="within",
-                             "m_NAcwL1D"="within",
-                             "m_PAcwL1D"="within",
-                             "m_NAcw"="within",
-                             "m_PAcw"="within",
-                             "m_ERcw"="within",
-                             "timecw"="within",
-                             "\\(Intercept\\)"="between",
-                             "BrayCurtisFull.ammcb"="between",
-                             "BrayCurtisRepl.ammcb"="between",
-                             "BrayCurtisNest.ammcb"="between",
-                             "BrayCurtisFull.succb"="between",
-                             "BrayCurtisRepl.succb"="between",
-                             "BrayCurtisNest.succb"="between",
-                             "m_EDcb"="between",
-                             "m_EDPAcb"="between",
-                             "m_NAcb"="between",
-                             "m_PAcb"="between",
-                             "m_ERcb"="between",
-                             "AGE"="between",
-                             "FEMALE"="between"))
+    stringr::str_replace_all(c(
+      "dm\\:m_EDcwL1D\\:m_EDcb"="within",
+      "m_EDcb\\:dy\\:BrayCurtisFull.ammcw"="within",
+      "m_EDcb\\:dy\\:BrayCurtisFull.succw"="within",
+      "dm\\:m_EDPAcwL1D\\:m_EDPAcb"="within",
+      "m_EDPAcb\\:dy\\:BrayCurtisFull.ammcw"="within",
+      "m_EDPAcb\\:dy\\:BrayCurtisFull.succw"="within",
+      "dy\\:BrayCurtisFull.succw"="within",
+      "dm\\:m_EDcwL1D\\:AGEcd"="within",
+      "AGEcd\\:dy\\:BrayCurtisFull.ammcw"="within",
+      "dm\\:m_EDPAcwL1D\\:AGEcd"="within",
+      "dm\\:m_EDcwL1D\\:b0NAL1D"="within",
+      "dy\\:BrayCurtisFull.ammcw\\:b0ER"="within",
+      "dm\\:m_EDcwL1D\\:m_NAcwL1D"="within",
+      "dy\\:BrayCurtisFull.ammcw\\:m_ERcw"="within",
+"m_EDcwL1D:AGEcd"="within",
+"BrayCurtisFull.ammcw:AGEcd"="within",
+"BrayCurtisNest.ammcw:AGEcd"="within",
+"AGEcd:BrayCurtisRepl.ammcw"="within",
+"m_EDPAcwL1D:AGEcd"="within",
+"BrayCurtisRepl.ammcw:AGEcd"="within",
+"AGEcd:BrayCurtisNest.ammcw"="within",
+      "b0NAL1D\\:m_EDcwL1D"="within",
+"m_EDcwL1D\\:m_NAcwL1D"="within",
+"b0ER\\:BrayCurtisRepl.ammcw"="within",
+"BrayCurtisNest.ammcw\\:b0ER"="within",
+"BrayCurtisNest.ammcw\\:m_ERcw"="within",
+"m_ERcw\\:BrayCurtisRepl.ammcw"="within",
+"BrayCurtisFull.ammcw\\:m_ERcw"="within",
+"BrayCurtisFull.ammcw\\:b0ER"="within",
+"dm\\:m_EDcwL1D"="within",
+      "dm\\:m_NAcwL1D"="within",
+      "dm\\:timecw"="within",
+      "dy\\:BrayCurtisFull.ammcw"="within",
+      "dy\\:m_ERcw"="within",
+      "m_NAcwL1D\\:dy"="within",
+      "m_EDcwL1D\\:dy"="within",
+      "timecw\\:dy"="within",
+      "dm\\:m_EDPAcwL1D"="within",
+      "dm\\:m_PAcwL1D"="within",
+      "m_PAcwL1D\\:dy"="within",
+      "m_EDPAcwL1D\\:dy"="within",
+      "dm"="between",
+      "dy"="between",
+      "b0NAL1D"="within",
+      "b0ER"="within",
+      "BrayCurtisFull.ammcw" = "within", 
+                               "BrayCurtisRepl.ammcw"="within",
+                               "BrayCurtisNest.ammcw"="within",
+                               "BrayCurtisFull.succw" = "within", 
+                               "BrayCurtisRepl.succw"="within",
+                               "BrayCurtisNest.succw"="within",
+                               "m_EDcwL1D"="within",
+                               "m_EDPAcwL1D"="within",
+                               "m_NAcwL1D"="within",
+                               "m_PAcwL1D"="within",
+                               "m_NAcw"="within",
+                               "m_PAcw"="within",
+                               "m_ERcw"="within",
+                               "timecw"="within",
+                               "\\(Intercept\\)"="between",
+                               "BrayCurtisFull.ammcb"="between",
+                               "BrayCurtisRepl.ammcb"="between",
+                               "BrayCurtisNest.ammcb"="between",
+                               "BrayCurtisFull.succb"="between",
+                               "BrayCurtisRepl.succb"="between",
+                               "BrayCurtisNest.succb"="between",
+                               "m_EDcb"="between",
+                               "m_EDPAcb"="between",
+                               "m_NAcb"="between",
+                               "m_PAcb"="between",
+                               "m_ERcb"="between",
+"AGEcd"="between",
+                               "AGE"="between",
+                               "FEMALE"="between"))
 }
 # sequence of ordering variables
 varorder <- c("BrayCurtisFull.ammcw",
@@ -630,15 +798,32 @@ varorder <- c("BrayCurtisFull.ammcw",
               "BrayCurtisFull.succw",
               "BrayCurtisRepl.succw",
               "BrayCurtisNest.succw",
+              "BrayCurtisFull.ammcw\\:m_ERcw",
+              "BrayCurtisFull.ammcw\\:b0ER",
+              "b0ER\\:BrayCurtisRepl.ammcw",
+              "m_ERcw\\:BrayCurtisRepl.ammcw",
+              "BrayCurtisNest.ammcw\\:b0ER",
+              "BrayCurtisNest.ammcw\\:m_ERcw",
+"BrayCurtisFull.ammcw:AGEcd",
+"BrayCurtisNest.ammcw:AGEcd",
+"AGEcd:BrayCurtisRepl.ammcw",
+"BrayCurtisRepl.ammcw:AGEcd",
+"AGEcd:BrayCurtisNest.ammcw",
               "m_EDcwL1D",
               "m_EDPAcwL1D",
+"m_EDcwL1D:AGEcd",
+"m_EDPAcwL1D:AGEcd",
               "m_NAcwL1D",
               "m_PAcwL1D",
               "m_NAcw",
               "m_PAcw",
-              "m_ERcw",
+              "b0NAL1D\\:m_EDcwL1D",
+              "m_EDcwL1D\\:m_NAcwL1D",
+               "m_ERcw",
               "timecw",
               "(Intercept)",
+              "dm",
+              "dy",
               "BrayCurtisFull.ammcb",
               "BrayCurtisRepl.ammcb",
               "BrayCurtisNest.ammcb",
@@ -651,7 +836,37 @@ varorder <- c("BrayCurtisFull.ammcw",
               "m_PAcb",
               "m_ERcb",
               "AGE",
-              "FEMALE"
+"AGEcd",
+              "FEMALE",
+              "dm\\:m_EDcwL1D",
+              "dm\\:m_EDPAcwL1D",
+              "dm\\:m_EDcwL1D\\:m_EDcb",
+              "dm\\:m_EDPAcwL1D\\:m_EDPAcb",
+              "dm\\:m_EDcwL1D\\:AGEcd",
+              "dm\\:m_EDPAcwL1D\\:AGEcd",
+              "b0NAL1D",
+              "dm\\:m_EDcwL1D\\:b0NAL1D",
+              "dm\\:m_EDcwL1D\\:m_NAcwL1D",
+              "dy\\:BrayCurtisFull.ammcw",
+              "m_EDcb\\:dy\\:BrayCurtisFull.ammcw",
+              "m_EDcb\\:dy\\:BrayCurtisFull.succw",
+              "m_EDPAcb\\:dy\\:BrayCurtisFull.ammcw",
+              "m_EDPAcb\\:dy\\:BrayCurtisFull.succw",
+              "b0ER",
+              "dy\\:BrayCurtisFull.ammcw\\:b0ER",
+              "dy\\:BrayCurtisFull.ammcw\\:m_ERcw",
+              "AGEcd\\:dy\\:BrayCurtisFull.ammcw",
+              "dy\\:BrayCurtisFull.succw",
+              "dm\\:m_NAcwL1D",
+              "dm\\:m_PAcwL1D",
+              "m_EDcwL1D\\:dy",
+              "m_EDPAcwL1D\\:dy",
+              "dy\\:m_ERcw",
+              "m_NAcwL1D\\:dy",
+              "m_PAcwL1D\\:dy",
+               "dm\\:timecw",
+              "timecw\\:dy"
+              
 )
 
 
@@ -659,45 +874,64 @@ varorder <- c("BrayCurtisFull.ammcw",
 
 ```{r, echo = FALSE}
 
-SMtable5 <- as.data.frame(read.csv("results/SMTable5.csv"))
-SMtable5$output <- paste0(papaja::apa_num(SMtable5$FEest, digits = 3)," [",
-                          papaja::apa_num(SMtable5$l95CI, digits = 3),", ",
-                          papaja::apa_num(SMtable5$u95CI, digits = 3),"]")
-SMtable5$sig <- SMtable5$pvalue < 0.05
-SMtable5 <- SMtable5 %>%arrange(model,match(X, varorder))
-SMtable5$varname <- givevarname(SMtable5$X)
-SMtable5$type <- givevartype(SMtable5$X)
+SMTable5 <- as.data.frame(read.csv("results/SMTable5.csv"))
+SMTable5_1M <- as.data.frame(read.csv("results/SMTable5_1M.csv"))
+
+SMTable5$output <- paste0(papaja::apa_num(SMTable5$FEest, digits = 3)," [",
+                          papaja::apa_num(SMTable5$l95CI, digits = 3),", ",
+                          papaja::apa_num(SMTable5$u95CI, digits = 3),"]")
+SMTable5$sig <- SMTable5$pvalue < 0.05
+SMTable5 <- SMTable5 %>%arrange(model,match(X, varorder))
+SMTable5$varname <- givevarname(SMTable5$X)
+SMTable5$type <- givevartype(SMTable5$X)
+
+SMTable5_1M$output <- paste0(papaja::apa_num(SMTable5_1M$FEest, digits = 3)," [",
+                          papaja::apa_num(SMTable5_1M$l95CI, digits = 3),", ",
+                          papaja::apa_num(SMTable5_1M$u95CI, digits = 3),"]")
+SMTable5_1M$sig <- SMTable5_1M$pvalue < 0.05
+SMTable5_1M <- SMTable5_1M %>%arrange(model,match(X, varorder))
+SMTable5_1M$varname <- givevarname(SMTable5_1M$X)
+SMTable5_1M$type <- givevartype(SMTable5_1M$X)
 
 
-outSMT5 <- bind_rows(prepareHeading(SMtable5,"Outcome: Emotion regulation variability (Model 1A)","mm1A"),
+outSMT5 <- bind_rows(prepareHeading(SMTable5,"Outcome: Emotion regulation variability (Model 1A)","mm1A"),
                      prepareSubHeading("Within-person (time-varying)"),
-                     extractMMresult(SMtable5,"mm1A","within"),
+                     extractMMresult(SMTable5,"mm1A","within"),
                      prepareSubHeading("Between-person (time-invariant)"),
-                     extractMMresult(SMtable5,"mm1A","between"),
+                     extractMMresult(SMTable5,"mm1A","between"),
                      prepareSubHeading(" "),
-                     prepareHeading(SMtable5,"Outcome: Strategy switching (Model 1B)","mm1B"),
+                     prepareHeading(SMTable5,"Outcome: Strategy switching (Model 1B)","mm1B"),
                      prepareSubHeading("Within-person (time-varying)"),
-                     extractMMresult(SMtable5,"mm1B","within"),
+                     extractMMresult(SMTable5,"mm1B","within"),
                      prepareSubHeading("Between-person (time-invariant)"),
-                     extractMMresult(SMtable5,"mm1B","between"),
+                     extractMMresult(SMTable5,"mm1B","between"),
                      prepareSubHeading(" "),
-                     prepareHeading(SMtable5,"Outcome: Endorsement change (Model 1C)","mm1C"),
+                     prepareHeading(SMTable5,"Outcome: Endorsement change (Model 1C)","mm1C"),
                      prepareSubHeading("Within-person (time-varying)"),
-                     extractMMresult(SMtable5,"mm1C","within"),
+                     extractMMresult(SMTable5,"mm1C","within"),
                      prepareSubHeading("Between-person (time-invariant)"),
-                     extractMMresult(SMtable5,"mm1C","between"),
+                     extractMMresult(SMTable5,"mm1C","between"),
                      prepareSubHeading(" "),
-                     prepareHeading(SMtable5,"Outcome: Emotion differentiation (Model 2A)","mm2A"),
+                     prepareHeading(SMTable5_1M,"Within-person mediation (Model 1M)","mediation1M"),
                      prepareSubHeading("Within-person (time-varying)"),
-                     extractMMresult(SMtable5,"mm2A","within"),
-                     prepareSubHeading("Between-person (time-invariant)"),
-                     extractMMresult(SMtable5,"mm2A","between"),
+                     extractMMresult(SMTable5_1M,"mediation1M","within"),
+                     indSM5,
                      prepareSubHeading(" "),
-                     prepareHeading(SMtable5,"Outcome: Emotion differentiation (Model 2B)","mm2B"),
+                     prepareHeading(SMTable5_1M,"Within-person mediation (Model 1M) with person-level emotion differentiation as a moderator to a-path and b-path","mediation1M"),
                      prepareSubHeading("Within-person (time-varying)"),
-                     extractMMresult(SMtable5,"mm2B","within"),
+                     extractMMresult(SMTable5_1M,"mediation1M","within","comod"),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMTable5,"Outcome: Emotion differentiation (Model 2A)","mm2A"),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMTable5,"mm2A","within"),
                      prepareSubHeading("Between-person (time-invariant)"),
-                     extractMMresult(SMtable5,"mm2B","between"),
+                     extractMMresult(SMTable5,"mm2A","between"),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMTable5,"Outcome: Emotion differentiation (Model 2B)","mm2B"),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMTable5,"mm2B","within"),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMTable5,"mm2B","between"),
                      prepareSubHeading(" "),
 )
 # apa_table(outSMT5[,1:3])
@@ -721,14 +955,15 @@ colnames(outSMT5)[1:3] <- c("",
 kbl(outSMT5[,1:3],
     booktabs = T, align = "l", linesep = '',longtable = T,
     escape = FALSE,
-    caption = "Fixed Effect Estimates of Within-Person Temporal Associations and Between-Person Differences Between Emotion Differentiation and Emotion Regulation Variability")  %>%
+    caption = "Fixed Effect Estimates of Within-Person Temporal Associations and Between-Person Differences in Between Emotion Differentiation, Emotion Regulation Variability, and Emotion Intensity")  %>%
+      column_spec(1, width = "10cm") %>%
       column_spec(2, width = "3.5cm", bold = boldNA) %>%
       column_spec(3, width = "3.5cm", bold = boldPA) %>%
     # column_spec(6:13, width = "1.3cm") %>%
     kable_styling(font_size = 8)%>%
   add_indent(bIndent)%>%
     kable_styling(latex_options = c("repeat_header"))%>%
-        footnote(threeparttable = T, general = "Significant effects are displayed in bold. n: number of ESM assessments; N: number of adolescents; b: unstandardized effect; CI: confidence interval.")
+        footnote(threeparttable = T, general = "Significant effects are displayed in bold. n: number of ESM assessments; N: number of adolescents; b: unstandardized effect; CI: confidence interval. In Model 1M, n is doubled because of how data have undergone the stacking preparation step.")
 
 ```
 
@@ -742,6 +977,7 @@ As for the sensitivity analyses of exploratory models on two emotion regulation 
 
 Sensitivity analyses of exploratory models on positive emotion differentiation showed that relations between positive emotion differentiation and emotion regulation variability were less robust than those between negative emotion differentiation and emotion regulation variability. Higher positive emotion differentiation preceded lower emotion regulation variability (model 1A) and specifically lower endorsement change (model 1C). Other than these, no other within-person temporal relations or between-person relations were found (model 1B, 2A, and 2B). 
 
+In the sensitivity analyses of the exploratory within-person mediation models (Model 1M), the direct paths results were consistent in direction and statistical significance with our main analyses. As a preparatory step for evaluating the indirect path, we reanalyzed the model using the _lme4_ package  under the successive temporal comparison approach specification. However, the lmer estimates for the b-path and c'-path in Model 1M (negative emotion) were in the opposite direction compared to our main analyses. This discrepancy may stem from the exclusion of the autocorrelated residual term, which was based on a lag-one temporal relation similar to the successive temporal comparison and becomes highly influential in the successive temporal comparison approach to operationalizing emotion regulation variability. Consequently, we were unable to estimate the confidence intervals for the indirect paths.
 
 ```{r, echo = FALSE}
 
@@ -772,6 +1008,14 @@ outSMT6 <- bind_rows(prepareHeading(SMtable6,"Outcome: Emotion regulation variab
                      extractMMresult(SMtable6,"mms1C","within"),
                      prepareSubHeading("Between-person (time-invariant)"),
                      extractMMresult(SMtable6,"mms1C","between"),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMTable5_1M,"Within-person mediation (Model 1M)","mediation1M", suffix = ".suc"),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMTable5_1M,"mediation1M","within",".suc"),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMTable5_1M,"Within-person mediation (Model 1M) with person-level emotion differentiation as a moderator to a-path and b-path ","mediation1M", suffix = ".suc"),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMTable5_1M,"mediation1M","within",".succomod"),
                      prepareSubHeading(" "),
                      prepareHeading(SMtable6,"Outcome: Emotion differentiation (Model 2A)","mms2A"),
                      prepareSubHeading("Within-person (time-varying)"),
@@ -807,14 +1051,335 @@ colnames(outSMT6)[1:3] <- c("",
 kbl(outSMT6[,1:3],
     booktabs = T, align = "l", linesep = '',longtable = T,
     escape = FALSE,
-    caption = "Fixed Effect Estimates of Within-Person Temporal Associations and Between-Person Differences Between Emotion Differentiation and Emotion Regulation Variability Calculated as the Successive Comparison Approach")  %>%
+    caption = "Fixed Effect Estimates of Within-Person Temporal Associations and Between-Person Differences in Between Emotion Differentiation, Emotion Intensity, and Emotion Regulation Variability Calculated as the Successive Comparison Approach")  %>%
+      column_spec(1, width = "10cm", bold = boldNA) %>%
       column_spec(2, width = "3.5cm", bold = boldNA) %>%
       column_spec(3, width = "3.5cm", bold = boldPA) %>%
     # column_spec(6:13, width = "1.3cm") %>%
     kable_styling(font_size = 8)%>%
   add_indent(bIndent)%>%
     kable_styling(latex_options = c("repeat_header"))%>%
-        footnote(threeparttable = T, general = "Significant effects are displayed in bold. n: number of ESM assessments; N: number of adolescents; b: unstandardized effect; CI: confidence interval.")
+        footnote(threeparttable = T, general = "Significant effects are displayed in bold. n: number of ESM assessments; N: number of adolescents; b: unstandardized effect; CI: confidence interval. In Model 1M, n is doubled because of how data have undergone the stacking preparation step.")
+
+```
+
+
+\newpage
+
+
+\newpage
+# Supplemental Materials 7: Sensitivity analyses on the potential influence of zero negative emotion intensity and zero emotion regulation intensity
+
+Supplemental Materials 3 indicated that negative emotion intensity and emotion regulation intensity may experience some extent of floor effects. To address whether the presence of zero-intensity moments (where all negative emotions or regulation strategies were rated zero) confounded our main findings, we conducted sensitivity analyses as described in the below paragraphs. Positive emotions were excluded from these analyses, as descriptive statistics did not indicate the presence of floor effects in them. 
+
+We first created binary variables to indicate the presence of zero-intensity moments for negative emotions or emotion regulation strategies (first half of Table S7). These binary variables were multiplied by the within-person components of the independent variables in all models (e.g., emotion differentiation in Model 1A) to generate within-person moderators. All models (1A to 2B, for both positive and negative emotions) were then reanalyzed with the binary variables and within-person moderators included. Random effects for these within-person moderators correspondingly specified.
+
+We ran a second set of sensitivity analyses using the within-person components of negative emotion intensity and emotion regulation intensity from our original models (second half of Table S7). These intensity variables were multiplied by the independent variables (e.g., the product of within-person negative emotion intensity and negative emotion differentiation in Model 1A) to create new within-person moderators. The analyses for all models (1A to 2B) were repeated with these continuous moderators added, again with random effects for these within-person moderators correspondingly specified.
+
+Across both sets of analyses, the main effects of interest (e.g., emotion differentiation in Model 1A) generally remained consistent in direction and statistical significance. An exception arose in Model 1M with binary zero-intensity moderators, where the a-path (emotion differentiation to regulation variability) and b-path (regulation variability to emotion intensity) were no longer significant. However, in Model 1M with continuous intensity moderators, the direct paths remained significant, consistent with the main analyses. These findings indicate that our results are generally robust against the presence of zero intensity in negative emotions and emotion regulation strategies.
+
+As a preparatory step for evaluating the indirect path in Model 1M, we reanalyzed Model 1M with the aforementioned specifications using the _lme4_ package. However, we encountered convergence issue in the binary moderator model, making us unable to obtain any estimates. As for the continuous moderator model, extraction of asymptotic covariance of random effects encountered an error as the model became too complex for evaluating so. Consequently, we were unable to estimate the confidence intervals for the indirect paths.
+
+
+```{r, echo = FALSE}
+
+SMtable7 <- as.data.frame(read.csv("results/SMtable7.csv"))
+SMtable7$output <- paste0(papaja::apa_num(SMtable7$FEest, digits = 3)," [",
+                          papaja::apa_num(SMtable7$l95CI, digits = 3),", ",
+                          papaja::apa_num(SMtable7$u95CI, digits = 3),"]")
+SMtable7$sig <- SMtable7$pvalue < 0.05
+SMtable7 <- SMtable7 %>%arrange(model,match(X, varorder))
+SMtable7$varname <- givevarname(SMtable7$X)
+SMtable7$type <- givevartype(SMtable7$X)
+
+
+outSMT7 <- bind_rows(prepareSubHeading("Presence of zero emotion (regulation) intensity as moderator"),
+                    prepareSubHeading(" "),
+                     prepareHeading(SMtable7,"Outcome: Emotion regulation variability (Model 1A)","mm1A","b", NAPA = FALSE),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable7,"mm1A","within","b", NAPA = FALSE),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable7,"mm1A","between","b", NAPA = FALSE),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMtable7,"Outcome: Strategy switching (Model 1B)","mm1B","b", NAPA = FALSE),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable7,"mm1B","within","b", NAPA = FALSE),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable7,"mm1B","between","b", NAPA = FALSE),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMtable7,"Outcome: Endorsement change (Model 1C)","mm1C","b", NAPA = FALSE),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable7,"mm1C","within","b", NAPA = FALSE),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable7,"mm1C","between","b", NAPA = FALSE),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMTable5_1M,"Within-person mediation (Model 1M)","mediation1M", suffix = "b", NAPA = FALSE),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMTable5_1M,"mediation1M","within","b", NAPA = FALSE),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMTable5_1M,"Within-person mediation (Model 1M) with person-level emotion differentiation as a moderator to a-path and b-path","mediation1M", suffix = "bcomod", NAPA = FALSE),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMTable5_1M,"mediation1M","within","bcomod", NAPA = FALSE),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMtable7,"Outcome: Emotion differentiation (Model 2A)","mm2A","b", NAPA = FALSE),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable7,"mm2A","within","b", NAPA = FALSE),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable7,"mm2A","between","b", NAPA = FALSE),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMtable7,"Outcome: Emotion differentiation (Model 2B)","mm2B","b", NAPA = FALSE),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable7,"mm2B","within","b", NAPA = FALSE),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable7,"mm2B","between","b", NAPA = FALSE),
+                     prepareSubHeading(" "),
+                      prepareSubHeading(" "),
+                     
+                    prepareSubHeading("Within-person emotion (regulation) intensity as moderator"),
+                    prepareSubHeading(" "),
+                     prepareHeading(SMtable7,"Outcome: Emotion regulation variability (Model 1A)","mm1A","xNA", NAPA = FALSE),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable7,"mm1A","within","xNA", NAPA = FALSE),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable7,"mm1A","between","xNA", NAPA = FALSE),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMtable7,"Outcome: Strategy switching (Model 1B)","mm1B","xNA", NAPA = FALSE),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable7,"mm1B","within","xNA", NAPA = FALSE),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable7,"mm1B","between","xNA", NAPA = FALSE),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMtable7,"Outcome: Endorsement change (Model 1C)","mm1C","xNA", NAPA = FALSE),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable7,"mm1C","within","xNA", NAPA = FALSE),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable7,"mm1C","between","xNA", NAPA = FALSE),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMTable5_1M,"Within-person mediation (Model 1M)","mediation1M", suffix = "xNA", NAPA = FALSE),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMTable5_1M,"mediation1M","within","xNA", NAPA = FALSE),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMTable5_1M,"Within-person mediation (Model 1M) with person-level emotion differentiation as a moderator to a-path and b-path","mediation1M", suffix = "xNA", NAPA = FALSE),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMTable5_1M,"mediation1M","within","xNAcomod", NAPA = FALSE),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMtable7,"Outcome: Emotion differentiation (Model 2A)","mm2A","xER", NAPA = FALSE),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable7,"mm2A","within","xER", NAPA = FALSE),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable7,"mm2A","between","xER", NAPA = FALSE),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMtable7,"Outcome: Emotion differentiation (Model 2B)","mm2B","xER", NAPA = FALSE),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable7,"mm2B","within","xER", NAPA = FALSE),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable7,"mm2B","between","xER", NAPA = FALSE),
+                     prepareSubHeading(" "),
+
+)
+
+txtsplitNA <- strsplit(paste0(
+  "Negative Emotions b [95% CI]"), " ")[[1]]
+txtNA <- paste(
+  text_spec(txtsplitNA, italic = c(FALSE,FALSE,TRUE,TRUE,TRUE)),
+  collapse = " ")
+
+boldNA <- outSMT7$sig
+bIndent <- which(outSMT7$indent %in% TRUE)
+colnames(outSMT7)[1:2] <- c("",
+                      txtNA)
+kbl(outSMT7[,1:2],
+    booktabs = T, align = "l", linesep = '',longtable = T,
+    escape = FALSE,
+    caption = "Fixed Effect Estimates of Within-Person Temporal Associations and Between-Person Differences in Between Emotion Differentiation, Emotion Regulation Variability and Emotion Intensity, Examing the Potential Influence of Zero Negative Emotion (Regulation) Intensity")  %>%
+      column_spec(1, width = "11cm") %>%
+      column_spec(2, width = "3.5cm", bold = boldNA) %>%
+    kable_styling(font_size = 8)%>%
+  add_indent(bIndent)%>%
+    kable_styling(latex_options = c("repeat_header"))%>%
+        footnote(threeparttable = T, general = "Significant effects are displayed in bold. n: number of ESM assessments; N: number of adolescents; b: unstandardized effect; CI: confidence interval. In Model 1M, n is doubled because of how data have undergone the stacking preparation step.")
+
+```
+
+
+\newpage
+
+
+\newpage
+# Supplemental Materials 8: Potential influence of age: Dataset-specific effects and sensitivity analyses
+
+In this section, we first present how within-person effects in our preregistered analyses vary across datasets (Table S8.1). Following this, we explore whether within-dataset age differences moderated the within-person effects of interest through sensitivity analyses.
+
+## Dataset-specific effects
+
+Table S8.1 reveals that within-person results appeared stronger in datasets sampling late adolescents. This pattern suggests indicative evidence of age moderation in the within-person effects we studied. Indicative, because we cannot tease apart the influence of age differences from other study design features. In other words, the differences in strength of within-person results could have possibly been caused by study design features instead of age differences.
+
+\renewcommand{\thetable}{S8.\arabic{table}} \setcounter{table}{0}
+
+\newpage
+\blandscape
+
+```{r, echo = FALSE}
+
+givedatasetname <- function(str){
+  stringr::str_replace_all(str,c(
+    "GVE"="G(F)ood together (Radboud)",
+    "Leuven2011"="Emotions in daily life 2011 (Leuven)",
+    "Leuven3W"="3-wave longitudinal study (Leuven)",
+    "Tilburg"="Emotions in daily life (Tilburg)",
+    "Ghent"="Outside-in (Ghent)"
+  ))
+}
+givemodelname <- function(df){
+  df %>%
+    stringr::str_replace_all(c(
+      "mm1A_NA"="Model 1A (Negative emotion; Outcome: emotion regulation variability)",
+      "mm1B_NA"="Model 1B (Negative emotion; Outcome: strategy switching)",
+      "mm1C_NA"="Model 1C (Negative emotion; Outcome: endorsement change)",
+      "mm2A_NA"="Model 2A (Outcome: Negative emotion differentiation)",
+      "mm2B_NA"="Model 2B (Outcome: Negative emotion differentiation)",
+      "AGE"="Age",
+      "mm1A_PA"="Model 1A (Positive emotion; Outcome: emotion regulation variability)",
+      "mm1B_PA"="Model 1B (Positive emotion; Outcome: strategy switching)",
+      "mm1C_PA"="Model 1C (Positive emotion; Outcome: endorsement change)",
+      "mm2A_PA"="Model 2A (Outcome: Positive emotion differentiation)",
+      "mm2B_PA"="Model 2B (Outcome: Positive emotion differentiation)",
+      "mediation1M_NA" = "Model 1M (Negative emotion)",
+      "mediation1M_PA" = "Model 1M (Positive emotion)"))
+}
+
+
+SMtable81 <- as.data.frame(read.csv("results/SMtable81.csv"))
+tempSMtable81 <- SMtable81[,c(2,3,4,6)]
+datasetdesc<- as.data.frame(read.csv("results/Table1.csv"))
+datasetdesc<- datasetdesc[1:5,c("study","mean_AGE","SD_AGE")]
+datasetdesc_wide <- reshape(datasetdesc, 
+                            direction = "long",
+                            varying = list(names(datasetdesc)[2:3]),
+                            v.names = "dstFE",
+                            idvar = c("study"),
+                            timevar = "coname",
+                            times = (names(datasetdesc)[2:3]))
+rownames(datasetdesc_wide) <- NULL
+datasetdesc_wide<- cbind("model" = " ", datasetdesc_wide)
+tempSMtable81 <- rbind(datasetdesc_wide,tempSMtable81
+                       )
+outSMT81 <- reshape(tempSMtable81, idvar = c("model","coname"), timevar = c("study"), direction = "wide")
+colnames(outSMT81)[3:7]<-substring(colnames(outSMT81)[3:7],7)
+reorder_indices <- order(as.numeric(outSMT81[1, 3:7]))+2
+outSMT81 <- outSMT81[,c(1:2,reorder_indices)]
+outSMT81$coname <- givevarname(outSMT81$coname)
+outSMT81$model<-givemodelname(outSMT81$model)
+outSMT81[,3:7]<-papaja::apa_num(outSMT81[,3:7], digits = 3)
+colnames(outSMT81)[1:2] <- c("Model",
+                      "Index or path")
+colnames(outSMT81)[3:7] <- givedatasetname(colnames(outSMT81)[3:7])
+rownames(outSMT81)<-NULL
+
+kbl(outSMT81,
+    booktabs = T, align = "l", linesep = '',longtable = T,
+    escape = FALSE,
+    caption = "Dataset-specific effects, given by sum of dataset-level random effects and fixed effects")  %>%
+    column_spec(1, width = "7.5cm") %>%
+    column_spec(2, width = "7.5cm") %>%
+    column_spec(3:7, width = "1.1cm") %>%
+    kable_styling(font_size = 6.5)
+
+```
+
+\elandscape
+\newpage
+
+## Sensitivity Analyses on Within-Dataset Age Differences
+
+To further examine the role of age, we created a new variable, dataset-centered age, representing age differences within each dataset. Between-dataset age differences were already accounted for in the dataset-level random slopes. We calculated within-person moderators by multiplying the dataset-centered age with the within-person components of the independent variables (e.g., emotion differentiation in Model 1A). These moderators were added to all models (1A to 2B, positive and negative emotions), replacing the original age variable. To prevent the model from being overly complex for R packages' evaluation, random effects for the within-person moderators were not included.
+
+Our analyses showed that the main effects of primary interest (e.g., emotion differentiation in Model 1A) remained consistent in direction and statistical significance across models. The only exception was the b-path (from emotion regulation variability to positive emotion intensity) in Model 1M (positive emotion), where the estimate maintained its original direction but its 95% confidence interval narrowly crossed zero into the positive range (0.000). These findings suggest that our results are generally robust against within-dataset age differences. Regardless of the dataset-level variations in and within-dataset age differences' on strength of within-person effects, we can still conclude there are fixed effects across the participants from the five datasets we studied on the within-person processes we hypothesized on.
+
+\newpage
+
+```{r, echo = FALSE}
+
+SMtable82 <- as.data.frame(read.csv("results/SMtable82.csv"))
+SMtable82$output <- paste0(papaja::apa_num(SMtable82$FEest, digits = 3)," [",
+                          papaja::apa_num(SMtable82$l95CI, digits = 3),", ",
+                          papaja::apa_num(SMtable82$u95CI, digits = 3),"]")
+SMtable82$sig <- SMtable82$pvalue < 0.05
+SMtable82 <- SMtable82 %>%arrange(model,match(X, varorder))
+SMtable82$varname <- givevarname(SMtable82$X)
+SMtable82$type <- givevartype(SMtable82$X)
+
+
+outSMT82 <- bind_rows(prepareHeading(SMtable82,"Outcome: Emotion regulation variability (Model 1A)","mm1A","agecd"),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable82,"mm1A","within","agecd"),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable82,"mm1A","between","agecd"),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMtable82,"Outcome: Strategy switching (Model 1B)","mm1B","agecd"),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable82,"mm1B","within","agecd"),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable82,"mm1B","between","agecd"),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMtable82,"Outcome: Endorsement change (Model 1C)","mm1C","agecd"),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable82,"mm1C","within","agecd"),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable82,"mm1C","between","agecd"),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMTable5_1M,"Within-person mediation (Model 1M)","mediation1M", suffix = "agecd"),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMTable5_1M,"mediation1M","within","agecd"),
+                     indSM8,
+                     prepareSubHeading(" "),
+                     prepareHeading(SMTable5_1M,"Within-person mediation (Model 1M) with person-level emotion differentiation as a moderator to a-path and b-path","mediation1M", suffix = "agecd"),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMTable5_1M,"mediation1M","within","agecdcomod"),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMtable82,"Outcome: Emotion differentiation (Model 2A)","mm2A","agecd"),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable82,"mm2A","within","agecd"),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable82,"mm2A","between","agecd"),
+                     prepareSubHeading(" "),
+                     prepareHeading(SMtable82,"Outcome: Emotion differentiation (Model 2B)","mm2B","agecd"),
+                     prepareSubHeading("Within-person (time-varying)"),
+                     extractMMresult(SMtable82,"mm2B","within","agecd"),
+                     prepareSubHeading("Between-person (time-invariant)"),
+                     extractMMresult(SMtable82,"mm2B","between","agecd"),
+                     prepareSubHeading(" "),
+)
+# apa_table(outSMT5[,1:3])
+txtsplitNA <- strsplit(paste0(
+  "Negative Emotions b [95% CI]"), " ")[[1]]
+txtsplitPA <- strsplit(paste0(
+  "Positive Emotions b [95% CI]"), " ")[[1]]
+txtNA <- paste(
+  text_spec(txtsplitNA, italic = c(FALSE,FALSE,TRUE,TRUE,TRUE)),
+  collapse = " ")
+txtPA <- paste(
+  text_spec(txtsplitPA, italic = c(FALSE,FALSE,TRUE,TRUE,TRUE)),
+  collapse = " ")
+
+boldNA <- outSMT82$sig
+boldPA <- outSMT82$sig.1
+bIndent <- which(outSMT82$indent %in% TRUE)
+colnames(outSMT82)[1:3] <- c("",
+                      txtNA,
+                      txtPA)
+kbl(outSMT82[,1:3],
+    booktabs = T, align = "l", linesep = '',longtable = T,
+    escape = FALSE,
+    caption = "Fixed Effect Estimates of Within-Person Temporal Associations and Between-Person Differences in Between Emotion Differentiation, Emotion Regulation Variability, and Emotion Intensity, with Within-Dataset Age Differences as a Moderator")  %>%
+      column_spec(1, width = "10cm") %>%
+      column_spec(2, width = "3.5cm", bold = boldNA) %>%
+      column_spec(3, width = "3.5cm", bold = boldPA) %>%
+    # column_spec(6:13, width = "1.3cm") %>%
+    kable_styling(font_size = 8)%>%
+  add_indent(bIndent)%>%
+    kable_styling(latex_options = c("repeat_header"))%>%
+        footnote(threeparttable = T, general = "Significant effects are displayed in bold. n: number of ESM assessments; N: number of adolescents; b: unstandardized effect; CI: confidence interval. In Model 1M, n is doubled because of how data have undergone the stacking preparation step.")
 
 ```
 
