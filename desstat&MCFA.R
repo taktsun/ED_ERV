@@ -1,6 +1,6 @@
 # ======================================================================
 # Title: Descriptive and psychometric analyses
-# Date: 09-02-2024
+# Date: 18-06-2024
 # Copyright: Edmund Lo, checked by Dominique Maciejewski on 24-01-2024
 #
 # Note! Run this either (1) line by line (windows: Ctrl+Enter), or
