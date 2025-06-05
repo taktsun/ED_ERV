@@ -2,9 +2,10 @@
 
 
 
+
 # Readme <a href='https://osf.io/zcvbs/'><img src='worcs_icon.png' align="right" height="139" /></a>
 
-This is the github of my project ["Naming before Taming? Emotion Differentiation and Emotion Regulation Variability Hinder Each Other within Adolescents"](https://osf.io/cq6n4/). You can reproduce the analysis results in the manuscript following this readme. 
+This is the github of my paper ["Emotion Differentiation in Adolescents: Short-term Trade-offs with Regulation Variability and Emotion Intensity"](https://doi.org/10.1007/s42761-025-00301-4/), published in *Affective Science*. You can reproduce the analysis results in the manuscript following this readme. 
 
 ## Data availability
 
